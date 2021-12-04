@@ -132,6 +132,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 ##### Finally
 1. Open nvim, inside nvim run `:PlugInstall` and wait to install plugins.
    > You will get "**post-update hook for fzf...**" error message if you installed fzf with "`pacman -S fzf`".
+   >
    > Then press 'R' to retry.
 2. Exit nvim (:q) and run `nvim ~/.config/nvim/init.vim`.
 3. Delete all quotation mark (") in this file, save file and exit (:wq).

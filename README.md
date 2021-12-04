@@ -131,7 +131,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - Copy ***nvim*** folder to ***~/.config/***
 ##### Finally
 1. Open nvim, inside nvim run `:PlugInstall` and wait to install plugins.
-   > You will get "**post-update hook for fzf...**" error message if you installed fzf by "`pacman -S fzf`".
+   > You will get "**post-update hook for fzf...**" error message if you installed fzf with "`pacman -S fzf`".
 2. Exit nvim (:q) and run `nvim ~/.config/nvim/init.vim`.
 3. Delete all quotation mark (") in this file, save file and exit (:wq).
 4. Open nvim again (you will see the installation of CoC) and run `:VimspectorInstal vscode-cpptools` (or any adapter you need to debug).

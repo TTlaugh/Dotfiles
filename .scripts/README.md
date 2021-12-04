@@ -13,7 +13,7 @@
 
 ### NOTE
 #### d_vifm.sh, d_Arch-update.sh
-- You need to specify terminal (with option run command) to run
+- You need to specify terminal (with option run command) to use.
 ##### Example
 - With alacritty terminal:
 ```

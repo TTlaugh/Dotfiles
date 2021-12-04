@@ -1,0 +1,59 @@
+############
+# General: #
+############
+
+# Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
+
+     - pacman -Q                       : list all installed packages.
+     - pacman -Qe                      : list installed packages by user.
+     - pacman -Qn                      : list installed packages from official repository.
+     - pacman -Qm                      : list installed AUR packages.
+
+     - pacman -Qlq <package>           : list of installed package contents.
+     - pacman -Flq <package>           : list of remote package contents.
+
+     - pacman -Qo <file name>          : search for installed package containing the file.
+     - pacman -F <file name>           : search for remote package containing the file.
+
+     - pacman -Qi <package>            : installed package information.
+     - pacman -Si <package>            : remote package information.
+
+     - pacman -Qs <string1> <string2>  : search for installed package.
+     - pacman -Ss <string1> <string2>  : search for packages.
+
+     - pacman -Sc                      : remove package caches.
+     - pacman -Scc                     : remove package caches and packages files.
+
+     - pacman -Syu                     : update.
+
+     - pacman -Rns <package>           : remove package + dependencies + config file.
+     - pacman -Rcns <package>          : remove group package + dependencies + config file.
+
+###########################
+# Pacman advance command: #
+###########################
+
+     - To remove unused packages:
+        pacman -Qtdq | sudo pacman -Rns -
+
+     - Getting the dependencies list of several packages:
+        LC_ALL=C pacman -Si <packages> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+        LC_ALL=C pacman -Qi <packages> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+
+     - Listing files owned by a package with size:
+        pacman -Qlq <package> | grep -v '/$' | xargs -r du -h | sort -h
+        
+####################
+# Pacman with fzf: #
+####################
+
+     - Search packages with information:
+        pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
+        pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse
+
+     - Install:
+        pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S
+
+     - Remove:
+        pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns
+

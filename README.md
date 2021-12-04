@@ -1,0 +1,378 @@
+# Set up Arch Linux
+
+![](https://raw.githubusercontent.com/NguyenLeTienTrien/Dotfiles/master/MyArch1.png)
+![](https://raw.githubusercontent.com/NguyenLeTienTrien/Dotfiles/master/MyArch2.png)
+
+# Table of contents
+
+- [Installation](https://github.com/NguyenLeTienTrien/Dotfiles#installation)
+  - [Base Packages](https://github.com/NguyenLeTienTrien/Dotfiles#base-packages)
+  - [Window Manager](https://github.com/NguyenLeTienTrien/Dotfiles#window-manager)
+  - [Apps](https://github.com/NguyenLeTienTrien/Dotfiles#apps)
+  - [AUR Packages](https://github.com/NguyenLeTienTrien/Dotfiles#aur-packages)
+  - [Suckless](https://github.com/NguyenLeTienTrien/Dotfiles#suckless)
+  - [Optional](https://github.com/NguyenLeTienTrien/Dotfiles#optional)
+- [Configuration](https://github.com/NguyenLeTienTrien/Dotfiles#configuration)
+  - [Unmute the sound card and disable auto mute on startup](https://github.com/NguyenLeTienTrien/Dotfiles#unmute-the-sound-card-and-disable-auto-mute-on-startup)
+  - [i3](https://github.com/NguyenLeTienTrien/Dotfiles#i3)
+  - [Neovim](https://github.com/NguyenLeTienTrien/Dotfiles#neovim)
+  - [zshrc](https://github.com/NguyenLeTienTrien/Dotfiles#zshrc)
+  - [Vifm](https://github.com/NguyenLeTienTrien/Dotfiles#vifm)
+  - [Picom](https://github.com/NguyenLeTienTrien/Dotfiles#picom)
+  - [Alacritty](https://github.com/NguyenLeTienTrien/Dotfiles#alacritty)
+  - [Kitty](https://github.com/NguyenLeTienTrien/Dotfiles#kitty)
+  - [Dmenu](https://github.com/NguyenLeTienTrien/Dotfiles#dmenu)
+  - [St](https://github.com/NguyenLeTienTrien/Dotfiles#st)
+  - [Dunst](https://github.com/NguyenLeTienTrien/Dotfiles#dunst)
+  - [Zathura](https://github.com/NguyenLeTienTrien/Dotfiles#zathura)
+  - [Lightdm](https://github.com/NguyenLeTienTrien/Dotfiles#lightdm)
+  - [FZF](https://github.com/NguyenLeTienTrien/Dotfiles#fzf)
+  - [Pacman](https://github.com/NguyenLeTienTrien/Dotfiles#pacman)
+- [Tips and Tricks](https://github.com/NguyenLeTienTrien/Dotfiles#tips-and-tricks)
+- [Other](https://github.com/NguyenLeTienTrien/Dotfiles#other)
+
+# Installation
+
+### Base Packages
+```
+base base-devel linux linux-headers linux-firmware intel-ucode
+```
+```
+grub efibootmgr dosfstools os-prober mtools
+```
+```
+ufw alsa-utils networkmanager mesa lib32-mesa vulkan-intel
+```
+> Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall)).
+>
+> Enable networkmanager: `systemctl enable NetworkManager`
+
+### Window Manager
+```
+xorg xorg-xinit libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
+
+i3-wm i3status i3lock
+```
+
+### Apps
+```
+neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulseaudio pulseaudio-alsa pavucontrol vifm thunar ueberzug atool feh eog ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools persepolis pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter simplescreenrecorder onboard fuse2 xclip
+```
+> Enable lightdm: `systemctl enable lightdm`
+
+### AUR Packages
+> To install AUR packages: `makpkg -si`
+- [yay](https://aur.archlinux.org/packages/yay/)
+- [all-repository-fonts](https://aur.archlinux.org/packages/all-repository-fonts/)
+- [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete/)
+
+### Suckless
+> To install Suckless application: `sudo make clean install`
+- [dmenu](https://tools.suckless.org/dmenu/)
+- Optional: [st](https://st.suckless.org/)
+  - Patches: [dracula](https://st.suckless.org/patches/dracula/), [scrollback + scrollback-mouse](https://st.suckless.org/patches/scrollback/), [ligature-scrollback](https://st.suckless.org/patches/ligatures/).
+  - `patch -p1 < your_patch_file`
+
+### Optional
+
+- Kdenlive
+- GIMP
+- Audacity
+- OBS
+- VirtualBox
+- LibreOffice (jre-openjdk package is needed for LibreOffice Database)
+- pandoc
+- texlive-most
+- rsync
+- lolcat
+- speedtest-cli
+- volumeicon
+- volnoti ([AUR](https://aur.archlinux.org/packages/volnoti/))
+- ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts/))
+- teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer/))
+   > Note: If you use startx, you won't be able to open teamviewer
+- Powerline Fonts: [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
+
+# Configuration
+
+## Unmute the sound card and disable auto mute on startup
+##### Unmute
+```
+amixer sset Master unmute
+amixer sset Speaker unmute
+amixer sset Headphone unmute
+```
+##### Disable auto mute
+```
+amixer -c 0 sset "Auto-Mute Mode" Disabled
+```
+
+## i3
+- Copy ***i3*** folder to ***~/.config/***
+- Open ***i3/config*** file and edit for use!
+- You can read readme for more.
+- Set background with feh: `feh --bg-scale /path/to/picture`
+
+## Neovim
+##### Installation
+- neovim
+- [vim-plug](https://github.com/junegunn/vim-plug)
+- nodejs *lastest version*
+- npm
+- npm *provider*: `sudo npm install -g neovim`
+- python , python-pip , python2 , python2-pip
+- pynvim:
+    ```
+    python2 -m pip install --user --upgrade pynvim 
+    python3 -m pip install --user --upgrade pynvim
+    ```
+- ccls (for C/C++)
+##### Copy config folder
+- Copy ***nvim*** folder to ***~/.config/***
+##### Finally
+1. Open nvim, inside nvim run `:PlugInstall` and wait to install plugins.
+2. Exit nvim (:q) and run `nvim ~/.config/nvim/init.vim`.
+3. Delete all quotation mark (") in this file, save file and exit (:wq).
+4. Open nvim again (you will see the installation of CoC) and run `:VimspectorInstal vscode-cpptools` (or any adapter you need to debug).
+5. Customize your Startify bookmarks in ~/.config/nvim/config/plugins/other.vim 
+6. Done.
+
+## zshrc
+- Install oh-my-zsh, zsh-autosuggestion (plugin), zsh-highlighting (plugin).
+- Change theme to `gnzh`
+- Copy ***.aliases*** file to your home directory and add this to zshrc: `source $HOME/.aliases`.
+- Copy ***.pacmandoc*** file to your home directory.
+- Export:
+   ```
+   export EDITOR=nvim
+   export VISUAL=nvim
+   ```
+- My Banner:
+   ```
+   # NLTT banner
+   printf "\e[1;35m
+   \t███╗   ██╗██╗  ████████╗████████╗
+   \t████╗  ██║██║  ╚══██╔══╝╚══██╔══╝
+   \t██╔██╗ ██║██║    ██║      ██║   
+   \t██║╚██╗██║██║     ██║      ██║   
+   \t██║ ╚████║███████╗██║      ██║   
+   \t╚═╝  ╚═══╝╚══════╝╚═╝      ╚═╝   
+   "
+   ```
+
+## Vifm
+##### General
+- Copy ***dracula.vifm*** to ***~/.vifm/colors/***
+- Copy ***vifmrun*** and ***vifmimg*** to ***~/.vifm/scripts/***
+- In **vifmrc**:
+  - Line 14: change "**vim**" to "**nvim**" (`set vicmd=nvim`).
+  - Line 62: change theme to "**dracula**" (`colorscheme dracula`).
+  - Line 132: change "**vim**" to "**nvim**" (`command! diff nvim -d %f %F`).
+  - Search for `gvim` and comment or delete these lines.
+> NOTE: you must execute **vifmrun** script to use vifm with ueberzug support.
+###### Mapping
+- `nmap af za` : use **af** instead of **za** to toggle show dot file/folder.
+- `nmap <C-x> :q<CR>` : same as vim's configuration.
+- `set number`
+- `set relativenumber`
+###### Create command for feh
+```
+command feho feh -d -g 800x600 --scale-down . &
+command fehl feh -t . &
+```
+###### Config for extract file
+```
+command extract atool -x -e %f &>/dev/null &
+command compressZ atool -a -F .zip -e %f &>/dev/null &
+command compressT atool -a -F .tar.xz -e %f &>/dev/null &
+map <space>e  :extract<CR>
+map <space>c  :compressZ<CR>
+map <space>ct :compressT<CR>
+```
+> #### Now you can use:
+> - `:feho` to open image.
+> - `:fehl` to list all images in current directory.
+> - *space+e* to extract file.
+> - *space+c* to compress `.zip`.
+> - *space+c+t* to compress `.tar.xz`.
+##### Filextype and fileviewer config
+###### Images
+```
+filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+        "........(Some default apps here)
+        \ {View in feh}
+        \ feh -d -g 800x600 --scale-down %c &,
+fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+        \ vifmimg draw %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear
+```
+###### Videos
+```
+fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+           \*.as[fx]},
+          \<video/*>
+         \ vifmimg videopreview %px %py %pw %ph %c
+         \ %pc
+         \ vifmimg clear
+         "\ ffprobe -pretty %c 2>&1
+```
+##### Optional
+###### Preview with syntax highlighting using bat
+```
+fileviewer *[^/],.*[^/] bat --color=always %c -pp
+```
+###### Preview directory using ls command
+```
+fileviewer */,.*/ ls -1 --color=always %c
+```
+##### Icons
+> To display icons, add this after line `" filetype * start, explorer`:
+```
+" file types
+set classify=' :dir:/, :exe:, :reg:, :link:'
+" various file names
+set classify+=' ::../::, ::*.sh::, ::*.[hc]pp::, ::*.[hc]::, ::/^copying|license$/::, ::.git/,,*.git/::, ::*.epub,,*.fb2,,*.djvu::, ::*.pdf::, ::*.htm,,*.html,,**.[sx]html,,*.xml::'
+" archives
+set classify+=' ::*.7z,,*.ace,,*.arj,,*.bz2,,*.cpio,,*.deb,,*.dz,,*.gz,,*.jar,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.rz,,*.tar,,*.taz,,*.tb2,,*.tbz,,*.tbz2,,*.tgz,,*.tlz,,*.trz,,*.txz,,*.tz,,*.tz2,,*.xz,,*.z,,*.zip,,*.zoo::'
+" images
+set classify+=' ::*.bmp,,*.gif,,*.jpeg,,*.jpg,,*.ico,,*.png,,*.ppm,,*.svg,,*.svgz,,*.tga,,*.tif,,*.tiff,,*.xbm,,*.xcf,,*.xpm,,*.xspf,,*.xwd::'
+" audio
+set classify+=' ::*.aac,,*.anx,,*.asf,,*.au,,*.axa,,*.flac,,*.m2a,,*.m4a,,*.mid,,*.midi,,*.mp3,,*.mpc,,*.oga,,*.ogg,,*.ogx,,*.ra,,*.ram,,*.rm,,*.spx,,*.wav,,*.wma,,*.ac3::'
+" media
+set classify+=' ::*.avi,,*.ts,,*.axv,,*.divx,,*.m2v,,*.m4p,,*.m4v,,.mka,,*.mkv,,*.mov,,*.mp4,,*.flv,,*.mp4v,,*.mpeg,,*.mpg,,*.nuv,,*.ogv,,*.pbm,,*.pgm,,*.qt,,*.vob,,*.wmv,,*.xvid::'
+" office files
+set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.ppt::'
+```
+
+## Picom
+- Copy ***picom.conf*** to ***~/.config/picom/***
+
+## Alacritty
+- Copy ***alacritty*** folder to ***~/.config/***
+
+## Kitty
+##### Copy default config file to ~/.config/
+```
+cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
+```
+##### Configure
+```
+line | config
+-----|---------------------------------------
+   9 | font_family      Fira Code
+  10 | bold_font        Fira Code Bold
+  11 | italic_font      Fira Code Italic
+  12 | bold_italic_font Fira Code Bold Italic
+ 762 | background_opacity 0.9
+```
+##### Theme
+See [Dracula Theme](https://draculatheme.com/kitty)
+
+## Dmenu
+##### Edit *config.def.h*
+- Font: `RobotoMono Nerd Font`
+- Font size: `11`
+- Colors:
+  ```
+  [SchemeNorm] = { "#bbbbbb", "#282A36" },
+  [SchemeSel] = { "#000000", "#f59cff" },
+  [SchemeOut] = { "#000000", "#00ffff" },
+  ```
+##### Edit *dmenu_run*
+- Add `-p "Run:"` after `dmenu "@"`
+- Example: `dmenu "$@" -p "Run:"`
+
+## St
+- Change font and font size.
+- Patch, Fix and config MANUALLY (Goodluck!!).
+  - scrollback config: change keybind (Modkey, scroll with j, k).
+
+## Dunst
+Copy ***dunst*** folder to ***~/.config/***
+> If the config work incorrect, you need read all content of dunstrc file and edit for work correct.
+>
+> Something incorrect as: dmenu path, icon path, ...
+>
+> You should view `man dunst` to find default config file.
+>
+> You can following this *dunstrc* to config default dunstrc for you.
+
+## Zathura
+- Copy ***zathura*** folder to ***~/.config/***
+
+## Lightdm
+- Edit config file in ***/etc/lightdm/lightdm.conf***
+```
+[Seat:*]
+.....
+greeter-session=lightdm-slick-greeter
+user-session=i3
+.....
+```
+##### lightdm-slick-greeter
+- Copy the picture you want to set background to ***/usr/share/backgrounds/***
+- Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
+  ```
+  [Greeter]                                                                                                          
+  background=/usr/share/backgrounds/<picture>
+  ```
+
+## FZF
+- Add to `.zshrc`:
+```
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+FD_OPTS="--hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS="--height 80% \
+                         --layout=reverse \
+                         --border \
+                         --color 'border:#9e40bd' \
+                         --preview 'bat -n --color=always --line-range :500 {}' \
+                         --preview-window='hidden:wrap' \
+                         --bind='f2:toggle-preview'"
+export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTS"
+export FZF_CTRL_T_COMMAND="fd $FD_OPTS"
+export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
+```
+
+## Pacman
+- To use pacman with more colors, uncomment this line in ***/etc/pacman.conf***
+```
+#Colors -> Color
+```
+
+# Tips and Tricks
+
+#### Use script or app as root without password
+Edit ***/etc/sudoers***
+```
+sudo nvim /etc/sudoers
+```
+###### Method 1
+- Add this line:
+```
+<user name>  ALL=NOPASSWD: /path/to/<script1>, /path/to/<script2>
+```
+Example: `nltt  ALL=NOPASSWD: /usr/bin/udisksctl, /usr/bin/mount, /usr/bin/unmount`
+###### Method 2
+Uncomment this line (will allow all sudo command)
+```
+%wheel ALL=(ALL) NOPASSWD: ALL
+```
+
+#### Useful command
+- `sudoedit` to edit root file by editor with user config
+- `sudo !!`
+- `popd`
+- **udisksctl:**
+    - `udisksctl power-off -b /dev/<drive>` (to power off drive or safely to remove drive)
+    - `udisksctl mount -b /dev/<drive>`     (to mount drive)
+    - `udisksctl unmount -b /dev/<drive>`   (to unmount drive)
+
+# Other
+
+### My Scripts
+[Here.](https://github.com/NguyenLeTienTrien/Dotfiles/tree/master/.scripts)

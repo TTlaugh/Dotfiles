@@ -6,7 +6,8 @@
 set -euo pipefail
 
 main() {
-    [[ "$(echo -e "No\nYes" | dmenu -i -p "Refresh?")" = "Yes" ]] && nmcli radio wifi off && nmcli radio wifi on && sleep 5
+    refresh=$(echo -e "No\nYes" | dmenu -i -p "Refresh?")
+    [[ "$refresh" = "Yes" ]] && nmcli radio wifi off && nmcli radio wifi on && sleep 5
 
     bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -l 20 -p "Select Wifi  :" | cut -d' ' -f1)
     pass=$(echo "" | dmenu -i -l 20 -p "Enter Password  :")

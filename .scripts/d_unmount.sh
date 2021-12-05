@@ -9,30 +9,45 @@
 
 set -euo pipefail
 
-#Drives mounted at /, /boot, /home will not be options to unmount
-#This can be change by modifying $exclusionregex
+unmount() {
+    sudo udisksctl unmount -b "$chosen"
 
-exclusionregex="\(/boot/efi\|/home\|/\)$"
-drives="$(lsblk -lp | grep "t /\|k /" | grep -v "$exclusionregex" | awk '{print $1, "(" $4 ")", "on", $7}' || echo "")"
-if [[ "$drives" = "" ]]; then
-    echo "Cancel" | dmenu -p "WARNING: No drive mounted!"
-    exit 1
-fi
+    # Success or failure message
+    if [[ "$(lsblk -lp | grep "$chosen" | awk '{print $7}')" = "" ]]; then
+        pgrep -x dunst && notify-send "Unmount Drive" "$chosen_col $unmounted_col"
+    else
+        pgrep -x dunst && notify-send --urgency=critical "Unmount Drive" "$chosen\nunmount failed!"
+        exit 1
+    fi
+}
 
-chosen="$(echo "$drives" | dmenu -i -p "Unmount which drive?" | awk '{print $1}')"
-[[ "$chosen" = "" ]] && exit 1
-# Format color display with dunst
-chosencol="<span foreground='#660000'>$chosen</span>"
+power_off() {
+    if [[ "$(echo -e "Yes\nNo" | dmenu -p "Power off a device?")" = "Yes" ]]; then
+        sudo udisksctl power-off -b "$chosen"
+        pgrep -x dunst && notify-send "Unmount Drive" "$chosen_col\n$safelytoremove_col"
+    fi
+}
 
-sudo udisksctl unmount -b "$chosen"
-if [[ "$(lsblk -lp | grep "$chosen" | awk '{print $7}')" = "" ]]; then
-    pgrep -x dunst && notify-send "Unmount Drive" "$chosencol <span foreground='#00b55b'>unmounted</span>."
-else
-    pgrep -x dunst && notify-send --urgency=critical "Unmount Drive" "$chosen\nunmount failed!"
-    exit 1
-fi
+main() {
+# Drives mounted at /, /boot, /home will not be options to unmount
+# This can be change by modifying $exclusionregex
+    exclusionregex="\(/boot/efi\|/home\|/\)$"
 
-if [[ "$(echo -e "Yes\nNo" | dmenu -p "Power off a device?")" = "Yes" ]]; then
-    sudo udisksctl power-off -b "$chosen"
-    pgrep -x dunst && notify-send "Unmount Drive" "$chosencol\n<span foreground='#00b55b'>safely to remove!</span>"
-fi
+    drives="$(lsblk -lp | grep "t /\|k /" | grep -v "$exclusionregex" | awk '{print $1, "(" $4 ")", "on", $7}' || echo "")"
+    if [[ "$drives" = "" ]]; then
+        echo "Cancel" | dmenu -p "WARNING: No drive mounted!"
+        exit 1
+    fi
+    chosen="$(echo "$drives" | dmenu -i -p "Unmount which drive?" | awk '{print $1}')"
+    [[ "$chosen" = "" ]] && exit 1
+    
+    # Format color display with dunst
+    chosen_col="<span foreground='#660000'>$chosen</span>"
+    unmounted_col="<span foreground='#00b55b'>unmounted</span>."
+    safelytoremove_col="<span foreground='#00b55b'>safely to remove!</span>"
+
+    unmount
+    power_off
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

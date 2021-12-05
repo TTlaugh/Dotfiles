@@ -7,30 +7,46 @@
 #   ./d_vifm.sh "alacritty -e"
 #   ./d_vifm.sh "st"
 
-# Check specify terminal
-if [[ "$1" = "" ]]; then
+no_term(){
+# No specify terminal
     echo -e "ERROR: You need to specify terminal (with run command option) to run this script!\nExample:
     ./d_vifm.sh \"alacritty -e\"
     ./d_vifm.sh \"st\"
     ./d_vifm.sh \"kitty\""
     notify-send "Vifm" "Error:\nYou need to specify terminal to run this script!\nUse '-h' option to view example."
     exit 1
+}
+
+help_h() {
 # Help
-elif [[ "$1" = "-h" ]]; then
     echo -e "You need to specify terminal (with run command option) to run this script!\nExample:
     ./d_vifm.sh \"alacritty -e\"
     ./d_vifm.sh \"st\"
     ./d_vifm.sh \"kitty\""
+}
+
+run() {
 # Run
-elif hash $(echo "$1" | awk '{print $1}') 2>/dev/null; then
     path="$(find /home/nltt /mnt -maxdepth 1 -type d)\n$(find / -maxdepth 1 -type d)"
     chosen="$(echo -e "$path" | dmenu -i -p "Vifm:")"
     if [[ "$chosen" = "" ]] || [[ ! -d "$chosen" ]]; then
         exit 1
     else
         $1 sh -c "vifm $chosen"
-        [[ "$?" != "0" ]] && notify-send "Vifm" "Command '$1' is not correct to run."
+        [[ "$?" != "0" ]] && notify-send "Vifm" "Command '$1' is not correct to run." && exit 1
     fi
-else
-    exit 1
-fi
+}
+
+main() {
+    if [[ "$1" = "" ]]; then
+        no_term
+    elif [[ "$1" = "-h" ]]; then
+        help_h
+    elif hash $(echo "$1" | awk '{print $1}') 2>/dev/null; then
+        run "$1"
+    else
+        exit 1
+    fi
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

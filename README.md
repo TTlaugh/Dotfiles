@@ -183,11 +183,11 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 command feho feh -d -g 800x600 --scale-down . &
 command fehl feh -t . &
 ```
-###### Config for extract file
+###### Use atool to extract
 ```
-command extract atool -x -e %f &>/dev/null &
-command compressZ atool -a -F .zip -e %f &>/dev/null &
-command compressT atool -a -F .tar.xz -e %f &>/dev/null &
+command extract atool -x -e %f
+command compressZ atool -a -F .zip -e %f
+command compressT atool -a -F .tar.xz -e %f
 map <space>e  :extract<CR>
 map <space>c  :compressZ<CR>
 map <space>ct :compressT<CR>

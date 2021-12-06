@@ -121,6 +121,10 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - npm
 - npm *provider*: `sudo npm install -g neovim`
 - python , python-pip , python2 , python2-pip
+  > If you can't find the ***python2-pip*** package, download the install script and run it:
+  ```
+  wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && sudo python2 get-pip.py
+  ```
 - pynvim:
     ```
     python2 -m pip install --user --upgrade pynvim 

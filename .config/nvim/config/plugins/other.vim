@@ -74,18 +74,3 @@ let g:cmake_link_compile_commands = 1
 
 " FZF
 let g:fzf_layout = { 'down': '40%' }
-
-" NerdTree Git Plugin
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'',
-                \ 'Staged'    :'',
-                \ 'Untracked' :'',
-                \ 'Renamed'   :'',
-                \ 'Unmerged'  :'',
-                \ 'Deleted'   :'',
-                \ 'Dirty'     :'',
-                \ 'Ignored'   :'',
-                \ 'Clean'     :'',
-                \ 'Unknown'   :'',
-                \ }
-"                      

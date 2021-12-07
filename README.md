@@ -43,14 +43,16 @@ grub efibootmgr dosfstools os-prober mtools
 ```
 ufw alsa-utils networkmanager mesa lib32-mesa vulkan-intel
 ```
-> Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall)).
->
-> Enable networkmanager: `systemctl enable NetworkManager`
+> - Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall)).
+> - Enable networkmanager: `systemctl enable NetworkManager`
 
 ### Window Manager
+- xorg:
 ```
 xorg xorg-xinit libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
-
+```
+- i3:
+```
 i3-wm i3status i3lock
 ```
 
@@ -135,9 +137,8 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - Copy ***nvim*** folder to ***~/.config/***
 ##### Finally
 1. Open nvim, inside nvim run `:PlugInstall` and wait to install plugins.
-   > You will get "**post-update hook for fzf...**" error message if you installed fzf with "`pacman -S fzf`".
-   >
-   > Then press 'R' to retry.
+   > - You will get "**post-update hook for fzf...**" error message if you installed fzf with "`pacman -S fzf`".
+   > - Press 'R' to retry.
 2. Exit nvim (:q) and run `nvim ~/.config/nvim/init.vim`.
 3. Delete all quotation mark (") in this file, save file and exit (:wq).
 4. Open nvim again (you will see the installation of CoC) and run `:VimspectorInstal vscode-cpptools` (or any adapter you need to debug).

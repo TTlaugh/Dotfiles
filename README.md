@@ -63,7 +63,7 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulsea
 > Enable lightdm: `systemctl enable lightdm`
 
 ### AUR Packages
-> To install AUR packages: `makpkg -si`
+> To install AUR packages: `makepkg -si`
 - [yay](https://aur.archlinux.org/packages/yay/)
 - [all-repository-fonts](https://aur.archlinux.org/packages/all-repository-fonts/)
 - [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete/)

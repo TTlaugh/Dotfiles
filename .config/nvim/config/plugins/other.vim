@@ -47,9 +47,9 @@ let g:coc_global_extensions = [
   \ 'coc-json'
   \ ]
 
-" Vim theme 
+" Vim themes
 colorscheme dracula
-"colorscheme embark
+"colorscheme onedark
 
 " Vim-Airline config
 let g:airline#extensions#tabline#enabled = 1
@@ -63,8 +63,6 @@ let g:airline_symbols.colnr = ' : '
 let g:airline_symbols.linenr = ' '
 let g:airline_symbols.readonly = ' '
 let g:airline_symbols.maxlinenr = ''
-" Switch to your current theme
-"let g:airline_theme = 'onedark'
 
 " RainBow Bracket
 au FileType c,cpp,objc,objcpp,json call rainbow#load()

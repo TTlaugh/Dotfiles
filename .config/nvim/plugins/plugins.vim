@@ -17,8 +17,9 @@ call plug#begin('~/.config/nvim/plugins/bundle')
 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'embark-theme/vim', { 'as': 'embark' }
+
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'joshdick/onedark.vim'
 
     Plug 'ryanoasis/vim-devicons'
 

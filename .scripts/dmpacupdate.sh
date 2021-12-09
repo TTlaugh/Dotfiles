@@ -6,7 +6,7 @@
 
 check_net() {
 # Check internet
-    ping -c 1 archlinux.org
+    ping -c 1 archlinux.org >/dev/null
     if [[ "$?" != "0" ]]; then
         echo "No internet to check for updates."
         notify-send "Check for updates script" "No internet to check for updates."

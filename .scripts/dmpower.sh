@@ -3,7 +3,7 @@
 # Description: Use dmenu to run command with [Yes/No] waring.
 # Dependencies: dmenu
 # Use: Gives a prompt labeled with $1 to perform command $2.
-# Ex:
+# Example:
 # ./dmpower.sh "Are you sure you want to shutdown?" "shutdown now"
 
 set -euo pipefail

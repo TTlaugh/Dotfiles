@@ -70,8 +70,13 @@ bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/dmwifi.sh
 bindsym $mod1+Shift+Return exec --no-startup-id ~/.scripts/dmvifm.sh "alacritty -e"
 ```
 ##### screenshot.sh
+###### Full screen
 ```
 bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh
+```
+###### Selected region
+```
+bindsym Shift+Print exec --no-startup-id ~/.scripts/screenshot.sh selected
 ```
 ##### dmcalc.sh
 ```

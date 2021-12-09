@@ -36,7 +36,7 @@ run() {
 # Run
     update="$(checkupdates | wc -l)"
     if [[ $update != 0 ]] && [[ $(echo -e "Yes\nNo" | dmenu -i -p "$update packages can be updated! Do you want to update?") = "Yes" ]]; then
-        $1 sh -c "echo -e 'Package list:' && checkupdates && sudo pacman -Syu && echo -e '\nSuccessfully!\nPress ENTER to quit.'; read"
+        $1 sh -c "sudo pacman -Syu && echo -e '\nSuccessfully!'; echo -e '\nPress ENTER to quit.' && read"
         [[ "$?" != "0" ]] && notify-send "Check for updates script" "Command '$1' is not correct to run."
     else
         exit 0

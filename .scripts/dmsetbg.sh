@@ -4,15 +4,15 @@
 # Dependencies: dmenu, feh, dunst
 # Note: You need specify locate of folder contain wallpapers.
 # Ex:
-#   ./d_setbg.sh ~/Wallpapers
+#   ./dmsetbg.sh ~/Wallpapers
 
 set -euo pipefail
 
 main() {
     if [[ "$1" = "" ]] || [[ ! -d "$1" ]]; then
         echo -e "You need specify locate of folder contain wallpapers!
-        Ex: ./d_setbg.sh ~/Wallpapers"
-        notify-send "Set background" "Error:\nYou need specify locate of folder contain wallpapers!\nEx: <span foreground='#00b55b'>./d_setbg.sh ~/Wallpapers</span>"
+        Ex: ./dmsetbg.sh ~/Wallpapers"
+        notify-send "Set background" "Error:\nYou need specify locate of folder contain wallpapers!\nEx: <span foreground='#00b55b'>./dmsetbg.sh ~/Wallpapers</span>"
         exit 1
     fi
     chosen="$(ls $1 | dmenu -l 20 -i -p "Choose wallpaper:")"

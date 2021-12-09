@@ -5,7 +5,6 @@
 # Tips: you should close all process use mounted folder.
 # NOTE: you should edit /etc/sudoers to use 'udisksctl' command without password.
 # Otherwise you can't run this script with dmenu.
-# (see 'Tips and Tricks' in Arch_installation file).
 
 set -euo pipefail
 

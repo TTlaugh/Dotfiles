@@ -47,8 +47,6 @@
 # Startup
     # Background use feh
         #exec_always --no-startup-id ~/.fehbg
-    # Compton
-        #exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
     # Picom
         #exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
     # No turn off display after few minute

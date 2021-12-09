@@ -4,15 +4,15 @@
 # Dependencies: vifm, dmenu, dunst, <terminal>
 # Note: you need to specify terminal to run script.
 # Ex:
-#   ./d_vifm.sh "alacritty -e"
-#   ./d_vifm.sh "st"
+#   ./dmvifm.sh "alacritty -e"
+#   ./dmvifm.sh "st"
 
 no_term(){
 # No specify terminal
     echo -e "ERROR: You need to specify terminal (with run command option) to run this script!\nExample:
-    ./d_vifm.sh \"alacritty -e\"
-    ./d_vifm.sh \"st\"
-    ./d_vifm.sh \"kitty\""
+    ./dmvifm.sh \"alacritty -e\"
+    ./dmvifm.sh \"st\"
+    ./dmvifm.sh \"kitty\""
     notify-send "Vifm" "Error:\nYou need to specify terminal to run this script!\nUse '-h' option to view example."
     exit 1
 }
@@ -20,9 +20,9 @@ no_term(){
 help_h() {
 # Help
     echo -e "You need to specify terminal (with run command option) to run this script!\nExample:
-    ./d_vifm.sh \"alacritty -e\"
-    ./d_vifm.sh \"st\"
-    ./d_vifm.sh \"kitty\""
+    ./dmvifm.sh \"alacritty -e\"
+    ./dmvifm.sh \"st\"
+    ./dmvifm.sh \"kitty\""
 }
 
 run() {

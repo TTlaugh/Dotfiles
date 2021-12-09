@@ -12,27 +12,27 @@
 - ...
 
 ### NOTE
-#### d_vifm.sh, d_Arch-update.sh
+#### dmvifm.sh, dmpacupdate.sh
 - You need to specify terminal (with option run command) to use.
 ##### Example
 - With alacritty terminal:
 ```
-./d_vifm.sh "alacritty -e"
-./d_Arch-update.sh "alacritty -e"
+./dmvifm.sh "alacritty -e"
+./dmpacupdate.sh "alacritty -e"
 ```
 - With kitty terminal:
 ```
-./d_vifm.sh "kitty"
-./d_Arch-update.sh "kitty"
+./dmvifm.sh "kitty"
+./dmpacupdate.sh "kitty"
 ```
 - With st terminal:
 ```
-./d_vifm.sh "st"
-./d_Arch-update.sh "st"
+./dmvifm.sh "st"
+./dmpacupdate.sh "st"
 ```
 - ......
 
-#### d_mount.sh, d_unmount.sh
+#### dmmount.sh, dmunmount.sh
 - You should add this line to ***/etc/sudoers***
 ```
 <user-name>  ALL=NOPASSWD: /usr/bin/udisksctl, /usr/bin/mount, /usr/bin/unmount
@@ -41,49 +41,49 @@
 ### Window manager with key binding
 #### Example for i3 (use alacritty terminal):
 
-##### Arch_cleaner.sh
+##### cleaner.sh
 ```
-bindsym $mod+$mod1+c exec --no-startup-id alacritty -e ~/.scripts/Arch_cleaner.sh
+bindsym $mod+$mod1+c exec --no-startup-id alacritty -e ~/.scripts/cleaner.sh
 ```
-##### d_Arch_update.sh
+##### dmpacupdate.sh
 ```
-exec --no-startup-id ~/.scripts/d_Arch_update.sh "alacritty -e"
+exec --no-startup-id ~/.scripts/dmpacupdate.sh "alacritty -e"
 ```
-##### d_Arch_power.sh
+##### dmpower.sh
 ```
-bindsym $mod1+Shift+F1 exec --no-startup-id ~/.scripts/d_Arch_power.sh "Are you sure you want to exit i3?"   "i3-msg exit"
-bindsym $mod1+Shift+F2 exec --no-startup-id ~/.scripts/d_Arch_power.sh "Are you sure you want to suspend?"   "systemctl suspend"
-bindsym $mod1+Shift+F3 exec --no-startup-id ~/.scripts/d_Arch_power.sh "Are you sure you want to reboot?"    "reboot"
-bindsym $mod1+Shift+F4 exec --no-startup-id ~/.scripts/d_Arch_power.sh "Are you sure you want to shutdown?"  "shutdown now"
+bindsym $mod1+Shift+F1 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to exit i3?"   "i3-msg exit"
+bindsym $mod1+Shift+F2 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to suspend?"   "systemctl suspend"
+bindsym $mod1+Shift+F3 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to reboot?"    "reboot"
+bindsym $mod1+Shift+F4 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to shutdown?"  "shutdown now"
 ```
-##### d_mount.sh & d_unmount.sh
+##### dmmount.sh & dmunmount.sh
 ```
-bindsym $mod+$mod1+m exec --no-startup-id ~/.scripts/d_mount.sh
-bindsym $mod+$mod1+u exec --no-startup-id ~/.scripts/d_unmount.sh
+bindsym $mod+$mod1+m exec --no-startup-id ~/.scripts/dmmount.sh
+bindsym $mod+$mod1+u exec --no-startup-id ~/.scripts/dmunmount.sh
 ```
-##### d_wifi.sh
+##### dmwifi.sh
 ```
-bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/d_wifi.sh
+bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/dmwifi.sh
 ```
-##### d_vifm.sh
+##### dmvifm.sh
 ```
-bindsym $mod1+Shift+Return exec --no-startup-id ~/.scripts/d_vifm.sh "alacritty -e"
+bindsym $mod1+Shift+Return exec --no-startup-id ~/.scripts/dmvifm.sh "alacritty -e"
 ```
-##### ffmpeg-screenshot.sh
+##### screenshot.sh
 ```
-bindsym Print exec --no-startup-id ~/.scripts/ffmpeg-screenshot.sh
+bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh
 ```
-##### d_calc_py.sh
+##### dmcalc.sh
 ```
-bindsym $mod+c exec --no-startup-id ~/.scripts/d_calc_py.sh
+bindsym $mod+c exec --no-startup-id ~/.scripts/dmcalc.sh
 ```
-##### d_setbg.sh
+##### dmsetbg.sh
 ```
-bindsym $mod+mod1+b exec --no-startup-id ~/.scripts/d_setbg.sh ~/Wallpapers
+bindsym $mod+mod1+b exec --no-startup-id ~/.scripts/dmsetbg.sh ~/Wallpapers
 ```
-##### d_kill_proc.sh
+##### dmkill.sh
 ```
-bindsym $mod+Escape exec --no-startup-id ~/.scripts/d_kill_proc.sh
+bindsym $mod+Escape exec --no-startup-id ~/.scripts/dmkill.sh
 ```
 
 #### Createproject.sh

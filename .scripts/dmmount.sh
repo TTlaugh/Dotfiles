@@ -4,7 +4,6 @@
 # Dependencies: dmenu, dunst (or your favorite notification-daemon)
 # NOTE: you should edit /etc/sudoers to use 'mount' command without password.
 # Otherwise you can't run this script with dmenu.
-# (see 'Tips and Tricks' in Arch_installation file).
 
 set -euo pipefail
 

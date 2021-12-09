@@ -4,7 +4,7 @@
 # Dependencies: dmenu
 # Use: Gives a prompt labeled with $1 to perform command $2.
 # Ex:
-# ./d_Arch-power.sh "Are you sure you want to shutdown?" "shutdown now"
+# ./dmpower.sh "Are you sure you want to shutdown?" "shutdown now"
 
 set -euo pipefail
 

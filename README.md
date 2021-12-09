@@ -372,13 +372,15 @@ Uncomment this line (will allow all sudo command)
 ```
 
 #### Useful command
-- `sudoedit` to edit root file by editor with user config
+- `sudoedit`: to edit root file by editor with user config.
 - `sudo !!`
 - `popd`
-- **udisksctl:**
-    - `udisksctl power-off -b /dev/<drive>` (to power off drive or safely to remove drive)
-    - `udisksctl mount -b /dev/<drive>`     (to mount drive)
-    - `udisksctl unmount -b /dev/<drive>`   (to unmount drive)
+- `xev`: print out the user's keyboard input.
+
+#### Udisksctl:
+- `udisksctl power-off -b /dev/<drive>` (to power off drive or safely to remove drive)
+- `udisksctl mount -b /dev/<drive>`     (to mount drive)
+- `udisksctl unmount -b /dev/<drive>`   (to unmount drive)
 
 # Other
 

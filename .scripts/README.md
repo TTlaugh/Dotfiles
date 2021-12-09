@@ -41,10 +41,6 @@
 ### Window manager with key binding
 #### Example for i3 (use alacritty terminal):
 
-##### cleaner.sh
-```
-bindsym $mod+$mod1+c exec --no-startup-id alacritty -e ~/.scripts/cleaner.sh
-```
 ##### dmpacupdate.sh
 ```
 exec --no-startup-id ~/.scripts/dmpacupdate.sh "alacritty -e"
@@ -56,14 +52,22 @@ bindsym $mod1+Shift+F2 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure 
 bindsym $mod1+Shift+F3 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to reboot?"    "reboot"
 bindsym $mod1+Shift+F4 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to shutdown?"  "shutdown now"
 ```
-##### dmmount.sh & dmunmount.sh
+##### dmsetbg.sh
 ```
-bindsym $mod+$mod1+m exec --no-startup-id ~/.scripts/dmmount.sh
-bindsym $mod+$mod1+u exec --no-startup-id ~/.scripts/dmunmount.sh
+bindsym $mod+mod1+b exec --no-startup-id ~/.scripts/dmsetbg.sh ~/Wallpapers
 ```
 ##### dmwifi.sh
 ```
 bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/dmwifi.sh
+```
+##### dmkill.sh
+```
+bindsym $mod+Escape exec --no-startup-id ~/.scripts/dmkill.sh
+```
+##### dmmount.sh & dmunmount.sh
+```
+bindsym $mod+$mod1+m exec --no-startup-id ~/.scripts/dmmount.sh
+bindsym $mod+$mod1+u exec --no-startup-id ~/.scripts/dmunmount.sh
 ```
 ##### dmvifm.sh
 ```
@@ -78,17 +82,13 @@ bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh
 ```
 bindsym Shift+Print exec --no-startup-id ~/.scripts/screenshot.sh selected
 ```
+##### cleaner.sh
+```
+bindsym $mod+$mod1+c exec --no-startup-id alacritty -e ~/.scripts/cleaner.sh
+```
 ##### dmcalc.sh
 ```
 bindsym $mod+c exec --no-startup-id ~/.scripts/dmcalc.sh
-```
-##### dmsetbg.sh
-```
-bindsym $mod+mod1+b exec --no-startup-id ~/.scripts/dmsetbg.sh ~/Wallpapers
-```
-##### dmkill.sh
-```
-bindsym $mod+Escape exec --no-startup-id ~/.scripts/dmkill.sh
 ```
 
 #### Createproject.sh

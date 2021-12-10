@@ -114,6 +114,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - Open ***i3/config*** file and edit for use!
 - You can read readme for more.
 - Set background with feh: `feh --bg-scale /path/to/picture`
+- See more: [i3-README.md](https://github.com/nguyenletientrien/Dotfiles/tree/master/.config/i3)
 
 ## Neovim
 ##### Installation

@@ -194,13 +194,6 @@
                 #bindsym XF86AudioRaiseVolume         exec amixer set Master 5%+
                 #bindsym XF86AudioLowerVolume         exec amixer set Master 5%-
                 #bindsym XF86AudioMute                exec amixer set Master toggle
-        
-        # Media bindings
-            # Media player controls
-                #bindsym XF86AudioPlay                exec playerctl play
-                #bindsym XF86AudioPause               exec playerctl pause
-                #bindsym XF86AudioNext                exec playerctl next
-                #bindsym XF86AudioPrev                exec playerctl previous
 
 # Others
         for_window [class="feh"] floating enable

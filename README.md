@@ -49,7 +49,7 @@ ufw alsa-utils networkmanager mesa lib32-mesa vulkan-intel
 ### Window Manager
 - xorg:
 ```
-xorg xorg-xinit libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
+xorg xorg-drivers xorg-xinit libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
 ```
 - i3:
 ```

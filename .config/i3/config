@@ -31,10 +31,11 @@
 
 # i3Bar
         bar {
-            bindsym button3 exec "i3-nagbar -m 'Arch Linux' -t warning -B 'restart' 'reboot' -B 'shutdown' 'shutdown now' -B 'Keyboard' 'onboard' -B 'Terminal' 'i3-sensible-terminal'"
+            bindsym button2 exec "i3-nagbar -m 'Arch Linux' -t warning -B 'restart' 'reboot' -B 'shutdown' 'shutdown now' -B 'Keyboard' 'onboard' -B 'Terminal' 'i3-sensible-terminal'"
+            bindsym button3 exec ~/.config/i3/showstatus.sh
             position top
-            status_command i3status -c ~/.config/i3/i3status_1.conf
-            #status_command i3status -c ~/.config/i3/i3status_2.conf
+            status_command i3status -c ~/.config/i3/i3status1.conf
+            #status_command i3status -c ~/.config/i3/i3status2.conf
             colors {
             background #1c1c1c
             #                  border             background         text
@@ -187,13 +188,13 @@
         
             # CONTROL AUDIO BY VOLUME KEY
               # Pulse Audio controls
-                #bindsym XF86AudioRaiseVolume         exec --no-startup-id pactl set-sink-volume 0 +5%
-                #bindsym XF86AudioLowerVolume         exec --no-startup-id pactl set-sink-volume 0 -5%
-                #bindsym XF86AudioMute                exec --no-startup-id pactl set-sink-mute 0 toggle
+                #bindsym XF86AudioRaiseVolume        exec --no-startup-id pactl set-sink-volume 0 +5%
+                #bindsym XF86AudioLowerVolume        exec --no-startup-id pactl set-sink-volume 0 -5%
+                #bindsym XF86AudioMute               exec --no-startup-id pactl set-sink-mute 0 toggle
               # ALSA controls
-                #bindsym XF86AudioRaiseVolume         exec amixer set Master 5%+
-                #bindsym XF86AudioLowerVolume         exec amixer set Master 5%-
-                #bindsym XF86AudioMute                exec amixer set Master toggle
+                #bindsym XF86AudioRaiseVolume        exec --no-startup-id amixer set Master 5%+
+                #bindsym XF86AudioLowerVolume        exec --no-startup-id amixer set Master 5%-
+                #bindsym XF86AudioMute               exec --no-startup-id amixer set Master toggle
 
 # Others
         for_window [class="feh"] floating enable

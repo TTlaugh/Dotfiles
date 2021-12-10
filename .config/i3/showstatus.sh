@@ -11,13 +11,21 @@ cpu() {
 }
 
 time=" $(date "+%H:%M:%S")"
-date=" $(date "+%A %d/%m/%y")"
-#update=" $(checkupdates | wc -l) packages"
-cpu="龍 $(cpu)"
-mem=" $(free -h | grep "Mem" | awk '{print $3"B"}')"
-disk=" $(df -h | grep "/$" | awk '{print $4}')"
+date=" $(date "+%A %d/%m/%Y")"
+
+update="$(checkupdates | wc -l) packages"
+icon1="<span foreground='#0ecc00'> </span>"
+
+cpu="Cpu:  $(cpu)"
+icon2="<span foreground='#007396'>龍 </span>"
+
+mem="Mem:  $(free -h | grep "Mem" | awk '{print $3"B"}')"
+icon3="<span foreground='#ba9500'> </span>"
+
+disk="Disk: $(df -h | grep "/$" | awk '{print $4}')"
+icon4="<span foreground='#660000'> </span>"
+
 volume=" $(pamixer --get-volume)%"
 
-#status=$(echo -e "$time\n$date\n$update\n$cpu\n$mem\n$disk\n$volume")
-status=$(echo -e "$time\n$date\n$cpu\n$mem\n$disk\n$volume")
-notify-send "Status" "$status"
+notify-send "Status" "$time\n$date\n\n$icon1$update\n\n$icon2$cpu\n$icon3$mem\n$icon4$disk\n$volume"
+#notify-send "Status" "$time\n$date\n\n$icon2$cpu\n$icon3$mem\n$icon4$disk\n$volume"

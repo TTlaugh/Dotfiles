@@ -8,6 +8,9 @@
 - dunst
 - pyhon
 - feh
+- xclip
+- ffmpeg
+- slop
 - Your favorite terminal
 - ...
 

@@ -228,6 +228,22 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \ vifmimg clear
          "\ ffprobe -pretty %c 2>&1
 ```
+###### Audio
+> Use **mpv** as default.
+- Add this before other apps:
+```
+\ {Play using mpv}
+\ mpv %f,
+```
+- Example:
+```
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
+        \<audio/*>
+       \ {Play using mpv}
+       \ mpv %f,
+       \ {Play using ffplay}
+       \ ffplay -nodisp -autoexit %c,
+```
 ##### Optional
 ###### Preview with syntax highlighting using bat
 ```

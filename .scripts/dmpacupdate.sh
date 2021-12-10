@@ -35,10 +35,9 @@ help_h() {
 run() {
 # Run
     update="$(checkupdates | wc -l)"
-    yn="$(echo -e "Yes\nNo" | dmenu -i -p "$update packages can be updated! Do you want to update?")"
-    if [[ $update != 0 ]] && [[ "$yn" = "Yes" ]]; then
+    if [[ "$update" != "0" ]] && [[ "$(echo -e "Yes\nNo" | dmenu -i -p "$update packages can be updated! Do you want to update?")" = "Yes" ]]; then
         $1 sh -c "sudo pacman -Syu && echo -e '\nSuccessfully!'; echo -e '\nPress ENTER to quit.' && read"
-        [[ "$?" != "0" ]] && notify-send "Check for updates script" "Command '$1' is not correct to run."
+        [[ "$?" != "0" ]] && notify-send "Check for updates script" "Command '$1' is not correct to run." && exit 1
     else
         exit 0
     fi

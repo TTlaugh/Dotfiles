@@ -29,6 +29,19 @@ bar {
         }
 }
 ```
+```
+i3bar_command i3bar --transparency
+```
+```
+background #00000000
+# Change status color to black if you have a white background
+#statusline #000000
+```
+```
+focused_workspace  #ffffff            #00000000          #ffffff
+inactive_workspace #00000000          #00000000          #676E7D
+urgent_workspace   #E53935            #E53935            #ffffff
+```
 > You can see: [https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
 
 ### Optional: You can custom status color in ~/.config/i3/i3status.conf

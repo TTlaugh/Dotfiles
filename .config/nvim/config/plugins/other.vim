@@ -48,8 +48,8 @@ let g:coc_global_extensions = [
   \ ]
 
 " Vim themes
-colorscheme dracula
-"colorscheme onedark
+"colorscheme dracula
+colorscheme onedark
 
 " Vim-Airline config
 let g:airline#extensions#tabline#enabled = 1

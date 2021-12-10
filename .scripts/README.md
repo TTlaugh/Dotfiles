@@ -44,13 +44,15 @@
 ```
 # dmpacupdate.sh
 exec --no-startup-id ~/.scripts/dmpacupdate.sh "alacritty -e"
-
+```
+```
 # dmpower.sh
 bindsym $mod1+Shift+F1 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to exit i3?"   "i3-msg exit"
 bindsym $mod1+Shift+F2 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to suspend?"   "systemctl suspend"
 bindsym $mod1+Shift+F3 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to reboot?"    "reboot"
 bindsym $mod1+Shift+F4 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to shutdown?"  "shutdown now"
-
+```
+```
 # dmsetbg.sh
 bindsym $mod+mod1+b exec --no-startup-id ~/.scripts/dmsetbg.sh ~/Wallpapers
 

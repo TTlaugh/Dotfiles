@@ -12,7 +12,12 @@
 - ffmpeg
 - slop
 - Your favorite terminal
-- ...
+
+Example for Arch:
+```
+sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
+```
+> For dmenu, see [here](https://github.com/nguyenletientrien/Dotfiles#suckless).
 
 ### NOTE
 #### dmvifm.sh, dmpacupdate.sh

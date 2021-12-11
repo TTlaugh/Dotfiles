@@ -32,7 +32,7 @@
 # i3Bar
         bar {
             bindsym button2 exec "i3-nagbar -m 'Arch Linux' -t warning -B 'restart' 'reboot' -B 'shutdown' 'shutdown now' -B 'Keyboard' 'onboard' -B 'Terminal' 'i3-sensible-terminal'"
-            bindsym button3 exec ~/.config/i3/showstatus.sh
+            bindsym button3 exec --no-startup-id ~/.config/i3/showstatus.sh
             position top
             status_command i3status -c ~/.config/i3/i3status1.conf
             #status_command i3status -c ~/.config/i3/i3status2.conf
@@ -60,7 +60,7 @@
 # Mappings
     # i3wm
       # show status
-        bindsym $mod+F5                               exec ~/.config/i3/showstatus.sh
+        bindsym $mod+F5                               exec --no-startup-id ~/.config/i3/showstatus.sh
       # restart i3
         bindsym $mod+Shift+r                          restart
       # reload the configuration file
@@ -128,20 +128,20 @@
         
     # Applications
       # start a terminal
-        bindsym $mod+Return                           exec i3-sensible-terminal
-        #bindsym $mod+Return                           exec kitty
-        #bindsym $mod+Return                           exec alacritty
-        #bindsym $mod+Return                           exec st
+        bindsym $mod+Return                           exec --no-startup-id i3-sensible-terminal
+        #bindsym $mod+Return                           exec --no-startup-id kitty
+        #bindsym $mod+Return                           exec --no-startup-id alacritty
+        #bindsym $mod+Return                           exec --no-startup-id st
 
       # start dmenu
-        bindsym $mod1+f                               exec dmenu_run
+        bindsym $mod1+f                               exec --no-startup-id dmenu_run
 
       # open chromium
         bindsym $mod+shift+Return                     exec chromium
 
       # dunst
-        bindsym $mod+F7                               exec dunstctl close-all
-        bindsym $mod+F8                               exec dunstctl history-pop
+        bindsym $mod+F7                               exec --no-startup-id dunstctl close-all
+        bindsym $mod+F8                               exec --no-startup-id dunstctl history-pop
 
       # screenshot by ffmpeg
         bindsym Print                                 exec ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -i $DISPLAY -vframes 1 \

@@ -9,12 +9,7 @@ wifi() {
 }
 
 update() {
-    check="$(checkupdates)"
-    if [[ "$?" = "1" ]]; then
-        update="Can't check updates"
-    else
-        update="$(printf "$check" | wc -l)"
-    fi
+    update="$(checkupdates | wc -l)"
     echo "$update packages"
 }
 

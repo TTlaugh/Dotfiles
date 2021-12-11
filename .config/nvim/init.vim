@@ -5,7 +5,7 @@
 "  (         |  |     | |     | |     | |     |
 " /-OO----OO-'==`-o-o-'-`-o-o-'-`-o-o-'-`-o-o-'
 "###############################################
-" https://github.com/NguyenLeTienTrien
+" https://github.com/nguyenletientrien
 
 "--------Delete all quotation mark below---------
 source $HOME/.config/nvim/plugins/plugins.vim

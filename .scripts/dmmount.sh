@@ -11,7 +11,7 @@ set -euo pipefail
 pgrep -x dmenu && exit
 
 check_drive() {
-    if [[ "$mountablename" = "" ]] || [[ "$mountablenumber" = "1" ]]; then
+    if [[ "$mountable" = "" ]]; then
         echo "Cancel" | dmenu -p "WARNING: No drive availabe!"
         exit 1
     fi
@@ -43,12 +43,13 @@ mount() {
 }
 
 main() {
-    mountablename="$(lsblk -lp | grep "part $\|disk $" | awk '{print $1, "(" $4 ")"}')"
-    mountablenumber="$(echo "$mountablename" | wc -l)"
+    rootpart=$(lsblk -lp | grep -w "/" | awk '{print $1}' | tr -d 0-9)
+    mountable=$(lsblk -lp | grep "part $\|disk $" | grep -v "$rootpart" | awk '{print $1, "(" $4 ")"}' || printf "")
+    # TODO: Add `printf ""` because the grep command returns error if nothing is found.
     
     check_drive
     
-    chosen="$(echo "$mountablename" | dmenu -i -p "Mount which drive?" | awk '{print $1}')"
+    chosen="$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')"
     [[ "$chosen" = "" ]] && exit 1
     
     mount

@@ -131,7 +131,7 @@ option_3() {
         if [[ "$chosen3" = "1" ]]; then
             print_banner
             printf "${BOLD}${RED}Finding ......${RESET}\n"
-            cache30="$(find ~/.cache/* -type f -atime +30)"
+            cache30="$(find ~/.cache/* -maxdepth 1 -type f -atime +30)"
             if [[ "$cache30" = "" ]]; then
                 echo "No old caches found."
             else
@@ -143,7 +143,7 @@ option_3() {
             read upacname
             print_banner
             printf "${BOLD}${RED}Finding ......${RESET}\n"
-            upacfind="$(find $HOME/.cache/* | grep -w "$upacname" || printf "")"
+            upacfind="$(find $HOME/.cache/* -maxdepth 1 | grep -w "$upacname" || printf "")"
             if [[ "$upacfind" = "" ]]; then
                 printf "%s0 matches found.%s\n" ${GREEN} ${RESET}
             else
@@ -174,7 +174,7 @@ option_4() {
         read upacnamecfg
         print_banner
         printf "${BOLD}${RED}Finding ......${RESET}\n"
-        upacnamecfg="$(find $HOME/.config/* $HOME/.local/share/* | grep -w "$upacnamecfg" || printf "")"
+        upacnamecfg="$(find $HOME/.config/* $HOME/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg" || printf "")"
         if [[ "$upacnamecfg" = "" ]]; then
             printf "%s0 matches found.%s\n" ${GREEN} ${RESET}
         else

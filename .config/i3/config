@@ -59,12 +59,13 @@
 
 # Mappings
     # i3wm
+      # show status
+        bindsym $mod+F5                               exec ~/.config/i3/showstatus.sh
       # restart i3
         bindsym $mod+Shift+r                          restart
       # reload the configuration file
         bindsym $mod+Shift+c                          reload
-      # exit i3
-        # bindsym $mod+Shift+e                         exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+      # system
         bindsym $mod1+Shift+F1                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to exit i3?") = "Yes" ] && i3-msg exit
         bindsym $mod1+Shift+F2                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to suspend?") = "Yes" ] && systemctl suspend
         bindsym $mod1+Shift+F3                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to reboot?") = "Yes" ] && reboot

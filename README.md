@@ -84,9 +84,10 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulsea
 - OBS
 - VirtualBox
 - LibreOffice (jre-openjdk package is needed for LibreOffice Database)
+- rsync
+- acpi
 - pandoc
 - texlive-most
-- rsync
 - lolcat
 - speedtest-cli
 - volumeicon

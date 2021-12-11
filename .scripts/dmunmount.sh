@@ -32,7 +32,9 @@ main() {
 # This can be change by modifying $exclusionregex
     exclusionregex="\(/boot/efi\|/home\|/\)$"
 
-    drives="$(lsblk -lp | grep "t /\|k /" | grep -v "$exclusionregex" | awk '{print $1, "(" $4 ")", "on", $7}' || echo "")"
+    drives="$(lsblk -lp | grep "t /\|k /" | grep -v "$exclusionregex" | awk '{print $1, "(" $4 ")", "on", $7}' || printf "")"
+    # TODO: Add `printf ""` because the grep command returns error if nothing is found.
+
     if [[ "$drives" = "" ]]; then
         echo "Cancel" | dmenu -p "WARNING: No drive mounted!"
         exit 1

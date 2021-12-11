@@ -11,14 +11,14 @@ create_folder() {
     read -p "Create '"$project"' folder? [Y/n] " yn
     if [[ "$yn" = "y" ]] || [[ "$yn" = "Y" ]] || [[ "$yn" = "yes" ]] || [[ "$yn" = "Yes" ]] || [[ -z "$yn" ]]; then
         if [[ ! -d "$project" ]]; then
-            mkdir "$project" && cd "$project"
+            mkdir -p "$project" && cd "$project"
             [[ "$?" != "0" ]] && echo "Error: Incorrect directory!"
         else
             echo "$project folder existed."
             exit project
         fi
     fi
-    mkdir Debug bin src include lib
+    mkdir -p Debug bin src include lib
 }
 
 create_main() {

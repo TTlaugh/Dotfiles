@@ -10,7 +10,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# get error messages from journalctl
+# Verbose
+alias mkdir='mkdir -v'
+alias rmdir='rmdir -v'
+
+# Get error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
 # Colorize grep output (good for log files)

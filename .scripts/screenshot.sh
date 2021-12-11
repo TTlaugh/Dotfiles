@@ -19,20 +19,21 @@ screenshot_selected() {
     Y=$(echo "$selected" | awk '{print $2}')
     W=$(echo "$selected" | awk '{print $3}')
     H=$(echo "$selected" | awk '{print $4}')
-
     ffmpeg -f x11grab -video_size "$W"x"$H" -i :0.0+"$X,$Y" -vframes 1 "$locate"
 }
 
 main() {
+    [[ ! -d "${HOME}/Pictures" ]] && mkdir -p ${HOME}/Pictures
     locate="${HOME}/Pictures/screenshot--$(date +'%Y-%m-%d--%H-%M-%S').png"
-
     case "$@" in
         selected) screenshot_selected;;
         "") screenshot_full;;
         *) exit 1;;
     esac
+    # Copy image to clipboard
+    xclip -sel clipboard -t image/png -i $locate
 
-    notify-send "Screenshot" "Saved to $locate"
+    notify-send "Screenshot" "Copied to clipboard!\nSaved to:\n$locate"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

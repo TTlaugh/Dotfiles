@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Description: Take screenshot with ffmpeg.
-# Dependencies: ffmpeg, slop, dunst
+# Dependencies: ffmpeg, slop, xclip, dunst
 
 # Usage:
 # `$0`: full screen capture

@@ -136,7 +136,13 @@
       # start dmenu
         bindsym $mod1+f                               exec dmenu_run
 
+      # open chromium
         bindsym $mod+shift+Return                     exec chromium
+
+      # dunst
+        bindsym $mod+F7                               exec dunstctl close-all
+        bindsym $mod+F8                               exec dunstctl history-pop
+
       # screenshot by ffmpeg
         bindsym Print                                 exec ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -i $DISPLAY -vframes 1 \
                                                       ${HOME}/Pictures/screenshot--$(date +'%Y-%m-%d--%H-%M-%S').png

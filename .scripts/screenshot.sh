@@ -4,8 +4,8 @@
 # Dependencies: ffmpeg, slop, dunst
 
 # Usage:
-# `$0`: screenshot full screen
-# `$0 selected`: screenshot selected region
+# `$0`: full screen capture
+# `$0 selected`: capture selected area
 
 set -euo pipefail
 

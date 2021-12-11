@@ -68,15 +68,15 @@ option_0() {
     print_banner
     printf "${RED}Checking ...... ${RESET}\n"
     paccachesize="$(du -sh /var/cache/pacman/pkg/ | awk '{print $1}')"
-    homecachesize="$(du -sh $HOME/.cache/ | awk '{print $1}')"
-    homecachenum="$(find $HOME/.cache/* -type f | wc -l)"
+    homecachesize="$(du -sh ${HOME}/.cache/ | awk '{print $1}')"
+    homecachenum="$(find ${HOME}/.cache/* -type f | wc -l)"
     journalsize1="$(du -sh /var/log/journal/ | awk '{print $1}')"
     journalsize2="$(du -sh /run/log/journal/ | awk '{print $1}')"
-    configfiles="$(ls -l $HOME/.config/ | grep -v "total" | wc -l) items"
+    configfiles="$(ls -l ${HOME}/.config/ | grep -v "total" | wc -l) items"
     unpackage="$(pacman -Qtdq | wc -l || printf "") packages"
     printf "${GREEN}Done!${RESET}\n"
     printf "%s==> Package cache    :  %s/var/cache/pacman/pkg/   :%s%s$paccachesize\n%s"                    $BLUE $YELLOW $BOLD $GREEN $RESET
-    printf "%s==> Home cache       :  %s$HOME/.cache/       :%s%s$homecachesize ($homecachenum files)\n%s"  $BLUE $YELLOW $BOLD $GREEN $RESET
+    printf "%s==> Home cache       :  %s${HOME}/.cache/       :%s%s$homecachesize ($homecachenum files)\n%s"  $BLUE $YELLOW $BOLD $GREEN $RESET
     printf "%s==> Systemd journal  :  %s/var/log/journal/        :%s%s$journalsize1\n%s"                    $BLUE $YELLOW $BOLD $GREEN $RESET
     printf "                        %s/run/log/journal/        :%s%s$journalsize2\n%s"                      $YELLOW $BOLD $GREEN $RESET
     printf "%s==> All config files :  %s%s$configfiles\n%s"                                                 $BLUE $BOLD $GREEN $RESET
@@ -119,7 +119,7 @@ option_3() {
         print_banner
         printf "     ${BOLD}${RED}!!! So dangerous to remove cache file!!!${RESET} \n"
         echo " ==> You should find manually and only delete files that are really not needed! "
-        echo " ==> You can manual delete cache files of uninstalled app in $HOME/.cache/*     "
+        echo " ==> You can manual delete cache files of uninstalled app in ${HOME}/.cache/*     "
         echo
         printf "%sThere are some things you can do:%s\n"                         $YELLOW $RESET
         printf "%s  [0] Go back <--%s\n"                                         $BLUE $RESET
@@ -143,7 +143,7 @@ option_3() {
             read upacname
             print_banner
             printf "${BOLD}${RED}Finding ......${RESET}\n"
-            upacfind="$(find $HOME/.cache/* -maxdepth 1 | grep -w "$upacname" || printf "")"
+            upacfind="$(find ${HOME}/.cache/* -maxdepth 1 | grep -w "$upacname" || printf "")"
             if [[ "$upacfind" = "" ]]; then
                 printf "%s0 matches found.%s\n" ${GREEN} ${RESET}
             else
@@ -174,7 +174,7 @@ option_4() {
         read upacnamecfg
         print_banner
         printf "${BOLD}${RED}Finding ......${RESET}\n"
-        upacnamecfg="$(find $HOME/.config/* $HOME/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg" || printf "")"
+        upacnamecfg="$(find ${HOME}/.config/* ${HOME}/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg" || printf "")"
         if [[ "$upacnamecfg" = "" ]]; then
             printf "%s0 matches found.%s\n" ${GREEN} ${RESET}
         else

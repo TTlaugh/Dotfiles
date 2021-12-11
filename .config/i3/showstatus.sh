@@ -50,7 +50,7 @@ main() {
     
     notify-send "Status" "$time\n$date\n$wifi\n\n$icon1$update\n\n$icon2$cpu\n$icon3$mem\n$icon4$disk\n$volume"
 
-    if [[ -f "$HOME/note" ]]; then
+    if [[ -f "${HOME}/note" ]]; then
         note="$(note)"
         notify-send "NOTE" "$note"
     else

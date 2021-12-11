@@ -93,70 +93,81 @@ option_1() {
     printf "%s  [2] Remove ALL files from cache%s\n"                 $BLUE $RESET
     printf "%s%sEnter your option (Default 1):%s " $BOLD $GREEN $RESET
     read chosen1
-    if [[ "$chosen1" = "1" ]] || [[ -z "$chosen1" ]]; then
-        sudo pacman -Sc
-    elif [[ "$chosen1" = "2" ]]; then
-        sudo pacman -Scc
-    elif [[ "$chosen1" = "0" ]]; then
-        return
-    else
-        return
-    fi
-    printf "%sDone! Enter to go back.%s" $BOLD $RESET
+    case $chosen1 in
+        "") sudo pacman -Sc;;
+        1)  sudo pacman -Sc;;
+        2)  sudo pacman -Scc;;
+        0)  return;;
+        *)  return;;
+    esac
+    printf "\n%sDone! Enter to go back.%s" $BOLD $RESET
     read
 }
 
 option_2() {
     print_banner
     unusedpackages="$(sudo pacman -Qtdq || printf "")"
-    [[ "$unusedpackages" = "" ]] && printf "${BOLD}No unused packages to remove. Enter to continue.${RESET}" && read && return
-    sudo pacman -Rns $unusedpackages
-    printf "%sDone! Enter to go back.%s" $BOLD $RESET
+    if [[ -z "$unusedpackages" ]]; then
+        printf "${BOLD}No unused packages to remove. Enter to continue.${RESET}"
+    else
+        sudo pacman -Rns $unusedpackages && printf "\n${BOLD}Done! Enter to go back.${RESET}"
+    fi
     read
 }
 
+findcache30() {
+    clear
+    printf "${BOLD}${RED}Finding ......${RESET}\n"
+    cache30="$(find ~/.cache/* -maxdepth 1 -type f -atime +30)"
+    case $cache30 in
+        "") echo "No old caches found.";;
+        *)  echo "$cache30";;
+    esac
+}
+findcache() {
+    printf "${YELLOW}Enter the uninstalled package name:${RESET} "
+    read upacname
+    clear
+    printf "${BOLD}${RED}Finding ......${RESET}\n"
+    upacfind="$(find ${HOME}/.cache/* -maxdepth 1 | grep -w "$upacname" || printf "")"
+    case $upacfind in
+        "") printf "%s0 matches found.%s\n" ${GREEN} ${RESET};;
+        *)  echo -e "$upacfind\n${GREEN}$(echo "$upacfind" | wc -l) matches found.${RESET}";;
+    esac
+}
 option_3() {
-        print_banner
-        printf "     ${BOLD}${RED}!!! So dangerous to remove cache file!!!${RESET} \n"
-        echo " ==> You should find manually and only delete files that are really not needed! "
-        echo " ==> You can manual delete cache files of uninstalled app in ${HOME}/.cache/*     "
-        echo
-        printf "%sThere are some things you can do:%s\n"                         $YELLOW $RESET
-        printf "%s  [0] Go back <--%s\n"                                         $BLUE $RESET
-        printf "%s  [1] Find old cache files in ~/.cache/ (after 30 days)%s\n"   $BLUE $RESET
-        printf "%s  [2] Find uninstalled app caches.%s\n"                        $BLUE $RESET
-        echo
-        printf "%s%sEnter your option (Default 0):%s "                           $BOLD $GREEN $RESET
-        read chosen3
-        if [[ "$chosen3" = "1" ]]; then
-            print_banner
-            printf "${BOLD}${RED}Finding ......${RESET}\n"
-            cache30="$(find ~/.cache/* -maxdepth 1 -type f -atime +30)"
-            if [[ "$cache30" = "" ]]; then
-                echo "No old caches found."
-            else
-                echo "$cache30"
-            fi
-            printf "\n${BOLD}Enter to continue.${RESET}" && read && return
-        elif [[ "$chosen3" = "2" ]]; then
-            printf "${YELLOW}Enter the uninstalled package name:${RESET} "
-            read upacname
-            print_banner
-            printf "${BOLD}${RED}Finding ......${RESET}\n"
-            upacfind="$(find ${HOME}/.cache/* -maxdepth 1 | grep -w "$upacname" || printf "")"
-            if [[ "$upacfind" = "" ]]; then
-                printf "%s0 matches found.%s\n" ${GREEN} ${RESET}
-            else
-                echo "$upacfind"
-                upacfindn="$(echo "$upacfind" | wc -l)"
-                printf "%s$upacfindn matches found.%s\n" ${GREEN} ${RESET}
-            fi
-            printf "\n${BOLD}Enter to continue.${RESET}" && read && return
-        else
-            return
-        fi
+    print_banner
+    printf "     ${BOLD}${RED}!!! So dangerous to remove cache file!!!${RESET} \n"
+    echo " ==> You should find manually and only delete files that are really not needed! "
+    echo " ==> You can manual delete cache files of uninstalled app in ${HOME}/.cache/*     "
+    echo
+    printf "%sThere are some things you can do:%s\n"                         $YELLOW $RESET
+    printf "%s  [0] Go back <--%s\n"                                         $BLUE $RESET
+    printf "%s  [1] Find old cache files in ~/.cache/ (after 30 days)%s\n"   $BLUE $RESET
+    printf "%s  [2] Find uninstalled app caches.%s\n"                        $BLUE $RESET
+    echo
+    printf "%s%sEnter your option (Default 0):%s "                           $BOLD $GREEN $RESET
+    read chosen3
+    case $chosen3 in
+        1) findcache30;;
+        2) findcache;;
+        *) return;;
+    esac
+    printf "\n${BOLD}Enter to continue.${RESET}"
+    read
 }
 
+findconfig() {
+    printf "${YELLOW}Enter the uninstalled package name:${RESET} "
+    read upacnamecfg
+    clear
+    printf "${BOLD}${RED}Finding ......${RESET}\n"
+    upacnamecfg="$(find ${HOME}/.config/* ${HOME}/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg" || printf "")"
+    case $upacnamecfg in
+        "") printf "%s0 matches found.%s\n" ${GREEN} ${RESET};;
+        *)  echo -e "$upacnamecfg\n${GREEN}$(echo "$upacnamecfg" | wc -l) matches found.${RESET}";;
+    esac
+}
 option_4() {
     print_banner
     echo "**********************************************************************************************"
@@ -170,21 +181,10 @@ option_4() {
     echo
     read -p "Do you want to find old config files? [Y/n] " oldcfg
     if [[ "$oldcfg" = "y" ]] || [[ "$oldcfg" = "Y" ]] || [[ "$oldcfg" = "yes" ]] || [[ "$oldcfg" = "Yes" ]] || [[ -z "$oldcfg" ]]; then
-        printf "${YELLOW}Enter the uninstalled package name:${RESET} "
-        read upacnamecfg
-        print_banner
-        printf "${BOLD}${RED}Finding ......${RESET}\n"
-        upacnamecfg="$(find ${HOME}/.config/* ${HOME}/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg" || printf "")"
-        if [[ "$upacnamecfg" = "" ]]; then
-            printf "%s0 matches found.%s\n" ${GREEN} ${RESET}
-        else
-            echo "$upacnamecfg"
-            upacfindcfgn="$(echo "$upacnamecfg" | wc -l)"
-            printf "%s$upacfindcfgn matches found.%s\n" ${GREEN} ${RESET}
-        fi
-        printf "\n%sDone! Enter to go back.%s" $BOLD $RESET
-        read
+        findconfig
     fi
+    printf "\n%sDone! Enter to go back.%s" $BOLD $RESET
+    read
 }
 
 option_5() {
@@ -195,7 +195,7 @@ option_5() {
     if [[ "$djournal" = "y" ]] || [[ "$djournal" = "Y" ]] || [[ "$djournal" = "yes" ]] || [[ "$djournal" = "Yes" ]] || [[ -z "$djournal" ]]; then
         sudo journalctl --vacuum-size=50M
     fi
-    printf "%sDone! Enter to go back.%s" $BOLD $RESET
+    printf "\n%sDone! Enter to go back.%s" $BOLD $RESET
     read
 }
 
@@ -209,13 +209,12 @@ option_6() {
     unusedpackages="$(sudo pacman -Qtdq || printf "")"
     if [[ "$unusedpackages" = "" ]]; then
         printf "\n${BOLD}${RED}!!! No unused packages to remove.\n${GREEN}Enter to continue.${RESET}"
-        read
     else
         printf "\n${BOLD}${RED}Removing unused packages ......${RESET}\n"
         sudo pacman -Rns $unusedpackages
         printf "${BOLD}${GREEN}Done! Enter to continue.${RESET}"
-        read
     fi
+    read
 
     printf "\n${BOLD}${RED}Check Systemd journal ......${RESET}\n"
     journalctl -p 3 -b
@@ -225,7 +224,7 @@ option_6() {
         sudo journalctl --vacuum-size=50M
     fi
 
-    printf "%sDone! Enter to go back.%s" $BOLD $RESET
+    printf "\n%sDone! Enter to go back.%s" $BOLD $RESET
     read
 }
 

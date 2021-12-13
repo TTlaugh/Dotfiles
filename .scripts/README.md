@@ -55,14 +55,14 @@ exec --no-startup-id ~/.scripts/dmpacupdate.sh "alacritty -e"
 ```
 ```
 # dmpower.sh
-bindsym $mod1+Shift+F1 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to exit i3?"   "i3-msg exit"
-bindsym $mod1+Shift+F2 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to suspend?"   "systemctl suspend"
-bindsym $mod1+Shift+F3 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to reboot?"    "reboot"
-bindsym $mod1+Shift+F4 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to shutdown?"  "shutdown now"
+bindsym $mod+F1 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to exit i3?"   "i3-msg exit"
+bindsym $mod+F2 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to suspend?"   "systemctl suspend"
+bindsym $mod+F3 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to reboot?"    "reboot"
+bindsym $mod+F4 exec --no-startup-id ~/.scripts/dmpower.sh "Are you sure you want to shutdown?"  "shutdown now"
 ```
 ```
 # dmsetbg.sh
-bindsym $mod+mod1+b exec --no-startup-id ~/.scripts/dmsetbg.sh ~/Wallpapers
+bindsym $mod+b exec --no-startup-id ~/.scripts/dmsetbg.sh ~/Wallpapers
 
 # dmwifi.sh
 bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/dmwifi.sh
@@ -71,9 +71,9 @@ bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/dmwifi.sh
 bindsym $mod+Escape exec --no-startup-id ~/.scripts/dmkill.sh
 
 # dmmount.sh
-bindsym $mod+$mod1+m exec --no-startup-id ~/.scripts/dmmount.sh
+bindsym $mod+F7 exec --no-startup-id ~/.scripts/dmmount.sh
 # dmunmount.sh
-bindsym $mod+$mod1+u exec --no-startup-id ~/.scripts/dmunmount.sh
+bindsym $mod+F8 exec --no-startup-id ~/.scripts/dmunmount.sh
 
 # dmvifm.sh
 bindsym $mod1+Shift+Return exec --no-startup-id ~/.scripts/dmvifm.sh "alacritty -e"

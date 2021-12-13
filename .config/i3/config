@@ -59,17 +59,15 @@
 
 # Mappings
     # i3wm
-      # show status
-        bindsym $mod+F5                               exec --no-startup-id ~/.config/i3/showstatus.sh
       # restart i3
         bindsym $mod+Shift+r                          restart
       # reload the configuration file
         bindsym $mod+Shift+c                          reload
       # system
-        bindsym $mod1+Shift+F1                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to exit i3?") = "Yes" ] && i3-msg exit
-        bindsym $mod1+Shift+F2                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to suspend?") = "Yes" ] && systemctl suspend
-        bindsym $mod1+Shift+F3                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to reboot?") = "Yes" ] && reboot
-        bindsym $mod1+Shift+F4                        exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to shutdown?") = "Yes" ] && shutdown now
+        bindsym $mod+F1                               exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to exit i3?") = "Yes" ] && i3-msg exit
+        bindsym $mod+F2                               exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to suspend?") = "Yes" ] && systemctl suspend
+        bindsym $mod+F3                               exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to reboot?") = "Yes" ] && reboot
+        bindsym $mod+F4                               exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to shutdown?") = "Yes" ] && shutdown now
       # kill focused window
         bindsym $mod+q                                kill
       # change focus
@@ -93,9 +91,9 @@
         bindsym $mod+Shift+Up                         move up
         bindsym $mod+Shift+Right                      move right
       # split in horizontal orientation
-        bindsym $mod1+h                               split h
+        bindsym $mod+bracketright                     split h
       # split in vertical orientation
-        bindsym $mod1+v                               split v
+        bindsym $mod+bracketleft                      split v
       # enter fullscreen
         bindsym $mod+f                                fullscreen toggle
       # change container layout
@@ -140,8 +138,8 @@
         bindsym $mod+shift+Return                     exec chromium
 
       # dunst
-        bindsym $mod+F7                               exec --no-startup-id dunstctl close-all
-        bindsym $mod+F8                               exec --no-startup-id dunstctl history-pop
+        bindsym $mod+F5                               exec --no-startup-id dunstctl close-all
+        bindsym $mod+F6                               exec --no-startup-id dunstctl history-pop
 
       # screenshot by ffmpeg
         bindsym Print                                 exec ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -i $DISPLAY -vframes 1 \

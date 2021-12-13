@@ -138,8 +138,9 @@
         bindsym $mod+shift+Return                     exec chromium
 
       # dunst
-        bindsym $mod+F5                               exec --no-startup-id dunstctl close-all
-        bindsym $mod+F6                               exec --no-startup-id dunstctl history-pop
+        bindsym $mod+BackSpace                        exec --no-startup-id dunstctl close
+        bindsym $mod+Shift+BackSpace                  exec --no-startup-id dunstctl close-all
+        bindsym $mod+backslash                        exec --no-startup-id dunstctl history-pop
 
       # screenshot by ffmpeg
         bindsym Print                                 exec ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -i $DISPLAY -vframes 1 \

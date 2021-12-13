@@ -71,12 +71,12 @@ bindsym $mod+mod1+w exec --no-startup-id ~/.scripts/dmwifi.sh
 bindsym $mod+Escape exec --no-startup-id ~/.scripts/dmkill.sh
 
 # dmmount.sh
-bindsym $mod+F7 exec --no-startup-id ~/.scripts/dmmount.sh
+bindsym $mod+F5 exec --no-startup-id ~/.scripts/dmmount.sh
 # dmunmount.sh
-bindsym $mod+F8 exec --no-startup-id ~/.scripts/dmunmount.sh
+bindsym $mod+Shift+F5 exec --no-startup-id ~/.scripts/dmunmount.sh
 
 # dmvifm.sh
-bindsym $mod1+Shift+Return exec --no-startup-id ~/.scripts/dmvifm.sh "alacritty -e"
+bindsym $mod+slash exec --no-startup-id ~/.scripts/dmvifm.sh "alacritty -e"
 
 # screenshot.sh
 ### Full screen

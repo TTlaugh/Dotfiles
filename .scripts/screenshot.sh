@@ -24,7 +24,7 @@ screenshot_selected() {
 
 main() {
     [[ ! -d "${HOME}/Pictures" ]] && mkdir -p ${HOME}/Pictures
-    locate="${HOME}/Pictures/screenshot--$(date +'%Y-%m-%d--%H-%M-%S').png"
+    locate="${HOME}/Pictures/screenshot-$(date +'%y%m%d-%H%M-%S').png"
     case "$@" in
         selected) screenshot_selected;;
         "") screenshot_full;;

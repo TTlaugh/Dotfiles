@@ -84,6 +84,9 @@ bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh
 ### Selected region
 bindsym Shift+Print exec --no-startup-id ~/.scripts/screenshot.sh selected
 
+# record
+bindsym $mod+Print exec --no-startup-id ~/.scripts/dmrecord.sh
+
 # cleaner.sh
 bindsym $mod+$mod1+c exec --no-startup-id alacritty -e ~/.scripts/cleaner.sh
 

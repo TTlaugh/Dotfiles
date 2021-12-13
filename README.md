@@ -49,7 +49,7 @@ ufw alsa-utils networkmanager mesa lib32-mesa vulkan-intel
 ### Window Manager
 - xorg:
 ```
-xorg xorg-drivers xorg-xinit libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
+xorg xorg-drivers xorg-xinit lxsession libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
 ```
 - i3:
 ```
@@ -83,6 +83,10 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulsea
 - Audacity
 - OBS
 - VirtualBox
+- Virt-Manager
+  - libvirt iptables-nft qemu virt-manager
+  > - `sudo systemctl start/enable libvirtd`
+  > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice (jre-openjdk package is needed for LibreOffice Database)
 - rsync
 - acpi

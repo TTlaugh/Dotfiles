@@ -23,7 +23,7 @@ killrecording() {
     exit
 }
 
-screencast() { \
+screencast() {
     ffmpeg -y \
     -f x11grab \
     -framerate 60 \
@@ -36,7 +36,8 @@ screencast() { \
     echo $! > /tmp/recordingpid
 }
 
-video() { ffmpeg \
+video() {
+    ffmpeg \
     -f x11grab \
     -s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
     -i "$DISPLAY" \
@@ -45,7 +46,9 @@ video() { ffmpeg \
     echo $! > /tmp/recordingpid
 }
 
-webcamhidef() { ffmpeg \
+webcamhidef() {
+    [[ ! $(ls /dev | grep "video0") ]] && notify-send "Record" "Webcam not found." && exit 1
+    ffmpeg \
     -f v4l2 \
     -i /dev/video0 \
     -video_size 1920x1080 \
@@ -53,7 +56,9 @@ webcamhidef() { ffmpeg \
     echo $! > /tmp/recordingpid
 }
 
-webcam() { ffmpeg \
+webcam() {
+    [[ ! $(ls /dev | grep "video0") ]] && notify-send "Record" "Webcam not found." && exit 1
+    ffmpeg \
     -f v4l2 \
     -i /dev/video0 \
     -video_size 640x480 \
@@ -62,7 +67,7 @@ webcam() { ffmpeg \
 }
 
 
-audio() { \
+audio() {
     ffmpeg \
     -f alsa -i default \
     -c:a flac \
@@ -70,7 +75,7 @@ audio() { \
     echo $! > /tmp/recordingpid
 }
 
-askrecording() { \
+askrecording() {
     choice=$(printf "screencast\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
     case "$choice" in
         screencast) screencast;;
@@ -82,13 +87,12 @@ askrecording() { \
     esac
 }
 
-asktoend() { \
+asktoend() {
     response=$(printf "No\\nYes" | dmenu -i -p "Recording still active. End recording?") &&
     [ "$response" = "Yes" ] &&  killrecording
 }
 
-videoselected()
-{
+videoselected() {
     slop -f "%x %y %w %h" > /tmp/slop
     read -r X Y W H < /tmp/slop
     rm /tmp/slop

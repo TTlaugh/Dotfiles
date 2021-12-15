@@ -17,6 +17,7 @@ killrecording() {
     # kill with SIGTERM, allowing finishing touches.
     kill -15 "$recpid"
     rm -f /tmp/recordingpid
+    notify-send "Record" "Record saved"
     # even after SIGTERM, ffmpeg may still run, so SIGKILL it.
     sleep 3
     kill -9 "$recpid"
@@ -92,6 +93,9 @@ videoselected()
     slop -f "%x %y %w %h" > /tmp/slop
     read -r X Y W H < /tmp/slop
     rm /tmp/slop
+    if [[ -z "$X" ]] || [[ -z "$Y" ]] || [[ -z "$W" ]] || [[ -z "$H" ]]; then
+        exit 1
+    fi
     
     ffmpeg \
     -f x11grab \

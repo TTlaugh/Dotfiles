@@ -37,10 +37,10 @@
             status_command i3status -c ~/.config/i3/i3status1.conf
             #status_command i3status -c ~/.config/i3/i3status2.conf
             colors {
-            background #1c1c1c
+            background #282a36
             #                  border             background         text
-            focused_workspace  #1c1c1c            #1c1c1c            #ffffff
-            inactive_workspace #1c1c1c            #1c1c1c            #676E7D
+            focused_workspace  #282a36            #282a36            #ffffff
+            inactive_workspace #282a36            #282a36            #676E7D
             urgent_workspace   #E53935            #E53935            #ffffff
             }
         }

@@ -8,6 +8,13 @@
 
 set -euo pipefail
 
+check_drive() {
+    if [[ "$drives" = "" ]]; then
+        notify-send "Warning!" "No drive mounted."
+        exit 1
+    fi
+}
+
 unmount() {
     sudo udisksctl unmount -b "$chosen"
 
@@ -35,10 +42,8 @@ main() {
     drives="$(lsblk -lp | grep "t /\|k /" | grep -v "$exclusionregex" | awk '{print $1, "(" $4 ")", "on", $7}' || printf "")"
     # TODO: Add `printf ""` because the grep command returns error if nothing is found.
 
-    if [[ "$drives" = "" ]]; then
-        echo "Cancel" | dmenu -p "WARNING: No drive mounted!"
-        exit 1
-    fi
+    check_drive
+
     chosen="$(echo "$drives" | dmenu -i -p "Unmount which drive?" | awk '{print $1}')"
     [[ "$chosen" = "" ]] && exit 1
     

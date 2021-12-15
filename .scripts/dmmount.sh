@@ -12,7 +12,7 @@ pgrep -x dmenu && exit
 
 check_drive() {
     if [[ "$mountable" = "" ]]; then
-        echo "Cancel" | dmenu -p "WARNING: No drive availabe!"
+        notify-send "Warning!" "No drive availabe."
         exit 1
     fi
 }

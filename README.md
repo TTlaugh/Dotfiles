@@ -310,7 +310,7 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 - Font size: `11`
 - Colors:
   ```
-  [SchemeNorm] = { "#bbbbbb", "#282A36" },
+  [SchemeNorm] = { "#bbbbbb", "#282a36" },
   [SchemeSel] = { "#000000", "#f59cff" },
   [SchemeOut] = { "#000000", "#00ffff" },
   ```

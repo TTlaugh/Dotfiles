@@ -40,16 +40,15 @@ noremap <C-right> <c-w>>
 nmap <leader>, :nohlsearch<CR>
 
 " Nerd Tree
-nmap <F3> :NERDTreeToggle<CR>
+nmap <F5> :NERDTreeToggle<CR>
 
 " fzf
-nmap <F4> :Files<CR>
-nmap <F5> :Buffers<CR>
-nmap <F6> :Rg<CR>
+nmap <F6> :Files<CR>
+nmap <F7> :Buffers<CR>
 
 " Open st terminal or alacritty terminal
-"nmap <F7> :!st -c vim-terminal &<CR>
-"nmap <F7> :!alacritty --class vim-terminal,vim-terminal &<CR>
+"nmap <F4> :!st -c vim-terminal &<CR>
+nmap <F4> :!alacritty --class vim-terminal,vim-terminal &<CR>
 
 " NerdCommenter
 vmap // <plug>NERDCommenterToggle

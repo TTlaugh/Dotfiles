@@ -48,7 +48,7 @@ nmap <F7> :Buffers<CR>
 
 " Open st terminal or alacritty terminal
 "nmap <F4> :!st -c vim-terminal &<CR>
-nmap <F4> :!alacritty --class vim-terminal,vim-terminal &<CR>
+"nmap <F4> :!alacritty --class vim-terminal,vim-terminal &<CR>
 
 " NerdCommenter
 vmap // <plug>NERDCommenterToggle

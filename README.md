@@ -58,7 +58,7 @@ i3-wm i3status i3lock
 
 ### Apps
 ```
-neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulseaudio pulseaudio-alsa pamixer pulsemixer pavucontrol vifm pcmanfm ueberzug atool feh eog ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools persepolis pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter simplescreenrecorder onboard fuse2 xclip
+neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulseaudio pulseaudio-alsa pamixer pulsemixer pavucontrol vifm pcmanfm ueberzug atool feh sxiv ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools persepolis pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter onboard fuse2 xclip
 ```
 > Enable lightdm: `systemctl enable lightdm`
 - If you want to use [screenshot.sh](https://github.com/nguyenletientrien/Dotfiles/blob/master/.scripts/screenshot.sh) script with *selected option*, install `slop` package.
@@ -82,6 +82,7 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulsea
 - GIMP
 - Audacity
 - OBS
+- Simplescreenrecorder 
 - VirtualBox
 - Virt-Manager (*libvirt iptables-nft qemu virt-manager*)
   > - `sudo systemctl start/enable libvirtd`
@@ -194,6 +195,10 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 command feho feh -d -g 800x600 --scale-down . &
 command fehl feh -t . &
 ```
+###### Create command for sxiv
+```
+command sxiv sxiv -ft .
+```
 ###### Use atool to extract
 ```
 command extract atool -x -e %f
@@ -213,7 +218,9 @@ map <space>ct :compressT<CR>
 ###### Images
 ```
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        "........(Some default apps here)
+        \ {View in sxiv}
+        \ sxiv %f &,
+        "...... Some default apps here.
         \ {View in feh}
         \ feh -d -g 800x600 --scale-down %c &,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>

@@ -220,7 +220,6 @@ map <space>ct :compressT<CR>
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
         \ {View in sxiv}
         \ sxiv %f &,
-        "...... Some default apps here.
         \ {View in feh}
         \ feh -d -g 800x600 --scale-down %c &,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
@@ -246,7 +245,6 @@ fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
          \ vifmimg videopreview %px %py %pw %ph %c
          \ %pc
          \ vifmimg clear
-         "\ ffprobe -pretty %c 2>&1
 ```
 ###### Audio
 > Use **mpv** as default.
@@ -288,7 +286,7 @@ set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.pp
 ```
 
 ## Picom
-- Copy ***picom.conf*** to ***~/.config/picom/***
+- Copy ***picom*** folder to ***~/.config/***
 
 ## Alacritty
 - Copy ***alacritty*** folder to ***~/.config/***
@@ -378,6 +376,10 @@ export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 ```
+
+## sxiv
+- Copy ***sxiv*** folder to ***~/.config/***
+- Copy **.Xresources** to your home directory and run `xrdb -load ~/.Xresources`
 
 ## Pacman
 - To use pacman with more colors, uncomment this line in ***/etc/pacman.conf***

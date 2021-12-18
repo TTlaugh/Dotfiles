@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+while read file
+do
+    case "$1" in
+        "r")
+            convert -rotate 90 "$file" "$file" ;;
+        "R")
+            convert -rotate -90 "$file" "$file" ;;
+        "f")
+            convert -flop "$file" "$file" ;;
+        "y")
+            echo -n "$file" | tr -d '\n' | xclip -selection clipboard &&
+            notify-send "$file copied to clipboard" & ;;
+        "Y")
+            readlink -f "$file" | tr -d '\n' | xclip -selection clipboard &&
+            notify-send "$(readlink -f "$file") copied to clipboard" & ;;
+    esac
+done

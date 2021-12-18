@@ -87,7 +87,8 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulsea
 - Virt-Manager (*libvirt iptables-nft qemu virt-manager*)
   > - `sudo systemctl start/enable libvirtd`
   > - `sudo usermod -G libvirt -a <username>`
-- LibreOffice (jre-openjdk package is needed for LibreOffice Database)
+- LibreOffice 
+  > *jre-openjdk* package is needed for LibreOffice Database.
 - rsync
 - acpi
 - pandoc

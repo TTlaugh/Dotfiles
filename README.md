@@ -96,6 +96,7 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulsea
 - lolcat
 - speedtest-cli
 - volumeicon
+- shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin/))
 - volnoti ([AUR](https://aur.archlinux.org/packages/volnoti/))
 - ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts/))
 - teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer/))

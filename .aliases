@@ -25,10 +25,6 @@ alias fgrep='fgrep --color=auto'
 # Create C/C++ project
 alias mkpr='~/.scripts/createproject.sh'
 
-# feh
-alias feho='feh -d --scale-down'
-alias fehl='feh -t'
-
 # nvim, nvim + fzf
 alias vi=nvim
 alias suvi=sudoedit

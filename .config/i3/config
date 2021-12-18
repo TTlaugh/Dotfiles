@@ -203,7 +203,6 @@
                 #bindsym XF86AudioMute               exec --no-startup-id amixer set Master toggle
 
 # Others
-        for_window [class="feh"] floating enable
         for_window [class="Sxiv"] floating enable
         for_window [class="mpv"] floating enable
         #for_window [class="vim-terminal"] floating enable, move [absolute] position center

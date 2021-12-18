@@ -191,11 +191,6 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - `nmap <C-x> :q<CR>` : same as vim's configuration.
 - `set number`
 - `set relativenumber`
-###### Create command for feh
-```
-command feho feh -d -g 800x600 --scale-down . &
-command fehl feh -t . &
-```
 ###### Create command for sxiv
 ```
 command sxiv sxiv -ft .
@@ -210,8 +205,7 @@ map <space>c  :compressZ<CR>
 map <space>ct :compressT<CR>
 ```
 > #### Now you can use:
-> - `:feho` to open image.
-> - `:fehl` to list all images in current directory.
+> - `:sxiv` to list all images in current directory.
 > - *space+e* to extract file.
 > - *space+c* to compress `.zip`.
 > - *space+c+t* to compress `.tar.xz`.

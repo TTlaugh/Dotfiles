@@ -8,7 +8,7 @@
 
 set -euo pipefail
 
-[ $(echo -e "No\nYes" | dmenu -i -p "$1") = "Yes" ] && $2
+[ "$(echo -e "No\nYes" | dmenu -i -p "$1")" = "Yes" ] && $2
 
 ############ Use commands below to mapping key if you don't want to use script file ###############
 #[ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to exit i3?") = "Yes" ] && i3-msg exit                      

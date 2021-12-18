@@ -15,7 +15,7 @@ check_drive() {
     fi
 }
 
-unmount() {
+umnt() {
     sudo udisksctl unmount -b "$chosen"
 
     # Success or failure message
@@ -52,7 +52,7 @@ main() {
     unmounted_col="<span foreground='#00b55b'>unmounted</span>."
     safelytoremove_col="<span foreground='#00b55b'>safely to remove!</span>"
 
-    unmount
+    umnt
     power_off
 }
 

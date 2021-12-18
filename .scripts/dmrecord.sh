@@ -47,7 +47,7 @@ video() {
 }
 
 webcamhidef() {
-    [[ ! $(ls /dev | grep "video0") ]] && notify-send "Record" "Webcam not found." && exit 1
+    [[ ! $(ls /dev/video0) ]] && notify-send "Record" "Webcam not found." && exit 1
     ffmpeg \
     -f v4l2 \
     -i /dev/video0 \
@@ -57,7 +57,7 @@ webcamhidef() {
 }
 
 webcam() {
-    [[ ! $(ls /dev | grep "video0") ]] && notify-send "Record" "Webcam not found." && exit 1
+    [[ ! $(ls /dev/video0) ]] && notify-send "Record" "Webcam not found." && exit 1
     ffmpeg \
     -f v4l2 \
     -i /dev/video0 \

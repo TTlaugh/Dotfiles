@@ -15,11 +15,11 @@ main() {
         notify-send "Set background" "Error:\nYou need specify locate of folder contain wallpapers!\nEx: <span foreground='#00b55b'>./dmsetbg.sh ~/Wallpapers</span>"
         exit 1
     fi
-    chosen="$(ls $1 | dmenu -l 20 -i -p "Choose wallpaper:")"
-    if [[ "$chosen" = "" ]] || [[ ! -f "$1/$chosen" ]]; then
+    chosen="$1/$(find ~/Wallpapers -type f -printf '%f\n' | sort | dmenu -l 20 -i -p "Choose wallpaper:")"
+    if [[ ! -f "$chosen" ]]; then
         exit 1
     else
-        feh --bg-scale "$1/$chosen"
+        feh --bg-scale "$chosen"
         notify-send "Set background" "Wallpaper change successfully!"
     fi
 }

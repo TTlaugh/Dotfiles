@@ -7,9 +7,6 @@
 
 set -euo pipefail
 
-# Check if dmenu is running, exit this bash script.
-pgrep -x dmenu && exit
-
 check_drive() {
     if [[ "$mountable" = "" ]]; then
         notify-send "Warning!" "No drive availabe."
@@ -17,7 +14,7 @@ check_drive() {
     fi
 }
 
-mount() {
+mnt() {
     # If they're in /etc/fstab, they'll be mounted automatically.
     sudo mount "$chosen" && exit 0
 
@@ -52,7 +49,7 @@ main() {
     chosen="$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')"
     [[ "$chosen" = "" ]] && exit 1
     
-    mount
+    mnt
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

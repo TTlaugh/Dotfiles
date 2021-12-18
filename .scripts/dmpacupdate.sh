@@ -4,10 +4,11 @@
 # Dependencies: dmenu, dunst, pacman-contrib, <terminal>
 # Use: Run this script on startup with specify terminal to check for update.
 
+set -euo pipefail
+
 check_net() {
 # Check internet
-    ping -c 1 archlinux.org >/dev/null
-    if [[ "$?" != "0" ]]; then
+    if ! ping -q -c 2 -W 2 archlinux.org >/dev/null; then
         echo "No internet to check for updates."
         notify-send "Check for updates script" "No internet to check for updates."
         exit 1
@@ -36,21 +37,22 @@ run() {
 # Run
     update="$(checkupdates | wc -l)"
     if [[ "$update" != "0" ]] && [[ "$(echo -e "Yes\nNo" | dmenu -i -p "$update packages can be updated! Do you want to update?")" = "Yes" ]]; then
-        $1 sh -c "sudo pacman -Syu && echo -e '\nSuccessfully!'; echo -e '\nPress ENTER to quit.' && read"
-        [[ "$?" != "0" ]] && notify-send "Check for updates script" "Command '$1' is not correct to run." && exit 1
+        if ! $1 sh -c "sudo pacman -Syu && echo -e '\nSuccessfully!'; echo -e '\nPress ENTER to quit.' && read"; then
+            notify-send "Check for updates script" "Command '$1' is not correct to run."
+            exit 1
+        fi
     else
         exit 0
     fi
 }
 
 main() {
-    check_net
-
-    if [[ "$1" = "" ]]; then
+    if [[ "$#" = "0" ]]; then
         no_term
     elif [[ "$1" = "-h" ]]; then
         help_h
-    elif hash $(echo "$1" | awk '{print $1}') 2>/dev/null; then
+    elif hash "$(echo "$1" | awk '{print $1}')" 2>/dev/null; then
+        check_net
         run "$1"
     else
         exit 1

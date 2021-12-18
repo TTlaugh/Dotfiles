@@ -10,7 +10,7 @@
 set -euo pipefail
 
 screenshot_full() {
-    ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -i $DISPLAY -vframes 1 "$locate"
+    ffmpeg -f x11grab -video_size "$(xdpyinfo | awk '/dimensions/{print $2}')" -i "$DISPLAY" -vframes 1 "$locate"
 }
 
 screenshot_selected() {
@@ -23,7 +23,7 @@ screenshot_selected() {
 }
 
 main() {
-    [[ ! -d "${HOME}/Pictures" ]] && mkdir -p ${HOME}/Pictures
+    [[ ! -d "${HOME}/Pictures" ]] && mkdir -p "${HOME}"/Pictures
     locate="${HOME}/Pictures/screenshot-$(date +'%y%m%d-%H%M-%S').png"
     case "$@" in
         selected) screenshot_selected;;
@@ -31,7 +31,7 @@ main() {
         *) exit 1;;
     esac
     # Copy image to clipboard
-    xclip -sel clipboard -t image/png -i $locate
+    xclip -sel clipboard -t image/png -i "$locate"
 
     notify-send "Screenshot" "Copied to clipboard!\nSaved to:\n$locate"
 }

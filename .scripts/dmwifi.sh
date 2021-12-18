@@ -12,6 +12,7 @@ main() {
     bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -i -l 20 -p "Select Wifi  :" | cut -d' ' -f1)
     pass=$(echo "" | dmenu -i -l 20 -p "Enter Password  :")
     
+    # shellcheck disable=SC2015
     [ -n "$pass" ] && nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
     sleep 10
     if ping -q -c 2 -W 2 archlinux.org >/dev/null; then

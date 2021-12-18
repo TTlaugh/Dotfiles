@@ -7,6 +7,8 @@
 #   ./dmvifm.sh "alacritty -e"
 #   ./dmvifm.sh "st"
 
+set -euo pipefail
+
 no_term(){
 # No specify terminal
     echo -e "ERROR: You need to specify terminal (with run command option) to run this script!\nExample:
@@ -32,17 +34,19 @@ run() {
     if [[ "$chosen" = "" ]] || [[ ! -d "$chosen" ]]; then
         exit 1
     else
-        $1 sh -c "vifm $chosen"
-        [[ "$?" != "0" ]] && notify-send "Vifm" "Command '$1' is not correct to run." && exit 1
+        if ! $1 sh -c "vifm $chosen"; then
+            notify-send "Vifm" "Command '$1' is not correct to run."
+            exit 1
+        fi
     fi
 }
 
 main() {
-    if [[ "$1" = "" ]]; then
+    if [[ "$#" = "0" ]]; then
         no_term
     elif [[ "$1" = "-h" ]]; then
         help_h
-    elif hash $(echo "$1" | awk '{print $1}') 2>/dev/null; then
+    elif hash "$(echo "$1" | awk '{print $1}')" 2>/dev/null; then
         run "$1"
     else
         exit 1

@@ -34,22 +34,40 @@
 # Installation
 
 ### Base Packages
+- Base:
 ```
 base base-devel linux linux-headers linux-firmware intel-ucode
 ```
+> Replace `intel-ucode` with `amd-ucode` if you have **AMD** cpu.
+- Grub:
 ```
 grub efibootmgr dosfstools os-prober mtools
 ```
+- Firewall, Network, Sound:
 ```
-ufw alsa-utils networkmanager mesa lib32-mesa vulkan-intel
+ufw networkmanager alsa-utils
 ```
 > - Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall)).
 > - Enable networkmanager: `systemctl enable NetworkManager`
+- Graphics driver (intel):
+```
+mesa lib32-mesa vulkan-intel
+```
+> If you use other graphics card, see Arch Wiki:
+  > - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics).
+  > - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU).
+  > - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA).
+  > - [Xorg](https://wiki.archlinux.org/title/Xorg).
 
 ### Window Manager
-- xorg:
+- X11:
 ```
-xorg xorg-drivers xorg-xinit lxsession libx11 libxinerama libxft webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
+xorg xorg-drivers xorg-xinit lxsession libx11 libxinerama libxft
+```
+> See also: [Xorg](https://wiki.archlinux.org/title/Xorg).
+- Some lib:
+```
+webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
 ```
 - i3:
 ```
@@ -384,6 +402,10 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 ```
 
 # Tips and Tricks
+
+#### Random color script for terminal
+Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
+Usage: add `colorscript random` to your **.zshrc** file.
 
 #### Use script or app as root without password
 Edit ***/etc/sudoers***

@@ -47,24 +47,24 @@ grub efibootmgr dosfstools os-prober mtools
 ```
 ufw networkmanager alsa-utils
 ```
-> - Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall)).
+> - Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall))
 > - Enable networkmanager: `systemctl enable NetworkManager`
 - Graphics driver (intel):
 ```
 mesa lib32-mesa vulkan-intel
 ```
 > If you use other graphics card, see Arch Wiki:
-  > - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics).
-  > - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU).
-  > - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA).
-  > - [Xorg](https://wiki.archlinux.org/title/Xorg).
+  > - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+  > - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
+  > - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+  > - [Xorg](https://wiki.archlinux.org/title/Xorg)
 
 ### Window Manager
 - X11:
 ```
 xorg xorg-drivers xorg-xinit lxsession libx11 libxinerama libxft
 ```
-> See also: [Xorg](https://wiki.archlinux.org/title/Xorg).
+> See also: [Xorg](https://wiki.archlinux.org/title/Xorg)
 - Some lib:
 ```
 webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good

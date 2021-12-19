@@ -407,21 +407,21 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 - Usage: add `colorscript random` to your **.zshrc** file.
 
 ### Use script or app as root without password
-Edit ***/etc/sudoers***
+> Edit ***/etc/sudoers***
 ```
 sudo nvim /etc/sudoers
 ```
-###### Method 1
-- Add this line:
-```
-<user name>  ALL=NOPASSWD: /path/to/<script1>, /path/to/<script2>
-```
-Example: `nltt  ALL=NOPASSWD: /usr/bin/udisksctl, /usr/bin/mount, /usr/bin/unmount`
-###### Method 2
-Uncomment this line (will allow all sudo command)
-```
-%wheel ALL=(ALL) NOPASSWD: ALL
-```
+- **Method 1**
+  Add this line:
+  ```
+  <user name>  ALL=NOPASSWD: /path/to/<script1>, /path/to/<script2>
+  ```
+  Example: `nltt  ALL=NOPASSWD: /usr/bin/udisksctl, /usr/bin/mount, /usr/bin/unmount`
+- **Method 2**
+  Uncomment this line (will allow all sudo command)
+  ```
+  %wheel ALL=(ALL) NOPASSWD: ALL
+  ```
 
 ### Useful command
 - `sudoedit`: to edit root file by editor with user config.

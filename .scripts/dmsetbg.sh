@@ -9,7 +9,7 @@
 set -euo pipefail
 
 main() {
-    if [[ "$1" = "" ]] || [[ ! -d "$1" ]]; then
+    if [[ "$#" = "0" ]] || [[ ! -d "$1" ]]; then
         echo -e "You need specify locate of folder contain wallpapers!
         Ex: ./dmsetbg.sh ~/Wallpapers"
         notify-send "Set background" "Error:\nYou need specify locate of folder contain wallpapers!\nEx: <span foreground='#00b55b'>./dmsetbg.sh ~/Wallpapers</span>"

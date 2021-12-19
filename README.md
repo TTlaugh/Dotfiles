@@ -262,7 +262,6 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
     ```
   - Audio
     > Use **mpv** as default.
-    - Example:
     ```
     filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
             \<audio/*>
@@ -273,15 +272,15 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
     ```
 - Optional:
   - Preview with syntax highlighting using bat
-  ```
-  fileviewer *[^/],.*[^/] bat --color=always %c -pp
-  ```
+    ```
+    fileviewer *[^/],.*[^/] bat --color=always %c -pp
+    ```
   - Preview directory using ls command
-  ```
-  fileviewer */,.*/ ls -1 --color=always %c
-  ```
+    ```
+    fileviewer */,.*/ ls -1 --color=always %c
+    ```
 - Icons:
-> To display icons, add this after line `" filetype * start, explorer`:
+To display icons, add this after line `" filetype * start, explorer`:
 ```
 " file types
 set classify=' :dir:/, :exe:, :reg:, :link:'
@@ -368,7 +367,7 @@ user-session=i3
 - Copy the picture you want to set background to ***/usr/share/backgrounds/***
 - Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
 ```
-[Greeter]                                                                                                          
+[Greeter]
 background=/usr/share/backgrounds/<picture>
 ```
 
@@ -404,8 +403,8 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 # Tips and Tricks
 
 ### Random color script for terminal
-Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
-Usage: add `colorscript random` to your **.zshrc** file.
+- Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
+- Usage: add `colorscript random` to your **.zshrc** file.
 
 ### Use script or app as root without password
 Edit ***/etc/sudoers***

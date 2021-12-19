@@ -412,12 +412,14 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 sudo nvim /etc/sudoers
 ```
 - **Method 1**
+
   Add this line:
   ```
   <user name>  ALL=NOPASSWD: /path/to/<script1>, /path/to/<script2>
   ```
   Example: `nltt  ALL=NOPASSWD: /usr/bin/udisksctl, /usr/bin/mount, /usr/bin/unmount`
 - **Method 2**
+
   Uncomment this line (will allow all sudo command)
   ```
   %wheel ALL=(ALL) NOPASSWD: ALL

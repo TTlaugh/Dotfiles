@@ -124,13 +124,13 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 tar pulseaudi
 # Configuration
 
 ## Unmute the sound card and disable auto mute on startup
-##### Unmute
+- Unmute:
 ```
 amixer sset Master unmute
 amixer sset Speaker unmute
 amixer sset Headphone unmute
 ```
-##### Disable auto mute
+- Disable auto mute:
 ```
 amixer -c 0 sset "Auto-Mute Mode" Disabled
 ```
@@ -199,88 +199,88 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 ##### General
 - Copy ***dracula.vifm*** to ***~/.vifm/colors/***
 - Copy ***vifmrun*** and ***vifmimg*** to ***~/.vifm/scripts/***
-- In **vifmrc**:
-  - Line 14: change "**vim**" to "**nvim**" (`set vicmd=nvim`).
-  - Line 62: change theme to "**dracula**" (`colorscheme dracula`).
-  - Line 132: change "**vim**" to "**nvim**" (`command! diff nvim -d %f %F`).
-  - Search for `gvim` and comment or delete these lines.
 > NOTE: you must execute **vifmrun** script to use vifm with ueberzug support.
-###### Mapping
-- `nmap af za` : use **af** instead of **za** to toggle show dot file/folder.
-- `nmap <C-x> :q<CR>` : same as vim's configuration.
-- `set number`
-- `set relativenumber`
-###### Create command for sxiv
-```
-command sxiv sxiv -ft .
-```
-###### Use atool to extract
-```
-command extract atool -x -e %f
-command compressZ atool -a -F .zip -e %f
-command compressT atool -a -F .tar.xz -e %f
-map <space>e  :extract<CR>
-map <space>c  :compressZ<CR>
-map <space>ct :compressT<CR>
-```
-> #### Now you can use:
-> - `:sxiv` to list all images in current directory.
-> - *space+e* to extract file.
-> - *space+c* to compress `.zip`.
-> - *space+c+t* to compress `.tar.xz`.
-##### Filextype and fileviewer config
-###### Images
-```
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ {View in sxiv}
-        \ sxiv %f &,
-        \ {View in feh}
-        \ feh -d -g 800x600 --scale-down %c &,
-fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-        \ vifmimg draw %px %py %pw %ph %c
-        \ %pc
-        \ vifmimg clear
-```
-###### Videos
-> Use **mpv** as default.
-```
-filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-          \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-          \*.as[fx]},
-         \<video/*>
-        \ {View using mpv}
-        \ mpv %f,
-        \ {View using ffplay}
-        \ ffplay -fs -autoexit %f,
-fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx]},
-          \<video/*>
-         \ vifmimg videopreview %px %py %pw %ph %c
-         \ %pc
-         \ vifmimg clear
-```
-###### Audio
-> Use **mpv** as default.
-- Example:
-```
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
-        \<audio/*>
-       \ {Play using mpv}
-       \ mpv %f,
-       \ {Play using ffplay}
-       \ ffplay -nodisp -autoexit %c,
-```
-##### Optional
-###### Preview with syntax highlighting using bat
-```
-fileviewer *[^/],.*[^/] bat --color=always %c -pp
-```
-###### Preview directory using ls command
-```
-fileviewer */,.*/ ls -1 --color=always %c
-```
-##### Icons
+##### Config in vifmrc
+- Line 14: change "**vim**" to "**nvim**" (`set vicmd=nvim`).
+- Line 62: change theme to "**dracula**" (`colorscheme dracula`).
+- Line 132: change "**vim**" to "**nvim**" (`command! diff nvim -d %f %F`).
+- Search for `gvim` and comment or delete these lines.
+- Mappings:
+  - `nmap af za` : use **af** instead of **za** to toggle show dot file/folder.
+  - `nmap <C-x> :q<CR>` : same as vim's configuration.
+  - `set number`
+  - `set relativenumber`
+- Sxiv:
+  ```
+  command sxiv sxiv -ft .
+  ```
+- Atool:
+  ```
+  command extract atool -x -e %f
+  command compressZ atool -a -F .zip -e %f
+  command compressT atool -a -F .tar.xz -e %f
+  map <space>e  :extract<CR>
+  map <space>c  :compressZ<CR>
+  map <space>ct :compressT<CR>
+  ```
+  > #### Now you can use:
+  > - `:sxiv` to list all images in current directory.
+  > - *space+e* to extract file.
+  > - *space+c* to compress `.zip`.
+  > - *space+c+t* to compress `.tar.xz`.
+- Filextype and fileviewer config:
+  - Images
+    ```
+    filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+            \ {View in sxiv}
+            \ sxiv %f &,
+            \ {View in feh}
+            \ feh -d -g 800x600 --scale-down %c &,
+    fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+            \ vifmimg draw %px %py %pw %ph %c
+            \ %pc
+            \ vifmimg clear
+    ```
+  - Videos
+    > Use **mpv** as default.
+    ```
+    filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+              \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+              \*.as[fx]},
+             \<video/*>
+            \ {View using mpv}
+            \ mpv %f,
+            \ {View using ffplay}
+            \ ffplay -fs -autoexit %f,
+    fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+               \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+               \*.as[fx]},
+              \<video/*>
+             \ vifmimg videopreview %px %py %pw %ph %c
+             \ %pc
+             \ vifmimg clear
+    ```
+  - Audio
+    > Use **mpv** as default.
+    - Example:
+    ```
+    filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus},
+            \<audio/*>
+           \ {Play using mpv}
+           \ mpv %f,
+           \ {Play using ffplay}
+           \ ffplay -nodisp -autoexit %c,
+    ```
+- Optional:
+  - Preview with syntax highlighting using bat
+  ```
+  fileviewer *[^/],.*[^/] bat --color=always %c -pp
+  ```
+  - Preview directory using ls command
+  ```
+  fileviewer */,.*/ ls -1 --color=always %c
+  ```
+- Icons:
 > To display icons, add this after line `" filetype * start, explorer`:
 ```
 " file types
@@ -306,11 +306,11 @@ set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.pp
 - Copy ***alacritty*** folder to ***~/.config/***
 
 ## Kitty
-##### Copy default config file to ~/.config/
+- Copy default config file to ***~/.config/***
 ```
 cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
 ```
-##### Configure
+- Configure
 ```
 line | config
 -----|---------------------------------------
@@ -320,22 +320,22 @@ line | config
   12 | bold_italic_font Fira Code Bold Italic
  762 | background_opacity 0.9
 ```
-##### Theme
+- Theme
 See [Dracula Theme](https://draculatheme.com/kitty)
 
 ## Dmenu
-##### Edit *config.def.h*
-- Font: `RobotoMono Nerd Font`
-- Font size: `11`
-- Colors:
-  ```
-  [SchemeNorm] = { "#bbbbbb", "#282a36" },
-  [SchemeSel] = { "#000000", "#f59cff" },
-  [SchemeOut] = { "#000000", "#00ffff" },
-  ```
-##### Edit *dmenu_run*
-- Add `-p "Run:"` after `dmenu "@"`
-- Example: `dmenu "$@" -p "Run:"`
+- Edit *config.def.h*:
+  - Font: `RobotoMono Nerd Font`
+  - Font size: `11`
+  - Colors:
+    ```
+    [SchemeNorm] = { "#bbbbbb", "#282a36" },
+    [SchemeSel] = { "#000000", "#f59cff" },
+    [SchemeOut] = { "#000000", "#00ffff" },
+    ```
+- Edit *dmenu_run*
+  - Add `-p "Run:"` after `dmenu "@"`
+  - Example: `dmenu "$@" -p "Run:"`
 
 ## St
 - Change font and font size.
@@ -367,10 +367,10 @@ user-session=i3
 ##### lightdm-slick-greeter
 - Copy the picture you want to set background to ***/usr/share/backgrounds/***
 - Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
-  ```
-  [Greeter]                                                                                                          
-  background=/usr/share/backgrounds/<picture>
-  ```
+```
+[Greeter]                                                                                                          
+background=/usr/share/backgrounds/<picture>
+```
 
 ## FZF
 - Add to `.zshrc`:

@@ -76,7 +76,7 @@ i3-wm i3status i3lock
 
 ### Apps
 ```
-neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 xz tar pulseaudio pulseaudio-alsa pamixer pulsemixer pavucontrol vifm pcmanfm ueberzug atool feh sxiv ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools persepolis pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter onboard fuse2 xclip
+neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 tar pulseaudio pulseaudio-alsa pamixer pulsemixer pavucontrol vifm pcmanfm ueberzug atool feh sxiv ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools persepolis pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter onboard fuse2 xclip
 ```
 > Enable lightdm: `systemctl enable lightdm`
 - If you want to use [screenshot.sh](https://github.com/nguyenletientrien/Dotfiles/blob/master/.scripts/screenshot.sh) script with *selected option*, install `slop` package.
@@ -403,11 +403,11 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 
 # Tips and Tricks
 
-#### Random color script for terminal
+### Random color script for terminal
 Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
 Usage: add `colorscript random` to your **.zshrc** file.
 
-#### Use script or app as root without password
+### Use script or app as root without password
 Edit ***/etc/sudoers***
 ```
 sudo nvim /etc/sudoers
@@ -424,13 +424,13 @@ Uncomment this line (will allow all sudo command)
 %wheel ALL=(ALL) NOPASSWD: ALL
 ```
 
-#### Useful command
+### Useful command
 - `sudoedit`: to edit root file by editor with user config.
 - `sudo !!`
 - `popd`
 - `xev`: print out the user's keyboard input.
 
-#### Udisksctl:
+### Udisksctl:
 - `udisksctl power-off -b /dev/<drive>` (to power off drive or safely to remove drive)
 - `udisksctl mount -b /dev/<drive>`     (to mount drive)
 - `udisksctl unmount -b /dev/<drive>`   (to unmount drive)

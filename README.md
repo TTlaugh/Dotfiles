@@ -1,7 +1,6 @@
 # Set up Arch Linux
 
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/MyArch1.png)
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/MyArch2.png)
+![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/MyArch.png)
 
 # Table of contents
 

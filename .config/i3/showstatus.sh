@@ -8,11 +8,6 @@ wifi() {
     echo "$wifi"
 }
 
-update() {
-    update="$(checkupdates | wc -l)"
-    echo "$update packages"
-}
-
 cpu() {
     read -r cpu a b c previdle rest < /proc/stat
     prevtotal=$((a+b+c+previdle))
@@ -34,9 +29,6 @@ main() {
     date=" $(date "+%A %d/%m/%Y")"
     wifi=" $(wifi)"
     
-    update="$(update)"
-    icon1="<span foreground='#0ecc00'> </span>"
-    
     cpu=" Cpu: $(cpu)"
     icon2="<span foreground='#007396'>龍 </span>"
     
@@ -48,7 +40,7 @@ main() {
     
     volume="  Vol: $(pamixer --get-volume)%"
     
-    notify-send "Status" "$time\n$date\n$wifi\n\n$icon1$update\n\n$icon2$cpu\n$icon3$mem\n$icon4$disk\n$volume"
+    notify-send "Status" "$time\n$date\n$wifi\n\n$icon2$cpu\n$icon3$mem\n$icon4$disk\n$volume"
 
     if [[ -f "${HOME}/note" ]]; then
         note="$(note)"

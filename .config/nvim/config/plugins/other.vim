@@ -8,8 +8,8 @@ let g:coc_global_extensions = [
   \ ]
 
 """ Vim themes
-colorscheme dracula
-"colorscheme onedark
+"colorscheme dracula
+colorscheme onedark
 
 """ Vim-lightline
 function! StatusDiagnostic() abort
@@ -25,8 +25,9 @@ function! StatusDiagnostic() abort
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 
+"\ 'colorscheme': 'dracula',
 let g:lightline = {
-      \ 'colorscheme': 'dracula',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]

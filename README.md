@@ -177,28 +177,14 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 5. Customize your Startify bookmarks in ~/.config/nvim/config/plugins/other.vim 
 6. Done.
 
-## zshrc
-- Install oh-my-zsh, zsh-autosuggestion (plugin), zsh-highlighting (plugin).
-- Change theme to `gnzh`
-- Copy ***.aliases*** file to your home directory and add this to zshrc: `source $HOME/.aliases`.
-- Copy ***.pacmandoc*** file to your home directory.
-- Export:
-   ```
-   export EDITOR=nvim
-   export VISUAL=nvim
-   ```
-- My Banner:
-   ```
-   # NLTT banner
-   printf "\e[1;35m
-   \t███╗   ██╗██╗  ████████╗████████╗
-   \t████╗  ██║██║  ╚══██╔══╝╚══██╔══╝
-   \t██╔██╗ ██║██║    ██║      ██║   
-   \t██║╚██╗██║██║     ██║      ██║   
-   \t██║ ╚████║███████╗██║      ██║   
-   \t╚═╝  ╚═══╝╚══════╝╚═╝      ╚═╝   
-   "
-   ```
+## Shell
+- Zshrc:
+  - Install oh-my-zsh, zsh-autosuggestion (plugin), zsh-highlighting (plugin).
+  - Change theme to `gnzh`
+  - Copy ***.aliases*** file to your home directory and add this to zshrc: `source $HOME/.aliases`.
+  - Copy ***.pacmandoc*** file to your home directory.
+- Environment variables:
+  - Copy ***.profile*** file to your home directory.
 
 ## Vifm
 ##### General

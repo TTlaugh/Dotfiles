@@ -4,6 +4,8 @@
 # Dependencies: dmenu, dunst, pacman-contrib, <terminal>
 # Use: Run this script on startup with specify terminal to check for update.
 
+pgrep -x dmenu && exit
+
 set -euo pipefail
 
 check_net() {

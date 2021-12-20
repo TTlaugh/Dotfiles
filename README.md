@@ -34,49 +34,49 @@
 
 ### Base Packages
 - Base:
-```
-base base-devel linux linux-headers linux-firmware intel-ucode
-```
-> Replace `intel-ucode` with `amd-ucode` if you have **AMD** cpu.
+  ```
+  base base-devel linux linux-headers linux-firmware intel-ucode
+  ```
+  > Replace `intel-ucode` with `amd-ucode` if you have **AMD** cpu.
 - Grub:
-```
-grub efibootmgr dosfstools os-prober mtools
-```
+  ```
+  grub efibootmgr dosfstools os-prober mtools
+  ```
 - Firewall, Network:
-```
-ufw networkmanager
-```
-> - Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall))
-> - Enable networkmanager: `systemctl enable NetworkManager`
+  ```
+  ufw networkmanager
+  ```
+  > - Enable ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall))
+  > - Enable networkmanager: `systemctl enable NetworkManager`
 - Graphics driver (intel):
-```
-mesa lib32-mesa vulkan-intel
-```
-> If you use other graphics card, see Arch Wiki:
-  > - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
-  > - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
-  > - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
-  > - [Xorg](https://wiki.archlinux.org/title/Xorg)
+  ```
+  mesa lib32-mesa vulkan-intel
+  ```
+  > If you use other graphics card, see Arch Wiki:
+    > - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+    > - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
+    > - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+    > - [Xorg](https://wiki.archlinux.org/title/Xorg)
 
 - Sound:
-```
-alsa-utils pulseaudio pulseaudio-alsa pamixer pulsemixer
-```
+  ```
+  alsa-utils pulseaudio pulseaudio-alsa pamixer pulsemixer
+  ```
 
 ### Window Manager
 - X11:
-```
-xorg xorg-drivers xorg-xinit lxsession libx11 libxinerama libxft
-```
-> See also: [Xorg](https://wiki.archlinux.org/title/Xorg)
+  ```
+  xorg xorg-drivers xorg-xinit lxsession libx11 libxinerama libxft
+  ```
+  > See also: [Xorg](https://wiki.archlinux.org/title/Xorg)
 - Some lib:
-```
-webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
-```
+  ```
+  webkit2gtk libnotify gcr gstreamer gst-libav gst-plugins-good
+  ```
 - i3:
-```
-i3-wm i3status i3lock
-```
+  ```
+  i3-wm i3status i3lock
+  ```
 
 ### Apps
 ```

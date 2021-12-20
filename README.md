@@ -316,7 +316,7 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 ## Dmenu
 - Edit *config.def.h*:
   - Font: `RobotoMono Nerd Font`
-  - Font size: `11`
+  - Font size: `12`
   - Colors:
     ```
     [SchemeNorm] = { "#bbbbbb", "#282a36" },

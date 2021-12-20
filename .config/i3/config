@@ -16,17 +16,17 @@
         # Font for window titles.
         font pango:Arimo Nerd Font 10
         # Turn off border
-        default_border pixel 1
-        default_floating_border pixel 1
+        default_border pixel 2
+        default_floating_border pixel 2
         title_align center
         # Use Mouse+$mod to drag floating windows to their wanted position
         floating_modifier $mod
 
 # Colors
         # Window colors         border     background    text      indicator  child_border
-        client.focused          #ff91f6     #ff91f6     #000000     #00ffff     #ff91f6
-        client.unfocused        #ff91f6     #2f343f     #676E7D     #00ffff     #000000
-        client.focused_inactive #ff91f6     #2f343f     #676E7D     #00ffff     #000000
+        client.focused          #ffc7fa     #ffc7fa     #000000     #00ffff     #ffc7fa
+        client.unfocused        #ffc7fa     #2f343f     #676E7D     #00ffff     #000000
+        client.focused_inactive #ffc7fa     #2f343f     #676E7D     #00ffff     #000000
         client.urgent           #E53935     #E53935     #ffffff     #00ffff     #E53935
 
 # i3Bar

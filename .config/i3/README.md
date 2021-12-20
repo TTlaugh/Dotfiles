@@ -24,8 +24,8 @@ bar {
         #statusline #000000
         #                  border      background    text
         focused_workspace  #ffffff     #00000000     #ffffff
-        inactive_workspace #00000000   #00000000     #676E7D
-        urgent_workspace   #E53935     #E53935       #ffffff
+        inactive_workspace #00000000   #00000000     #676e7d
+        urgent_workspace   #e53935     #e53935       #ffffff
         }
 }
 ```
@@ -39,8 +39,8 @@ background #00000000
 ```
 ```
 focused_workspace  #ffffff     #00000000     #ffffff
-inactive_workspace #00000000   #00000000     #676E7D
-urgent_workspace   #E53935     #E53935       #ffffff
+inactive_workspace #00000000   #00000000     #676e7d
+urgent_workspace   #e53935     #e53935       #ffffff
 ```
 > You can see: [https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
 

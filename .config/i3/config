@@ -24,10 +24,10 @@
 
 # Colors
         # Window colors         border     background    text      indicator  child_border
-        client.focused          #ffc7fa     #ffc7fa     #000000     #00ffff     #ffc7fa
-        client.unfocused        #ffc7fa     #2f343f     #676E7D     #00ffff     #000000
-        client.focused_inactive #ffc7fa     #2f343f     #676E7D     #00ffff     #000000
-        client.urgent           #E53935     #E53935     #ffffff     #00ffff     #E53935
+        client.focused          #ffa6f8     #ffa6f8     #000000     #00ffff     #ffa6f8
+        client.unfocused        #ffa6f8     #2f343f     #676e7d     #00ffff     #2f343f
+        client.focused_inactive #ffa6f8     #2f343f     #676e7d     #00ffff     #2f343f
+        client.urgent           #e53935     #e53935     #ffffff     #00ffff     #e53935
 
 # i3Bar
         bar {
@@ -40,8 +40,8 @@
             background #282a36
             #                  border     background    text
             focused_workspace  #282a36     #282a36     #ffffff
-            inactive_workspace #282a36     #282a36     #676E7D
-            urgent_workspace   #E53935     #E53935     #ffffff
+            inactive_workspace #282a36     #282a36     #676e7d
+            urgent_workspace   #e53935     #e53935     #ffffff
             }
         }
 

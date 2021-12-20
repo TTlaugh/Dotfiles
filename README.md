@@ -106,7 +106,8 @@ neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontr
 - OBS
 - Simplescreenrecorder 
 - VirtualBox
-- Virt-Manager (*libvirt iptables-nft qemu virt-manager*)
+- Virt-Manager
+  > - `pacman -S libvirt iptables-nft qemu virt-manager`
   > - `sudo systemctl start/enable libvirtd`
   > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice 

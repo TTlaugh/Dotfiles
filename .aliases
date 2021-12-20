@@ -86,4 +86,4 @@ paclsfile () {
 # Show aliases
 alias aliases="bat -l bash $HOME/.aliases"
 # Show pacman docs
-alias pacmandoc="bat -l bash $HOME/.pacmandoc"
+alias pacdoc="bat -l bash $HOME/.pacdoc"

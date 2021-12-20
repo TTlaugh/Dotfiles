@@ -56,4 +56,3 @@
 
      - Remove:
         pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns
-

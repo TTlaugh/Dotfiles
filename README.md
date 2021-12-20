@@ -42,7 +42,7 @@ base base-devel linux linux-headers linux-firmware intel-ucode
 ```
 grub efibootmgr dosfstools os-prober mtools
 ```
-- Firewall, Network, Sound:
+- Firewall, Network:
 ```
 ufw networkmanager
 ```

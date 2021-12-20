@@ -42,23 +42,16 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# Create C/C++ project
-alias mkpr='~/.scripts/createproject.sh'
-
 # nvim, nvim + fzf
 alias vi=nvim
 alias suvi=sudoedit
 alias vf='nvim `fzf`'
 
 # vifm
-alias fm=vifm
 alias sfm='~/.vifm/scripts/vifmrun'
 
 # Temperature
 alias temp='cat /sys/class/thermal/thermal_zone*/temp'
-
-# Start teamviewerd
-alias tmvw='sudo systemctl start teamviewerd'
 
 # Convert to PDF
 alias doctopdf='libreoffice --headless --convert-to pdf:writer_pdf_Export'

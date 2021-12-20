@@ -1,9 +1,6 @@
 " Leader Key
 let mapleader = ","
 
-" Startify
-nmap ~ :Startify<CR>
-
 inoremap jk <Esc>
 inoremap kj <Esc>
 nmap <c-x> :q<CR>
@@ -17,7 +14,8 @@ vnoremap <S-k> 5k
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " Tab Action
-nmap <leader><tab> :tabnext<CR>
+nmap <C-n> :tabnext<CR>
+nmap <C-p> :tabprev<CR>
 
 " Buffers Action
 nmap `n  :bnext<CR>

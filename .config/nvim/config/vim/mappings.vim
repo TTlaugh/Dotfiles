@@ -20,7 +20,6 @@ nmap <C-p> :tabprev<CR>
 " Buffers Action
 nmap `n  :bnext<CR>
 nmap `p  :bprevious<CR>
-nmap `a  :badd 
 nmap `d  :bdelete<CR>
 
 " Move between split tab

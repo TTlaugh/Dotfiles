@@ -22,10 +22,10 @@ bar {
         background #00000000
         # Change status color to black if you have a white background
         #statusline #000000
-        #                  border             background         text
-        focused_workspace  #ffffff            #00000000          #ffffff
-        inactive_workspace #00000000          #00000000          #676E7D
-        urgent_workspace   #E53935            #E53935            #ffffff
+        #                  border      background    text
+        focused_workspace  #ffffff     #00000000     #ffffff
+        inactive_workspace #00000000   #00000000     #676E7D
+        urgent_workspace   #E53935     #E53935       #ffffff
         }
 }
 ```
@@ -38,9 +38,9 @@ background #00000000
 #statusline #000000
 ```
 ```
-focused_workspace  #ffffff            #00000000          #ffffff
-inactive_workspace #00000000          #00000000          #676E7D
-urgent_workspace   #E53935            #E53935            #ffffff
+focused_workspace  #ffffff     #00000000     #ffffff
+inactive_workspace #00000000   #00000000     #676E7D
+urgent_workspace   #E53935     #E53935       #ffffff
 ```
 > You can see: [https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
 

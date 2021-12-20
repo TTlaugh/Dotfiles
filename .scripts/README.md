@@ -29,18 +29,18 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
 ##### Example
 - With alacritty terminal:
 ```
-./dmvifm "alacritty -e"
-./dmpacupdate "alacritty -e"
+dmvifm "alacritty -e"
+dmpacupdate "alacritty -e"
 ```
 - With kitty terminal:
 ```
-./dmvifm "kitty"
-./dmpacupdate "kitty"
+dmvifm "kitty"
+dmpacupdate "kitty"
 ```
 - With st terminal:
 ```
-./dmvifm "st"
-./dmpacupdate "st"
+dmvifm "st"
+dmpacupdate "st"
 ```
 - ......
 

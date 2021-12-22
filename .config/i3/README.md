@@ -44,7 +44,7 @@ urgent_workspace   #e53935     #e53935       #ffffff
 ```
 > You can see: [https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
 
-### Optional: You can custom status color in ~/.config/i3/i3status.conf
+### Optional: You can custom status color in ~/.config/i3/i3status/i3status.conf
 ```
 general {
     color_good = "#009e00"

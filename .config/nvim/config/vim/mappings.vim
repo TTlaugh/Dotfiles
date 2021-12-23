@@ -48,8 +48,8 @@ nmap <F7> :Buffers<CR>
 "nmap <F4> :!alacritty --class vim-terminal,vim-terminal &<CR>
 
 " NerdCommenter
-vmap // <plug>NERDCommenterToggle
-nmap // <plug>NERDCommenterToggle
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
 
 " Vimspector
 map <F8>           <Plug>VimspectorToggleBreakpoint

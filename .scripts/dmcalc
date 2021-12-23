@@ -18,7 +18,7 @@ do
         fi
         res="$(echo "exit()" | python -i -c "$(echo -e "from math import *\nprint($expre)")")"
     else
-        ansexpre="$(echo "Example: ans+1" | dmenu -i -p "(Ans= $res)")"
+        ansexpre="$(echo "Example: ans+1" | dmenu -p "(Ans= $res)")"
         [[ "$ansexpre" = "Example: ans+1" ]] || [[ "$ansexpre" = "" ]] && exit 1
         res="$(echo "exit()" | python -i -c "$(echo -e "from math import *\nans=$ans\nprint($ansexpre)")")"
     fi
@@ -30,7 +30,7 @@ do
         exit 1
     fi
     
-    dres="$(echo -e "= $res (Enter to use 'ans')\nAC\nquit"| dmenu -i -l 3 -p "Result:")"
+    dres="$(echo -e "= $res (Enter to use 'ans')\nAC\nquit"| dmenu -l 3 -p "Result:")"
     if [[ "$dres" = "= $res (Enter to use 'ans')" ]];then
         FLAG="1"
         ans="$res"

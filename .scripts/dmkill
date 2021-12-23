@@ -6,9 +6,9 @@
 set -euo pipefail
 
 main() {
-    selected="$(ps --user "$USER" -F | dmenu -i -l 20 -p "Kill:" | awk '{print $2" ("$11")"}')"
+    selected="$(ps --user "$USER" -F | dmenu -l 20 -i -p "Kill:" | awk '{print $2" ("$11")"}')"
     if [[ -n $selected ]]; then
-        answer="$(echo -e "No\nYes" | dmenu -p "Kill: $selected?")"
+        answer="$(echo -e "No\nYes" | dmenu -i -p "Kill: $selected?")"
         if [[ "$answer" = "Yes" ]]; then
             id="$(echo "$selected" | awk '{print $1}')"
             kill -9 "$id"

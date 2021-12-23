@@ -28,7 +28,7 @@ umnt() {
 }
 
 power_off() {
-    if [[ "$(echo -e "Yes\nNo" | dmenu -p "Power off a device?")" = "Yes" ]]; then
+    if [[ "$(echo -e "Yes\nNo" | dmenu -i -p "Power off a device?")" = "Yes" ]]; then
         sudo udisksctl power-off -b "$chosen"
         pgrep -x dunst && notify-send "Unmount Drive" "$chosen_col\n$safelytoremove_col"
     fi
@@ -44,7 +44,7 @@ main() {
 
     check_drive
 
-    chosen="$(echo "$drives" | dmenu -i -p "Unmount which drive?" | awk '{print $1}')"
+    chosen="$(echo "$drives" | dmenu -l 20 -p "Unmount which drive?" | awk '{print $1}')"
     [[ "$chosen" = "" ]] && exit 1
     
     # Format color display with dunst

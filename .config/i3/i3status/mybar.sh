@@ -29,7 +29,7 @@ systemupdate() {
     if (( $update > 0)); then
         echo -n "{"
         echo -n "\"name\":\"id_systemupdate\","
-        echo -n "\"full_text\":\"  ${update}\""
+        echo -n "\"full_text\":\"  ${update} \""
         echo -n "},"
     fi
 }
@@ -54,7 +54,7 @@ cpu_usage() {
 memory() {
     echo -n "{"
     echo -n "\"name\":\"id_memory\","
-    echo -n "\"full_text\":\"  $(free -h | grep "Mem" | awk '{print $3"B"}')\","
+    echo -n "\"full_text\":\"  $(free -h | grep "Mem" | awk '{print $3"B"}') \","
     common "#50fa7b"
     echo -n "},"
 }
@@ -62,7 +62,7 @@ memory() {
 disk_usage() {
     echo -n "{"
     echo -n "\"name\":\"id_disk_usage\","
-    echo -n "\"full_text\":\"  $(df -h | grep -w "/" | awk '{print $4}')\","
+    echo -n "\"full_text\":\"  $(df -h | grep -w "/" | awk '{print $4}') \","
     common "#ffb86c"
     echo -n "},"
 }

@@ -24,6 +24,14 @@ myip_local() {
     echo -n "},"
 }
 
+nettraf() {
+    echo -n "{"
+    echo -n "\"name\":\"id_nettraffic\","
+    echo -n "\"full_text\":\" $(${HOME}/.config/i3/i3status/sb-nettraf) \","
+    echo -n "\"color\":\"#f1fa8c\""
+    echo -n "},"
+}
+
 update=$(checkupdates | wc -l)
 systemupdate() {
     if (( $update > 0)); then
@@ -34,19 +42,23 @@ systemupdate() {
     fi
 }
 
-cpu() {
-    read -r cpu a b c previdle rest < /proc/stat
-    prevtotal=$((a+b+c+previdle))
-    sleep 0.5
-    read -r cpu a b c idle rest < /proc/stat
-    total=$((a+b+c+idle))
-    cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-    echo -e "$cpu %"
+note() {
+    if [[ -f "${HOME}/note" ]]; then
+        note=$(grep -c "(*) Note:" "${HOME}/note")
+        if (( $note > 0 )); then
+            echo -n "{"
+            echo -n "\"name\":\"id_note\","
+            echo -n "\"full_text\":\"  $note \","
+            echo -n "\"color\":\"#ffb86c\""
+            echo -n "},"
+        fi
+    fi
 }
+
 cpu_usage() {
     echo -n "{"
     echo -n "\"name\":\"id_cpu_usage\","
-    echo -n "\"full_text\":\"  $(cpu) \","
+    echo -n "\"full_text\":\"  $(${HOME}/.config/i3/i3status/sb-cpu)% \","
     common "#ff79c6"
     echo -n "},"
 }
@@ -73,10 +85,11 @@ volume() {
     echo -n "{"
     echo -n "\"name\":\"id_volume\","
     if [ "$mute" = "false" ]; then
-        echo -n "\"full_text\":\"  ${vol}% \""
+        echo -n "\"full_text\":\"  ${vol}% \","
     else
-        echo -n "\"full_text\":\"  ${vol}% \""
+        echo -n "\"full_text\":\"  ${vol}% \","
     fi
+    echo -n "\"color\":\"#8be9fd\""
     echo -n "},"
 }
 
@@ -117,7 +130,9 @@ echo '[]'
 do
     echo -n ",["
     myip_local
+    nettraf
     systemupdate
+    note
     cpu_usage
     memory
     disk_usage
@@ -126,7 +141,7 @@ do
     mydate
     logout
     echo "]"
-    sleep 1
+    sleep 5
 done) &
 
 # click events
@@ -135,6 +150,9 @@ do
     # CHECK UPDATES
     if [[ $line == *"name"*"id_systemupdate"* ]]; then
         alacritty -e sudo pacman -Syu &
+
+    elif [[ $line == *"name"*"id_note"* ]]; then
+        alacritty -e sh -c "cat ${HOME}/note; read" &
     
     # CPU
     elif [[ $line == *"name"*"id_cpu_usage"* ]]; then

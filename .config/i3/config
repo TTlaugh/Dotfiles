@@ -32,7 +32,6 @@
 # i3Bar
         bar {
             bindsym button2 exec "i3-nagbar -m 'Arch Linux' -t warning -B 'restart' 'reboot' -B 'shutdown' 'shutdown now' -B 'Keyboard' 'onboard' -B 'Terminal' 'i3-sensible-terminal'"
-            bindsym button3 exec --no-startup-id ~/.config/i3/showstatus.sh
             position top
             status_command i3status -c ~/.config/i3/i3status/i3status1.conf
             #status_command i3status -c ~/.config/i3/i3status/i3status2.conf

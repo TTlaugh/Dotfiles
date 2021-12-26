@@ -20,9 +20,9 @@ check_net() {
 no_term() {
 # No specify terminal
     echo -e "ERROR: You need to specify terminal (with run command option) to run this script!\nExample:
-    ./dmpacupdate.sh \"alacritty -e\"
-    ./dmpacupdate.sh \"st\"
-    ./dmpacupdate.sh \"kitty\""
+    dmpacupdate \"alacritty -e\"
+    dmpacupdate \"st\"
+    dmpacupdate \"kitty\""
     notify-send "Check for updates script" "Error:\nYou need to specify terminal to run this script!\nUse '-h' option to view example."
     exit 1
 }
@@ -30,9 +30,9 @@ no_term() {
 help_h() {
 # Help
     echo -e "You need to specify terminal (with run command option) to run this script!\nExample:
-    ./dmpacupdate.sh \"alacritty -e\"
-    ./dmpacupdate.sh \"st\"
-    ./dmpacupdate.sh \"kitty\""
+    dmpacupdate \"alacritty -e\"
+    dmpacupdate \"st\"
+    dmpacupdate \"kitty\""
 }
 
 run() {

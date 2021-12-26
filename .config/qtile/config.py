@@ -22,7 +22,11 @@ keys = [
         ),
     Key([mod], "Tab",
         lazy.next_layout(),
-        desc="Toggle between layouts"
+        desc="Switch to the next layout"
+        ),
+    Key([mod, "shift"], "Tab",
+        lazy.prev_layout(),
+        desc="Switch to the previous layout"
         ),
     Key([mod], "q",
         lazy.window.kill(),
@@ -199,7 +203,7 @@ keys = [
             desc='Power action via dmenu'
             )
     ]),
-    # Launch apps using the key chord SUPER+a followed by 'key'
+    # Launch apps using the key chord SUPER+` followed by 'key'
     KeyChord([mod], "grave", [
         Key([], "1",
             lazy.spawn("chromium"),

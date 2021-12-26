@@ -321,24 +321,25 @@ def init_widgets_list():
                 linewidth = 0,
                 padding = 40
                 ),
-        # widget.Net(
-                # foreground = "#f1fa8c",
-                # interface = "wlp0s20f0u7",
-                # format = '{down}↓↑{up}'
-                # ),
         widget.CheckUpdates(
+                colour_have_updates = "#50fa7b",
                 update_interval = 1800,
                 distro = "Arch_checkupdates",
                 display_format = "{updates} Updates",
                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e sudo pacman -Syu')}
                 ),
+        # widget.Net(
+                # foreground = "#f1fa8c",
+                # interface = "wlp0s20f0u7",
+                # format = '{down}↓↑{up}'
+                # ),
         widget.CPU(
                 foreground = "#ff79c6",
                 format = 'cpu: {load_percent}%',
                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e htop')}
                 ),
         widget.Memory(
-                foreground = "#50fa7b",
+                foreground = "#ff5555",
                 measure_mem = 'G',
                 format = 'mem: {MemUsed:.2f}{mm}'
                 ),
@@ -353,16 +354,34 @@ def init_widgets_list():
         widget.Clock(
                 format='%A, %b %d - %H:%M'
                 ),
+        # widget.Wlan(
+                # interface = 'wlp0s20f0u7',
+                # format = '({essid})'
+                # ),
         widget.Systray(),
     ]
     return widgets_list
 
+def init_widgets_screen1():
+    widgets_screen1 = init_widgets_list()
+    return widgets_screen1
+
+# def init_widgets_screen2():
+    # widgets_screen2 = init_widgets_list()
+    # del widgets_screen2[7:8]
+    # return widgets_screen2
+
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_list(), opacity=1.0, size=20))]
+    return [
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20))
+        # Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))
+    ]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
     widgets_list = init_widgets_list()
+    widgets_screen1 = init_widgets_screen1()
+    # widgets_screen2 = init_widgets_screen2()
 
 # Drag floating layouts.
 mouse = [

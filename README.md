@@ -364,6 +364,8 @@ Copy ***dunst*** folder to ***~/.config/***
 [Seat:*]
 .....
 greeter-session=lightdm-slick-greeter
+user-session=qtile
+#user-session=i3
 .....
 ```
 ##### lightdm-slick-greeter

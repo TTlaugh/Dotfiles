@@ -1,6 +1,7 @@
 # Set up Arch Linux
 
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/MyArch.png)
+![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/i3.png)
+![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/qtile.png)
 
 # Table of contents
 
@@ -209,6 +210,8 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - Mappings:
   - `nmap af za` : use **af** instead of **za** to toggle show dot file/folder.
   - `nmap <C-x> :q<CR>` : same as vim's configuration.
+  - `map <c-j> 5j` : ctrl+j to move down 5 lines.
+  - `map <c-k> 5k` : ctrl+k to move up 5 lines.
   - `set number`
   - `set relativenumber`
 - Sxiv:

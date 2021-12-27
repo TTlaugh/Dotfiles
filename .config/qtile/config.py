@@ -258,10 +258,10 @@ layout_theme = {"border_width": 2,
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Floating(**layout_theme),
-    layout.Tile(**layout_theme),
+    layout.MonadWide(**layout_theme),
     layout.Columns(**layout_theme),
     layout.Stack(num_stacks=2, **layout_theme),
+    layout.Floating(**layout_theme),
     layout.TreeTab(
          font = "Ubuntu",
          fontsize = 10,
@@ -283,12 +283,13 @@ layouts = [
          panel_width = 200
          ),
     # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    # layout.Tile(**layout_theme),
+    # layout.RatioTile(**layout_theme),
+    # layout.VerticalTile(**layout_theme),
+    # layout.Bsp(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    # layout.Zoomy(**layout_theme),
+    # layout.Slice(**layout_theme),
 ]
 
 widget_defaults = dict(
@@ -310,6 +311,7 @@ def init_widgets_list():
                 ),
         # widget.CurrentLayout(),
         widget.GroupBox(
+                disable_drag = True,
                 borderwidth = 2,
                 active = "#ffffff",
                 inactive = "#44475a",
@@ -370,6 +372,7 @@ def init_widgets_list():
                 foreground = "#8be9fd"
                 ),
         widget.Clock(
+                foreground = "#bd93f9",
                 format='%A, %b %d - %H:%M'
                 ),
         widget.WidgetBox(

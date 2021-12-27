@@ -59,10 +59,7 @@ exec --no-startup-id dmupdate "alacritty -e"
 ```
 ```
 # dmpower
-bindsym $mod+F1 exec --no-startup-id dmpower "Are you sure you want to exit i3?"   "i3-msg exit"
-bindsym $mod+F2 exec --no-startup-id dmpower "Are you sure you want to suspend?"   "systemctl suspend"
-bindsym $mod+F3 exec --no-startup-id dmpower "Are you sure you want to reboot?"    "reboot"
-bindsym $mod+F4 exec --no-startup-id dmpower "Are you sure you want to shutdown?"  "shutdown now"
+bindsym $mod+F4 exec --no-startup-id dmpower
 ```
 ```
 # dmsetbg

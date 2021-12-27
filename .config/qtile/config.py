@@ -207,9 +207,9 @@ keys = [
             lazy.spawn("dmrecord"),
             desc='Record via dmenu'
             ),
-        Key([], "f",
-            lazy.spawn("dmvifm 'alacritty -e'"),
-            desc='Vifm via dmenu'
+        Key([], "e",
+            lazy.spawn("dmedit 'kitty' 'nvim'"),
+            desc='Edit selected file via dmenu'
             ),
         Key([], "q",
             lazy.spawn("dmpower"),

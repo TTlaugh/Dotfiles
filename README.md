@@ -180,14 +180,13 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 ##### Copy config folder
 - Copy ***nvim*** folder to ***~/.config/***
 ##### Finally
-1. Open nvim, inside nvim run `:PlugInstall` and wait to install plugins.
+1. Open nvim (don't worry with some error message) and run `:PlugInstall` and wait to install plugins.
    > - You will get "**post-update hook for fzf...**" error message if you installed fzf with "`pacman -S fzf`".
    > - Press 'R' to retry.
-2. Exit nvim (:q) and run `nvim ~/.config/nvim/init.vim`.
-3. Delete all quotation mark (") in this file, save file and exit (:wq).
-4. Open nvim again (you will see the installation of CoC) and run `:VimspectorInstal vscode-cpptools` (or any adapter you need to debug).
-5. Customize your Startify bookmarks in ~/.config/nvim/config/plugins/other.vim 
-6. Done.
+2. You will see the CoC extension installation after all plugins are successfully installed.
+3. Close nvim and open again, run `:VimspectorInstal vscode-cpptools` (for C/C++ debugging).
+   > You can use *Tab* and choose adapter.
+4. Done.
 
 ## Shell
 - Zshrc:

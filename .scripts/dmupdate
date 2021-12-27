@@ -2,7 +2,9 @@
 
 # Description: Arch linux check for updates script.
 # Dependencies: dmenu, dunst, pacman-contrib, <terminal>
-# Use: Run this script on startup with specify terminal to check for update.
+# Note: Run this script on startup with specify terminal to check for update.
+
+sleep 1m
 
 pgrep -x dmenu && exit
 

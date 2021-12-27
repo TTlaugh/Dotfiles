@@ -24,26 +24,20 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
 > For dmenu, see [Suckless](https://github.com/nguyenletientrien/Dotfiles#suckless).
 
 ### NOTE
-#### dmvifm, dmupdate
-- You need to specify terminal (with option run command) to use.
-##### Example
-- With alacritty terminal:
-```
-dmvifm "alacritty -e"
-dmupdate "alacritty -e"
-```
-- With kitty terminal:
-```
-dmvifm "kitty"
-dmupdate "kitty"
-```
-- With st terminal:
-```
-dmvifm "st"
-dmupdate "st"
-```
-- ......
-
+#### dmupdate
+- You need to specify terminal (with option run command):
+  ```
+  dmupdate "alacritty -e"
+  dmupdate "kitty"
+  dmupdate "st"
+  ```
+#### dmedit
+- You need to specify terminal (with option run command) and your editor:
+  ```
+  dmedit 'alacritty -e' 'nvim'
+  dmedit 'kitty' 'nvim'
+  dmedit 'st' 'nvim'
+  ```
 #### dmmount, dmunmount
 - You should add this line to ***/etc/sudoers***
 ```
@@ -55,13 +49,16 @@ dmupdate "st"
 
 ```
 # dmupdate
-exec --no-startup-id dmupdate "alacritty -e"
+exec --no-startup-id dmupdate 'alacritty -e'
 ```
 ```
 # dmpower
 bindsym $mod+F4 exec --no-startup-id dmpower
 ```
 ```
+# dmedit
+bindsym $mod+period exec --no-startup-id dmedit 'alacritty -e' nvim
+
 # dmsetbg
 bindsym $mod+b exec --no-startup-id dmsetbg ~/Wallpapers
 
@@ -76,9 +73,6 @@ bindsym $mod+F5 exec --no-startup-id dmmount
 # dmunmount
 bindsym $mod+Shift+F5 exec --no-startup-id dmunmount
 
-# dmvifm
-bindsym $mod+slash exec --no-startup-id dmvifm "alacritty -e"
-
 # screenshot
 ### Full screen
 bindsym Print exec --no-startup-id screenshot
@@ -88,9 +82,6 @@ bindsym Shift+Print exec --no-startup-id screenshot selected
 # record
 bindsym $mod+Print exec --no-startup-id dmrecord
 bindsym $mod+Shift+Print exec --no-startup-id dmrecord kill
-
-# cleaner
-bindsym $mod+$mod1+c exec --no-startup-id alacritty -e cleaner
 
 # dmcalc
 bindsym $mod+c exec --no-startup-id dmcalc

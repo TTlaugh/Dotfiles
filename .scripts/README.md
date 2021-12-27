@@ -57,7 +57,7 @@ bindsym $mod+F4 exec --no-startup-id dmpower
 ```
 ```
 # dmedit
-bindsym $mod+period exec --no-startup-id dmedit 'alacritty -e' 'nvim'
+bindsym $mod+period exec --no-startup-id dmedit 'alacritty' 'nvim'
 
 # dmsetbg
 bindsym $mod+b exec --no-startup-id dmsetbg ~/Wallpapers

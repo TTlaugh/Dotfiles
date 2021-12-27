@@ -10,6 +10,10 @@ vnoremap <S-j> 5j
 nnoremap <S-k> 5k
 vnoremap <S-k> 5k
 
+" j/k will move virtual lines (lines that wrap)
+"noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+"noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
 " Chose the word to change V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 

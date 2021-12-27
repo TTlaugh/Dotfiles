@@ -205,7 +205,8 @@ let g:lightline = {
 "let g:airline_symbols.maxlinenr = ''
 
 """ RainBow Bracket
-au FileType c,cpp,objc,objcpp,json call rainbow#load()
+au FileType c,cpp,objc,objcpp,json,python call rainbow#load()
+"let g:rainbow_active = 1
 
 """ Vim-Cmake
 let g:cmake_link_compile_commands = 1

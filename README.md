@@ -86,7 +86,7 @@
 
 ### Apps
 ```
-neovim vim nano zsh git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontrol vifm pcmanfm ueberzug atool feh sxiv ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter fuse2 xclip
+neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontrol vifm pcmanfm ueberzug atool feh sxiv ffmpeg ffmpegthumbnailer mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter fuse2 xclip
 ```
 > Enable lightdm: `systemctl enable lightdm`
 - If you want to use [screenshot](https://github.com/nguyenletientrien/Dotfiles/blob/master/.scripts/screenshot.sh) script with *selected option*, install `slop` package.

@@ -15,6 +15,7 @@
 - [Configuration](https://github.com/nguyenletientrien/Dotfiles#configuration)
   - [Unmute the sound card and disable auto mute on startup](https://github.com/nguyenletientrien/Dotfiles#unmute-the-sound-card-and-disable-auto-mute-on-startup)
   - [i3](https://github.com/nguyenletientrien/Dotfiles#i3)
+  - [Qtile]((https://github.com/nguyenletientrien/Dotfiles#qtile)
   - [Neovim](https://github.com/nguyenletientrien/Dotfiles#neovim)
   - [zshrc](https://github.com/nguyenletientrien/Dotfiles#zshrc)
   - [Vifm](https://github.com/nguyenletientrien/Dotfiles#vifm)

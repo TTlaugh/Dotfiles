@@ -9,7 +9,6 @@ from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 # import re
-# from libqtile import qtile
 # from libqtile.command import lazy
 
 mod = "mod4"
@@ -18,7 +17,8 @@ myterm = "alacritty"
 
 keys = [
     Key([mod], "Return",
-        lazy.spawn(terminal), desc="Launch terminal"
+        lazy.spawn(terminal),
+        desc="Launch terminal"
         ),
     Key([mod], "Tab",
         lazy.next_layout(),
@@ -65,35 +65,35 @@ keys = [
 ###
     Key([mod, "shift"], "h",
         lazy.layout.shuffle_left(),
-        lazy.layout.move_left(),
+        lazy.layout.move_left().when(layout='treetab'),
         desc="Move window to the left"
         ),
     Key([mod, "shift"], "l",
         lazy.layout.shuffle_right(),
-        lazy.layout.move_right(),
+        lazy.layout.move_right().when(layout='treetab'),
         desc="Move window to the right"
         ),
     Key([mod, "shift"], "j",
         lazy.layout.shuffle_down(),
-        lazy.layout.section_down(),
+        lazy.layout.section_down().when(layout='treetab'),
         desc="Move window down"
         ),
     Key([mod, "shift"], "k",
         lazy.layout.shuffle_up(),
-        lazy.layout.section_up(),
+        lazy.layout.section_up().when(layout='treetab'),
         desc="Move window up"
         ),
 ###
     Key([mod, "control"], "h",
         lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_nmaster(),
+        lazy.layout.shrink().when(layout='monadtall'),
+        lazy.layout.decrease_nmaster().when(layout='tile'),
         desc="Grow window to the left"
         ),
     Key([mod, "control"], "l",
         lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_nmaster(),
+        lazy.layout.grow().when(layout='monadtall'),
+        lazy.layout.increase_nmaster().when(layout='tile'),
         desc="Grow window to the right"
         ),
     Key([mod, "control"], "j",
@@ -120,6 +120,19 @@ keys = [
     Key([mod, "shift"], "Return",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"
+        ),
+    Key([mod, "shift"], "f",
+        lazy.layout.rotate().when(layout='stack'),
+        lazy.layout.flip().when(layout='monadtall'),
+        desc="Switch which side main pane occupies"
+        ),
+    Key([mod], "n",
+        lazy.layout.normalize(),
+        desc='normalize window size ratios'
+        ),
+    Key([mod], "m",
+        lazy.layout.maximize(),
+        desc='toggle window between minimum and maximum sizes'
         ),
 
     # Sound (pamixer)
@@ -348,16 +361,29 @@ def init_widgets_list():
                 format = '{p}: {uf}{m}',
                 visible_on_warn = False
                 ),
+        widget.TextBox(
+                foreground = "#8be9fd",
+                text = " vol:",
+                padding = 0
+                ),
         widget.Volume(
                 foreground = "#8be9fd"
                 ),
         widget.Clock(
                 format='%A, %b %d - %H:%M'
                 ),
-        # widget.Wlan(
-                # interface = 'wlp0s20f0u7',
-                # format = '({essid})'
-                # ),
+        widget.WidgetBox(
+                foreground = "#44475a",
+                close_button_location = 'right',
+                text_open = '',
+                text_closed = '',
+                widgets=[
+                    widget.Wlan(
+                        interface = 'wlp0s20f0u7',
+                        format = '({essid})'
+                        )
+                    ]
+                ),
         widget.Systray(),
     ]
     return widgets_list

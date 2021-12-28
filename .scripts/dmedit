@@ -9,9 +9,6 @@ DMTERM="st"
 DMEDITOR="nvim"
 
 main() {
-    if ! $(hash $DMEDITOR); then
-        exit 1
-    fi
     declare -A confedit_list
 # List of files ###############################################################
     confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"

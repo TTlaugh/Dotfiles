@@ -158,6 +158,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 ## Qtile
 - Copy ***qtile*** folder to ***~/.config/***
 - Set background with feh: `feh --bg-scale /path/to/picture`
+> You can use Super+Shift+b to see all key bindings.
 
 ## Neovim
 ##### Installation

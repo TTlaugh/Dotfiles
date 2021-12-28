@@ -2,17 +2,14 @@
 
 # Description: Choose from a list of configuration files to edit.
 # Dependencies: dmenu, terminal, editor
-# Example usage:
-#   dmedit 'alacritty -e' nvim
-#   dmedit 'st' nano
 
 set -euo pipefail
 
-DMTERM="$1"
-DMEDITOR="$2"
+DMTERM="st"
+DMEDITOR="nvim"
 
 main() {
-    if ! $(hash $DMTERM $DMEDITOR); then
+    if ! $(hash $DMEDITOR); then
         exit 1
     fi
     declare -A confedit_list

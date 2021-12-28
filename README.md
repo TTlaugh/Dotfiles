@@ -100,8 +100,8 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
 ### Suckless
 > To install Suckless application: `sudo make clean install`
 - [dmenu](https://tools.suckless.org/dmenu/)
-- Optional: [st](https://st.suckless.org/)
-  - Patches: [dracula](https://st.suckless.org/patches/dracula/), [scrollback + scrollback-mouse](https://st.suckless.org/patches/scrollback/), [ligature-scrollback](https://st.suckless.org/patches/ligatures/).
+- [st](https://st.suckless.org/)
+  - Patches: [dracula](https://st.suckless.org/patches/dracula/), [scrollback + scrollback-mouse](https://st.suckless.org/patches/scrollback/), [alpha](https://st.suckless.org/patches/alpha/), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color/).
   - `patch -p1 < your_patch_file`
 
 ### Optional

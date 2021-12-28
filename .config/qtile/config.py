@@ -14,11 +14,16 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = guess_terminal()
 myterm = "alacritty"
+mybrowser = "chromium"
 
 keys = [
     Key([mod], "Return",
         lazy.spawn(terminal),
         desc="Launch terminal"
+        ),
+    Key([mod, "shift"], "Return",
+        lazy.spawn(mybrowser),
+        desc="Launch my browser"
         ),
     Key([mod], "Tab",
         lazy.next_layout(),
@@ -86,15 +91,15 @@ keys = [
 ###
     Key([mod, "control"], "h",
         lazy.layout.grow_left(),
-        lazy.layout.shrink().when(layout='monadtall'),
-        lazy.layout.decrease_nmaster().when(layout='tile'),
-        desc="Grow window to the left"
+        lazy.layout.shrink(),
+        # lazy.layout.decrease_nmaster(),
+        desc="Grow window to the left, shrink window (MonadTall), decrease number in master pane (Tile)"
         ),
     Key([mod, "control"], "l",
         lazy.layout.grow_right(),
-        lazy.layout.grow().when(layout='monadtall'),
-        lazy.layout.increase_nmaster().when(layout='tile'),
-        desc="Grow window to the right"
+        lazy.layout.grow(),
+        # lazy.layout.increase_nmaster(),
+        desc="Grow window to the right, expand window (MonadTall), increase number in master pane (Tile)"
         ),
     Key([mod, "control"], "j",
         lazy.layout.grow_down(),
@@ -117,13 +122,13 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc='toggle fullscreen'
         ),
-    Key([mod, "shift"], "Return",
+    Key([mod, "shift"], "s",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"
         ),
     Key([mod, "shift"], "f",
-        lazy.layout.rotate().when(layout='stack'),
-        lazy.layout.flip().when(layout='monadtall'),
+        lazy.layout.rotate(),
+        lazy.layout.flip(),
         desc="Switch which side main pane occupies"
         ),
     Key([mod], "n",
@@ -208,27 +213,12 @@ keys = [
             desc='Record via dmenu'
             ),
         Key([], "e",
-            lazy.spawn("dmedit 'kitty' 'nvim'"),
+            lazy.spawn('dmedit'),
             desc='Edit selected file via dmenu'
             ),
         Key([], "q",
             lazy.spawn("dmpower"),
             desc='Power action via dmenu'
-            )
-    ]),
-    # Launch apps using the key chord SUPER+` followed by 'key'
-    KeyChord([mod], "grave", [
-        Key([], "1",
-            lazy.spawn("chromium"),
-            desc='Launch Chromium'
-            ),
-        Key([], "2",
-            lazy.spawn("firefox"),
-            desc='Launch Firefox'
-            ),
-        Key([], "3",
-            lazy.spawn("kitty"),
-            desc='Launch Kitty'
             )
     ])
 ]

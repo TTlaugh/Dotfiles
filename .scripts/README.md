@@ -31,13 +31,10 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
   dmupdate "kitty"
   dmupdate "st"
   ```
-#### dmedit
-- You need to specify terminal (with option run command) and your editor:
-  ```
-  dmedit 'alacritty -e' 'nvim'
-  dmedit 'kitty' 'nvim'
-  dmedit 'st' 'nvim'
-  ```
+#### dmeditconf
+> # This script use st terminal and nvim as default.
+> - You can use other apps by changing the variables (DMTERM, DMEDITOR) in the dmeditconf.
+
 #### dmmount, dmunmount
 - You should add this line to ***/etc/sudoers***
 ```
@@ -57,7 +54,7 @@ bindsym $mod+F4 exec --no-startup-id dmpower
 ```
 ```
 # dmedit
-bindsym $mod+period exec --no-startup-id dmedit 'alacritty' 'nvim'
+bindsym $mod+period exec --no-startup-id dmeditconf
 
 # dmsetbg
 bindsym $mod+b exec --no-startup-id dmsetbg ~/Wallpapers

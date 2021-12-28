@@ -21,6 +21,10 @@ keys = [
         lazy.spawn(terminal),
         desc="Launch terminal"
         ),
+    # Key([mod], "Return",
+        # lazy.spawn(myterm),
+        # desc="Launch my terminal"
+        # ),
     Key([mod], "o",
         lazy.spawn("dmenu_run"),
         desc="Launch Dmenu run"
@@ -222,7 +226,7 @@ keys = [
             desc='Record via dmenu'
             ),
         Key([], "e",
-            lazy.spawn('dmedit'),
+            lazy.spawn('dmeditconf'),
             desc='Edit selected file via dmenu'
             ),
         Key([], "q",

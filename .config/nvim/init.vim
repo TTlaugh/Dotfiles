@@ -16,7 +16,6 @@ set noswapfile
 set noshowmode
 set showtabline=2
 
-"set incsearch
 set ignorecase
 set nowrap
 

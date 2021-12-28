@@ -296,8 +296,8 @@ def init_widgets_list():
     widgets_list = [
         widget.CurrentLayoutIcon(
                 custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-                padding = 0,
-                scale = 0.7
+                scale = 0.7,
+                padding = 0
                 ),
         # widget.CurrentLayout(),
         widget.GroupBox(
@@ -313,7 +313,7 @@ def init_widgets_list():
                 ),
         widget.Prompt(
                 prompt = prompt,
-                foreground = "#00ff44"
+                foreground = "#50fa7b"
                 ),
         widget.Sep(
                 linewidth = 0,
@@ -326,50 +326,49 @@ def init_widgets_list():
                 linewidth = 0,
                 padding = 40
                 ),
-        widget.CheckUpdates(
-                colour_have_updates = "#50fa7b",
-                update_interval = 1800,
-                distro = "Arch_checkupdates",
-                display_format = "{updates} Updates",
-                mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e sudo pacman -Syu')}
-                ),
         # widget.Net(
-                # foreground = "#f1fa8c",
                 # interface = "wlp0s20f0u7",
-                # format = '{down}↓↑{up}'
+                # format = '{down}↓↑{up}',
+                # foreground = "#f1fa8c"
                 # ),
         widget.CPU(
-                foreground = "#ff79c6",
                 format = 'cpu: {load_percent}%',
+                foreground = "#ff79c6",
                 mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e htop')}
                 ),
         widget.Memory(
-                foreground = "#ff5555",
                 measure_mem = 'G',
-                format = 'mem: {MemUsed:.2f}{mm}'
+                format = 'mem: {MemUsed:.2f}{mm}',
+                foreground = "#ff5555"
                 ),
         widget.DF(
-                foreground = "#ffb86c",
                 format = '{p}: {uf}{m}',
-                visible_on_warn = False
+                visible_on_warn = False,
+                foreground = "#ffb86c"
                 ),
         widget.TextBox(
-                foreground = "#8be9fd",
                 text = " vol:",
+                foreground = "#8be9fd",
                 padding = 0
                 ),
         widget.Volume(
                 foreground = "#8be9fd"
                 ),
+        widget.CheckUpdates(
+                update_interval = 1800,
+                distro = "Arch_checkupdates",
+                colour_have_updates = "#70ff94",
+                mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e sudo pacman -Syu')}
+                ),
         widget.Clock(
-                foreground = "#bd93f9",
-                format='%A, %b %d - %H:%M'
+                format='%A, %b %d - %H:%M',
+                foreground = "#bd93f9"
                 ),
         widget.WidgetBox(
-                foreground = "#44475a",
                 close_button_location = 'right',
                 text_open = '',
                 text_closed = '',
+                foreground = "#44475a",
                 widgets=[
                     widget.Wlan(
                         interface = 'wlp0s20f0u7',

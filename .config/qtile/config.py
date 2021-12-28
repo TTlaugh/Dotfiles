@@ -21,6 +21,10 @@ keys = [
         lazy.spawn(terminal),
         desc="Launch terminal"
         ),
+    Key([mod], "b",
+        lazy.spawn(terminal+" -e qtilekb"),
+        desc="Show all Qtile key bindings in terminal"
+        ),
     Key([mod, "shift"], "Return",
         lazy.spawn(mybrowser),
         desc="Launch my browser"

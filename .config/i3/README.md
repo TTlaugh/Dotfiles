@@ -2,9 +2,9 @@
 - See here: [https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759](https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759)
 
 ## Theme, cursors, icons
-- Arc themes: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
-- Cursors themes: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
-- Icons themes: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
+- Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
+- Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
+- Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
 
 ## Two way to transparent i3bar:
 #### 1. You can make i3bar transparency with picom or compton:

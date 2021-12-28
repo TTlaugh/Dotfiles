@@ -411,6 +411,11 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 - Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
 - Usage: add `colorscript random` to your **.zshrc** file.
 
+### Lxappearance
+- Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
+- Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
+- Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
+
 ### Use script or app as root without password
 > Edit ***/etc/sudoers***
 ```

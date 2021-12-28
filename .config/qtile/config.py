@@ -21,14 +21,19 @@ keys = [
         lazy.spawn(terminal),
         desc="Launch terminal"
         ),
+    Key([mod], "o",
+        lazy.spawn("dmenu_run"),
+        desc="Launch Dmenu run"
+        ),
     Key([mod, "shift"], "b",
-        lazy.spawn(terminal+" -e qtilekb"),
+        lazy.spawn(terminal+" -e sh -c ~/.config/qtile/kb.sh"),
         desc="Show all Qtile key bindings in terminal"
         ),
     Key([mod, "shift"], "Return",
         lazy.spawn(mybrowser),
         desc="Launch my browser"
         ),
+###
     Key([mod], "Tab",
         lazy.next_layout(),
         desc="Switch to the next layout"
@@ -126,14 +131,14 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc='toggle fullscreen'
         ),
-    Key([mod, "shift"], "s",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"
-        ),
-    Key([mod, "shift"], "f",
+    Key([mod], "i",
         lazy.layout.rotate(),
         lazy.layout.flip(),
         desc="Switch which side main pane occupies"
+        ),
+    Key([mod, "shift"], "s",
+        lazy.layout.toggle_split(),
+        desc="Toggle between split and unsplit sides of stack"
         ),
     Key([mod], "n",
         lazy.layout.normalize(),

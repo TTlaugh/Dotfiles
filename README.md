@@ -330,7 +330,7 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 ## Dmenu
 - Edit *config.def.h*:
   - Font: `RobotoMono Nerd Font`
-  - Font size: `12`
+  - Font size: `11`
   - Colors:
     ```
     [SchemeNorm] = { "#bbbbbb", "#282a36" },
@@ -344,7 +344,6 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 ## St
 - Change font and font size.
 - Patch, Fix and config MANUALLY (Goodluck!!).
-  - scrollback config: change keybind (Modkey, scroll with j, k).
 
 ## Dunst
 Copy ***dunst*** folder to ***~/.config/***

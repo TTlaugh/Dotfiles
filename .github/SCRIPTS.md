@@ -32,7 +32,7 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
   dmupdate "st"
   ```
 #### dmeditconf
-> # This script use st terminal and nvim as default.
+> ### This script use st terminal and nvim as default.
 > - You can use other apps by changing the variables (DMTERM, DMEDITOR) in the dmeditconf.
 
 #### dmmount, dmunmount

@@ -337,7 +337,7 @@ See [Dracula Theme](https://draculatheme.com/kitty)
     [SchemeSel] = { "#000000", "#f59cff" },
     ```
     ```
-    [SchemeNorm] = { "#f8f8f2", "#282a36" },
+    [SchemeNorm] = { "#777c99", "#282a36" },
     [SchemeSel] = { "#bd93f9", "#22232e" },
     ```
 - Edit *dmenu_run*

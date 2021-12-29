@@ -98,11 +98,11 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
 - [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete/)
 
 ### Suckless
-> To install Suckless application: `sudo make clean install`
+> - To install Suckless application: `sudo make clean install`
+> - To patch: `patch -p1 < your_patch_file`
 - [dmenu](https://tools.suckless.org/dmenu/)
 - [st](https://st.suckless.org/)
-  - Patches: [dracula](https://st.suckless.org/patches/dracula/), [scrollback + scrollback-mouse](https://st.suckless.org/patches/scrollback/), [alpha](https://st.suckless.org/patches/alpha/), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color/).
-  - `patch -p1 < your_patch_file`
+  - Patches: [font2](https://st.suckless.org/patches/font2/), [dracula](https://st.suckless.org/patches/dracula/), [alpha](https://st.suckless.org/patches/alpha/), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color/), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback/).
 
 ### Optional
 
@@ -335,14 +335,17 @@ See [Dracula Theme](https://draculatheme.com/kitty)
     ```
     [SchemeNorm] = { "#bbbbbb", "#282a36" },
     [SchemeSel] = { "#000000", "#f59cff" },
-    [SchemeOut] = { "#000000", "#00ffff" },
+    ```
+    ```
+    [SchemeNorm] = { "#f8f8f2", "#282a36" },
+    [SchemeSel] = { "#bd93f9", "#22232e" },
     ```
 - Edit *dmenu_run*
   - Add `-p "Run:"` after `dmenu "@"`
   - Example: `dmenu "$@" -p "Run:"`
 
 ## St
-- Change font and font size.
+- Change font (font2) and font size.
 - Patch, Fix and config MANUALLY (Goodluck!!).
 
 ## Dunst

@@ -57,7 +57,7 @@ bindsym $mod+F4 exec --no-startup-id dmpower
 bindsym $mod+period exec --no-startup-id dmeditconf
 
 # dmsetbg
-bindsym $mod+b exec --no-startup-id dmsetbg ~/Wallpapers
+bindsym $mod+b exec --no-startup-id dmsetbg
 
 # dmwifi
 bindsym $mod+mod1+w exec --no-startup-id dmwifi

@@ -2,20 +2,13 @@
 
 # Description: This script use to change background with feh.
 # Dependencies: dmenu, feh, dunst
-# Note: You need specify locate of folder contain wallpapers.
-# Ex:
-#   ./dmsetbg.sh ~/Wallpapers
 
 set -euo pipefail
 
 main() {
-    if [[ "$#" = "0" ]] || [[ ! -d "$1" ]]; then
-        echo -e "You need specify locate of folder contain wallpapers!
-        Ex: dmsetbg ~/Wallpapers"
-        notify-send "Set background" "Error:\nYou need specify locate of folder contain wallpapers!\nEx: <span foreground='#00b55b'>dmsetbg ~/Wallpapers</span>"
-        exit 1
-    fi
-    chosen="$1/$(find $1 -type f -printf '%f\n' | sort | dmenu -l 20 -i -p "Choose wallpaper:")"
+    dir=$(find /home -maxdepth 3 -type d -not -path '*/\.*' 2>/dev/null | dmenu -l 20 -i -p "Wallpaper dir?")
+    cd "$dir"
+    chosen=$(find . -type f -not -path '*/\.*' | sed 's/\.\///' | sort | dmenu -l 20 -i -p "Choose wallpaper:")
     if [[ ! -f "$chosen" ]]; then
         exit 1
     else

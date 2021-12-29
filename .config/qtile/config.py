@@ -206,7 +206,7 @@ keys = [
             desc='Unmount drive via dmenu'
             ),
         Key([], "b",
-            lazy.spawn("dmsetbg ./Wallpapers"),
+            lazy.spawn("dmsetbg"),
             desc='Set background via dmenu'
             ),
         Key([], "w",

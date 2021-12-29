@@ -448,4 +448,4 @@ sudo nvim /etc/sudoers
 # Other
 
 ### My Scripts
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/SCRIPTS.md)
+[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)

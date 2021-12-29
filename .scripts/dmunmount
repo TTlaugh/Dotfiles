@@ -48,9 +48,9 @@ main() {
     [[ "$chosen" = "" ]] && exit 1
     
     # Format color display with dunst
-    chosen_col="<span foreground='#660000'>$chosen</span>"
-    unmounted_col="<span foreground='#00b55b'>unmounted</span>."
-    safelytoremove_col="<span foreground='#00b55b'>safely to remove!</span>"
+    chosen_col="<span foreground='#ff5555'>$chosen</span>"
+    unmounted_col="<span foreground='#50fa7b'>unmounted</span>."
+    safelytoremove_col="<span foreground='#50fa7b'>safely to remove!</span>"
 
     umnt
     power_off

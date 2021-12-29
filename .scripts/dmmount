@@ -33,8 +33,8 @@ mnt() {
     sudo mount "$chosen" "$mountpoint"
 
     # Format color display with dunst
-    chosen_col="<span foreground='#660000'>$chosen</span>"
-    mntpnt_col="<span foreground='#660000'>$mountpoint</span>"
+    chosen_col="<span foreground='#ff5555'>$chosen</span>"
+    mntpnt_col="<span foreground='#ff5555'>$mountpoint</span>"
 
     pgrep -x dunst && notify-send "Mount Drive" "$chosen_col\nmounted to:\n$mntpnt_col"
 }

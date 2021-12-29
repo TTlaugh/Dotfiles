@@ -440,10 +440,15 @@ sudo nvim /etc/sudoers
 - `popd`
 - `xev`: print out the user's keyboard input.
 
-### Udisksctl:
+### udisksctl
 - `udisksctl power-off -b /dev/<drive>` (to power off drive or safely to remove drive)
 - `udisksctl mount -b /dev/<drive>`     (to mount drive)
 - `udisksctl unmount -b /dev/<drive>`   (to unmount drive)
+
+### xset
+- `xset s off`
+- `xset -dpms`
+- `xset s noblank`
 
 # Other
 

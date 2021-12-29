@@ -6,8 +6,8 @@
 set -euo pipefail
 
 main() {
-    # You can change location to find the folder containing wallpaper by modifying 'dir' variable
-    dir=$(find /home -maxdepth 3 -type d -not -path '*/\.*' 2>/dev/null | dmenu -l 20 -i -p "Wallpaper dir?")
+    # You can change location to find the folder containing wallpaper by modifying 'dir' variable.
+    dir=$(find "$HOME" -maxdepth 2 -type d -not -path '*/\.*' | dmenu -l 20 -i -p "Wallpaper dir?")
     cd "$dir"
     chosen=$(find . -type f -not -path '*/\.*' | sed 's/\.\///' | sort | dmenu -l 20 -i -p "Choose wallpaper:")
     if [[ ! -f "$chosen" ]]; then

@@ -108,11 +108,11 @@ option_1() {
 
 option_2() {
     print_banner
-    unusedpackages="$(sudo pacman -Qtdq || printf "")"
+    unusedpackages="$(pacman -Qtdq || printf "")"
     if [[ -z "$unusedpackages" ]]; then
         printf "%sNo unused packages to remove. Enter to continue.%s" "$BOLD" "$RESET"
     else
-        sudo pacman -Rns "$unusedpackages" && printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
+        echo "$unusedpackages" | sudo pacman -Rns - && printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
     fi
     read
 }
@@ -208,12 +208,12 @@ option_6() {
     printf "%s%sDone! Enter to continue.%s" "$BOLD" "$GREEN" "$RESET"
     read
 
-    unusedpackages="$(sudo pacman -Qtdq || printf "")"
+    unusedpackages="$(pacman -Qtdq || printf "")"
     if [[ "$unusedpackages" = "" ]]; then
         printf "\n%s%s!!! No unused packages to remove.\n%sEnter to continue.%s" "$BOLD" "$RED" "$GREEN" "$RESET"
     else
         printf "\n%s%sRemoving unused packages ......%s\n" "$BOLD" "$RED" "$RESET"
-        sudo pacman -Rns "$unusedpackages"
+        echo "$unusedpackages" | sudo pacman -Rns -
         printf "%s%sDone! Enter to continue.%s" "$BOLD" "$GREEN" "$RESET"
     fi
     read

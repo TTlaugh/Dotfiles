@@ -12,14 +12,16 @@
 #
 # If there is already a running instance, user will be prompted to end it.
 
+set -euo pipefail
+
 killrecording() {
     recpid="$(cat /tmp/recordingpid)"
     # kill with SIGTERM, allowing finishing touches.
-    kill -15 "$recpid"
+    kill -15 "$recpid" && notify-send "Record" "Record Saved."
     rm -f /tmp/recordingpid
     # even after SIGTERM, ffmpeg may still run, so SIGKILL it.
     sleep 3
-    kill -9 "$recpid"
+    kill -9 "$recpid" && notify-send "Record" "FFmpeg has been killed."
     exit
 }
 
@@ -110,7 +112,7 @@ videoselected() {
     echo $! > /tmp/recordingpid
 }
 
-case "$1" in
+case "$@" in
     screencast) screencast;;
     audio) audio;;
     video) video;;

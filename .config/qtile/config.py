@@ -225,6 +225,10 @@ keys = [
             lazy.spawn("dmrecord"),
             desc='Record via dmenu'
             ),
+        Key(["shift"], "r",
+            lazy.spawn("dmrecord kill"),
+            desc='Kill existing recording of dmrecord'
+            ),
         Key([], "e",
             lazy.spawn('dmeditconf'),
             desc='Edit selected file via dmenu'

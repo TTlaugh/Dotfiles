@@ -112,4 +112,4 @@ declare -a icons=(
 "🥸 Disguised"
 )
 
-printf '%s\n' "${icons[@]}" | dmenu -i -p "Choose icon:" | awk '{printf $1}' | xclip -sel c
+printf '%s\n' "${icons[@]}" | dmenu -i -p "Choose icon:" | awk '{printf $1}' | xclip -selection clipboard

@@ -1,6 +1,6 @@
 # Readme
 
-- ***Copy this folder to your home directory.***
+- *Copy* **.scripts** *folder to your home directory.*
 - Add this to **.profile**:
   ```
   export PATH="$PATH:${HOME}/.scripts"

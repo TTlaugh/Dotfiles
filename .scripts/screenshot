@@ -31,7 +31,7 @@ main() {
         *) exit 1;;
     esac
     # Copy image to clipboard
-    xclip -sel clipboard -t image/png -i "$locate"
+    xclip -selection clipboard -t image/png -i "$locate"
 
     notify-send "Screenshot" "Copied to clipboard!\nSaved to:\n$locate"
 }

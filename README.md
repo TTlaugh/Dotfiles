@@ -194,7 +194,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   - Install oh-my-zsh, zsh-autosuggestion (plugin), zsh-highlighting (plugin).
   - Change theme to `gnzh`
   - Copy ***.aliases*** file to your home directory and add this to zshrc: `source $HOME/.aliases`.
-  - Copy ***.pacmandoc*** file to your home directory.
+  - Copy ***.pacdoc*** file to your home directory.
 - Environment variables:
   - Copy ***.profile*** file to your home directory.
 

@@ -48,7 +48,7 @@ alias suvi=sudoedit
 alias vf='nvim `fzf`'
 
 # vifm
-alias sfm='~/.vifm/scripts/vifmrun'
+alias sfm="$HOME/.vifm/scripts/vifmrun"
 
 # Temperature
 alias temp='cat /sys/class/thermal/thermal_zone*/temp'

@@ -2,8 +2,6 @@
 
 # Description: Auto-generate C/C++ project.
 # Dependencies:
-# Tips: Set alias in your .bashrc or .zshrc
-#   Ex: alias mkpr="~/.scripts/createproject.sh"
 
 set -euo pipefail
 

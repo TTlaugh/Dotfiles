@@ -30,7 +30,7 @@ keys = [
         desc="Launch Dmenu run"
         ),
     Key([mod, "shift"], "b",
-        lazy.spawn(terminal+" -e sh -c ~/.config/qtile/kb.sh"),
+        lazy.spawn(terminal+" -e sh -c $HOME/.config/qtile/kb.sh"),
         desc="Show all Qtile key bindings in terminal"
         ),
     Key([mod, "shift"], "Return",

@@ -120,7 +120,7 @@ option_2() {
 findcache30() {
     clear
     printf "%s%sFinding ......%s\n" "$BOLD" "$RED" "$RESET"
-    cache30="$(find ~/.cache/* -maxdepth 1 -type f -atime +30)"
+    cache30="$(find $HOME/.cache/* -maxdepth 1 -type f -atime +30)"
     case $cache30 in
         "") echo "No old caches found.";;
         *)  echo "$cache30";;

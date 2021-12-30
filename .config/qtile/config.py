@@ -233,6 +233,10 @@ keys = [
             lazy.spawn('dmeditconf'),
             desc='Edit selected file via dmenu'
             ),
+        Key([], "s",
+            lazy.spawn('dmwebsearch'),
+            desc='Search in web browser via dmenu'
+            ),
         Key([], "q",
             lazy.spawn("dmpower"),
             desc='Power action via dmenu'

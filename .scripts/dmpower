@@ -1,27 +1,17 @@
 #!/usr/bin/env bash
 
-# Description: Use dmenu to run command with [Yes/No] waring.
-# Dependencies: dmenu
-# Use: Gives a prompt labeled with $1 to perform command $2.
-# Example:
-# ./dmpower.sh "Are you sure you want to shutdown?" "shutdown now"
+# Description: Suspend, Restart, Shutdown with dmenu.
+# Dependencies: dmenu, any Nerd Font
 
 set -euo pipefail
-
-yn() {
-    if [[ $(echo -e "No\nYes" | dmenu -i -p "$1") = "Yes" ]]; then
-        return 0
-    else
-        return 1
-    fi
-}
 
 main() {
     choice=$(echo -e "Suspend\nRestart\nShutdown" | dmenu -i -p " ")
     case $choice in
-        "Suspend")  yn "Suspend?"  && systemctl suspend;;
-        "Restart")  yn "Restart?"  && reboot;;
-        "Shutdown") yn "Shutdown?" && shutdown now;;
+        Suspend)  systemctl suspend;;
+        Restart)  reboot;;
+        Shutdown) shutdown now;;
+        *) exit 1;;
     esac
 }
 

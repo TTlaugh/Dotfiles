@@ -239,15 +239,15 @@ main() {
         print_option
         read -r chosen
         case "$chosen" in
-            "")     option_0 ;;
-            0)      option_0 ;;
-            1)      option_1 ;;
-            2)      option_2 ;;
-            3)      option_3 ;;
-            4)      option_4 ;;
-            5)      option_5 ;;
-            6)      option_6 ;;
-            *)      exit 0 ;;
+            "") option_0 ;;
+            0)  option_0 ;;
+            1)  option_1 ;;
+            2)  option_2 ;;
+            3)  option_3 ;;
+            4)  option_4 ;;
+            5)  option_5 ;;
+            6)  option_6 ;;
+            *)  exit 0 ;;
         esac
     done
 }

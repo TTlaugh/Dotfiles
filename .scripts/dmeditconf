@@ -10,23 +10,24 @@ set -euo pipefail
 DMTERM="st"
 DMEDITOR="nvim"
 
+declare -A confedit_list
+# List of files ####################################################
+confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+confedit_list[bash]="$HOME/.bashrc"
+confedit_list[dunst]="$HOME/.config/dunst/dunstrc"
+confedit_list[dwm]="$HOME/Suckless/dwm/config.def.h"
+confedit_list[i3]="$HOME/.config/i3/config"
+confedit_list[neovim]="$HOME/.config/nvim/init.vim"
+confedit_list[picom]="$HOME/.config/picom/picom.conf"
+confedit_list[qtile]="$HOME/.config/qtile/config.py"
+confedit_list[st]="$HOME/Suckless/st/config.def.h"
+confedit_list[vifm]="$HOME/.vifm/vifmrc"
+confedit_list[xinitrc]="$HOME/.xinitrc"
+confedit_list[xresources]="$HOME/.Xresources"
+confedit_list[zsh]="$HOME/.zshrc"
+####################################################################
+
 main() {
-    declare -A confedit_list
-# List of files ###############################################################
-    confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
-    confedit_list[bash]="$HOME/.bashrc"
-    confedit_list[dunst]="$HOME/.config/dunst/dunstrc"
-    confedit_list[dwm]="$HOME/Suckless/dwm/config.def.h"
-    confedit_list[i3]="$HOME/.config/i3/config"
-    confedit_list[neovim]="$HOME/.config/nvim/init.vim"
-    confedit_list[picom]="$HOME/.config/picom/picom.conf"
-    confedit_list[qtile]="$HOME/.config/qtile/config.py"
-    confedit_list[st]="$HOME/Suckless/st/config.def.h"
-    confedit_list[vifm]="$HOME/.vifm/vifmrc"
-    confedit_list[xinitrc]="$HOME/.xinitrc"
-    confedit_list[xresources]="$HOME/.Xresources"
-    confedit_list[zsh]="$HOME/.zshrc"
-###############################################################################
     choice=$(printf '%s\n' "${!confedit_list[@]}" | sort | dmenu -l 20 -i -p 'Edit config:')
     if [ "$choice" ]; then
         cfg=$(printf '%s\n' "${confedit_list["${choice}"]}")

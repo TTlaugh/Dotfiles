@@ -56,6 +56,9 @@ bindsym $mod+F4 exec --no-startup-id dmpower
 # dmedit
 bindsym $mod+period exec --no-startup-id dmeditconf
 
+# dmwebsearch
+bindsym $mod+slash exec --no-startup-id dmwebsearch
+
 # dmsetbg
 bindsym $mod+b exec --no-startup-id dmsetbg
 

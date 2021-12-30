@@ -5,6 +5,7 @@
 
 set -euo pipefail
 
+# You can change default browser by modifying DMBROWSER variable.
 DMBROWSER="chromium"
 
 declare -A websearch

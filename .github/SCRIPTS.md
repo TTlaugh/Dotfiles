@@ -33,7 +33,11 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
   ```
 #### dmeditconf
 > ### This script use st terminal and nvim as default.
-> - You can use other apps by changing the variables (DMTERM, DMEDITOR) in the dmeditconf.
+> You can use other apps by modifying the variables (DMTERM, DMEDITOR) in the dmeditconf.
+
+#### dmwebsearch
+> ### This script use chromium browser as default.
+> You can use other browser by modifying the DMBROWSER variables in the dmwebsearch.
 
 #### dmmount, dmunmount
 - You should add this line to ***/etc/sudoers***

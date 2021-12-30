@@ -57,7 +57,7 @@ main() {
   url="${websearch["${engine}"]}"
 
   # Searching the chosen engine.
-  query=$(dmenu -l 20 -i -p "Enter search query ($engine):")
+  query=$(printf "" | dmenu -l 20 -i -p "Enter search query ($engine):")
 
   #query="$(echo "${query}" | jq -s -R -r @uri)"
 

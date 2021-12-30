@@ -7,9 +7,9 @@ from typing import List  # noqa: F401
 from libqtile import qtile, bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.lazy import lazy
+from libqtile.command import lazy
 from libqtile.utils import guess_terminal
 # import re
-# from libqtile.command import lazy
 
 mod = "mod4"
 terminal = guess_terminal()

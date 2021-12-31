@@ -254,7 +254,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
               \*.as[fx]},
              \<video/*>
             \ {View using mpv}
-            \ mpv %f,
+            \ mpv %f 2>/dev/null &,
             \ {View using ffplay}
             \ ffplay -fs -autoexit %f,
     fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,

@@ -7,8 +7,8 @@ from typing import List  # noqa: F401
 from libqtile import qtile, bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.command import lazy
 from libqtile.utils import guess_terminal
+# from libqtile.command import lazy
 # import re
 
 mod = "mod4"
@@ -39,10 +39,19 @@ keys = [
         ),
 ###
     Key([mod], "Tab",
+        lazy.screen.next_group(),
+        desc="Move to the group on the right"
+        ),
+    Key([mod, "shift"], "Tab",
+        lazy.screen.prev_group(),
+        desc="Move to the group on the left"
+        ),
+###
+    Key([mod], "semicolon",
         lazy.next_layout(),
         desc="Switch to the next layout"
         ),
-    Key([mod, "shift"], "Tab",
+    Key([mod, "shift"], "semicolon",
         lazy.prev_layout(),
         desc="Switch to the previous layout"
         ),
@@ -123,8 +132,12 @@ keys = [
         desc="Grow window up"
         ),
 ###
-    Key([mod], "space",
+    Key([mod, "control"], "space",
         lazy.layout.next(),
+        desc="Switch window focus to other pane(s) of stack"
+        ),
+    Key([mod], "space",
+        lazy.group.next_window(),
         desc="Move window focus to other window"
         ),
     Key([mod, "shift"], "space",
@@ -249,6 +262,10 @@ groups = [Group(i) for i in "123456789"]
 for i in groups:
     keys.extend([
         # mod1 + letter of group = switch to group
+        # Toggle with the last used group:
+        # Key([mod], i.name, lazy.group[i.name].toscreen(toggle=True),
+            # desc="Switch to group {}".format(i.name)),
+        # Or not toggle with the last used group:
         Key([mod], i.name, lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
@@ -459,8 +476,8 @@ auto_minimize = True
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/autostart.sh'])
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

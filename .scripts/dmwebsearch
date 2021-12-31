@@ -48,6 +48,8 @@ websearch[gitlab]="https://gitlab.com/search?search="
 websearch[googleOpenSource]="https://opensource.google/projects/search?q="
 websearch[sourceforge]="https://sourceforge.net/directory/?q="
 websearch[stackoverflow]="https://stackoverflow.com/search?q="
+# Qtile
+websearch[qtile]="https://docs.qtile.org/en/latest/search.html?q="
 #########################################################################################################################
 
 main() {

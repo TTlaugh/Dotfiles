@@ -1,4 +1,4 @@
-# Vim
+# Vim Tips
 ## Changing case in Vim
 - `~`    : Changes the case of current character.
 - `guu`  : Change current line from upper to lower.
@@ -14,3 +14,21 @@
 - `gu}`  : Change to end of paragraph to lower case.
 - `gU5j` : Change 5 lines below to upper case.
 - `gu3k` : Change 3 lines above to lower case.
+## Moving to and deleting inside `()  []  {}  ''  ""  ``  <>`
+- Delete all word inside
+```
+di(
+di{
+di[
+di"
+...
+```
+- Delete and put you into **insert** mode.
+```
+ci(
+ci{
+ci[
+ci"
+...
+```
+> See `:h text-objects`

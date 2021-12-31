@@ -329,7 +329,7 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 
 ## Dmenu
 - Edit *config.def.h*:
-  - Font: `RobotoMono Nerd Font`
+  - Font: `Hack Nerd Font`
   - Font size: `11`
   - Colors:
     ```
@@ -346,6 +346,7 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 
 ## St
 - Change font (font2) and font size.
+  > Hack Nerd Font, JoyPixels, Symbola (AUR)
 - Patch, Fix and config MANUALLY (Goodluck!!).
 
 ## Dunst
@@ -451,6 +452,14 @@ sudo nvim /etc/sudoers
 - `xset s noblank`
 
 # Other
+
+### Fonts
+- Roboto Mono (dunst)
+- sans (Qtile)
+- Ubuntu (Qtile)
+- Fira Code (Kitty)
+- Hack Nerd Font (Alacritty, st, dmenu)
+- Arimo Nerd Font (i3)
 
 ### My Scripts
 [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)

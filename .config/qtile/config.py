@@ -132,10 +132,6 @@ keys = [
         desc="Grow window up"
         ),
 ###
-    Key([mod, "control"], "space",
-        lazy.layout.next(),
-        desc="Switch window focus to other pane(s) of stack"
-        ),
     Key([mod], "space",
         lazy.group.next_window(),
         desc="Move window focus to other window"
@@ -143,6 +139,10 @@ keys = [
     Key([mod, "shift"], "space",
         lazy.window.toggle_floating(),
         desc='toggle floating'
+        ),
+    Key([mod, "control"], "space",
+        lazy.layout.next(),
+        desc="Switch window focus to other pane(s) of stack"
         ),
     Key([mod], "f",
         lazy.window.toggle_fullscreen(),

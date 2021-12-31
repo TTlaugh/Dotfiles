@@ -461,5 +461,8 @@ sudo nvim /etc/sudoers
 - Hack Nerd Font (Alacritty, st, dmenu)
 - Arimo Nerd Font (i3)
 
+### Vim
+[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMNOTE.md)
+
 ### My Scripts
 [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)

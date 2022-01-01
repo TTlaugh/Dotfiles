@@ -98,7 +98,7 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
 - [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete/)
 
 ### Suckless
-> - To install Suckless application: `sudo make clean install`
+> - To install Suckless softwares: `sudo make clean install`
 > - To patch: `patch -p1 < your_patch_file`
 - [dmenu](https://tools.suckless.org/dmenu/)
 - [st](https://st.suckless.org/)
@@ -353,11 +353,11 @@ See [Dracula Theme](https://draculatheme.com/kitty)
 Copy ***dunst*** folder to ***~/.config/***
 > If the config work incorrect, you need read all content of dunstrc file and edit for work correct.
 >
-> Something incorrect as: dmenu path, icon path, ...
+> Something incorrect as: font, dmenu path, icon path, ...
 >
 > You should view `man dunst` to find default config file.
 >
-> You can following this *dunstrc* to config default dunstrc for you.
+> You can follow this *dunstrc* to manually configure the default dunstrc on your system.
 
 ## Zathura
 - Copy ***zathura*** folder to ***~/.config/***
@@ -461,7 +461,7 @@ sudo nvim /etc/sudoers
 - Hack Nerd Font (Alacritty, st, dmenu)
 - Arimo Nerd Font (i3)
 
-### Vim
+### Vim Tips
 [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
 
 ### My Scripts

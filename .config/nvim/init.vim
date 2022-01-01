@@ -114,13 +114,12 @@ noremap <C-right> <c-w>>
 """ turn off highlighting
 nmap <leader>, :nohlsearch<CR>
 """ NerdTree
-nmap <F5> :NERDTreeToggle<CR>
-""" FZF
-nmap <F6> :Files<CR>
-nmap <F7> :Buffers<CR>
+nmap <leader>n :NERDTreeToggle<CR>
 """ Open st terminal or alacritty terminal
 "nmap <F4> :!st -c vim-terminal &<CR>
 "nmap <F4> :!alacritty --class vim-terminal,vim-terminal &<CR>
+""" FZF
+nmap <F4> :Files<CR>
 """ NerdCommenter
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle

@@ -30,7 +30,7 @@ keys = [
         desc="Launch Dmenu run"
         ),
     Key([mod, "shift"], "b",
-        lazy.spawn(terminal+" -e sh -c $HOME/.config/qtile/kb.sh"),
+        lazy.spawn(terminal+" -e sh -c '$HOME/.config/qtile/kb.py | less'"),
         desc="Show all Qtile key bindings in terminal"
         ),
     Key([mod, "shift"], "Return",
@@ -55,6 +55,7 @@ keys = [
         lazy.prev_layout(),
         desc="Switch to the previous layout"
         ),
+###
     Key([mod], "q",
         lazy.window.kill(),
         desc="Kill focused window"
@@ -64,6 +65,7 @@ keys = [
         lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"
         ),
+###
     Key([mod, "shift"], "r",
         lazy.restart(),
         desc="Restart Qtile"

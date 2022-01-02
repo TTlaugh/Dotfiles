@@ -1,264 +1,113 @@
 import os
-import socket
 import subprocess
-
 from typing import List  # noqa: F401
-
-from libqtile import qtile, bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
-# from libqtile.command import lazy
-# import re
 
+
+#######################
+#----- Variables -----#
+#######################
 mod = "mod4"
 terminal = guess_terminal()
 myterm = "alacritty"
 mybrowser = "chromium"
 
+#####################
+#----- Startup -----#
+#####################
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.call([home])
+
+#####################
+#----- Hotkeys -----#
+#####################
 keys = [
-    Key([mod], "Return",
-        lazy.spawn(terminal),
-        desc="Launch terminal"
-        ),
-    # Key([mod], "Return",
-        # lazy.spawn(myterm),
-        # desc="Launch my terminal"
-        # ),
-    Key([mod], "o",
-        lazy.spawn("dmenu_run"),
-        desc="Launch Dmenu run"
-        ),
-    Key([mod, "shift"], "b",
-        lazy.spawn(terminal+" -e sh -c '$HOME/.config/qtile/kb.py | less'"),
-        desc="Show all Qtile key bindings in terminal"
-        ),
-    Key([mod, "shift"], "Return",
-        lazy.spawn(mybrowser),
-        desc="Launch my browser"
-        ),
-###
-    Key([mod], "Tab",
-        lazy.screen.next_group(),
-        desc="Move to the group on the right"
-        ),
-    Key([mod, "shift"], "Tab",
-        lazy.screen.prev_group(),
-        desc="Move to the group on the left"
-        ),
-###
-    Key([mod], "semicolon",
-        lazy.next_layout(),
-        desc="Switch to the next layout"
-        ),
-    Key([mod, "shift"], "semicolon",
-        lazy.prev_layout(),
-        desc="Switch to the previous layout"
-        ),
-###
-    Key([mod], "q",
-        lazy.window.kill(),
-        desc="Kill focused window"
-        ),
-###
-    Key([mod], "r",
-        lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"
-        ),
-###
-    Key([mod, "shift"], "r",
-        lazy.restart(),
-        desc="Restart Qtile"
-        ),
-    Key([mod, "shift"], "q",
-        lazy.shutdown(),
-        desc="Shutdown Qtile"
-        ),
-###
-    Key([mod], "h",
-        lazy.layout.left(),
-        desc="Move focus to left"
-        ),
-    Key([mod], "l",
-        lazy.layout.right(),
-        desc="Move focus to right"
-        ),
-    Key([mod], "j",
-        lazy.layout.down(),
-        desc="Move focus down"
-        ),
-    Key([mod], "k",
-        lazy.layout.up(),
-        desc="Move focus up"
-        ),
-###
-    Key([mod, "shift"], "h",
-        lazy.layout.shuffle_left(),
-        lazy.layout.move_left().when(layout='treetab'),
-        desc="Move window to the left"
-        ),
-    Key([mod, "shift"], "l",
-        lazy.layout.shuffle_right(),
-        lazy.layout.move_right().when(layout='treetab'),
-        desc="Move window to the right"
-        ),
-    Key([mod, "shift"], "j",
-        lazy.layout.shuffle_down(),
-        lazy.layout.section_down().when(layout='treetab'),
-        desc="Move window down"
-        ),
-    Key([mod, "shift"], "k",
-        lazy.layout.shuffle_up(),
-        lazy.layout.section_up().when(layout='treetab'),
-        desc="Move window up"
-        ),
-###
-    Key([mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        # lazy.layout.decrease_nmaster(),
-        desc="Grow window to the left, shrink window (MonadTall), decrease number in master pane (Tile)"
-        ),
-    Key([mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        # lazy.layout.increase_nmaster(),
-        desc="Grow window to the right, expand window (MonadTall), increase number in master pane (Tile)"
-        ),
-    Key([mod, "control"], "j",
-        lazy.layout.grow_down(),
-        desc="Grow window down"
-        ),
-    Key([mod, "control"], "k",
-        lazy.layout.grow_up(),
-        desc="Grow window up"
-        ),
-###
-    Key([mod], "space",
-        lazy.group.next_window(),
-        desc="Move window focus to other window"
-        ),
-    Key([mod, "shift"], "space",
-        lazy.window.toggle_floating(),
-        desc='toggle floating'
-        ),
-    Key([mod, "control"], "space",
-        lazy.layout.next(),
-        desc="Switch window focus to other pane(s) of stack"
-        ),
-    Key([mod], "f",
-        lazy.window.toggle_fullscreen(),
-        desc='toggle fullscreen'
-        ),
-    Key([mod], "i",
-        lazy.layout.rotate(),
-        lazy.layout.flip(),
-        desc="Switch which side main pane occupies"
-        ),
-    Key([mod, "shift"], "s",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"
-        ),
-    Key([mod], "n",
-        lazy.layout.normalize(),
-        desc='normalize window size ratios'
-        ),
-    Key([mod], "m",
-        lazy.layout.maximize(),
-        desc='toggle window between minimum and maximum sizes'
-        ),
+# Launch terminal
+    # Key([mod], "Return",    lazy.spawn(myterm)),
+    Key([mod], "Return",                lazy.spawn(terminal)),
+    Key([mod], "o",                     lazy.spawn("dmenu_run")),
+# Show all keybindings
+    Key([mod, "shift"], "b",            lazy.spawn(terminal+" -e sh -c '$HOME/.config/qtile/kb.py | less'")),
+# Launch my browser
+    Key([mod, "shift"], "Return",       lazy.spawn(mybrowser)),
+# Switch to next/previous layout
+    Key([mod], "Tab",                   lazy.next_layout()),
+    Key([mod, "shift"], "Tab",          lazy.prev_layout()),
+# Kill window
+    Key([mod], "q",                     lazy.window.kill()),
+# Prompt
+    Key([mod], "r",                     lazy.spawncmd()),
+# Restart/Shutdown Qtile
+    Key([mod, "shift"], "r",            lazy.restart()),
+    Key([mod, "shift"], "q",            lazy.shutdown()),
+# Move focus
+    Key([mod], "h",                     lazy.layout.left()),
+    Key([mod], "l",                     lazy.layout.right()),
+    Key([mod], "j",                     lazy.layout.next()),
+    Key([mod], "k",                     lazy.layout.up()),
+# Move window
+    Key([mod, "shift"], "h",            lazy.layout.shuffle_left(),
+                                        lazy.layout.move_left().when(layout='treetab')),
+    Key([mod, "shift"], "l",            lazy.layout.shuffle_right(),
+                                        lazy.layout.move_right().when(layout='treetab')),
+    Key([mod, "shift"], "j",            lazy.layout.shuffle_down(),
+                                        lazy.layout.section_down().when(layout='treetab')),
+    Key([mod, "shift"], "k",            lazy.layout.shuffle_up(),
+                                        lazy.layout.section_up().when(layout='treetab')),
+# Resize window
+    Key([mod, "control"], "h",          lazy.layout.grow_left(),
+                                        lazy.layout.shrink()),
+    Key([mod, "control"], "l",          lazy.layout.grow_right(),
+                                        lazy.layout.grow()),
+    Key([mod, "control"], "j",          lazy.layout.grow_down()),
+    Key([mod, "control"], "k",          lazy.layout.grow_up()),
+# window control
+    Key([mod], "space",                 lazy.group.next_window()),
+    Key([mod, "shift"], "space",        lazy.window.toggle_floating()),
+    Key([mod], "f",                     lazy.window.toggle_fullscreen()),
+    Key([mod], "i",                     lazy.layout.rotate(),
+                                        lazy.layout.flip()),
+    Key([mod, "shift"], "s",            lazy.layout.toggle_split()),
+    Key([mod], "n",                     lazy.layout.normalize()),
+    Key([mod], "m",                     lazy.layout.maximize()),
 
-    # Sound (pamixer)
-    Key([mod, "shift"], "equal",
-        lazy.spawn("pamixer -i 5"),
-        desc="Increase volume"
-        ),
-    Key([mod, "shift"], "minus",
-        lazy.spawn("pamixer -d 5"),
-        desc="Decrease volume"
-        ),
-    Key([mod, "shift"], "m",
-        lazy.spawn("pamixer -t"),
-        desc="Decrease volume"
-        ),
+# Sound (pamixer)
+    Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
+    Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
+    Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Decrease volume"),
+# Dunst
+    Key([mod], "BackSpace",             lazy.spawn("dunstctl close"),       desc="Close notification"),
+    Key([mod, "shift"], "BackSpace",    lazy.spawn("dunstctl close-all"),   desc="Close all notifications"),
+    Key([mod], "backslash",             lazy.spawn("dunstctl history-pop"), desc="Show history notifications"),
+# Screenshot (script)
+    Key([], "Print",                    lazy.spawn("screenshot"),          desc="Take fullscreen capture"),
+    Key(["shift"], "Print",             lazy.spawn("screenshot selected"), desc="Capture selected area"),
 
-    # Dunst
-    Key([mod], "BackSpace",
-        lazy.spawn("dunstctl close"),
-        desc="Close notification"
-        ),
-    Key([mod, "shift"], "BackSpace",
-        lazy.spawn("dunstctl close-all"),
-        desc="Close all notifications"
-        ),
-    Key([mod], "backslash",
-        lazy.spawn("dunstctl history-pop"),
-        desc="Show history notifications"
-        ),
-
-    # Screenshot (script)
-    Key([], "Print",
-        lazy.spawn("screenshot"),
-        desc="Take fullscreen capture"
-        ),
-    Key(["shift"], "Print",
-        lazy.spawn("screenshot selected"),
-        desc="Capture selected area"
-        ),
-
-    # Dmenu scripts launched using the key chord SUPER+p followed by 'key'
+# Dmenu scripts launched using the key chord SUPER+p followed by 'key'
     KeyChord([mod], "p", [
-        Key([], "k",
-            lazy.spawn("dmkill"),
-            desc='Kill processes via dmenu'
-            ),
-        Key([], "m",
-            lazy.spawn("dmmount"),
-            desc='Mount drive via dmenu'
-            ),
-        Key(["shift"], "m",
-            lazy.spawn("dmunmount"),
-            desc='Unmount drive via dmenu'
-            ),
-        Key([], "b",
-            lazy.spawn("dmsetbg"),
-            desc='Set background via dmenu'
-            ),
-        Key([], "w",
-            lazy.spawn("dmwifi"),
-            desc='Connect to wifi via dmenu'
-            ),
-        Key([], "c",
-            lazy.spawn("dmcalc"),
-            desc='Simple calculator via dmenu'
-            ),
-        Key([], "i",
-            lazy.spawn("dmicons"),
-            desc='Copy icons to clipboard via dmenu'
-            ),
-        Key([], "r",
-            lazy.spawn("dmrecord"),
-            desc='Record via dmenu'
-            ),
-        Key(["shift"], "r",
-            lazy.spawn("dmrecord kill"),
-            desc='Kill existing recording of dmrecord'
-            ),
-        Key([], "e",
-            lazy.spawn('dmeditconf'),
-            desc='Edit selected file via dmenu'
-            ),
-        Key([], "s",
-            lazy.spawn('dmwebsearch'),
-            desc='Search in web browser via dmenu'
-            ),
-        Key([], "q",
-            lazy.spawn("dmpower"),
-            desc='Power action via dmenu'
-            )
+        Key([],        "k", lazy.spawn("dmkill"),        desc='Kill processes via dmenu'),
+        Key([],        "m", lazy.spawn("dmmount"),       desc='Mount drive via dmenu'),
+        Key(["shift"], "m", lazy.spawn("dmunmount"),     desc='Unmount drive via dmenu'),
+        Key([],        "b", lazy.spawn("dmsetbg"),       desc='Set background via dmenu'),
+        Key([],        "w", lazy.spawn("dmwifi"),        desc='Connect to wifi via dmenu'),
+        Key([],        "c", lazy.spawn("dmcalc"),        desc='Simple calculator via dmenu'),
+        Key([],        "i", lazy.spawn("dmicons"),       desc='Copy icons to clipboard via dmenu'),
+        Key([],        "r", lazy.spawn("dmrecord"),      desc='Record via dmenu'),
+        Key(["shift"], "r", lazy.spawn("dmrecord kill"), desc='Kill existing recording of dmrecord'),
+        Key([],        "e", lazy.spawn('dmeditconf'),    desc='Edit selected file via dmenu'),
+        Key([],        "s", lazy.spawn('dmwebsearch'),   desc='Search in web browser via dmenu'),
+        Key([],        "q", lazy.spawn("dmpower"),       desc='Power action via dmenu')
     ])
 ]
 
+###################
+#----- Group -----#
+###################
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
@@ -280,6 +129,9 @@ for i in groups:
             desc="move focused window to group {}".format(i.name)),
     ])
 
+####################
+#----- Layout -----#
+####################
 layout_theme = {"border_width": 2,
                 "margin": 8,
                 "border_focus": "e1acff",
@@ -322,6 +174,9 @@ layouts = [
     # layout.Slice(**layout_theme),
 ]
 
+#####################
+#----- Widgets -----#
+#####################
 widget_defaults = dict(
     font='sans',
     fontsize=12,
@@ -329,8 +184,6 @@ widget_defaults = dict(
     background="#282c34"
 )
 extension_defaults = widget_defaults.copy()
-
-prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 def init_widgets_list():
     widgets_list = [
@@ -352,7 +205,7 @@ def init_widgets_list():
                 other_screen_border = "#434758"
                 ),
         widget.Prompt(
-                prompt = prompt,
+                prompt = 'Run: ',
                 foreground = "#50fa7b"
                 ),
         widget.Sep(
@@ -374,7 +227,7 @@ def init_widgets_list():
         widget.CPU(
                 format = 'cpu: {load_percent}%',
                 foreground = "#ff79c6",
-                mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e htop')}
+                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')}
                 ),
         widget.Memory(
                 measure_mem = 'G',
@@ -398,7 +251,7 @@ def init_widgets_list():
                 update_interval = 1800,
                 distro = "Arch_checkupdates",
                 colour_have_updates = "#70ff94",
-                mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myterm + ' -e sudo pacman -Syu')}
+                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')}
                 ),
         widget.Clock(
                 format='%A, %b %d - %H:%M',
@@ -420,6 +273,9 @@ def init_widgets_list():
     ]
     return widgets_list
 
+####################
+#----- Screen -----#
+####################
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
     return widgets_screen1
@@ -441,6 +297,9 @@ if __name__ in ["config", "__main__"]:
     widgets_screen1 = init_widgets_screen1()
     # widgets_screen2 = init_widgets_screen2()
 
+###################
+#----- Mouse -----#
+###################
 # Drag floating layouts.
 mouse = [
     Drag([mod], "Button1",
@@ -453,6 +312,9 @@ mouse = [
         lazy.window.bring_to_front())
 ]
 
+###################
+#----- Other -----#
+###################
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
@@ -475,11 +337,6 @@ reconfigure_screens = True
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
 auto_minimize = True
-
-@hook.subscribe.startup_once
-def start_once():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

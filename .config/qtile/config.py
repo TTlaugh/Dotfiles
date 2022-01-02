@@ -23,9 +23,9 @@ def start_once():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call([home])
 
-#####################
-#----- Hotkeys -----#
-#####################
+#########################
+#----- Keybindings -----#
+#########################
 keys = [
 # Launch terminal
     # Key([mod], "Return",    lazy.spawn(myterm)),

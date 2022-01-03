@@ -31,7 +31,7 @@ main() {
     choice=$(printf '%s\n' "${!confedit_list[@]}" | sort | dmenu -l 20 -i -p 'Edit config:')
     if [ "$choice" ]; then
         cfg=$(printf '%s\n' "${confedit_list["${choice}"]}")
-        "$DMTERM" -e "$DMEDITOR" "$cfg"
+        setsid -f "$DMTERM" -e "$DMEDITOR" "$cfg"
     else
         echo "Program terminated." && exit 0
     fi

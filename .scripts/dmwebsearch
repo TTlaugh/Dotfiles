@@ -64,7 +64,7 @@ main() {
   #query="$(echo "${query}" | jq -s -R -r @uri)"
 
   # shellcheck disable=SC2154
-  ${DMBROWSER} "${url}${query}"
+  setsid -f ${DMBROWSER} "${url}${query}"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

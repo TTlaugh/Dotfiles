@@ -14,3 +14,6 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="alacritty"
 export BROWSER="chromium"
+
+# Remap Caps to Esc
+setxkbmap -option caps:escape,shift:both_capslock

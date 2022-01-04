@@ -14,7 +14,6 @@ set nowritebackup
 set noswapfile
 
 set noshowmode
-set showtabline=2
 
 set ignorecase
 set nowrap
@@ -82,25 +81,17 @@ let mapleader = ","
 """ Remap Esc to jk and jk
 inoremap jk <Esc>
 inoremap kj <Esc>
-""" Ctrl+x to quit
-nmap <c-x> :q<CR>
-""" Shift+j/k to move down/up 5 lines
-nnoremap <S-j> 5j
-vnoremap <S-j> 5j
-nnoremap <S-k> 5k
-vnoremap <S-k> 5k
 """ j/k will move virtual lines (lines that wrap)
 "noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 "noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-""" Tab Action
+""" Tab
 nmap <C-n> :tabnext<CR>
 nmap <C-p> :tabprev<CR>
-""" Buffers Action
-nmap `n  :bnext<CR>
-nmap `p  :bprevious<CR>
-nmap `d  :bdelete<CR>
+""" Buffers
+nmap L      :Buffers<CR>
+nmap <c-x>  :bdelete<CR>
 """ Move between split tab
 nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k

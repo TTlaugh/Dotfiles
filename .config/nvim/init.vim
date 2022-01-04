@@ -86,9 +86,6 @@ inoremap kj <Esc>
 "noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-""" Buffers
-nmap L     :Buffers<CR>
-nmap <C-x> :bdelete<CR>
 """ Move between split tab
 nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k
@@ -101,30 +98,24 @@ noremap <C-left>  <c-w><
 noremap <C-right> <c-w>>
 """ turn off highlighting
 nmap <leader>, :nohlsearch<CR>
+""" FZF
+nmap <leader>f :Files<CR>
+nmap L         :Buffers<CR>
+nmap <C-x>     :bdelete<CR>
 """ NerdTree
 nmap <leader>n :NERDTreeToggle<CR>
-""" Open st terminal or alacritty terminal
-"nmap <F4> :!st -c vim-terminal &<CR>
-"nmap <F4> :!alacritty --class vim-terminal,vim-terminal &<CR>
-""" FZF
-nmap <F4> :Files<CR>
 """ NerdCommenter
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 """ Vimspector
-map <F8>           <Plug>VimspectorToggleBreakpoint
-"map <leader><F8>   <Plug>VimspectorAddFunctionBreakpoint
-
-map <F9>           <Plug>VimspectorContinue
-map <leader><F9>   <Plug>VimspectorStop
-map <leader>d<F9>  <Plug>VimspectorRestart
-
-map <F12>          <Plug>VimspectorPause
-
-map <F10>          <Plug>VimspectorStepOver
-map <F11>          <Plug>VimspectorStepInto
-map <leader><F11>  <Plug>VimspectorStepOut
-
+map <F9>           <Plug>VimspectorToggleBreakpoint
+map <F5>           <Plug>VimspectorContinue
+map <leader><F5>   <Plug>VimspectorRestart
+map <F6>           <Plug>VimspectorStepOver
+map <F7>           <Plug>VimspectorStepInto
+map <leader><F7>   <Plug>VimspectorStepOut
+map <F8>           <Plug>VimspectorPause
+map <leader><F8>   <Plug>VimspectorStop
 nmap <leader>dx :VimspectorReset<CR>
 nmap <leader>de :VimspectorEval
 nmap <leader>dw :VimspectorWatch

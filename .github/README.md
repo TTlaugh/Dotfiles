@@ -17,7 +17,7 @@
   - [i3](https://github.com/nguyenletientrien/Dotfiles#i3)
   - [Qtile](https://github.com/nguyenletientrien/Dotfiles#qtile)
   - [Neovim](https://github.com/nguyenletientrien/Dotfiles#neovim)
-  - [zshrc](https://github.com/nguyenletientrien/Dotfiles#zshrc)
+  - [zshrc](https://github.com/nguyenletientrien/Dotfiles#shell)
   - [Vifm](https://github.com/nguyenletientrien/Dotfiles#vifm)
   - [Picom](https://github.com/nguyenletientrien/Dotfiles#picom)
   - [Alacritty](https://github.com/nguyenletientrien/Dotfiles#alacritty)
@@ -499,6 +499,33 @@ sudo nvim /etc/sudoers
 - Fira Code (Kitty)
 - Hack Nerd Font (Alacritty, st, dmenu)
 - Arimo Nerd Font (i3)
+
+### Pacman
+> Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
+- `pacman -Q`                       : list all installed packages.
+- `pacman -Qe`                      : list installed packages by user.
+- `pacman -Qn`                      : list installed packages from official repository.
+- `pacman -Qm`                      : list installed AUR packages.
+
+- `pacman -Qlq` *`<package>`*           : list of installed package contents.
+- `pacman -Flq` <package>           : list of remote package contents.
+
+- `pacman -Qo` <file name>          : search for installed package containing the file.
+- `pacman -F` <file name>           : search for remote package containing the file.
+
+- `pacman -Qi` <package>            : installed package information.
+- `pacman -Si` <package>            : remote package information.
+
+- `pacman -Qs` <string1> <string2>  : search for installed package.
+- `pacman -Ss` <string1> <string2>  : search for packages.
+
+- `pacman -Sc`                      : remove package caches.
+- `pacman -Scc`                     : remove package caches and packages files.
+
+- `pacman -Syu`                     : update.
+
+- `pacman -Rns` <package>           : remove package + dependencies + config file.
+- `pacman -Rcns` <package>          : remove group package + dependencies + config file.
 
 ### Vim Tips
 [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)

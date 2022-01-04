@@ -28,7 +28,6 @@
   - [Dunst](https://github.com/nguyenletientrien/Dotfiles#dunst)
   - [Zathura](https://github.com/nguyenletientrien/Dotfiles#zathura)
   - [Lightdm](https://github.com/nguyenletientrien/Dotfiles#lightdm)
-  - [FZF](https://github.com/nguyenletientrien/Dotfiles#fzf)
   - [Pacman](https://github.com/nguyenletientrien/Dotfiles#pacman)
 - [Tips and Tricks](https://github.com/nguyenletientrien/Dotfiles#tips-and-tricks)
 - [Other](https://github.com/nguyenletientrien/Dotfiles#other)
@@ -384,25 +383,6 @@ user-session=qtile
 ```
 [Greeter]
 background=/usr/share/backgrounds/<picture>
-```
-
-## FZF
-- Add to `.zshrc`:
-```
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
-FD_OPTS="--hidden --follow --exclude .git"
-export FZF_DEFAULT_OPTS="--height 80% \
-                         --layout=reverse \
-                         --border \
-                         --color 'border:#9e40bd' \
-                         --preview 'bat -n --color=always --line-range :500 {}' \
-                         --preview-window='hidden:wrap' \
-                         --bind='f2:toggle-preview'"
-export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTS"
-export FZF_CTRL_T_COMMAND="fd $FD_OPTS"
-export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
 ```
 
 ## sxiv

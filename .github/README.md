@@ -197,9 +197,9 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   - Add this to *.zshrc*:
     ```
     ### source aliasrc, vimode, fzf
-    [ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
-    [ -f $HOME/.config/zsh/vimode ] && source $HOME/.config/zsh/vimode
-    [ -f $HOME/.config/zsh/fzf ] && source $HOME/.config/zsh/fzf
+    [ -f "$HOME"/.config/zsh/aliasrc ] && source "$HOME"/.config/zsh/aliasrc
+    [ -f "$HOME"/.config/zsh/vimode ] && source "$HOME"/.config/zsh/vimode
+    [ -f "$HOME"/.config/zsh/fzf ] && source "$HOME"/.config/zsh/fzf
     ```
 ## Environment variables:
   - Copy ***.profile*** file to your home directory.

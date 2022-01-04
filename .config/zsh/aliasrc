@@ -1,11 +1,11 @@
-# Changing "ls" to "exa"
+### Changing "ls" to "exa"
 alias ll='exa -l --color=always --group-directories-first'
 alias la='exa -al --color=always --group-directories-first'
 alias ls='exa -a --color=always --group-directories-first'
 alias lt='exa -aT --color=always --group-directories-first'
 alias l.='exa -a | egrep "^\."'
 
-# navigation
+### navigation
 up () {
   local d=""
   local limit="$1"
@@ -25,35 +25,32 @@ up () {
   fi
 }
 
-# Confirm before overwriting something
+### Confirm before overwriting something
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Verbose
+### Verbose
 alias mkdir='mkdir -v'
 alias rmdir='rmdir -v'
 
-# Get error messages from journalctl
+### Get error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-# Colorize grep output (good for log files)
+### Colorize grep output (good for log files)
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# nvim, nvim + fzf
-alias vi=nvim
-alias suvi=sudoedit
+### nvim, nvim + fzf
+alias vi='nvim'
+alias suvi='sudoedit'
 alias vf='nvim `fzf`'
 
-# vifm
+### vifm
 alias fm="$HOME/.vifm/scripts/vifmrun"
 
-# Temperature
-alias temp='cat /sys/class/thermal/thermal_zone*/temp'
-
-# Convert to PDF
+### Convert to PDF
 alias doctopdf='libreoffice --headless --convert-to pdf:writer_pdf_Export'
 mdtopdf () {
     fullname=$(basename -- "$1")
@@ -61,15 +58,10 @@ mdtopdf () {
     pandoc "$fullname" -t beamer -o "$filename.pdf"
 }
 
-# Cheat
-cheat () {
-    curl "cheat.sh/$1"
-}
-
-# Terminal rickroll!!!!
+### Terminal rickroll!!!!
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
-# pacman + fzf
+### pacman + fzf
 alias pacQi="pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias pacSi="pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse"
 alias pacS="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S"
@@ -83,7 +75,5 @@ paclsfile () {
     pacman -Qlq $1 | grep -v '/$' | xargs -r du -h | sort -h
 }
 
-# Show aliases
-alias aliases="bat -l bash $HOME/.aliases"
-# Show pacman docs
-alias pacdoc="bat -l bash $HOME/.pacdoc"
+### "bat" as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"

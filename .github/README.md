@@ -17,7 +17,8 @@
   - [i3](https://github.com/nguyenletientrien/Dotfiles#i3)
   - [Qtile](https://github.com/nguyenletientrien/Dotfiles#qtile)
   - [Neovim](https://github.com/nguyenletientrien/Dotfiles#neovim)
-  - [zshrc](https://github.com/nguyenletientrien/Dotfiles#shell)
+  - [ZSH](https://github.com/nguyenletientrien/Dotfiles#zsh)
+  - [Environment variables](https://github.com/nguyenletientrien/Dotfiles#environment-variables)
   - [Vifm](https://github.com/nguyenletientrien/Dotfiles#vifm)
   - [Picom](https://github.com/nguyenletientrien/Dotfiles#picom)
   - [Alacritty](https://github.com/nguyenletientrien/Dotfiles#alacritty)
@@ -189,52 +190,18 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
    > You can use *Tab* and choose adapter.
 4. Done.
 
-## Shell
-- zshrc:
+## ZSH
   - Install oh-my-zsh, zsh-autosuggestion (plugin), zsh-highlighting (plugin).
   - Change theme to `gnzh`
-  - Copy ***.aliases*** file to your home directory.
-  - Copy ***.pacdoc*** file to your home directory.
-  - Add this to *zshrc*:
+  - Copy ***zsh*** folder to ***~/.config/***
+  - Add this to *.zshrc*:
     ```
-    ### Vi-mode
-    bindkey -v
-    export KEYTIMEOUT=1
-
-    ### Use vim keys in tab complete menu:
-    bindkey -M menuselect 'h' vi-backward-char
-    bindkey -M menuselect 'k' vi-up-line-or-history
-    bindkey -M menuselect 'l' vi-forward-char
-    bindkey -M menuselect 'j' vi-down-line-or-history
-    bindkey -v '^?' backward-delete-char
-
-    ### Change cursor shape for different vi modes.
-    function zle-keymap-select () {
-        case $KEYMAP in
-            vicmd) echo -ne '\e[1 q';;      # block
-            viins|main) echo -ne '\e[5 q';; # beam
-        esac
-    }
-    zle -N zle-keymap-select
-    zle-line-init() {
-        zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-        echo -ne "\e[5 q"
-    }
-    zle -N zle-line-init
-    echo -ne '\e[5 q' # Use beam shape cursor on startup.
-    #preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-    
-    ### Edit line in vim with ctrl-e:
-    autoload edit-command-line; zle -N edit-command-line
-    bindkey '^e' edit-command-line
-    
-    ### "bat" as manpager
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-    ### Aliases
-    source "$HOME"/.aliases
+    ### source aliasrc, vimode, fzf
+    [ -f $HOME/.config/zsh/aliasrc ] && source $HOME/.config/zsh/aliasrc
+    [ -f $HOME/.config/zsh/vimode ] && source $HOME/.config/zsh/vimode
+    [ -f $HOME/.config/zsh/fzf ] && source $HOME/.config/zsh/fzf
     ```
-- Environment variables:
+## Environment variables:
   - Copy ***.profile*** file to your home directory.
 
 ## Vifm
@@ -502,30 +469,42 @@ sudo nvim /etc/sudoers
 
 ### Pacman
 > Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
+#### Basic
 - `pacman -Q`                       : list all installed packages.
 - `pacman -Qe`                      : list installed packages by user.
 - `pacman -Qn`                      : list installed packages from official repository.
 - `pacman -Qm`                      : list installed AUR packages.
-
-- `pacman -Qlq` *`<package>`*           : list of installed package contents.
-- `pacman -Flq` <package>           : list of remote package contents.
-
-- `pacman -Qo` <file name>          : search for installed package containing the file.
-- `pacman -F` <file name>           : search for remote package containing the file.
-
-- `pacman -Qi` <package>            : installed package information.
-- `pacman -Si` <package>            : remote package information.
-
-- `pacman -Qs` <string1> <string2>  : search for installed package.
-- `pacman -Ss` <string1> <string2>  : search for packages.
-
+- `pacman -Qlq` *`<package>`*       : list of installed package contents.
+- `pacman -Flq` *`<package>`*           : list of remote package contents.
+- `pacman -Qo` *`<file name>`*      : search for installed package containing the file.
+- `pacman -F` *`<file name>`*       : search for remote package containing the file.
+- `pacman -Qi` *`<package>`*        : installed package information.
+- `pacman -Si` *`<package>`*        : remote package information.
+- `pacman -Qs` *`<string1>`* *`<string2>`*  : search for installed package.
+- `pacman -Ss` *`<string1>`* *`<string2>`*  : search for packages.
 - `pacman -Sc`                      : remove package caches.
 - `pacman -Scc`                     : remove package caches and packages files.
-
 - `pacman -Syu`                     : update.
-
-- `pacman -Rns` <package>           : remove package + dependencies + config file.
-- `pacman -Rcns` <package>          : remove group package + dependencies + config file.
+- `pacman -Rns` *`<package>`*       : remove package + dependencies + config file.
+- `pacman -Rcns` *`<package>`*      : remove group package + dependencies + config file.
+#### Advance
+- To remove unused packages:
+  `pacman -Qtdq | sudo pacman -Rns -`
+- Getting the dependencies list of several packages:
+  - repo:
+    `LC_ALL=C pacman -Si <package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u`
+  - local:
+    `LC_ALL=C pacman -Qi <package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u`
+- Listing files owned by a package with size:
+  `pacman -Qlq <package> | grep -v '/$' | xargs -r du -h | sort -h`
+#### With FZF
+- Search packages with information:
+  `pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'`
+  `pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse`
+- Install:
+  `pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S`
+- Remove:
+  `pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns`
 
 ### Vim Tips
 [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)

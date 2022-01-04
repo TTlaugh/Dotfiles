@@ -86,9 +86,6 @@ inoremap kj <Esc>
 "noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-""" Tab
-nmap <C-n> :tabnext<CR>
-nmap <C-p> :tabprev<CR>
 """ Buffers
 nmap L     :Buffers<CR>
 nmap <C-x> :bdelete<CR>

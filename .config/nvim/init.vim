@@ -90,8 +90,8 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 nmap <C-n> :tabnext<CR>
 nmap <C-p> :tabprev<CR>
 """ Buffers
-nmap L      :Buffers<CR>
-nmap <c-x>  :bdelete<CR>
+nmap L     :Buffers<CR>
+nmap <C-x> :bdelete<CR>
 """ Move between split tab
 nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k

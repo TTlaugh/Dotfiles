@@ -397,14 +397,8 @@ background=/usr/share/backgrounds/<picture>
 
 # Tips and Tricks
 
-### Random color script for terminal
-- Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
-- Usage: add `colorscript random` to your **.zshrc** file.
-
-### Lxappearance
-- Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
-- Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
-- Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
+### Vim Tips
+[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
 
 ### Use script or app as root without password
 > Edit ***/etc/sudoers***
@@ -437,16 +431,6 @@ sudo nvim /etc/sudoers
 - `xset -dpms`
 - `xset s noblank`
 
-# Other
-
-### Fonts
-- Roboto Mono (dunst)
-- sans (Qtile)
-- Ubuntu (Qtile)
-- Fira Code (Kitty)
-- Hack Nerd Font (Alacritty, st, dmenu)
-- Arimo Nerd Font (i3)
-
 ### Pacman
 > Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
 #### Basic
@@ -469,25 +453,59 @@ sudo nvim /etc/sudoers
 - `pacman -Rcns` *`<package>`*      : remove group package + dependencies + config file.
 #### Advance
 - To remove unused packages:
-  `pacman -Qtdq | sudo pacman -Rns -`
+  ```
+  pacman -Qtdq | sudo pacman -Rns -
+  ```
 - Getting the dependencies list of several packages:
-  - repo:
-    `LC_ALL=C pacman -Si <package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u`
-  - local:
-    `LC_ALL=C pacman -Qi <package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u`
+  - Repo:
+    ```
+    LC_ALL=C pacman -Si <...package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+    ```
+  - Local:
+    ```
+    LC_ALL=C pacman -Qi <...package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+    ```
 - Listing files owned by a package with size:
-  `pacman -Qlq <package> | grep -v '/$' | xargs -r du -h | sort -h`
+  ```
+  pacman -Qlq <package> | grep -v '/$' | xargs -r du -h | sort -h
+  ```
 #### With FZF
 - Search packages with information:
-  `pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'`
-  `pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse`
+  - Installed:
+    ```
+    pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
+    ```
+  - Repo:
+    ```
+    pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse
+    ```
 - Install:
-  `pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S`
+  ```
+  pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S
+  ```
 - Remove:
-  `pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns`
+  ```
+  pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns
+  ```
 
-### Vim Tips
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
+# Other
+
+### Fonts
+- Roboto Mono (dunst)
+- sans (Qtile)
+- Ubuntu (Qtile)
+- Fira Code (Kitty)
+- Hack Nerd Font (Alacritty, st, dmenu)
+- Arimo Nerd Font (i3)
+
+### Lxappearance
+- Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
+- Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
+- Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
+
+### Random color script for terminal
+- Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
+- Usage: add `colorscript random` to your **.zshrc** file.
 
 ### My Scripts
 [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)

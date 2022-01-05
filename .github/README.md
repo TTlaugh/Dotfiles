@@ -430,7 +430,7 @@ sudo nvim /etc/sudoers
 
 ### Pacman
 > Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
-#### Basic
+#### Basics
 - `pacman -Q`                       : list all installed packages.
 - `pacman -Qe`                      : list installed packages by user.
 - `pacman -Qn`                      : list installed packages from official repository.

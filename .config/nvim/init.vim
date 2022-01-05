@@ -1,6 +1,17 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General Settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"         .oO    _  _     _      _____   _____ 
+"      .o       | \| |   | |    |_   _| |_   _|
+"     . ______  |    |   | |__    | |     | |  
+"   _()_||__||  |_|\_|   |____|  _|_|_   _|_|_ 
+"  (         |  |     | |     | |     | |     |
+" /-OO----OO-'==`-o-o-'-`-o-o-'-`-o-o-'-`-o-o-'
+"###############################################
+" https://github.com/nguyenletientrien
+
+"+--------------------------+
+"| +----------------------+ |
+"| |   General Settings   | |
+"| +----------------------+ |
+"+--------------------------+
 filetype plugin on
 syntax on
 set encoding=utf-8
@@ -16,7 +27,7 @@ set noswapfile
 set noshowmode
 
 set ignorecase
-set nowrap
+"set nowrap
 
 set smarttab
 set cindent
@@ -35,14 +46,17 @@ set background=dark
 set clipboard=unnamedplus
 set mouse=a
 set list listchars=tab:\|\ 
+
 """ Disable automatic comment in newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 au FileType c,cpp,objc,objcpp,json set noexpandtab
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin List
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"+-------------------------+
+"| +---------------------+ |
+"| |     Plugin List     | |
+"| +---------------------+ |
+"+-------------------------+
 call plug#begin('~/.config/nvim/plugins/bundle')
     """ Code intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -73,19 +87,33 @@ call plug#begin('~/.config/nvim/plugins/bundle')
     Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"+--------------------------+
+"| +----------------------+ |
+"| |       Mappings       | |
+"| +----------------------+ |
+"+--------------------------+
 """ Leader Key
 let mapleader = ","
+
 """ Remap Esc to jk and jk
 inoremap jk <Esc>
 inoremap kj <Esc>
+
 """ j/k will move virtual lines (lines that wrap)
-"noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-"noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+noremap j gj
+noremap k gk
+
+""" Built-in spell-check
+map <F4> :setlocal spell! spelllang=en_us<CR>
+""" Automatically fix the last misspelled word
+nnoremap <leader><F4> :normal! mz1z=`z<CR>
+
+""" Check file in shellcheck
+map <leader>s :!shellcheck -x %<CR>
+
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 """ Move between split tab
 nnoremap <C-j> <c-w>j
 nnoremap <C-k> <c-w>k
@@ -96,17 +124,22 @@ noremap <C-up>    <c-w>-
 noremap <C-down>  <c-w>+
 noremap <C-left>  <c-w><
 noremap <C-right> <c-w>>
+
 """ turn off highlighting
 nmap <leader>, :nohlsearch<CR>
+
 """ FZF
 nmap <leader>f :Files<CR>
 nmap L         :Buffers<CR>
 nmap <C-x>     :bdelete<CR>
+
 """ NerdTree
 nmap <leader>n :NERDTreeToggle<CR>
+
 """ NerdCommenter
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
+
 """ Vimspector
 map <F9>           <Plug>VimspectorToggleBreakpoint
 map <F5>           <Plug>VimspectorContinue
@@ -120,23 +153,25 @@ nmap <leader>dx :VimspectorReset<CR>
 nmap <leader>de :VimspectorEval
 nmap <leader>dw :VimspectorWatch
 nmap <leader>do :VimspectorShowOutput
+
 """ Vim-Cmake
 nmap <leader>gg :CMakeGenerate<CR>
 nmap <leader>bb :CMakeBuild<CR>
 nmap <leader>cx :CMakeClose<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin Configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"+----------------------------+
+"| +------------------------+ |
+"| |  Plugin Configuration  | |
+"| +------------------------+ |
+"+----------------------------+
 """ Themes
 colorscheme dracula
 "colorscheme onedark
 
-""" Coc Extension
+""" Coc Extensions
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-spell-checker',
   \ 'coc-highlight',
   \ 'coc-json'
   \ ]
@@ -191,9 +226,11 @@ let g:cmake_link_compile_commands = 1
 """ FZF
 let g:fzf_layout = { 'down': '40%' }
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => CoC Configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"+-------------------------+
+"| +---------------------+ |
+"| |  CoC Configuration  | |
+"| +---------------------+ |
+"+-------------------------+
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")

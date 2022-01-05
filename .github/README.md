@@ -93,16 +93,16 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
 
 ### AUR Packages
 > To install AUR packages: `makepkg -si`
-- [yay](https://aur.archlinux.org/packages/yay/)
-- [all-repository-fonts](https://aur.archlinux.org/packages/all-repository-fonts/)
-- [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete/)
+- [yay](https://aur.archlinux.org/packages/yay)
+- [all-repository-fonts](https://aur.archlinux.org/packages/all-repository-fonts)
+- [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete)
 
 ### Suckless
 > - To install Suckless softwares: `sudo make clean install`
 > - To patch: `patch -p1 < your_patch_file`
-- [dmenu](https://tools.suckless.org/dmenu/)
-- [st](https://st.suckless.org/)
-  - Patches: [font2](https://st.suckless.org/patches/font2/), [dracula](https://st.suckless.org/patches/dracula/), [alpha](https://st.suckless.org/patches/alpha/), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color/), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback/).
+- [dmenu](https://tools.suckless.org/dmenu)
+- [st](https://st.suckless.org)
+  - Patches: [font2](https://st.suckless.org/patches/font2), [dracula](https://st.suckless.org/patches/dracula), [alpha](https://st.suckless.org/patches/alpha), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback).
 
 ### Optional
 
@@ -127,10 +127,10 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
 - lolcat
 - speedtest-cli
 - volumeicon
-- shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin/))
-- volnoti ([AUR](https://aur.archlinux.org/packages/volnoti/))
-- ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts/))
-- teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer/))
+- shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))
+- volnoti ([AUR](https://aur.archlinux.org/packages/volnoti))
+- ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts))
+- teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
    > Note: If you use startx, you won't be able to open teamviewer
 - Powerline Fonts: [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
 
@@ -167,11 +167,8 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - nodejs *lastest version*
 - npm
 - npm *provider*: `sudo npm install -g neovim`
-- python , python-pip , python2 , python2-pip
-  > If you can't find the ***python2-pip*** package, download the install script and run it:
-  ```
-  wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && sudo python2 get-pip.py
-  ```
+- python, python-pip, python2, python2-pip.
+  > If you can't find the ***python2-pip*** package, see this [documentation](https://pip.pypa.io/en/latest/installation/).
 - pynvim:
     ```
     python2 -m pip install --user --upgrade pynvim 
@@ -190,7 +187,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 4. Done.
 
 ## ZSH
-  - Install oh-my-zsh, zsh-autosuggestion (plugin), zsh-highlighting (plugin).
+  - Install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh), [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) (plugin), [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md) (plugin).
   - Change theme to `gnzh`
   - Copy ***zsh*** folder to ***~/.config/***
   - Add this to *.zshrc*:
@@ -504,7 +501,7 @@ sudo nvim /etc/sudoers
 - Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
 
 ### Random color script for terminal
-- Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts/) (AUR)
+- Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)
 - Usage: add `colorscript random` to your **.zshrc** file.
 
 ### My Scripts

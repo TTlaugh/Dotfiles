@@ -32,3 +32,24 @@ ci"
 ...
 ```
 > See `:h text-objects`
+## Find and edit
+- Text:
+```
+test <!-- line 1 -->
+test <!-- line 2 -->
+test <!-- line 3 -->
+test <!-- line 4 -->
+test <!-- line 5 -->
+```
+- Example 1:
+```
+:g/<!-- [A-Z]\|[0-9]/norm $da<0P
+```
+  - Result:
+    ```
+    <!-- line 1 -->test 
+    <!-- line 2 -->test 
+    <!-- line 3 -->test 
+    <!-- line 4 -->test 
+    <!-- line 5 -->test 
+    ```

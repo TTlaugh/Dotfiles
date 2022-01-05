@@ -257,18 +257,19 @@ def init_widgets_list():
                 format='%A, %b %d - %H:%M',
                 foreground = "#bd93f9"
                 ),
-        widget.WidgetBox(
-                close_button_location = 'right',
-                text_open = '',
-                text_closed = '',
-                foreground = "#44475a",
-                widgets=[
-                    widget.Wlan(
-                        interface = 'wlp0s20f0u7',
-                        format = '({essid})'
-                        )
-                    ]
-                ),
+        # widget.WidgetBox(
+                # close_button_location = 'right',
+                # text_open = '',
+                # text_closed = '',
+                # foreground = "#44475a",
+                # widgets=[
+                    # widget.Wlan(
+                        # interface = 'wlp0s20f0u7',
+                        # format = 'Wifi: {essid}',
+                        # foreground = "#dbdbdb"
+                        # )
+                    # ]
+                # ),
         widget.Systray(),
     ]
     return widgets_list

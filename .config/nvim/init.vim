@@ -105,7 +105,7 @@ noremap k gk
 
 """ Built-in spell-check
 map <F4> :setlocal spell! spelllang=en_us<CR>
-""" Automatically fix the last misspelled word
+""" Automatically fix misspelled word with the first suggestion
 nnoremap <leader><F4> :normal! mz1z=`z<CR>
 
 """ Check file in shellcheck

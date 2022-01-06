@@ -187,22 +187,25 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 4. Done.
 
 ## ZSH
-  - Install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh), [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md) (plugin), [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md) (plugin).
-  - Change theme to `gnzh`
-  - Copy ***zsh*** folder to ***~/.config/***
-  - Add this to *.zshrc*:
-    ```
-    ### source aliases, vimode, fzf
-    [ -f "$HOME"/.config/zsh/zsh-aliases ] && source "$HOME"/.config/zsh/zsh-aliases
-    [ -f "$HOME"/.config/zsh/zsh-vimode ] && source "$HOME"/.config/zsh/zsh-vimode
-    [ -f "$HOME"/.config/zsh/zsh-fzf ] && source "$HOME"/.config/zsh/zsh-fzf
-    ```
+- Copy ***zsh*** folder to ***~/.config/***
+- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins***
+  ```
+  cd ~/.config/zsh/plugins
+  ```
+  ```
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git
+  ```
+  ```
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+  ```
+  > Inside the ***zsh/plugins*** folder already included *zsh-autosuggestion* and *zsh-syntax-highlighting* you can use `git pull` inside these repositories to update to latest version.
+- Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
 ## Environment variables:
   - Copy ***.profile*** file to your home directory.
 
 ## Vifm
 ##### General
-- Copy ***dracula.vifm*** to ***~/.vifm/colors/***
+- Copy [dracula.vifm](https://github.com/vifm/vifm-colors) to ***~/.vifm/colors/***
 - Copy ***vifmrun*** and ***vifmimg*** to ***~/.vifm/scripts/***
 > NOTE: you must execute **vifmrun** script to use vifm with ueberzug support.
 ##### Config in vifmrc

@@ -54,5 +54,6 @@ test <!-- line 5 -->
     <!-- line 5 -->test 
     ```
 ## Macros
+> See `:h recording`
 - `q` *`any key`* : start recording.
 - `@` *`key you used to start recording`* : start macro.

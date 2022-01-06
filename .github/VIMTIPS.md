@@ -53,3 +53,6 @@ test <!-- line 5 -->
     <!-- line 4 -->test 
     <!-- line 5 -->test 
     ```
+## Macros
+- `q` *`any key`* : start recording.
+- `@` *`key you used to start recording`* : start macro.

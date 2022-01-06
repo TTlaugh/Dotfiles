@@ -188,7 +188,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 
 ## ZSH
 - Copy ***zsh*** folder to ***~/.config/***
-- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins***
+- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
   ```
   cd ~/.config/zsh/plugins
   ```

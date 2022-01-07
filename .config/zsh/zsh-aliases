@@ -74,6 +74,3 @@ paclsdep () {
 paclsfile () {
     pacman -Qlq $1 | grep -v '/$' | xargs -r du -h | sort -h
 }
-
-### "bat" as manpager
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"

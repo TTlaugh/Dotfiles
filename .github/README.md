@@ -158,7 +158,6 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 ## Qtile
 - Copy ***qtile*** folder to ***~/.config/***
 - Set background with feh: `feh --bg-scale /path/to/picture`
-> You can use Super+Shift+b to see all key bindings.
 
 ## Neovim
 ##### Installation
@@ -169,6 +168,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - npm *provider*: `sudo npm install -g neovim`
 - python, python-pip, python2, python2-pip.
   > If you can't find the ***python2-pip*** package, see this [documentation](https://pip.pypa.io/en/latest/installation/).
+  >> Remember to replace `python` with `python2` to install pip2.
 - pynvim:
     ```
     python2 -m pip install --user --upgrade pynvim 
@@ -459,11 +459,11 @@ sudo nvim /etc/sudoers
 - Getting the dependencies list of several packages:
   - Repo:
     ```
-    LC_ALL=C pacman -Si <...package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+    LC_ALL=C pacman -Si <package> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
     ```
   - Local:
     ```
-    LC_ALL=C pacman -Qi <...package...> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+    LC_ALL=C pacman -Qi <package> | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
     ```
 - Listing files owned by a package with size:
   ```

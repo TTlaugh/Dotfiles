@@ -1,6 +1,8 @@
 ### Enable colors and change prompt
 autoload -U colors && colors    # Load colors
+
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
 setopt autocd       # Automatically cd into typed directory.
 stty stop undef     # Disable ctrl-s to freeze terminal.
 setopt interactive_comments
@@ -24,12 +26,17 @@ zstyle ':completion:*' matcher-list \
     '+l:|=*'
 
 ### source aliases, vimode, fzf, plugins
-[ -f "$HOME"/.config/zsh/zsh-aliases ] && source "$HOME"/.config/zsh/zsh-aliases
-[ -f "$HOME"/.config/zsh/zsh-vimode ] && source "$HOME"/.config/zsh/zsh-vimode
-[ -f "$HOME"/.config/zsh/zsh-fzf ] && source "$HOME"/.config/zsh/zsh-fzf
-[ -d "$HOME"/.config/zsh/plugins/zsh-autosuggestions ] && source "$HOME"/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -d "$HOME"/.config/zsh/plugins/zsh-syntax-highlighting ] && source "$HOME"/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f "$ZDOTDIR/zsh-aliases" ] && source "$ZDOTDIR"/zsh-aliases
+[ -f "$ZDOTDIR/zsh-vimode" ] && source "$ZDOTDIR"/zsh-vimode
+[ -f "$ZDOTDIR/zsh-fzf" ] && source "$ZDOTDIR"/zsh-fzf
+[ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR"/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] && source "$ZDOTDIR"/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+### Edit line in vim with ctrl-e
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+### Random color script
 colorscript random
 
 ### starship prompt

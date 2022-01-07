@@ -31,8 +31,6 @@ keys = [
     # Key([mod], "Return",    lazy.spawn(myterm)),
     Key([mod], "Return",                lazy.spawn(terminal)),
     Key([mod], "o",                     lazy.spawn("dmenu_run")),
-# Show all keybindings
-    Key([mod, "shift"], "b",            lazy.spawn(terminal+" -e sh -c '$HOME/.config/qtile/kb.py | less'")),
 # Launch my browser
     Key([mod, "shift"], "Return",       lazy.spawn(mybrowser)),
 # Switch to next/previous layout

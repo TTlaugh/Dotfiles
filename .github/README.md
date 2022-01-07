@@ -186,6 +186,9 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
    > You can use *Tab* and choose adapter.
 4. Done.
 
+## Environment variables:
+  - Copy ***.profile*** file to your home directory.
+
 ## ZSH
 - Copy ***zsh*** folder to ***~/.config/***
 - To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
@@ -200,8 +203,6 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   ```
   > Inside the ***zsh/plugins*** folder already included *zsh-autosuggestion* and *zsh-syntax-highlighting* you can use `git pull` inside these repositories to update to latest version.
 - Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
-## Environment variables:
-  - Copy ***.profile*** file to your home directory.
 
 ## Vifm
 ##### General

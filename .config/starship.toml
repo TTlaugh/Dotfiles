@@ -19,7 +19,7 @@ right_format = """$status"""
 
 [username]
 show_always = true
-format = "[$user](purple)[@](white)"
+format = "[$user](purple)[@](white bold)"
 
 [hostname]
 ssh_only = false

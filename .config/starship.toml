@@ -10,7 +10,6 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-$hg_branch\
 $line_break\
 $shell\
 $sudo\
@@ -20,15 +19,22 @@ right_format = """$status"""
 
 [username]
 show_always = true
-format = "[$user](green)[@](cyan)"
+format = "[$user](purple)[@](white)"
 
 [hostname]
 ssh_only = false
-format = "[$hostname](green) "
+format = "[$hostname](purple) "
 
 [directory]
 truncation_length = 0
-style = "purple bold"
+truncate_to_repo = false
+format = '([\[](cyan) [$path]($style)[$read_only]($read_only_style)[\]](cyan) )'
+read_only = " "
+style = "blue bold"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "yellow bold"
 
 [sudo]
 disabled = false

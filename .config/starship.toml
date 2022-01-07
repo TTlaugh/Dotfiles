@@ -32,7 +32,7 @@ style = "purple bold"
 
 [sudo]
 disabled = false
-format = "[S](red bold)"
+format = "[S](yellow bold)"
 
 [shell]
 disabled = false

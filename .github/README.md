@@ -214,13 +214,18 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 - Line 62: change theme to "**dracula**" (`colorscheme dracula`).
 - Line 132: change "**vim**" to "**nvim**" (`command! diff nvim -d %f %F`).
 - Search for `gvim` and comment or delete these lines.
-- Mappings:
-  - `nmap af za` : use **af** instead of **za** to toggle show dot file/folder.
-  - `nmap <C-x> :q<CR>` : same as vim's configuration.
-  - `map <c-j> 5j` : ctrl+j to move down 5 lines.
-  - `map <c-k> 5k` : ctrl+k to move up 5 lines.
-  - `set number`
-  - `set relativenumber`
+- General config:
+  ```
+  only
+  set number
+  set relativenumber
+  map af za
+  map <c-j> 5j
+  map <c-k> 5k
+  map <space>f /
+  map f<space> /
+  map q :q<CR>
+  ```
 - Sxiv:
   ```
   command sxiv sxiv -ft .

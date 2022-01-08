@@ -67,7 +67,7 @@ bindsym $mod+slash exec --no-startup-id dmwebsearch
 bindsym $mod+b exec --no-startup-id dmsetbg
 
 # dmwifi
-bindsym $mod+mod1+w exec --no-startup-id dmwifi
+bindsym $mod+Shift+w exec --no-startup-id dmwifi
 
 # dmkill
 bindsym $mod+Escape exec --no-startup-id dmkill

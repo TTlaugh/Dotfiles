@@ -113,15 +113,15 @@
         
     # resize window
         # (you can also use the mouse)
-        bindsym $mod+Control+Shift+h                resize shrink width 10 px or 10 ppt
-        bindsym $mod+Control+Shift+j                resize grow height 10 px or 10 ppt
-        bindsym $mod+Control+Shift+k                resize shrink height 10 px or 10 ppt
-        bindsym $mod+Control+Shift+l                resize grow width 10 px or 10 ppt
+        bindsym $mod+Control+h                      resize shrink width 10 px or 10 ppt
+        bindsym $mod+Control+j                      resize grow height 10 px or 10 ppt
+        bindsym $mod+Control+k                      resize shrink height 10 px or 10 ppt
+        bindsym $mod+Control+l                      resize grow width 10 px or 10 ppt
         ### alternatively, use arrow keys:
-        bindsym $mod+Control+Shift+Left             resize shrink width 10 px or 10 ppt
-        bindsym $mod+Control+Shift+Down             resize grow height 10 px or 10 ppt
-        bindsym $mod+Control+Shift+Up               resize shrink height 10 px or 10 ppt
-        bindsym $mod+Control+Shift+Right            resize grow width 10 px or 10 ppt
+        bindsym $mod+Control+Left                   resize shrink width 10 px or 10 ppt
+        bindsym $mod+Control+Down                   resize grow height 10 px or 10 ppt
+        bindsym $mod+Control+Up                     resize shrink height 10 px or 10 ppt
+        bindsym $mod+Control+Right                  resize grow width 10 px or 10 ppt
         
     # Applications
         # start a terminal

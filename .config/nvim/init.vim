@@ -114,10 +114,10 @@ nnoremap <C-k> <c-w>k
 nnoremap <C-h> <c-w>h
 nnoremap <C-l> <c-w>l
 """ Change size split tab
-noremap <C-up>    <c-w>-
-noremap <C-down>  <c-w>+
-noremap <C-left>  <c-w><
-noremap <C-right> <c-w>>
+noremap <C-up>    <c-w>+
+noremap <C-down>  <c-w>-
+noremap <C-left>  <c-w>>
+noremap <C-right> <c-w><
 
 """ turn off highlighting
 nmap <leader>, :nohlsearch<CR>

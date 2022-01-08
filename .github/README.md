@@ -191,7 +191,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 
 ## ZSH
 - Copy ***zsh*** folder to ***~/.config/***
-- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
+- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
   ```
   cd ~/.config/zsh/plugins
   ```
@@ -203,6 +203,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   ```
   > Inside the ***zsh/plugins*** folder already included *zsh-autosuggestion* and *zsh-syntax-highlighting* you can use `git pull` inside these repositories to update to latest version.
 - Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
+  > Starship is available on the official repository.
 
 ## Vifm
 ##### General

@@ -17,9 +17,9 @@ $character"""
 
 right_format = """$status"""
 
-#####################
-#   Normal format   #
-#####################
+##############
+#   Normal   #
+##############
 [username]
 show_always = true
 format = "[$user](purple)[@](white bold)"
@@ -51,22 +51,22 @@ format = "[$indicator](cyan bold) "
 disabled = false
 format = "[$status ↵](red)"
 
-########################
-#   Powerline format   #
-########################
+#################
+#   Powerline   #
+#################
 #[username]
 #show_always = true
-#format = "[](black)[ ](cyan bg:black)[](black bg:blue)[$user](black bg:blue)[@](green bold bg:blue)"
+#format = "[](black)[ ](cyan bg:black)[](black bold bg:black)[ $user](purple bold bg:black)[@](green bold bg:black)"
 
 #[hostname]
 #ssh_only = false
-#format = "[$hostname](black bg:blue)[](blue bg:purple)"
+#format = "[$hostname ](yellow bold bg:black)[](black bold bg:black)"
 
 #[directory]
 #truncation_length = 0
 #truncate_to_repo = false
-#format = "[$path]($style)[$read_only]($read_only_style)[](purple) "
-#style = "white bold bg:purple"
+#format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[](black)[](cyan)[](purple)[](green) "
+#style = "blue bold bg:black"
 #read_only = "  "
 #read_only_style = "red bg:black"
 

@@ -17,6 +17,9 @@ $character"""
 
 right_format = """$status"""
 
+#####################
+#   Normal format   #
+#####################
 [username]
 show_always = true
 format = "[$user](purple)[@](white bold)"
@@ -47,3 +50,38 @@ format = "[$indicator](cyan bold) "
 [status]
 disabled = false
 format = "[$status ↵](red)"
+
+########################
+#   Powerline format   #
+########################
+#[username]
+#show_always = true
+#format = "[](black)[ ](cyan bg:black)[](black bg:blue)[$user](black bg:blue)[@](green bold bg:blue)"
+
+#[hostname]
+#ssh_only = false
+#format = "[$hostname](black bg:blue)[](blue bg:purple)"
+
+#[directory]
+#truncation_length = 0
+#truncate_to_repo = false
+#format = "[$path]($style)[$read_only]($read_only_style)[](purple) "
+#style = "white bold bg:purple"
+#read_only = "  "
+#read_only_style = "red bg:black"
+
+#[git_branch]
+#format = "[$symbol$branch]($style) "
+#style = "yellow bold"
+
+#[sudo]
+#disabled = false
+#format = "[S](yellow bold)"
+
+##[shell]
+##disabled = false
+##format = "[$indicator](cyan bold) "
+
+#[status]
+#disabled = false
+#format = "[$status ↵](red)"

@@ -46,4 +46,4 @@ format = "[$indicator](cyan bold) "
 
 [status]
 disabled = false
-format = "[$status](red) [↵](red)"
+format = "[$status ↵](red)"

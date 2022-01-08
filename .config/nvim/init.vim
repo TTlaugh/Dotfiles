@@ -32,6 +32,9 @@ set cursorline
 set scrolloff=5
 set sidescrolloff=5
 
+set splitright
+set splitbelow
+
 set termguicolors
 set background=dark
 set clipboard=unnamedplus

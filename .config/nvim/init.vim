@@ -108,19 +108,32 @@ map <leader>s :!shellcheck -x %<CR>
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-""" Move between split tab
-nnoremap <C-j> <c-w>j
-nnoremap <C-k> <c-w>k
-nnoremap <C-h> <c-w>h
-nnoremap <C-l> <c-w>l
+""" Use ,<Esc> to exit terminal-mode
+tnoremap <leader><Esc> <C-\><C-n>
+""" Use ALT+{h,j,k,l} to navigate windows from any mode
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 """ Resize split tab
-noremap <C-up>    <c-w>+
-noremap <C-down>  <c-w>-
-noremap <C-left>  <c-w>>
-noremap <C-right> <c-w><
+noremap <C-k> <c-w>+
+noremap <C-j> <c-w>-
+noremap <C-h> <c-w>>
+noremap <C-l> <c-w><
 """ Toggle horiz/vert
 map <leader>th <C-w>t<C-w>H
 map <leader>tk <C-w>t<C-w>K
+
+""" Open terminal in vertically split tab
+map <leader>tt :vnew term://bash<CR>
 
 """ turn off highlighting
 nmap <leader>, :nohlsearch<CR>

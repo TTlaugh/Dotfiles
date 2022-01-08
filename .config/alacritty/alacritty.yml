@@ -111,7 +111,6 @@ key_bindings:
   - { key: J,      mods: Control|Shift,       action: ScrollLineDown     }
   - { key: H,      mods: Control|Shift,       action: ScrollHalfPageUp   }
   - { key: L,      mods: Control|Shift,       action: ScrollHalfPageDown }
-  - { key: N,      mods: Control|Shift,       action: SpawnNewInstance   }
 
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }

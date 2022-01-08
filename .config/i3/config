@@ -3,7 +3,6 @@
 # General
         # Mod key
         set $mod Mod4
-        set $mod1 Mod1
         # Font for window titles.
         font pango:Arimo Nerd Font 10
         # Turn off border
@@ -109,20 +108,20 @@
         # focus child
         bindsym $mod+d                              focus child
         # scratchpad
-        bindsym $mod1+s                             move scratchpad
-        bindsym $mod1+Shift+s                       scratchpad show
+        bindsym $mod+Shift+s                        move scratchpad
+        bindsym $mod+Shift+d                        scratchpad show
         
     # resize window
         # (you can also use the mouse)
-        bindsym $mod1+Shift+h                       resize shrink width 10 px or 10 ppt
-        bindsym $mod1+Shift+j                       resize grow height 10 px or 10 ppt
-        bindsym $mod1+Shift+k                       resize shrink height 10 px or 10 ppt
-        bindsym $mod1+Shift+l                       resize grow width 10 px or 10 ppt
+        bindsym $mod+Control+Shift+h                resize shrink width 10 px or 10 ppt
+        bindsym $mod+Control+Shift+j                resize grow height 10 px or 10 ppt
+        bindsym $mod+Control+Shift+k                resize shrink height 10 px or 10 ppt
+        bindsym $mod+Control+Shift+l                resize grow width 10 px or 10 ppt
         ### alternatively, use arrow keys:
-        bindsym $mod1+Shift+Left                    resize shrink width 10 px or 10 ppt
-        bindsym $mod1+Shift+Down                    resize grow height 10 px or 10 ppt
-        bindsym $mod1+Shift+Up                      resize shrink height 10 px or 10 ppt
-        bindsym $mod1+Shift+Right                   resize grow width 10 px or 10 ppt
+        bindsym $mod+Control+Shift+Left             resize shrink width 10 px or 10 ppt
+        bindsym $mod+Control+Shift+Down             resize grow height 10 px or 10 ppt
+        bindsym $mod+Control+Shift+Up               resize shrink height 10 px or 10 ppt
+        bindsym $mod+Control+Shift+Right            resize grow width 10 px or 10 ppt
         
     # Applications
         # start a terminal
@@ -132,7 +131,7 @@
         #bindsym $mod+Return                         exec --no-startup-id st
 
         # start dmenu
-        bindsym $mod1+f                             exec --no-startup-id dmenu_run
+        bindsym $mod+p                             exec --no-startup-id dmenu_run
 
         # open chromium
         bindsym $mod+shift+Return                   exec chromium

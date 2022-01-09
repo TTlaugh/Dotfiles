@@ -176,7 +176,7 @@ layouts = [
 #----- Widgets -----#
 #####################
 widget_defaults = dict(
-    font='sans',
+    font='Ubuntu bold',
     fontsize=12,
     padding=4,
     background="#282c34"
@@ -190,8 +190,8 @@ def init_widgets_list():
                 scale = 0.7,
                 padding = 0
                 ),
-        # widget.CurrentLayout(),
         widget.GroupBox(
+                font = "sans",
                 disable_drag = True,
                 borderwidth = 2,
                 active = "#ffffff",
@@ -202,7 +202,9 @@ def init_widgets_list():
                 other_current_screen_border = "#e193f9",
                 other_screen_border = "#434758"
                 ),
+        # widget.CurrentLayout(),
         widget.Prompt(
+                font = "sans",
                 prompt = 'Run: ',
                 foreground = "#50fa7b"
                 ),
@@ -211,6 +213,7 @@ def init_widgets_list():
                 padding = 40
                 ),
         widget.WindowName(
+                font = "sans",
                 foreground = "#6272a4"
                 ),
         widget.Sep(
@@ -238,7 +241,7 @@ def init_widgets_list():
                 foreground = "#ffb86c"
                 ),
         widget.TextBox(
-                text = " vol:",
+                text = " Vol:",
                 foreground = "#8be9fd",
                 padding = 0
                 ),
@@ -256,15 +259,17 @@ def init_widgets_list():
                 foreground = "#bd93f9"
                 ),
         # widget.WidgetBox(
-                # close_button_location = 'right',
+                # font = "sans",
                 # text_open = '',
                 # text_closed = '',
+                # close_button_location = 'right',
                 # foreground = "#44475a",
                 # widgets=[
                     # widget.Wlan(
+                        # font = "sans",
                         # interface = 'wlp0s20f0u7',
                         # format = 'Wifi: {essid}',
-                        # foreground = "#dbdbdb"
+                        # foreground = "#58e86e"
                         # )
                     # ]
                 # ),

@@ -133,7 +133,7 @@ map <leader>th <C-w>t<C-w>H
 map <leader>tk <C-w>t<C-w>K
 
 """ Open terminal in vertically split tab
-map <leader>tt :vnew term://bash<CR>
+map <leader>tt :vnew term://zsh<CR>
 
 """ turn off highlighting
 nmap <leader>, :nohlsearch<CR>

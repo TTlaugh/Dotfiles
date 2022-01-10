@@ -233,7 +233,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
     highlight User2 ctermfg=yellow
     highlight User3 ctermfg=red
     highlight User4 ctermfg=green
-    highlight User5 ctermfg=pink
+    highlight User5 ctermfg=magenta
     set statusline="%1*%z%=    %2*%A %3*%10u:%-7g %4*%10s %5*%20d"
     ```
   - Add my git branch script:
@@ -243,7 +243,7 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
     highlight User3 ctermfg=yellow
     highlight User4 ctermfg=red
     highlight User5 ctermfg=green
-    highlight User6 ctermfg=pink
+    highlight User6 ctermfg=magenta
     set statusline="%1*%2*%{extcached('gitbranch', expand('%d'), 'gitbranch ' . expand('%d'))}%1*%*%=%3*%A %4*%10u:%-7g %5*%10s %6*%20d"
     ```
 - Sxiv:

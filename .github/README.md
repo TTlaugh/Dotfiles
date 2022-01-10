@@ -207,8 +207,8 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
 ## Vifm
 ##### General
 - Copy [dracula.vifm](https://github.com/vifm/vifm-colors) to ***~/.vifm/colors/***
-- Copy ***vifmrun*** and ***vifmimg*** to ***~/.vifm/scripts/***
-> NOTE: you must execute **vifmrun** script to use vifm with ueberzug support.
+- Copy  ***gitbranch***, ***vifmrun*** and ***vifmimg*** to ***~/.vifm/scripts/***
+  > NOTE: you must execute **vifmrun** script to use vifm with ueberzug support.
 ##### Config in vifmrc
 - Line 14: change "**vim**" to "**nvim**" (`set vicmd=nvim`).
 - Line 62: change theme to "**dracula**" (`colorscheme dracula`).
@@ -226,15 +226,26 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   map f<space> /
   map q :q<CR>
   ```
-- status line:
-  ```
-  highlight User1 ctermfg=cyan
-  highlight User2 ctermfg=yellow
-  highlight User3 ctermfg=red
-  highlight User4 ctermfg=green
-  highlight User5 ctermfg=pink
-  set statusline="%1*%z%=    %2*%A %3*%10u:%-7g %4*%10s %5*%20d"
-  ```
+- status line
+  - Default format with add more colors:
+    ```
+    highlight User1 ctermfg=cyan
+    highlight User2 ctermfg=yellow
+    highlight User3 ctermfg=red
+    highlight User4 ctermfg=green
+    highlight User5 ctermfg=pink
+    set statusline="%1*%z%=    %2*%A %3*%10u:%-7g %4*%10s %5*%20d"
+    ```
+  - Add my git branch script:
+    ```
+    highlight User1 ctermfg=yellow
+    highlight User2 ctermbg=yellow ctermfg=black
+    highlight User3 ctermfg=yellow
+    highlight User4 ctermfg=red
+    highlight User5 ctermfg=green
+    highlight User6 ctermfg=pink
+    set statusline="%1*%2*%{extcached('gitbranch', expand('%d'), 'gitbranch ' . expand('%d'))}%1*%*%=%3*%A %4*%10u:%-7g %5*%10s %6*%20d"
+    ```
 - Sxiv:
   ```
   command sxiv sxiv -ft .

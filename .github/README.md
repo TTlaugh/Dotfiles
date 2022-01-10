@@ -238,8 +238,8 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
     ```
   - Add my git branch script:
     ```
-    highlight User1 ctermfg=yellow
-    highlight User2 ctermbg=yellow ctermfg=black
+    highlight User1 ctermfg=cyan
+    highlight User2 ctermbg=cyan ctermfg=black
     highlight User3 ctermfg=yellow
     highlight User4 ctermfg=red
     highlight User5 ctermfg=green

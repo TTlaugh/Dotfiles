@@ -201,7 +201,6 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   ```
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
   ```
-  > Inside the ***zsh/plugins*** folder already included *zsh-autosuggestion* and *zsh-syntax-highlighting* you can use `git pull` inside these repositories to update to latest version.
 - Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
   > Starship is available on the official repository.
 
@@ -226,6 +225,15 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
   map <space>f /
   map f<space> /
   map q :q<CR>
+  ```
+- status line:
+  ```
+  highlight User1 ctermfg=cyan
+  highlight User2 ctermfg=yellow
+  highlight User3 ctermfg=red
+  highlight User4 ctermfg=green
+  highlight User5 ctermfg=pink
+  set statusline="%1*%z%=    %2*%A %3*%10u:%-7g %4*%10s %5*%20d"
   ```
 - Sxiv:
   ```

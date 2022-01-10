@@ -52,6 +52,8 @@ au FileType c,cpp,objc,objcpp,json set noexpandtab
 "| +---------------------+ |
 "+-------------------------+
 call plug#begin('~/.config/nvim/plugins/bundle')
+    """ Startify
+    "Plug 'mhinz/vim-startify'
     """ Code intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'preservim/nerdcommenter'
@@ -174,6 +176,39 @@ nmap <leader>cx :CMakeClose<CR>
 "| |  Plugin Configuration  | |
 "| +------------------------+ |
 "+----------------------------+
+""" Startify
+"let g:startify_session_dir = '~/.config/nvim/session'
+"let g:startify_session_persistence = 1
+"let g:startify_custom_header =
+    "\ startify#center([
+    "\'╔╗╔╔═╗╔═╗╦  ╦╦╔╦╗',
+    "\'║║║║╣ ║ ║╚╗╔╝║║║║',
+    "\'╝╚╝╚═╝╚═╝ ╚╝ ╩╩ ╩',
+    "\])
+"let g:startify_lists = [
+    "\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+    "\ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
+    "\ { 'type': 'files',     'header': ['   Recent files']   },
+    "\ { 'type': 'sessions',  'header': ['   Sessions']       },
+    "\ { 'type': 'commands',  'header': ['   Commands']       },
+    "\ ]
+"""" Customize your bookmarks by a variable below
+"let g:startify_bookmarks = [
+    "\ { 'z': '~/.config/zsh/.zshrc' },
+    "\ { 'w': '~/.config/qtile/config.py' },
+    "\ { 'n': '~/.config/nvim/' },
+    "\ { 'd': '~/Documents/' },
+    "\ { 'm': '~/MyGitHub/' },
+    "\ { '*': '~/tmp/' },
+    "\ ]
+"let g:startify_commands = [
+    "\ {'h': ':checkhealth'},
+    "\ {'pu': ':PlugUpdate'},
+    "\ {'pd': ':PlugUpgrade'},
+    "\ {'cu': ':CocUpdate'},
+    "\ {'vu': ':VimspectorUpdate'},
+    "\ ]
+
 """ Themes
 colorscheme dracula
 "colorscheme onedark

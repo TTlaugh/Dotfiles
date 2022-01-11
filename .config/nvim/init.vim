@@ -83,94 +83,6 @@ call plug#begin('~/.config/nvim/plugins/bundle')
     Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-"+--------------------------+
-"| +----------------------+ |
-"| |       Mappings       | |
-"| +----------------------+ |
-"+--------------------------+
-""" Leader Key
-let mapleader = ","
-
-""" Remap Esc to jk and jk
-inoremap jk <Esc>
-inoremap kj <Esc>
-
-""" j/k will move virtual lines (lines that wrap)
-noremap j gj
-noremap k gk
-
-""" Built-in spell-check
-map <F4> :setlocal spell! spelllang=en_us<CR>
-""" Automatically fix misspelled word with the first suggestion
-nnoremap <leader><F4> :normal! mz1z=`z<CR>
-
-""" Check file in shellcheck
-map <leader>s :!shellcheck -x %<CR>
-
-""" Switch to V-mode and Ctrl-r to replace with new word
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
-
-""" Use ,<Esc> to exit terminal-mode
-tnoremap <leader><Esc> <C-\><C-n>
-""" Use ALT+{h,j,k,l} to navigate windows from any mode
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-""" Resize split tab
-noremap <C-k> <c-w>+
-noremap <C-j> <c-w>-
-noremap <C-h> <c-w>>
-noremap <C-l> <c-w><
-""" Toggle horiz/vert
-map <leader>th <C-w>t<C-w>H
-map <leader>tk <C-w>t<C-w>K
-
-""" Open terminal in vertically split tab
-map <leader>tt :vnew term://zsh<CR>
-
-""" turn off highlighting
-nmap <leader>, :nohlsearch<CR>
-
-""" FZF
-nmap <leader>f :Files<CR>
-nmap L         :Buffers<CR>
-nmap <C-x>     :bdelete<CR>
-
-""" NerdTree
-nmap <leader>n :NERDTreeToggle<CR>
-
-""" NerdCommenter
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
-
-""" Vimspector
-map <F9>           <Plug>VimspectorToggleBreakpoint
-map <F5>           <Plug>VimspectorContinue
-map <leader><F5>   <Plug>VimspectorRestart
-map <F6>           <Plug>VimspectorStepOver
-map <F7>           <Plug>VimspectorStepInto
-map <leader><F7>   <Plug>VimspectorStepOut
-map <F8>           <Plug>VimspectorPause
-map <leader><F8>   <Plug>VimspectorStop
-nmap <leader>dx :VimspectorReset<CR>
-nmap <leader>de :VimspectorEval
-nmap <leader>dw :VimspectorWatch
-nmap <leader>do :VimspectorShowOutput
-
-""" Vim-Cmake
-nmap <leader>gg :CMakeGenerate<CR>
-nmap <leader>bb :CMakeBuild<CR>
-nmap <leader>cx :CMakeClose<CR>
-
 "+----------------------------+
 "| +------------------------+ |
 "| |  Plugin Configuration  | |
@@ -270,6 +182,94 @@ let g:cmake_link_compile_commands = 1
 
 """ FZF
 let g:fzf_layout = { 'down': '40%' }
+
+"+--------------------------+
+"| +----------------------+ |
+"| |       Mappings       | |
+"| +----------------------+ |
+"+--------------------------+
+""" Leader Key
+let mapleader = ","
+
+""" Remap Esc to jk and jk
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+""" j/k will move virtual lines (lines that wrap)
+noremap j gj
+noremap k gk
+
+""" Built-in spell-check
+map <F4> :setlocal spell! spelllang=en_us<CR>
+""" Automatically fix misspelled word with the first suggestion
+nnoremap <leader><F4> :normal! mz1z=`z<CR>
+
+""" Check file in shellcheck
+map <leader>s :!shellcheck -x %<CR>
+
+""" Switch to V-mode and Ctrl-r to replace with new word
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+""" Use ,<Esc> to exit terminal-mode
+tnoremap <leader><Esc> <C-\><C-n>
+""" Use ALT+{h,j,k,l} to navigate windows from any mode
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+""" Resize split tab
+noremap <C-k> <c-w>+
+noremap <C-j> <c-w>-
+noremap <C-h> <c-w>>
+noremap <C-l> <c-w><
+""" Toggle horiz/vert
+map <leader>th <C-w>t<C-w>H
+map <leader>tk <C-w>t<C-w>K
+
+""" Open terminal in vertically split tab
+map <leader>tt :vnew term://zsh<CR>
+
+""" turn off highlighting
+nmap <leader>, :nohlsearch<CR>
+
+""" FZF
+nmap <leader>f :Files<CR>
+nmap L         :Buffers<CR>
+nmap <C-x>     :bdelete<CR>
+
+""" NerdTree
+nmap <leader>n :NERDTreeToggle<CR>
+
+""" NerdCommenter
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
+
+""" Vimspector
+map <F9>           <Plug>VimspectorToggleBreakpoint
+map <F5>           <Plug>VimspectorContinue
+map <leader><F5>   <Plug>VimspectorRestart
+map <F6>           <Plug>VimspectorStepOver
+map <F7>           <Plug>VimspectorStepInto
+map <leader><F7>   <Plug>VimspectorStepOut
+map <F8>           <Plug>VimspectorPause
+map <leader><F8>   <Plug>VimspectorStop
+nmap <leader>dx :VimspectorReset<CR>
+nmap <leader>de :VimspectorEval
+nmap <leader>dw :VimspectorWatch
+nmap <leader>do :VimspectorShowOutput
+
+""" Vim-Cmake
+nmap <leader>gg :CMakeGenerate<CR>
+nmap <leader>bb :CMakeBuild<CR>
+nmap <leader>cx :CMakeClose<CR>
 
 "+-------------------------+
 "| +---------------------+ |

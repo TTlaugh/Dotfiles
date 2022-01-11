@@ -1,3 +1,5 @@
+""" Update all
+":PlugUpgrade|:PlugUpdate|:VimspectorUpdate|:CocUpdate
 "+--------------------------+
 "| +----------------------+ |
 "| |   General Settings   | |
@@ -52,8 +54,6 @@ au FileType c,cpp,objc,objcpp,json set noexpandtab
 "| +---------------------+ |
 "+-------------------------+
 call plug#begin('~/.config/nvim/plugins/bundle')
-    """ Startify
-    "Plug 'mhinz/vim-startify'
     """ Code intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'preservim/nerdcommenter'
@@ -74,8 +74,6 @@ call plug#begin('~/.config/nvim/plugins/bundle')
     Plug 'cdelledonne/vim-cmake'
     """ Status bar
     Plug 'itchyny/lightline.vim'
-    "Plug 'vim-airline/vim-airline'
-    "Plug 'vim-airline/vim-airline-themes'
     """ Themes
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'joshdick/onedark.vim'
@@ -88,39 +86,6 @@ call plug#end()
 "| |  Plugin Configuration  | |
 "| +------------------------+ |
 "+----------------------------+
-""" Startify
-"let g:startify_session_dir = '~/.config/nvim/session'
-"let g:startify_session_persistence = 1
-"let g:startify_custom_header =
-    "\ startify#center([
-    "\'╔╗╔╔═╗╔═╗╦  ╦╦╔╦╗',
-    "\'║║║║╣ ║ ║╚╗╔╝║║║║',
-    "\'╝╚╝╚═╝╚═╝ ╚╝ ╩╩ ╩',
-    "\])
-"let g:startify_lists = [
-    "\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-    "\ { 'type': 'dir',       'header': ['   Dir '. getcwd()] },
-    "\ { 'type': 'files',     'header': ['   Recent files']   },
-    "\ { 'type': 'sessions',  'header': ['   Sessions']       },
-    "\ { 'type': 'commands',  'header': ['   Commands']       },
-    "\ ]
-"""" Customize your bookmarks by a variable below
-"let g:startify_bookmarks = [
-    "\ { 'z': '~/.config/zsh/.zshrc' },
-    "\ { 'w': '~/.config/qtile/config.py' },
-    "\ { 'n': '~/.config/nvim/' },
-    "\ { 'd': '~/Documents/' },
-    "\ { 'm': '~/MyGitHub/' },
-    "\ { '*': '~/tmp/' },
-    "\ ]
-"let g:startify_commands = [
-    "\ {'h': ':checkhealth'},
-    "\ {'pu': ':PlugUpdate'},
-    "\ {'pd': ':PlugUpgrade'},
-    "\ {'cu': ':CocUpdate'},
-    "\ {'vu': ':VimspectorUpdate'},
-    "\ ]
-
 """ Themes
 colorscheme dracula
 "colorscheme onedark
@@ -146,7 +111,6 @@ function! StatusDiagnostic() abort
   endif
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
-
 "\ 'colorscheme': 'one',
 let g:lightline = {
       \ 'colorscheme': 'dracula',
@@ -159,19 +123,6 @@ let g:lightline = {
       \   'cocstatus': 'StatusDiagnostic',
       \ },
       \ }
-
-""" Vim-Airline config
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#whitespace#enabled = 0
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"if !exists('g:airline_symbols')
-  "let g:airline_symbols = {}
-"endif
-"let g:airline_symbols.colnr = ' : '
-"let g:airline_symbols.linenr = ' '
-"let g:airline_symbols.readonly = ' '
-"let g:airline_symbols.maxlinenr = ''
 
 """ RainBow Bracket
 au FileType c,cpp,objc,objcpp,json,python call rainbow#load()

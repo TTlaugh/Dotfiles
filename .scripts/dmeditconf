@@ -24,7 +24,7 @@ confedit_list[st]="$HOME/Suckless/st/config.def.h"
 confedit_list[vifm]="$HOME/.vifm/vifmrc"
 confedit_list[xinitrc]="$HOME/.xinitrc"
 confedit_list[xresources]="$HOME/.Xresources"
-confedit_list[zsh]="$HOME/.zshrc"
+confedit_list[zsh]="$HOME/.config/zsh/.zshrc"
 ####################################################################
 
 main() {

@@ -133,7 +133,7 @@ for i in groups:
 layout_theme = {"border_width": 2,
                 "margin": 8,
                 "border_focus": "e1acff",
-                "border_normal": "1d2330"
+                "border_normal": "44475a"
                 }
 layouts = [
     layout.MonadTall(**layout_theme),

@@ -39,16 +39,16 @@
         }
 
 # Startup
-    # Background use feh
-        #exec_always --no-startup-id ~/.fehbg
     # Picom
-        #exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+        exec_always --no-startup-id picom
+    # Network Manager applet
+        exec --no-startup-id nm-applet
+    # Background use feh
+        exec --no-startup-id ~/.fehbg
     # No turn off display after few minute
         exec --no-startup-id xset s off
         exec --no-startup-id xset -dpms
         exec --no-startup-id xset s noblank
-    # Network Manager applet
-        exec --no-startup-id nm-applet
 
 # Mappings
     # i3-gaps
@@ -131,7 +131,7 @@
         #bindsym $mod+Return                         exec --no-startup-id st
 
         # start dmenu
-        bindsym $mod+p                             exec --no-startup-id dmenu_run
+        bindsym $mod+p                              exec --no-startup-id dmenu_run
 
         # open chromium
         bindsym $mod+shift+Return                   exec chromium
@@ -204,4 +204,3 @@
 # Others
     for_window [class="Sxiv"] floating enable
     for_window [class="mpv"] floating enable
-    #for_window [class="vim-terminal"] floating enable, move [absolute] position center

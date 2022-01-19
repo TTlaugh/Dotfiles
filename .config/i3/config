@@ -4,7 +4,7 @@
         # Mod key
         set $mod Mod4
         # Font for window titles.
-        font pango:Arimo Nerd Font 10
+        font pango:Ubuntu Nerd Font 10
         # Turn off border
         default_border pixel 2
         default_floating_border pixel 2

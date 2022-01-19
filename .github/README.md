@@ -518,11 +518,10 @@ sudo nvim /etc/sudoers
 
 ### Fonts
 - Roboto Mono (dunst)
-- sans (Qtile)
-- Ubuntu (Qtile)
+- sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
+- Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
 - Fira Code (Kitty)
 - Hack Nerd Font (Alacritty, st, dmenu)
-- Arimo Nerd Font (i3)
 
 ### Lxappearance
 - Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)

@@ -143,7 +143,7 @@ layouts = [
     layout.Stack(num_stacks=2, **layout_theme),
     layout.Floating(**layout_theme),
     layout.TreeTab(
-         font = "Ubuntu",
+         font = "Ubuntu Nerd Font",
          fontsize = 10,
          sections = ["FIRST", "SECOND", "THIRD", "FOURTH"],
          section_fontsize = 10,
@@ -176,7 +176,7 @@ layouts = [
 #----- Widgets -----#
 #####################
 widget_defaults = dict(
-    font='Ubuntu bold',
+    font='Ubuntu Nerd Font bold',
     fontsize=12,
     padding=4,
     background="#282c34"

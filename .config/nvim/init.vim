@@ -128,6 +128,13 @@ let g:lightline = {
 au FileType c,cpp,objc,objcpp,json,python call rainbow#load()
 "let g:rainbow_active = 1
 
+""" Turn off default mappings of NerdCommenter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDCustomDelimiters = {
+            \ 'c': { 'left': '/* ','right': ' */' },
+            \ 'cpp': { 'left': '/* ','right': ' */' },
+            \ }
+
 """ Vim-Cmake
 let g:cmake_link_compile_commands = 1
 

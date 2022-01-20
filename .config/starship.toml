@@ -65,7 +65,7 @@ format = "[$status ↵](red)"
 #[directory]
 #truncation_length = 0
 #truncate_to_repo = false
-#format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[](black)[](cyan)[](purple)[](green) "
+#format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[ ](cyan bg:black)[](purple bg:black)[](green bg:black)[](black) "
 #style = "blue bold bg:black"
 #read_only = "  "
 #read_only_style = "red bg:black"

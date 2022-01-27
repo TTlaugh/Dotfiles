@@ -3,6 +3,9 @@ window:
     x: 0
     y: 0
 
+# Background opacity
+  opacity: 0.9
+
   # Window title
   title: Alacritty
 
@@ -92,9 +95,6 @@ colors:
     magenta: '#ff92df'
     cyan: '#a4ffff'
     white: '#ffffff'
-
-# Background opacity
-background_opacity: 0.9
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

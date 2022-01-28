@@ -349,10 +349,10 @@ cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
 ```
 line | config
 -----|---------------------------------------
-   9 | font_family      Fira Code
-  10 | bold_font        Fira Code Bold
-  11 | italic_font      Fira Code Italic
-  12 | bold_italic_font Fira Code Bold Italic
+   9 | font_family      FiraCode Nerd Font
+  10 | bold_font        FiraCode Nerd Font Bold
+  11 | italic_font      FiraCode Nerd Font Italic
+  12 | bold_italic_font FiraCode Nerd Font Bold Italic
  762 | background_opacity 0.9
 ```
 - Theme

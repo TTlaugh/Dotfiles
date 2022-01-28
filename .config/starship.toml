@@ -4,16 +4,16 @@ format = """
 $username\
 $hostname\
 $directory\
-$vcsh\
+$git_status\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
-$git_status\
 $line_break\
 $shell\
 $sudo\
-$character"""
+$character\
+"""
 
 right_format = """$status"""
 
@@ -22,30 +22,33 @@ right_format = """$status"""
 ##############
 [username]
 show_always = true
-format = "[$user](purple)[@](white bold)"
+format = '([\[](cyan bold)[$user](purple bold)[@](green bold))'
 
 [hostname]
 ssh_only = false
-format = "[$hostname](purple) "
+format = "[$hostname](yellow bold) "
 
 [directory]
 truncation_length = 0
 truncate_to_repo = false
-format = '([\[](cyan) [$path]($style)[$read_only]($read_only_style)[\]](cyan) )'
+format = '([$path]($style)[$read_only]($read_only_style)[\]](cyan bold) )'
 read_only = " "
 style = "blue bold"
 
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+
 [git_branch]
-format = "[$symbol$branch]($style) "
-style = "yellow bold"
+format = "[$symbol$branch](yellow) "
+symbol=" "
+
+#[shell]
+#disabled = false
+#format = "[$indicator](green bold) "
 
 [sudo]
 disabled = false
 format = "[S](yellow bold)"
-
-[shell]
-disabled = false
-format = "[$indicator](cyan bold) "
 
 [status]
 disabled = false
@@ -65,14 +68,17 @@ format = "[$status ↵](red)"
 #[directory]
 #truncation_length = 0
 #truncate_to_repo = false
-#format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[ ](cyan bg:black)[](purple bg:black)[](green bg:black)[](black) "
+#format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[ ](black bold bg:black)[](black) "
 #style = "blue bold bg:black"
 #read_only = "  "
 #read_only_style = "red bg:black"
 
+#[git_status]
+#format = "[$all_status$ahead_behind]($style)"
+
 #[git_branch]
-#format = "[$symbol$branch]($style) "
-#style = "yellow bold"
+#format = "[$symbol$branch](yellow) "
+#symbol=" "
 
 #[sudo]
 #disabled = false

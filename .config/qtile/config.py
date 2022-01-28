@@ -88,18 +88,19 @@ keys = [
 
 # Dmenu scripts launched using the key chord SUPER+p followed by 'key'
     KeyChord([mod], "p", [
-        Key([],        "k", lazy.spawn("dmkill"),        desc='Kill processes via dmenu'),
-        Key([],        "m", lazy.spawn("dmmount"),       desc='Mount drive via dmenu'),
-        Key(["shift"], "m", lazy.spawn("dmunmount"),     desc='Unmount drive via dmenu'),
-        Key([],        "b", lazy.spawn("dmsetbg"),       desc='Set background via dmenu'),
-        Key([],        "w", lazy.spawn("dmwifi"),        desc='Connect to wifi via dmenu'),
-        Key([],        "c", lazy.spawn("dmcalc"),        desc='Simple calculator via dmenu'),
-        Key([],        "i", lazy.spawn("dmicons"),       desc='Copy icons to clipboard via dmenu'),
-        Key([],        "r", lazy.spawn("dmrecord"),      desc='Record via dmenu'),
-        Key(["shift"], "r", lazy.spawn("dmrecord kill"), desc='Kill existing recording of dmrecord'),
-        Key([],        "e", lazy.spawn('dmeditconf'),    desc='Edit selected file via dmenu'),
-        Key([],        "s", lazy.spawn('dmwebsearch'),   desc='Search in web browser via dmenu'),
-        Key([],        "q", lazy.spawn("dmpower"),       desc='Power action via dmenu')
+        Key([],        "p", lazy.spawn("dmmaim"),        desc='dmenu: Take screenshot with maim'),
+        Key([],        "k", lazy.spawn("dmkill"),        desc='dmenu: Kill processes'),
+        Key([],        "m", lazy.spawn("dmmount"),       desc='dmenu: Mount drive'),
+        Key(["shift"], "m", lazy.spawn("dmunmount"),     desc='dmenu: Unmount drive'),
+        Key([],        "b", lazy.spawn("dmsetbg"),       desc='dmenu: Set background'),
+        Key([],        "w", lazy.spawn("dmwifi"),        desc='dmenu: Connect to wifi'),
+        Key([],        "c", lazy.spawn("dmcalc"),        desc='dmenu: Simple calculator'),
+        Key([],        "i", lazy.spawn("dmicons"),       desc='dmenu: Copy icons to clipboard'),
+        Key([],        "r", lazy.spawn("dmrecord"),      desc='dmenu: Record'),
+        Key(["shift"], "r", lazy.spawn("dmrecord kill"), desc='dmenu: Kill existing recording of dmrecord'),
+        Key([],        "e", lazy.spawn('dmeditconf'),    desc='dmenu: Edit selected file'),
+        Key([],        "s", lazy.spawn('dmwebsearch'),   desc='dmenu: Search in web browser'),
+        Key([],        "q", lazy.spawn("dmpower"),       desc='dmenu: Power action')
     ])
 ]
 

@@ -105,34 +105,36 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
   - Patches: [font2](https://st.suckless.org/patches/font2), [dracula](https://st.suckless.org/patches/dracula), [alpha](https://st.suckless.org/patches/alpha), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback).
 
 ### Optional
-
-- Kdenlive
-- GIMP
-- Audacity
-- OBS
-- Simplescreenrecorder 
-- VirtualBox
-- Virt-Manager
-  > - `pacman -S libvirt iptables-nft qemu virt-manager`
-  > - `sudo systemctl start/enable libvirtd`
-  > - `sudo usermod -G libvirt -a <username>`
-- LibreOffice 
-  > *jre-openjdk* package is needed for LibreOffice Database.
-- persepolis
-- onboard
-- rsync
-- acpi
-- pandoc
-- texlive-most
-- lolcat
-- speedtest-cli
-- volumeicon
-- shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))
-- volnoti ([AUR](https://aur.archlinux.org/packages/volnoti))
-- ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts))
-- teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
-   > Note: If you use startx, you won't be able to open teamviewer
-- Powerline Fonts: [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
+<details>
+  <summary>Click to expand!</summary>
+  
+  - Kdenlive
+  - GIMP
+  - Audacity
+  - OBS
+  - Simplescreenrecorder 
+  - VirtualBox
+  - Virt-Manager
+    > - `pacman -S libvirt iptables-nft qemu virt-manager`
+    > - `sudo systemctl start/enable libvirtd`
+    > - `sudo usermod -G libvirt -a <username>`
+  - LibreOffice 
+    > *jre-openjdk* package is needed for LibreOffice Database.
+  - persepolis
+  - onboard
+  - maim
+  - acpi
+  - pandoc
+  - texlive-most
+  - speedtest-cli
+  - volumeicon
+  - volnoti ([AUR](https://aur.archlinux.org/packages/volnoti))
+  - shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))
+  - ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts))
+  - teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
+     > Note: If you use startx, you won't be able to open teamviewer
+  - Powerline Fonts: [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
+</details>
 
 # Configuration
 

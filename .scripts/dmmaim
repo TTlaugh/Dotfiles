@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Description: Choose type of screenshot to take with maim.
+# Dependencies: dmenu, maim, xclip, xdotool
+
+set -euo pipefail
+
+saveas() {
+    echo "$(echo -e "$HOME/screenshot_$(date +'%y%m%d_%H%M-%S').png\n$(find "$HOME" -maxdepth 2 -type d -not -path '*/\.*')" | dmenu -l 10 -i -p "Save as:")"
+}
+
+case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
+    "a selected area")        maim -s "$(saveas)" ;;
+    "current window")         maim -i "$(xdotool getactivewindow)" "$(saveas)" ;;
+    "full screen")            maim "$(saveas)" ;;
+    "a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
+    "current window (copy)")  maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
+    "full screen (copy)")     maim | xclip -selection clipboard -t image/png ;;
+esac

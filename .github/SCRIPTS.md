@@ -53,40 +53,26 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
 exec --no-startup-id dmupdate 'alacritty -e'
 ```
 ```
-# dmpower
-bindsym $mod+F4 exec --no-startup-id dmpower
-```
-```
-# dmedit
-bindsym $mod+period exec --no-startup-id dmeditconf
-
-# dmwebsearch
-bindsym $mod+slash exec --no-startup-id dmwebsearch
-
-# dmsetbg
-bindsym $mod+b exec --no-startup-id dmsetbg
-
-# dmwifi
-bindsym $mod+Shift+w exec --no-startup-id dmwifi
-
-# dmkill
-bindsym $mod+Escape exec --no-startup-id dmkill
-
-# dmmount
-bindsym $mod+F5 exec --no-startup-id dmmount
-# dmunmount
-bindsym $mod+Shift+F5 exec --no-startup-id dmunmount
-
 # screenshot
-### Full screen
 bindsym Print exec --no-startup-id screenshot
-### Selected region
 bindsym Shift+Print exec --no-startup-id screenshot selected
+```
+```
+mode "dmscripts" {
+    bindsym q exec --no-startup-id dmpower, mode "default"
+    bindsym e exec --no-startup-id dmeditconf, mode "default"
+    bindsym s exec --no-startup-id dmwebsearch, mode "default"
+    bindsym b exec --no-startup-id dmsetbg, mode "default"
+    bindsym w exec --no-startup-id dmwifi, mode "default"
+    bindsym k exec --no-startup-id dmkill, mode "default"
+    bindsym m exec --no-startup-id dmmount, mode "default"
+    bindsym Shift+m exec --no-startup-id dmunmount, mode "default"
+    bindsym $mod+Print exec --no-startup-id dmrecord, mode "default"
+    bindsym $mod+Shift+Print exec --no-startup-id dmrecord kill, mode "default"
+    bindsym $mod+c exec --no-startup-id dmcalc, mode "default"
 
-# record
-bindsym $mod+Print exec --no-startup-id dmrecord
-bindsym $mod+Shift+Print exec --no-startup-id dmrecord kill
-
-# dmcalc
-bindsym $mod+c exec --no-startup-id dmcalc
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+p mode "dmscripts"
 ```

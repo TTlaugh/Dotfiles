@@ -130,8 +130,8 @@
         #bindsym $mod+Return                         exec --no-startup-id alacritty
         #bindsym $mod+Return                         exec --no-startup-id st
 
-        # start dmenu
-        bindsym $mod+p                              exec --no-startup-id dmenu_run
+        # launch dmenu
+        bindsym $mod+o                              exec --no-startup-id dmenu_run
 
         # open chromium
         bindsym $mod+shift+Return                   exec chromium

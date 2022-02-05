@@ -66,6 +66,7 @@ mode "dmscripts" {
     bindsym w exec --no-startup-id dmwifi, mode "default"
     bindsym k exec --no-startup-id dmkill, mode "default"
     bindsym m exec --no-startup-id dmmount, mode "default"
+    bindsym p exec --no-startup-id dmmaim, mode "default"
     bindsym Shift+m exec --no-startup-id dmunmount, mode "default"
     bindsym $mod+Print exec --no-startup-id dmrecord, mode "default"
     bindsym $mod+Shift+Print exec --no-startup-id dmrecord kill, mode "default"

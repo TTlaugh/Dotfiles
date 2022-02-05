@@ -122,6 +122,7 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
     > *jre-openjdk* package is needed for LibreOffice Database.
   - persepolis
   - onboard
+  - xdotool
   - maim
   - acpi
   - pandoc

@@ -54,7 +54,7 @@
     # i3-gaps
         #bindsym $mod+g                              gaps inner current plus 5
         #bindsym $mod+Shift+g                        gaps outer current minus 5
-        #bindsym $mod+o                              gaps inner all set 0; gaps outer all set 0
+        #bindsym $mod+Control+g                      gaps inner all set 0; gaps outer all set 0
     # i3wm
         # restart i3
         bindsym $mod+Shift+r                        restart

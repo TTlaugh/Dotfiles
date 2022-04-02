@@ -140,8 +140,6 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.MonadWide(**layout_theme),
-    layout.Columns(**layout_theme),
-    layout.Stack(num_stacks=2, **layout_theme),
     layout.Floating(**layout_theme),
     layout.TreeTab(
          font = "Ubuntu Nerd Font",
@@ -164,6 +162,8 @@ layouts = [
          panel_width = 200
          ),
     # Try more layouts by unleashing below layouts.
+    # layout.Columns(**layout_theme),
+    # layout.Stack(num_stacks=2, **layout_theme),
     # layout.Tile(**layout_theme),
     # layout.RatioTile(**layout_theme),
     # layout.VerticalTile(**layout_theme),

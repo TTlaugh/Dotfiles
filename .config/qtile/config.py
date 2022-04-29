@@ -46,7 +46,7 @@ keys = [
 # Move focus
     Key([mod], "h",                     lazy.layout.left()),
     Key([mod], "l",                     lazy.layout.right()),
-    Key([mod], "j",                     lazy.layout.next()),
+    Key([mod], "j",                     lazy.layout.next(), lazy.layout.down().when(layout='bsp')),
     Key([mod], "k",                     lazy.layout.up()),
 # Move window
     Key([mod, "shift"], "h",            lazy.layout.shuffle_left(),
@@ -141,6 +141,7 @@ layouts = [
     layout.Max(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Floating(**layout_theme),
+    layout.Bsp(**layout_theme, border_on_single = True),
     layout.TreeTab(
          font = "Ubuntu Nerd Font",
          fontsize = 10,
@@ -167,7 +168,6 @@ layouts = [
     # layout.Tile(**layout_theme),
     # layout.RatioTile(**layout_theme),
     # layout.VerticalTile(**layout_theme),
-    # layout.Bsp(**layout_theme),
     # layout.Matrix(**layout_theme),
     # layout.Zoomy(**layout_theme),
     # layout.Slice(**layout_theme),

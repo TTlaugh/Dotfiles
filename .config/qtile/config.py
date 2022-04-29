@@ -137,7 +137,7 @@ layout_theme = {"border_width": 2,
                 "border_normal": "#44475a"
                 }
 layouts = [
-    layout.MonadTall(**layout_theme),
+    layout.MonadTall(**layout_theme, new_client_position = 'before_current', ratio = 0.6),
     layout.Max(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Floating(**layout_theme),

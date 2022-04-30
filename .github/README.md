@@ -120,7 +120,7 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
     > - `sudo usermod -G libvirt -a <username>`
   - LibreOffice 
     > *jre-openjdk* package is needed for LibreOffice Database.
-  - rofi ([my rofi config:](https://github.com/nguyenletientrien/Dotfiles/blob/master/.config/rofi/config.rasi))
+  - rofi ([my rofi config](https://github.com/nguyenletientrien/Dotfiles/blob/master/.config/rofi/config.rasi))
   - persepolis
   - onboard
   - xdotool

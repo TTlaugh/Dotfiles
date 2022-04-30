@@ -195,6 +195,7 @@ def init_widgets_list():
                 font = "sans",
                 disable_drag = True,
                 borderwidth = 2,
+                padding_y = 1,
                 active = "#ffffff",
                 inactive = "#44475a",
                 highlight_method = "block",

@@ -31,6 +31,7 @@ keys = [
     # Key([mod], "Return",    lazy.spawn(myterm)),
     Key([mod], "Return",                lazy.spawn(terminal)),
     Key([mod], "o",                     lazy.spawn("dmenu_run")),
+    # Key([mod, "shift"], "o",            lazy.spawn("rofi -show drun")),
 # Launch my browser
     Key([mod, "shift"], "Return",       lazy.spawn(mybrowser)),
 # Switch to next/previous layout

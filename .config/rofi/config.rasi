@@ -2,7 +2,7 @@ configuration {
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{icon} {name}";
-  font: "JetBrainsMono Nerd Font Medium 10";
+  font: "JetBrainsMono Nerd Font Medium 13";
   modi: "window,run,drun";
   show-icons: true;
 }
@@ -10,27 +10,30 @@ configuration {
 @theme "/dev/null"
 
 * {
-  bg: #2e3440;
-  bg-alt: #4c566a;
+  bg: #000000b3;
+  bg-alt: #4c566abf;
+  fulltrans: #00000000;
 
   fg: #ffffff;
-  fg-alt: #b2b9d4;
+  fg-alt: #b2b9d466;
 
   background-color: @bg;
   
   border: 0;
   margin: 0;
-  padding: 0;
+  padding: 10;
   spacing: 0;
 }
 
 window {
-  width: 50%;
+  width: 100%;
+  height: 100%;
 }
 
 element {
-  padding: 8 0;
+  background-color: @fulltrans;
   text-color: @fg-alt;
+  padding: 8 0;
 }
 
 element selected {
@@ -44,7 +47,8 @@ element-text {
 }
 
 element-icon {
-  size: 30;
+  background-color: @fulltrans;
+  size: 50;
 }
 
 entry {
@@ -54,26 +58,27 @@ entry {
 }
 
 inputbar {
+  background-color: @fulltrans;
   children: [prompt, entry];
 }
 
 listview {
+  background-color: @fulltrans;
   padding: 8 12;
-  background-color: @bg;
-  columns: 1;
-  lines: 5;
+  columns: 2;
+  //lines: 5;
 }
 
 mainbox {
-  background-color: @bg;
+  background-color: @fulltrans;
   children: [inputbar, listview];
 }
 
 prompt {
   background-color: @bg-alt;
+  text-color: @fg;
   enabled: true;
   padding: 12 0 0 12;
-  text-color: @fg;
 }
 
 /* vim: ft=sass

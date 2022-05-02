@@ -75,6 +75,7 @@ call plug#begin('~/.config/nvim/plugins/bundle')
     """ Status bar
     Plug 'itchyny/lightline.vim'
     """ Themes
+    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'joshdick/onedark.vim'
     """ Icons
@@ -87,6 +88,8 @@ call plug#end()
 "| +------------------------+ |
 "+----------------------------+
 """ Themes
+"let g:tokyonight_style = "night"
+"colorscheme tokyonight
 colorscheme dracula
 "colorscheme onedark
 
@@ -112,6 +115,7 @@ function! StatusDiagnostic() abort
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 "\ 'colorscheme': 'one',
+"\ 'colorscheme': 'tokyonight',
 let g:lightline = {
       \ 'colorscheme': 'dracula',
       \ 'active': {

@@ -375,6 +375,10 @@ See [Dracula Theme](https://draculatheme.com/kitty)
     [SchemeNorm] = { "#777c99", "#282a36" },
     [SchemeSel] = { "#bd93f9", "#22232e" },
     ```
+    ```
+    [SchemeNorm] = { "#777c99", "#050505" },
+    [SchemeSel] = { "#bd93f9", "#2e3440" },
+    ```
 - Edit *dmenu_run*
   - Add `-p "Run:"` after `dmenu "@"`
   - Example: `dmenu "$@" -p "Run:"`

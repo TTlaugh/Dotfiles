@@ -30,8 +30,8 @@ keys = [
 # Launch terminal
     # Key([mod], "Return",    lazy.spawn(myterm)),
     Key([mod], "Return",                lazy.spawn(terminal)),
-    Key([mod], "o",                     lazy.spawn("dmenu_run")),
-    # Key([mod], "o",                     lazy.spawn("rofi -show drun")),
+    Key([mod, "shift"], "o",            lazy.spawn("dmenu_run")),
+    Key([mod], "o",                     lazy.spawn("rofi -show drun")),
 # Launch my browser
     Key([mod, "shift"], "Return",       lazy.spawn(mybrowser)),
 # Switch to next/previous layout
@@ -134,11 +134,11 @@ for i in groups:
 ####################
 layout_theme = {"border_width": 2,
                 "margin": 8,
-                "border_focus": "#b48ead",
+                "border_focus": "#bb9af7",
                 "border_normal": "#44475a"
                 }
 layouts = [
-    layout.MonadTall(**layout_theme, new_client_position = 'before_current', ratio = 0.6),
+    layout.MonadTall(**layout_theme, new_client_position = 'top', ratio = 0.6),
     layout.Max(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Floating(**layout_theme),
@@ -150,7 +150,7 @@ layouts = [
          section_fontsize = 10,
          border_width = 2,
          bg_color = "1c1f24",
-         active_bg = "c678dd",
+         active_bg = "bb9af7",
          active_fg = "000000",
          inactive_bg = "a9a1e1",
          inactive_fg = "1c1f24",
@@ -181,7 +181,7 @@ widget_defaults = dict(
     font='Ubuntu Nerd Font bold',
     fontsize=12,
     padding=4,
-    background="#282a36"
+    background="#24283b"
 )
 extension_defaults = widget_defaults.copy()
 
@@ -200,9 +200,9 @@ def init_widgets_list():
                 active = "#ffffff",
                 inactive = "#44475a",
                 highlight_method = "block",
-                this_current_screen_border = "#e193f9",
+                this_current_screen_border = "#bb9af7",
                 this_screen_border = "#434758",
-                other_current_screen_border = "#e193f9",
+                other_current_screen_border = "#bb9af7",
                 other_screen_border = "#434758"
                 ),
         # widget.CurrentLayout(),
@@ -217,7 +217,7 @@ def init_widgets_list():
                 ),
         widget.WindowName(
                 font = "sans",
-                foreground = "#6272a4"
+                foreground = "#565f89"
                 ),
         widget.Sep(
                 linewidth = 0,
@@ -228,38 +228,38 @@ def init_widgets_list():
                 # format = '{down}↓↑{up}',
                 # foreground = "#f1fa8c"
                 # ),
+        widget.CheckUpdates(
+                update_interval = 1800,
+                distro = "Arch_checkupdates",
+                colour_have_updates = "#b4f9f8",
+                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')}
+                ),
         widget.CPU(
                 format = 'cpu: {load_percent}%',
-                foreground = "#ff79c6",
+                foreground = "#f7768e",
                 mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')}
                 ),
         widget.Memory(
                 measure_mem = 'G',
                 format = 'mem: {MemUsed:.2f}{mm}',
-                foreground = "#ff5555"
+                foreground = "#ff9e64"
                 ),
         widget.DF(
                 format = '{p}: {uf}{m}',
                 visible_on_warn = False,
-                foreground = "#ffb86c"
+                foreground = "#7dcfff"
                 ),
         widget.TextBox(
                 text = " Vol:",
-                foreground = "#8be9fd",
+                foreground = "#7aa2f7",
                 padding = 0
                 ),
         widget.Volume(
-                foreground = "#8be9fd"
-                ),
-        widget.CheckUpdates(
-                update_interval = 1800,
-                distro = "Arch_checkupdates",
-                colour_have_updates = "#70ff94",
-                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')}
+                foreground = "#7aa2f7"
                 ),
         widget.Clock(
                 format='%A, %b %d - %H:%M',
-                foreground = "#bd93f9"
+                foreground = "#bb9af7"
                 ),
         # widget.WidgetBox(
                 # font = "sans",

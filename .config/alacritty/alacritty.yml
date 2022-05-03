@@ -1,10 +1,10 @@
 window:
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
 
 # Background opacity
-  opacity: 0.9
+  opacity: 0.7
 
   # Window title
   title: Alacritty

@@ -1,84 +1,82 @@
 configuration {
-  display-drun: "Applications:";
-  display-window: "Windows:";
-  drun-display-format: "{icon} {name}";
-  font: "JetBrainsMono Nerd Font Medium 13";
-  modi: "window,run,drun";
-  show-icons: true;
+
+    font: "Hack Nerd Font 15";
+    modi: "window,run,drun";
+
+    display-ssh:    " ";
+    display-run:    " ";
+    display-drun:   " ";
+    display-window: " ";
+    display-combi:  " ";
+    show-icons:     true;
+
 }
 
 @theme "/dev/null"
 
 * {
-  bg: #000000b3;
-  bg-alt: #4c566abf;
-  fulltrans: #00000000;
-
-  fg: #ffffff;
-  fg-alt: #b2b9d466;
-
-  background-color: @bg;
-  
-  border: 0;
-  margin: 0;
-  padding: 10;
-  spacing: 0;
+    background-color: transparent;
+    
+    border: 0;
+    margin: 0;
+    padding: 10;
+    spacing: 0;
 }
 
 window {
-  width: 100%;
-  height: 100%;
-}
-
-element {
-  background-color: @fulltrans;
-  text-color: @fg-alt;
-  padding: 8 0;
-}
-
-element selected {
-  text-color: @fg;
-}
-
-element-text {
-  background-color: inherit;
-  text-color: inherit;
-  vertical-align: 0.5;
-}
-
-element-icon {
-  background-color: @fulltrans;
-  size: 50;
-}
-
-entry {
-  background-color: @bg-alt;
-  padding: 12;
-  text-color: @fg;
-}
-
-inputbar {
-  background-color: @fulltrans;
-  children: [prompt, entry];
-}
-
-listview {
-  background-color: @fulltrans;
-  padding: 8 12;
-  columns: 2;
-  //lines: 5;
+    width: 100%;
+    height: 100%;
+    background-color: #000000e6;
 }
 
 mainbox {
-  background-color: @fulltrans;
-  children: [inputbar, listview];
+    children: [ inputbar, listview ];
 }
 
-prompt {
-  background-color: @bg-alt;
-  text-color: @fg;
-  enabled: true;
-  padding: 12 0 0 12;
+inputbar {
+    color: #eceff4;
+    background-color: #eceff433;
+    padding: 0;
+
+    border: 2;
+    border-radius: 30;
+    border-color: #9699a3;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+listview {
+    padding: 50;
+    border: 0;
+    columns: 2;
+}
+
+element {
+    padding: 0;
+    margin: 20;
+    border-radius: 40;
+    background-color: transparent;
+    text-color: #b2b9d4f2;
+}
+
+element selected.normal {
+    background-color: #eceff466;
+    text-color: #ffffff;
+}
+
+element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+    border-radius: 40;
+    size: 40;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
 }
 
 /* vim: ft=sass

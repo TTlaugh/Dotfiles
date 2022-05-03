@@ -30,8 +30,10 @@ keys = [
 # Launch terminal
     # Key([mod], "Return",    lazy.spawn(myterm)),
     Key([mod], "Return",                lazy.spawn(terminal)),
+# Launcher
     Key([mod, "shift"], "o",            lazy.spawn("dmenu_run")),
     Key([mod], "o",                     lazy.spawn("rofi -show drun")),
+    Key([mod], "w",                     lazy.spawn("rofi -show window")),
 # Launch my browser
     Key([mod, "shift"], "Return",       lazy.spawn(mybrowser)),
 # Switch to next/previous layout
@@ -135,7 +137,7 @@ for i in groups:
 layout_theme = {"border_width": 2,
                 "margin": 8,
                 "border_focus": "#bb9af7",
-                "border_normal": "#44475a"
+                "border_normal": "#44475a",
                 }
 layouts = [
     layout.MonadTall(**layout_theme, new_client_position = 'top', ratio = 0.6),

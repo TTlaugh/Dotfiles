@@ -93,6 +93,34 @@ call plug#end()
 colorscheme dracula
 "colorscheme onedark
 
+""" Startify
+let g:startify_session_dir = '~/.config/nvim/session'
+let g:startify_session_persistence = 1
+let g:startify_custom_header =
+    \ startify#center([
+    \'╔╗╔╔═╗╔═╗╦  ╦╦╔╦╗',
+    \'║║║║╣ ║ ║╚╗╔╝║║║║',
+    \'╝╚╝╚═╝╚═╝ ╚╝ ╩╩ ╩',
+    \])
+let g:startify_lists = [
+    \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+    \ { 'type': 'sessions',  'header': ['   Sessions']       },
+    \ { 'type': 'commands',  'header': ['   Commands']       },
+    \ ]
+let g:startify_bookmarks = [
+    \ { 'z': '~/.config/zsh/.zshrc' },
+    \ { 'w': '~/.config/qtile/config.py' },
+    \ { 'n': '~/.config/nvim/init.vim' },
+    \ { 'd': '~/Documents/' },
+    \ ]
+let g:startify_commands = [
+    \ {'h': ':checkhealth'},
+    \ {'pu': ':PlugUpdate'},
+    \ {'pd': ':PlugUpgrade'},
+    \ {'cu': ':CocUpdate'},
+    \ {'vu': ':VimspectorUpdate'},
+    \ ]
+
 """ Coc Extensions
 let g:coc_global_extensions = [
   \ 'coc-snippets',

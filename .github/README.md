@@ -17,16 +17,11 @@
   - [i3](https://github.com/nguyenletientrien/Dotfiles#i3)
   - [Qtile](https://github.com/nguyenletientrien/Dotfiles#qtile)
   - [Neovim](https://github.com/nguyenletientrien/Dotfiles#neovim)
-  - [Environment variables](https://github.com/nguyenletientrien/Dotfiles#environment-variables)
   - [ZSH](https://github.com/nguyenletientrien/Dotfiles#zsh)
   - [Vifm](https://github.com/nguyenletientrien/Dotfiles#vifm)
-  - [Picom](https://github.com/nguyenletientrien/Dotfiles#picom)
-  - [Alacritty](https://github.com/nguyenletientrien/Dotfiles#alacritty)
   - [Kitty](https://github.com/nguyenletientrien/Dotfiles#kitty)
   - [Dmenu](https://github.com/nguyenletientrien/Dotfiles#dmenu)
   - [St](https://github.com/nguyenletientrien/Dotfiles#st)
-  - [Dunst](https://github.com/nguyenletientrien/Dotfiles#dunst)
-  - [Zathura](https://github.com/nguyenletientrien/Dotfiles#zathura)
   - [Lightdm](https://github.com/nguyenletientrien/Dotfiles#lightdm)
   - [Pacman](https://github.com/nguyenletientrien/Dotfiles#pacman)
 - [Tips and Tricks](https://github.com/nguyenletientrien/Dotfiles#tips-and-tricks)
@@ -190,9 +185,6 @@ amixer -c 0 sset "Auto-Mute Mode" Disabled
    > You can use *Tab* and choose adapter.
 4. Done.
 
-## Environment variables:
-  - Copy ***.profile*** file to your home directory.
-
 ## ZSH
 - Copy ***zsh*** folder to ***~/.config/***
 - To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
@@ -338,12 +330,6 @@ set classify+=' ::*.avi,,*.ts,,*.axv,,*.divx,,*.m2v,,*.m4p,,*.m4v,,.mka,,*.mk
 set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.ppt::'
 ```
 
-## Picom
-- Copy ***picom*** folder to ***~/.config/***
-
-## Alacritty
-- Copy ***alacritty*** folder to ***~/.config/***
-
 ## Kitty
 - Copy default config file to ***~/.config/***
 ```
@@ -388,19 +374,6 @@ See [Dracula Theme](https://draculatheme.com/kitty)
   > Hack Nerd Font, JoyPixels, Symbola (AUR)
 - Patch, Fix and config MANUALLY (Goodluck!!).
 
-## Dunst
-Copy ***dunst*** folder to ***~/.config/***
-> If the config work incorrect, you need read all content of dunstrc file and edit for work correct.
->
-> Something incorrect as: font, dmenu path, icon path, ...
->
-> You should view `man dunst` to find default config file.
->
-> You can follow this *dunstrc* to manually configure the default dunstrc on your system.
-
-## Zathura
-- Copy ***zathura*** folder to ***~/.config/***
-
 ## Lightdm
 - Edit config file in ***/etc/lightdm/lightdm.conf***
 ```
@@ -418,10 +391,6 @@ user-session=qtile
 [Greeter]
 background=/usr/share/backgrounds/<picture>
 ```
-
-## sxiv
-- Copy ***sxiv*** folder to ***~/.config/***
-- Copy **.Xresources** to your home directory and run `xrdb -load ~/.Xresources`
 
 ## Pacman
 - To use pacman with more colors, uncomment this line in ***/etc/pacman.conf***

@@ -69,6 +69,7 @@ keys = [
     Key([mod, "control"], "k",          lazy.layout.grow_up()),
 # window control
     Key([mod], "space",                 lazy.group.next_window()),
+    Key([mod, "control"], "space",      lazy.window.bring_to_front()),
     Key([mod, "shift"], "space",        lazy.window.toggle_floating()),
     Key([mod], "f",                     lazy.window.toggle_fullscreen()),
     Key([mod], "i",                     lazy.layout.rotate(),

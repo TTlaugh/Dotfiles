@@ -345,8 +345,7 @@ line | config
   12 | bold_italic_font FiraCode Nerd Font Bold Italic
  762 | background_opacity 0.9
 ```
-- Theme
-See [Dracula Theme](https://draculatheme.com/kitty)
+- Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
 
 ## Dmenu
 - Edit *config.def.h*:

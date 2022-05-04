@@ -29,9 +29,14 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 [ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR"/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] && source "$ZDOTDIR"/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+bindkey '^[[P' delete-char
+bindkey -M vicmd '^[[P' vi-delete-char
+bindkey -M visual '^[[P' vi-delete
+
 ### Edit line in vim with ctrl-e
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+bindkey -M vicmd '^e' edit-command-line
 
 ### Random color script
 colorscript random

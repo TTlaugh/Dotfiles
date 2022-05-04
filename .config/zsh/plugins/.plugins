@@ -1,4 +1,6 @@
-Download plugin and put it here. Then source the script in zshrc file.
+Download the plugin and place it in this folder.
+Then source the script in zshrc file.
 
+Useful plugins:
 - zsh-autosuggestions: https://github.com/zsh-users/zsh-autosuggestions
 - zsh-syntax-highlighting: https://github.com/zsh-users/zsh-syntax-highlighting

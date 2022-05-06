@@ -353,16 +353,8 @@ line | config
   - Font size: `11`
   - Colors:
     ```
-    [SchemeNorm] = { "#bbbbbb", "#282a36" },
-    [SchemeSel] = { "#000000", "#f59cff" },
-    ```
-    ```
-    [SchemeNorm] = { "#777c99", "#282a36" },
-    [SchemeSel] = { "#bd93f9", "#22232e" },
-    ```
-    ```
-    [SchemeNorm] = { "#777c99", "#050505" },
-    [SchemeSel] = { "#bd93f9", "#2e3440" },
+    [SchemeNorm] = { "#777c99", "#1a1b26" },
+    [SchemeSel] = { "#0f0f14", "#7aa2f7" },
     ```
 - Edit *dmenu_run*
   - Add `-p "Run:"` after `dmenu "@"`

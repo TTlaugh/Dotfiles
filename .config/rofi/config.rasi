@@ -25,9 +25,8 @@ configuration {
 
 window {
     width: 100%;
-    height: 100%;
-    background-color: #000000e6;
-    //background-color: #00000033;
+    height: 95%;
+    background-color: #00000033;
 }
 
 mainbox {

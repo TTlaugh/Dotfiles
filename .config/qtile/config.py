@@ -209,6 +209,16 @@ def init_widgets_list():
                 other_screen_border = "#434758"
                 ),
         # widget.CurrentLayout(),
+        widget.Sep(
+                linewidth = 0,
+                padding = 10
+                ),
+        widget.TextBox(
+                text = "[  ]",
+                foreground = "#7aa2f7",
+                padding = 0,
+                mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')}
+                ),
         widget.Prompt(
                 font = "sans",
                 prompt = 'Run: ',

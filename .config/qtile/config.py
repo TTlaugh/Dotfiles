@@ -81,7 +81,7 @@ keys = [
 # Sound (pamixer)
     Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
     Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
-    Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Decrease volume"),
+    Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Mute"),
 # Dunst
     Key([mod], "BackSpace",             lazy.spawn("dunstctl close"),       desc="Close notification"),
     Key([mod, "shift"], "BackSpace",    lazy.spawn("dunstctl close-all"),   desc="Close all notifications"),
@@ -214,7 +214,7 @@ def init_widgets_list():
                 padding = 10
                 ),
         widget.TextBox(
-                text = "[  ]",
+                text = "",
                 foreground = "#7aa2f7",
                 padding = 0,
                 mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')}

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Dependencies: rofi
+
+dir="~/.config/qtile/scripts/rofi"
+
+rofi_command="rofi -theme $dir/powermenu.rasi"
+
+# Options
+shutdown=" Shutdown"
+reboot=" Restart"
+suspend=" Sleep"
+
+# Variable passed to rofi
+options="$suspend\n$reboot\n$shutdown"
+
+chosen="$(echo -e "$options" | $rofi_command -dmenu)"
+case $chosen in
+    $shutdown) systemctl poweroff ;;
+    $reboot)   systemctl reboot ;;
+    $suspend)  amixer set Master mute && systemctl suspend ;;
+esac

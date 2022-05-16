@@ -1,0 +1,48 @@
+configuration {
+    font: "Hack Nerd Font 20";
+    show-icons:     false;
+}
+
+@theme "/dev/null"
+
+* {
+    background-color: transparent;
+    
+    border: 0;
+    margin: 0;
+    padding: 10;
+    spacing: 0;
+}
+
+window {
+    width: 60%;
+    height: 20%;
+    background-color: #24283be6;
+}
+
+mainbox {
+    children: [ listview ];
+}
+
+listview {
+    border: 0;
+    columns: 3;
+}
+
+element {
+    border-radius: 40;
+    background-color: transparent;
+    text-color: #b2b9d4f2;
+}
+
+element selected.normal {
+    background-color: #eceff466;
+    text-color: #ffffff;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+}
+
+/* vim: ft=sass

@@ -102,8 +102,8 @@ keys = [
         Key([],        "i", lazy.spawn("dmicons"),       desc='dmenu: Copy icons to clipboard'),
         Key([],        "r", lazy.spawn("dmrecord"),      desc='dmenu: Record'),
         Key(["shift"], "r", lazy.spawn("dmrecord kill"), desc='dmenu: Kill existing recording of dmrecord'),
-        Key([],        "e", lazy.spawn('dmeditconf'),    desc='dmenu: Edit selected file'),
-        Key([],        "s", lazy.spawn('dmwebsearch'),   desc='dmenu: Search in web browser'),
+        Key([],        "e", lazy.spawn("dmeditconf"),    desc='dmenu: Edit selected file'),
+        Key([],        "s", lazy.spawn("dmwebsearch"),   desc='dmenu: Search in web browser'),
         Key([],        "q", lazy.spawn("dmpower"),       desc='dmenu: Power action')
     ])
 ]
@@ -111,7 +111,9 @@ keys = [
 ###################
 #----- Group -----#
 ###################
-groups = [Group(i) for i in "123456789"]
+# groups = [Group(i) for i in "123456789"]
+
+groups = [Group(i,label='') for i in "123456789"]
 
 for i in groups:
     keys.extend([
@@ -180,116 +182,239 @@ layouts = [
 #####################
 #----- Widgets -----#
 #####################
+# widget_defaults = dict(
+    # font='Ubuntu Nerd Font bold',
+    # fontsize=12,
+    # padding=4,
+    # background="#24283b"
+# )
+# extension_defaults = widget_defaults.copy()
+
+# def init_widgets_list():
+    # widgets_list = [
+        # widget.CurrentLayoutIcon(
+                # custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                # scale = 0.7,
+                # padding = 0
+                # ),
+        # widget.GroupBox(
+                # font = "sans",
+                # disable_drag = True,
+                # borderwidth = 2,
+                # padding_y = 1,
+                # active = "#ffffff",
+                # inactive = "#44475a",
+                # highlight_method = "block",
+                # this_current_screen_border = "#bb9af7",
+                # this_screen_border = "#434758",
+                # other_current_screen_border = "#bb9af7",
+                # other_screen_border = "#434758"
+                # ),
+        # widget.Sep(
+                # linewidth = 0,
+                # padding = 10
+                # ),
+        # widget.TextBox(
+                # text = "",
+                # foreground = "#7aa2f7",
+                # padding = 0,
+                # mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')}
+                # ),
+        # widget.Prompt(
+                # font = "sans",
+                # prompt = 'Run: ',
+                # foreground = "#50fa7b"
+                # ),
+        # widget.Sep(
+                # linewidth = 0,
+                # padding = 40
+                # ),
+        # widget.WindowName(
+                # font = "sans",
+                # foreground = "#565f89"
+                # ),
+        # widget.Sep(
+                # linewidth = 0,
+                # padding = 40
+                # ),
+        # widget.CheckUpdates(
+                # update_interval = 1800,
+                # distro = "Arch_checkupdates",
+                # colour_have_updates = "#b4f9f8",
+                # mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')}
+                # ),
+        # widget.CPU(
+                # format = 'cpu: {load_percent}%',
+                # foreground = "#f7768e",
+                # mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')}
+                # ),
+        # widget.Memory(
+                # measure_mem = 'G',
+                # format = 'mem: {MemUsed:.2f}{mm}',
+                # foreground = "#ff9e64"
+                # ),
+        # widget.DF(
+                # format = '{p}: {uf}{m}',
+                # visible_on_warn = False,
+                # foreground = "#7dcfff"
+                # ),
+        # widget.TextBox(
+                # text = " Vol:",
+                # foreground = "#7aa2f7",
+                # padding = 0
+                # ),
+        # widget.Volume(
+                # foreground = "#7aa2f7"
+                # ),
+        # widget.Clock(
+                # format='%A, %b %d - %H:%M',
+                # foreground = "#bb9af7"
+                # ),
+        # widget.Systray(),
+    # ]
+    # return widgets_list
+
 widget_defaults = dict(
     font='Ubuntu Nerd Font bold',
     fontsize=12,
     padding=4,
-    background="#24283b"
+    background="#1c202e"
 )
 extension_defaults = widget_defaults.copy()
 
+def upper_left_triangle(bg_color, fg_color):
+    return widget.TextBox(
+        text=' ',
+        padding=0,
+        fontsize=20,
+        background=bg_color,
+        foreground=fg_color)
+def upper_right_triangle(bg_color, fg_color):
+    return widget.TextBox(
+        text=' ',
+        padding=0,
+        fontsize=20,
+        background=bg_color,
+        foreground=fg_color)
+
 def init_widgets_list():
     widgets_list = [
+        widget.TextBox(
+                text = "",
+                foreground = "#73daca",
+                background = "#414868",
+                padding = 10,
+                mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')},
+                ),
         widget.CurrentLayoutIcon(
                 custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                 scale = 0.7,
-                padding = 0
+                background = "#414868",
+                ),
+        upper_left_triangle("#373d57", "#414868"),
+        widget.CPU(
+                format = ' {load_percent}%',
+                foreground = "#7dcfff",
+                background = "#373d57",
+                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')},
+                ),
+        upper_left_triangle("#2e3347", "#373d57"),
+        widget.Memory(
+                measure_mem = 'G',
+                format = ' {MemUsed:.2f}{mm}',
+                foreground = "#f7768e",
+                background = "#2e3347",
+                ),
+        upper_left_triangle("#232736", "#2e3347"),
+        widget.DF(
+                format = ' {uf}{m}',
+                visible_on_warn = False,
+                foreground = "#ff9e64",
+                background = "#232736",
+                ),
+        upper_left_triangle("#1c202e", "#232736"),
+        widget.Prompt(
+                font = "sans bold",
+                prompt = 'Run: ',
+                padding = 10,
+                foreground = "#50fa7b",
+                background = "#1c202e",
+                ),
+        widget.Sep(
+                linewidth = 0,
+                padding = 100,
+                ),
+        upper_left_triangle("#151924", "#1c202e"),
+        widget.WindowName(
+                font = "sans",
+                foreground = "#565f89",
+                background = "#151924",
+                ),
+        widget.Sep(
+                linewidth = 0,
+                padding = 10,
+                background = "#151924",
                 ),
         widget.GroupBox(
                 font = "sans",
+                fontsize = 15,
                 disable_drag = True,
                 borderwidth = 2,
                 padding_y = 1,
-                active = "#ffffff",
+                padding = 5,
+                background = "#151924",
+                active = "#7dcfff",
                 inactive = "#44475a",
-                highlight_method = "block",
-                this_current_screen_border = "#bb9af7",
+                highlight_method = "text",
+                this_current_screen_border = "#ff9e64",
                 this_screen_border = "#434758",
-                other_current_screen_border = "#bb9af7",
-                other_screen_border = "#434758"
+                other_current_screen_border = "#ff9e64",
+                other_screen_border = "#434758",
+                visible_groups = ['1', '2', '3', '4', '5'],
                 ),
-        # widget.CurrentLayout(),
+        upper_right_triangle("#151924", "#1c202e"),
         widget.Sep(
                 linewidth = 0,
-                padding = 10
+                padding = 100,
                 ),
-        widget.TextBox(
-                text = "",
-                foreground = "#7aa2f7",
-                padding = 0,
-                mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')}
-                ),
-        widget.Prompt(
-                font = "sans",
-                prompt = 'Run: ',
-                foreground = "#50fa7b"
-                ),
-        widget.Sep(
-                linewidth = 0,
-                padding = 40
-                ),
-        widget.WindowName(
-                font = "sans",
-                foreground = "#565f89"
-                ),
-        widget.Sep(
-                linewidth = 0,
-                padding = 40
-                ),
-        # widget.Net(
-                # interface = "wlp0s20f0u7",
-                # format = '{down}↓↑{up}',
-                # foreground = "#f1fa8c"
-                # ),
+        upper_right_triangle("#1c202e", "#24283b"),
         widget.CheckUpdates(
                 update_interval = 1800,
                 distro = "Arch_checkupdates",
-                colour_have_updates = "#b4f9f8",
-                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')}
+                display_format = " {updates}",
+                colour_have_updates = "#b4f9c6",
+                background = "#24283b",
+                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')},
                 ),
-        widget.CPU(
-                format = 'cpu: {load_percent}%',
-                foreground = "#f7768e",
-                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')}
-                ),
-        widget.Memory(
-                measure_mem = 'G',
-                format = 'mem: {MemUsed:.2f}{mm}',
-                foreground = "#ff9e64"
-                ),
-        widget.DF(
-                format = '{p}: {uf}{m}',
-                visible_on_warn = False,
-                foreground = "#7dcfff"
-                ),
+        upper_right_triangle("#232736", "#2e3347"),
         widget.TextBox(
                 text = " Vol:",
-                foreground = "#7aa2f7",
-                padding = 0
+                foreground = "#b4f9f8",
+                background = "#2e3347",
+                padding = 0,
                 ),
         widget.Volume(
-                foreground = "#7aa2f7"
+                foreground = "#b4f9f8",
+                background = "#2e3347",
                 ),
+        upper_right_triangle("#2e3347", "#373d57"),
         widget.Clock(
-                format='%A, %b %d - %H:%M',
-                foreground = "#bb9af7"
+                format=' %A, %b %d - %H:%M',
+                foreground = "#7dcfff",
+                background = "#373d57",
                 ),
-        # widget.WidgetBox(
-                # font = "sans",
-                # text_open = '',
-                # text_closed = '',
-                # close_button_location = 'right',
-                # foreground = "#44475a",
-                # widgets=[
-                    # widget.Wlan(
-                        # font = "sans",
-                        # interface = 'wlp0s20f0u7',
-                        # format = 'Wifi: {essid}',
-                        # foreground = "#58e86e"
-                        # )
-                    # ]
-                # ),
-        widget.Systray(),
+        upper_right_triangle("#373d57", "#414868"),
+        widget.Systray(
+                background = "#414868",
+                ),
+        widget.TextBox(
+                fontsize = 14,
+                text = "",
+                foreground = "#f7768e",
+                background = "#414868",
+                padding = 10,
+                mouse_callbacks = {'Button1': lazy.spawn(["sh", "-c", "~/.config/qtile/scripts/powermenu"])},
+                ),
     ]
     return widgets_list
 
@@ -307,7 +432,7 @@ def init_widgets_screen1():
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20))
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20, margin=2))
         # Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))
     ]
 

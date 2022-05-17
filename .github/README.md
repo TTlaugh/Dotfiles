@@ -3,7 +3,7 @@
 ![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile0.png)
 
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Previews</summary>
 
   - ***i3-wm, i3bar, pfetch, gotop.***
   ![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/i3.png)

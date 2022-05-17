@@ -1,7 +1,19 @@
 # Set up Arch Linux
 
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/i3.png)
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile.png)
+![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile0.png)
+
+<details>
+  <summary>Click to expand!</summary>
+
+  - ***i3-wm, i3bar, pfetch, gotop.***
+  ![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/i3.png)
+
+  - ***Qtile, nvim, neofetch, gotop, rofi, conky.***
+  ![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile1.png)
+  ![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile2.png)
+  ![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile3.png)
+
+</details>
 
 # Table of contents
 

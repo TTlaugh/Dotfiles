@@ -30,7 +30,7 @@ window {
     background-color: #24283b80;
 
     border: 2;
-    border-color: #9699a3;
+    border-color: #565f8980;
     border-radius: 10;
 }
 

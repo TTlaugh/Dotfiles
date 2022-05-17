@@ -2,7 +2,7 @@ import os
 import subprocess
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Rule, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -461,7 +461,12 @@ mouse = [
 #----- Other -----#
 ###################
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
+
+dgroups_app_rules = [
+    # Rule(Match(wm_class=['Chromium']), group="1"), 
+    # Rule(Match(wm_class=['Alacritty']), group="2"), 
+] # type: List
+
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False

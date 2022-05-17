@@ -11,6 +11,7 @@ from libqtile.utils import guess_terminal
 #----- Variables -----#
 #######################
 mod = "mod4"
+mod1 = "mod1"
 terminal = guess_terminal()
 myterm = "alacritty"
 mybrowser = "chromium"
@@ -113,7 +114,7 @@ keys = [
 ###################
 # groups = [Group(i) for i in "123456789"]
 
-groups = [Group(i,label='') for i in "123456789"]
+groups = [Group(i,label='') for i in "asdfg"]
 
 for i in groups:
     keys.extend([
@@ -122,7 +123,7 @@ for i in groups:
         # Key([mod], i.name, lazy.group[i.name].toscreen(toggle=True),
             # desc="Switch to group {}".format(i.name)),
         # Or not toggle with the last used group:
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
+        Key([mod1], i.name, lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
@@ -130,7 +131,7 @@ for i in groups:
             # desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+        Key([mod1, "shift"], i.name, lazy.window.togroup(i.name),
             desc="move focused window to group {}".format(i.name)),
     ])
 
@@ -370,7 +371,7 @@ def init_widgets_list():
                 this_screen_border = "#434758",
                 other_current_screen_border = "#ff9e64",
                 other_screen_border = "#434758",
-                visible_groups = ['1', '2', '3', '4', '5'],
+                # visible_groups = ['1', '2', '3', '4', '5'],
                 ),
         upper_right_triangle("#151924", "#1c202e"),
         widget.Sep(

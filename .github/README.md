@@ -88,12 +88,12 @@
   ```
 - Qtile:
   ```
-  qtile xcb-util-cursor python-psutil
+  qtile xcb-util-cursor python-psutil i3lock
   ```
 
 ### Apps
 ```
-neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontrol pcmanfm vifm ueberzug ffmpegthumbnailer ffmpeg atool feh sxiv mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter xclip fuse2
+neovim vim nano zsh neofetch htop rofi git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontrol pcmanfm vifm ueberzug ffmpegthumbnailer ffmpeg atool feh sxiv mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter xclip fuse2
 ```
 > Enable lightdm: `systemctl enable lightdm`
 - If you want to use [screenshot](https://github.com/nguyenletientrien/Dotfiles/blob/master/.scripts/screenshot) script with *selected option*, install `slop` package.
@@ -127,7 +127,7 @@ neovim vim nano zsh neofetch htop git wget curl zip unzip unrar p7zip gzip bzip2
     > - `sudo usermod -G libvirt -a <username>`
   - LibreOffice 
     > *jre-openjdk* package is needed for LibreOffice Database.
-  - rofi ([my rofi config](https://github.com/nguyenletientrien/Dotfiles/blob/master/.config/rofi/config.rasi))
+  - conky
   - persepolis
   - onboard
   - xdotool
@@ -395,12 +395,6 @@ user-session=qtile
 background=/usr/share/backgrounds/<picture>
 ```
 
-## Pacman
-- To use pacman with more colors, uncomment this line in ***/etc/pacman.conf***
-```
-#Colors -> Color
-```
-
 # Tips and Tricks
 
 ### Vim Tips
@@ -437,9 +431,14 @@ sudo nvim /etc/sudoers
 - `xset -dpms`
 - `xset s noblank`
 
-### Pacman
-> Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
+## Pacman
+- To use pacman with more colors, uncomment this line in ***/etc/pacman.conf***
+```
+#Colors -> Color
+```
+
 #### Basics
+> Note: make sure you run 'sudo pacman -Fy' at least once to use the -F option.
 - `pacman -Q`                       : list all installed packages.
 - `pacman -Qe`                      : list installed packages by user.
 - `pacman -Qn`                      : list installed packages from official repository.

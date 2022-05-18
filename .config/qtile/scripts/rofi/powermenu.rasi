@@ -1,5 +1,5 @@
 configuration {
-    font: "Hack Nerd Font 20";
+    font: "Hack Nerd Font 25";
     show-icons:     false;
 }
 
@@ -15,8 +15,10 @@ configuration {
 }
 
 window {
-    width: 60%;
-    height: 20%;
+    anchor:     east;
+    location:   east;
+    width: 25%;
+    height: 94%;
     background-color: #24283be6;
 }
 
@@ -26,11 +28,12 @@ mainbox {
 
 listview {
     border: 0;
-    columns: 3;
 }
 
+
 element {
-    border-radius: 40;
+    margin: 25 5 25 5;
+    border-radius: 50;
     background-color: transparent;
     text-color: #b2b9d4f2;
 }

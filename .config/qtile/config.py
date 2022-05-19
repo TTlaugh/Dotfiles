@@ -387,7 +387,7 @@ def init_widgets_list():
                 background = "#24283b",
                 mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')},
                 ),
-        upper_right_triangle("#232736", "#2e3347"),
+        upper_right_triangle("#24283b", "#2e3347"),
         widget.TextBox(
                 text = " Vol:",
                 foreground = "#b4f9f8",

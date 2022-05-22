@@ -1,6 +1,7 @@
 add_newline = false
 
 format = """
+[╭─](white bold)\
 $username\
 $hostname\
 $directory\
@@ -10,6 +11,7 @@ $git_commit\
 $git_state\
 $git_metrics\
 $line_break\
+[╰─](white bold)\
 $shell\
 $sudo\
 $character\
@@ -20,58 +22,20 @@ right_format = """$status"""
 ##############
 #   Normal   #
 ##############
-[username]
-show_always = true
-format = '([\[](cyan bold)[$user](purple bold)[@](green bold))'
-
-[hostname]
-ssh_only = false
-format = "[$hostname](yellow bold) "
-
-[directory]
-truncation_length = 0
-truncate_to_repo = false
-format = '([$path]($style)[$read_only]($read_only_style)[\]](cyan bold) )'
-read_only = " "
-style = "blue bold"
-
-[git_status]
-format = "[$all_status$ahead_behind]($style)"
-
-[git_branch]
-format = "[$symbol$branch](yellow) "
-symbol=" "
-
-#[shell]
-#disabled = false
-#format = "[$indicator](green bold) "
-
-[sudo]
-disabled = false
-format = "[S](yellow bold)"
-
-[status]
-disabled = false
-format = "[$status ↵](red)"
-
-#################
-#   Powerline   #
-#################
 #[username]
 #show_always = true
-#format = "[](black)[ ](cyan bg:black)[](black bold bg:black)[ $user](purple bold bg:black)[@](green bold bg:black)"
+#format = '([\[](cyan bold)[$user](purple bold)[@](green bold))'
 
 #[hostname]
 #ssh_only = false
-#format = "[$hostname ](yellow bold bg:black)[](black bold bg:black)"
+#format = "[$hostname](yellow bold) "
 
 #[directory]
 #truncation_length = 0
 #truncate_to_repo = false
-#format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[ ](black bold bg:black)[](black) "
-#style = "blue bold bg:black"
-#read_only = "  "
-#read_only_style = "red bg:black"
+#format = '([$path]($style)[$read_only]($read_only_style)[\]](cyan bold) )'
+#read_only = " "
+#style = "blue bold"
 
 #[git_status]
 #format = "[$all_status$ahead_behind]($style)"
@@ -80,14 +44,52 @@ format = "[$status ↵](red)"
 #format = "[$symbol$branch](yellow) "
 #symbol=" "
 
+##[shell]
+##disabled = false
+##format = "[$indicator](green bold) "
+
 #[sudo]
 #disabled = false
 #format = "[S](yellow bold)"
 
-##[shell]
-##disabled = false
-##format = "[$indicator](cyan bold) "
-
 #[status]
 #disabled = false
 #format = "[$status ↵](red)"
+
+#################
+#   Powerline   #
+#################
+[username]
+show_always = true
+format = "[](black)[ ](cyan bg:black)[](black bold bg:black)[ $user](purple bold bg:black)[@](green bold bg:black)"
+
+[hostname]
+ssh_only = false
+format = "[$hostname ](yellow bold bg:black)[](black bold bg:black)"
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[ ](black bold bg:black)[](black) "
+style = "blue bold bg:black"
+read_only = "  "
+read_only_style = "red bg:black"
+
+[git_status]
+format = "[$all_status$ahead_behind]($style)"
+
+[git_branch]
+format = "[$symbol$branch](yellow) "
+symbol=" "
+
+[sudo]
+disabled = false
+format = "[S](yellow bold)"
+
+#[shell]
+#disabled = false
+#format = "[$indicator](cyan bold) "
+
+[status]
+disabled = false
+format = "[$status ↵](red)"

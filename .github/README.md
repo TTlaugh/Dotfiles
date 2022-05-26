@@ -95,7 +95,7 @@
 
 ### Apps
 ```
-neovim vim nano zsh neofetch htop rofi git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontrol pcmanfm vifm ueberzug ffmpegthumbnailer ffmpeg atool feh sxiv mpv cmus imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter xclip fuse2
+neovim vim nano zsh neofetch htop rofi git wget curl zip unzip unrar p7zip gzip bzip2 tar pavucontrol pcmanfm vifm ueberzug ffmpegthumbnailer ffmpeg atool feh sxiv mpv imagemagick firefox chromium lxappearance picom fzf bat ripgrep the_silver_searcher fd exa net-tools pacman-contrib network-manager-applet zathura zathura-pdf-poppler zathura-djvu zathura-ps dunst gcc gdb cmake kitty alacritty lightdm lightdm-slick-greeter xclip fuse2
 ```
 > Enable lightdm: `systemctl enable lightdm`
 - If you want to use [screenshot](https://github.com/nguyenletientrien/Dotfiles/blob/master/.scripts/screenshot) script with *selected option*, install `slop` package.
@@ -130,6 +130,7 @@ neovim vim nano zsh neofetch htop rofi git wget curl zip unzip unrar p7zip gzip 
   - LibreOffice 
     > *jre-openjdk* package is needed for LibreOffice Database.
   - conky
+  - cmus
   - persepolis
   - onboard
   - xdotool

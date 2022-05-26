@@ -37,6 +37,8 @@ keys = [
     Key([mod], "w",                     lazy.spawn("rofi -show window")),
 # Launch my browser
     Key([mod, "shift"], "Return",       lazy.spawn(mybrowser)),
+# Lock screen (with 'lockscreen' script)
+    Key([mod], "Escape",                lazy.spawn("lockscreen")),
 # Switch to next/previous layout
     Key([mod], "Tab",                   lazy.next_layout()),
     Key([mod, "shift"], "Tab",          lazy.prev_layout()),

@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Dependencies: rofi, i3lock/i3lock-color
-
-set -euo pipefail
-
 i3lock_color() {
     i3lock \
     -e -f  \
@@ -38,33 +34,8 @@ i3lock_color() {
     --greeter-text="Type password to unlock"
 }
 
-logout() {
-    if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
-        qtile cmd-obj -o cmd -f shutdown
-    elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
-        i3-msg exit
-    fi
-}
-
-DIR="~/.config/qtile"
-
-rofi_command="rofi -theme $DIR/scripts/rofi/powermenu.rasi"
-
-# Options
-suspend=" Sleep"
-lock=" Lock"
-logout=" Logout"
-reboot=" Restart"
-shutdown=" Shutdown"
-
-# Variable passed to rofi
-options="$suspend\n$lock\n$logout\n$reboot\n$shutdown"
-
-chosen="$(echo -e "$options" | $rofi_command -dmenu)"
-case $chosen in
-    $suspend)  amixer set Master mute && systemctl suspend ;;
-    $lock)     i3lock_color || i3lock -e -f -c 24283b;;
-    $logout)   logout;;
-    $reboot)   systemctl reboot ;;
-    $shutdown) systemctl poweroff ;;
-esac
+if [[ -f /usr/bin/i3lock ]]; then
+    i3lock_color || i3lock -e -f -c 24283b
+elif [[ -f /usr/bin/betterlockscreen ]]; then
+    betterlockscreen -l
+fi

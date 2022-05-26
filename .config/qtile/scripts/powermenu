@@ -1,10 +1,54 @@
 #!/usr/bin/env bash
 
-# Dependencies: rofi
+# Dependencies: rofi, i3lock/i3lock-color
 
-dir="~/.config/qtile"
+set -euo pipefail
 
-rofi_command="rofi -theme $dir/scripts/rofi/powermenu.rasi"
+i3lock_color() {
+    i3lock \
+    -e -f  \
+    \
+    --insidever-color='#0000001c'   \
+    --ringver-color='#00000000'     \
+    \
+    --insidewrong-color='#0000001c' \
+    --ringwrong-color='#f7768eff'   \
+    \
+    --inside-color='#ffffff1c'      \
+    --ring-color='#ffffff3e'        \
+    --line-color='#ffffff00'        \
+    --separator-color='#22222260'   \
+    \
+    --verif-color='#ffffff33'       \
+    --wrong-color='#f7768eff'       \
+    --keyhl-color='#b4f9c6ff'       \
+    --bshl-color='#ffffffff'        \
+    --time-color='#ffffffff'        \
+    --date-color='#ffffffff'        \
+    --greeter-color='#ffffffff'     \
+    \
+    --screen 1                      \
+    --blur 5                        \
+    --radius 100                    \
+    --ring-width 13.0               \
+    --clock                         \
+    --indicator                     \
+    --time-str="%H:%M"              \
+    --date-str="%A, %Y-%m-%d"       \
+    --greeter-text="Type password to unlock"
+}
+
+logout() {
+    if [[ "$DESKTOP_SESSION" == "qtile" ]]; then
+        qtile cmd-obj -o cmd -f shutdown
+    elif [[ "$DESKTOP_SESSION" == "i3" ]]; then
+        i3-msg exit
+    fi
+}
+
+DIR="~/.config/qtile"
+
+rofi_command="rofi -theme $DIR/scripts/rofi/powermenu.rasi"
 
 # Options
 suspend=" Sleep"
@@ -19,8 +63,8 @@ options="$suspend\n$lock\n$logout\n$reboot\n$shutdown"
 chosen="$(echo -e "$options" | $rofi_command -dmenu)"
 case $chosen in
     $suspend)  amixer set Master mute && systemctl suspend ;;
-    $lock)     i3lock -e -f -c 24283b;;
-    $logout)   qtile cmd-obj -o cmd -f shutdown;;
+    $lock)     i3lock_color || i3lock -e -f -c 24283b;;
+    $logout)   logout;;
     $reboot)   systemctl reboot ;;
     $shutdown) systemctl poweroff ;;
 esac

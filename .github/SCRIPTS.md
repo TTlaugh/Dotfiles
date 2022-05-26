@@ -53,6 +53,10 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
 exec --no-startup-id dmupdate 'alacritty -e'
 ```
 ```
+# lockscreen
+bindsym $mod+Escape exec --no-startup-id lockscreen
+```
+```
 # screenshot
 bindsym Print exec --no-startup-id screenshot
 bindsym Shift+Print exec --no-startup-id screenshot selected

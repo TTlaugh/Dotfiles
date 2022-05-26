@@ -32,7 +32,7 @@ listview {
 
 
 element {
-    margin: 30 5 30 5;
+    margin: 25 5 25 5;
     border-radius: 50;
     background-color: transparent;
     text-color: #b2b9d4f2;

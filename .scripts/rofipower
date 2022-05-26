@@ -46,9 +46,7 @@ logout() {
     fi
 }
 
-DIR="~/.config/qtile"
-
-rofi_command="rofi -theme $DIR/scripts/rofi/powermenu.rasi"
+rofi_command="rofi -theme ~/.config/rofi/powermenu.rasi"
 
 # Options
 suspend=" Sleep"

@@ -38,10 +38,10 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
 > - Microcode: install `intel-ucode`(Intel) or `amd-ucode`(AMD).
 > - Graphics card, see Arch Wiki:
-    > - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
-    > - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
-    > - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
-    > - [Xorg](https://wiki.archlinux.org/title/Xorg)
+  > [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+  > [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
+  > [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+  > [Xorg](https://wiki.archlinux.org/title/Xorg)
 > - [Xorg](https://wiki.archlinux.org/title/Xorg)
 
 ### AUR Packages
@@ -102,114 +102,114 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 <details>
   <summary>Unmute the sound card and disable auto mute on startup</summary>
 
-    - Unmute:
-    ```
-    amixer sset Master unmute
-    amixer sset Speaker unmute
-    amixer sset Headphone unmute
-    ```
-    - Disable auto mute:
-    ```
-    amixer -c 0 sset "Auto-Mute Mode" Disabled
-    ```
+  - Unmute:
+  ```
+  amixer sset Master unmute
+  amixer sset Speaker unmute
+  amixer sset Headphone unmute
+  ```
+  - Disable auto mute:
+  ```
+  amixer -c 0 sset "Auto-Mute Mode" Disabled
+  ```
 </details>
 
 <details>
   <summary>i3</summary>
 
-    - Copy ***i3*** folder to ***~/.config/***
-    - Open ***i3/config*** file and edit for use!
-    - You can read readme for more.
-    - Set background with feh: `feh --bg-scale /path/to/picture`
-    - See more: [i3-README.md](https://github.com/nguyenletientrien/Dotfiles/tree/master/.config/i3)
+  - Copy ***i3*** folder to ***~/.config/***
+  - Open ***i3/config*** file and edit for use!
+  - You can read readme for more.
+  - Set background with feh: `feh --bg-scale /path/to/picture`
+  - See more: [i3-README.md](https://github.com/nguyenletientrien/Dotfiles/tree/master/.config/i3)
 </details>
 
 <details>
   <summary>Neovim</summary>
 
-    [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/NEOVIM.md)
+  [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/NEOVIM.md)
 </details>
 
 <details>
   <summary>zsh</summary>
 
-    - Copy ***zsh*** folder to ***~/.config/***
-    - To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
-      ```
-      cd ~/.config/zsh/plugins
-      ```
-      ```
-      git clone https://github.com/zsh-users/zsh-autosuggestions.git
-      ```
-      ```
-      git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-      ```
-    - Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
-      > Starship is available on the official repository.
+  - Copy ***zsh*** folder to ***~/.config/***
+  - To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
+    ```
+    cd ~/.config/zsh/plugins
+    ```
+    ```
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git
+    ```
+    ```
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    ```
+  - Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
+    > Starship is available on the official repository.
 </details>
 
 <details>
   <summary>Vifm</summary>
 
-    [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIFM.md)
+  [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIFM.md)
 </details>
 
 <details>
   <summary>Kitty</summary>
 
-    - Copy default config file to ***~/.config/***
-    ```
-    cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
-    ```
-    - Configure
-    ```
-    line | config
-    -----|---------------------------------------
-       9 | font_family      FiraCode Nerd Font
-      10 | bold_font        FiraCode Nerd Font Bold
-      11 | italic_font      FiraCode Nerd Font Italic
-      12 | bold_italic_font FiraCode Nerd Font Bold Italic
-     762 | background_opacity 0.9
-    ```
-    - Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
+  - Copy default config file to ***~/.config/***
+  ```
+  cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
+  ```
+  - Configure
+  ```
+  line | config
+  -----|---------------------------------------
+     9 | font_family      FiraCode Nerd Font
+    10 | bold_font        FiraCode Nerd Font Bold
+    11 | italic_font      FiraCode Nerd Font Italic
+    12 | bold_italic_font FiraCode Nerd Font Bold Italic
+   762 | background_opacity 0.9
+  ```
+  - Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
 </details>
 
 <details>
   <summary>Dmenu</summary>
 
-    - Edit *config.def.h*:
-      - Font: `Hack Nerd Font`
-      - Font size: `11`
-      - Colors:
-        ```
-        [SchemeNorm] = { "#777c99", "#1a1b26" },
-        [SchemeSel] = { "#0f0f14", "#7aa2f7" },
-        ```
-    - Edit *dmenu_run*
-      - Add `-p "Run:"` after `dmenu "@"`
-      - Example: `dmenu "$@" -p "Run:"`
+  - Edit *config.def.h*:
+    - Font: `Hack Nerd Font`
+    - Font size: `11`
+    - Colors:
+      ```
+      [SchemeNorm] = { "#777c99", "#1a1b26" },
+      [SchemeSel] = { "#0f0f14", "#7aa2f7" },
+      ```
+  - Edit *dmenu_run*
+    - Add `-p "Run:"` after `dmenu "@"`
+    - Example: `dmenu "$@" -p "Run:"`
 </details>
 
 <details>
   <summary>Lightdm, lightdm-slick-greeter</summary>
 
-    #### Lightdm
-    - Edit config file in ***/etc/lightdm/lightdm.conf***
-    ```
-    [Seat:*]
-    .....
-    greeter-session=lightdm-slick-greeter
-    user-session=qtile
-    #user-session=i3
-    .....
-    ```
-    ##### lightdm-slick-greeter
-    - Copy the picture you want to set background to ***/usr/share/backgrounds/***
-    - Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
-    ```
-    [Greeter]
-    background=/usr/share/backgrounds/<picture>
-    ```
+  #### Lightdm
+  - Edit config file in ***/etc/lightdm/lightdm.conf***
+  ```
+  [Seat:*]
+  .....
+  greeter-session=lightdm-slick-greeter
+  user-session=qtile
+  #user-session=i3
+  .....
+  ```
+  ##### lightdm-slick-greeter
+  - Copy the picture you want to set background to ***/usr/share/backgrounds/***
+  - Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
+  ```
+  [Greeter]
+  background=/usr/share/backgrounds/<picture>
+  ```
 </details>
 
 # Other
@@ -217,23 +217,23 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 <details>
   <summary>Click to expand!</summary>
 
-    ### Fonts
-    - Roboto Mono (dunst)
-    - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
-    - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
-    - Fira Code (Kitty)
-    - Hack Nerd Font (Alacritty, st, dmenu)
-    
-    ### Lxappearance
-    - Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
-    - Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
-    - Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
-    
-    ### Random color script for terminal
-    - Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)
-    - Usage: add `colorscript random` to your **.zshrc** file.
-    
-    ### My Scripts
-    [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)
+  ### Fonts
+  - Roboto Mono (dunst)
+  - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
+  - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
+  - Fira Code (Kitty)
+  - Hack Nerd Font (Alacritty, st, dmenu)
+  
+  ### Lxappearance
+  - Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
+  - Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
+  - Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
+  
+  ### Random color script for terminal
+  - Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)
+  - Usage: add `colorscript random` to your **.zshrc** file.
+  
+  ### My Scripts
+  [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)
 </details>
 

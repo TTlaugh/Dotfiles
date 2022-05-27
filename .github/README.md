@@ -36,13 +36,13 @@
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
-> - Microcode: install `intel-ucode`(Intel) or `amd-ucode`(AMD).
-> - Graphics card, see Arch Wiki:
-  > [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
-  > [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
-  > [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
-  > [Xorg](https://wiki.archlinux.org/title/Xorg)
-> - [Xorg](https://wiki.archlinux.org/title/Xorg)
+> You must choose the following packages to suit your system carefully.
+- Microcode: install `intel-ucode`(Intel) or `amd-ucode`(AMD).
+- Graphics card, see Arch Wiki:
+  - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+  - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
+  - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+  - [Xorg](https://wiki.archlinux.org/title/Xorg)
 
 ### AUR Packages
 > To install AUR packages: `makepkg -si`

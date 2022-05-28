@@ -1,3 +1,6 @@
+## AutoTiling script (very useful)
+Get more information from Github page: [https://github.com/nwg-piotr/autotiling](https://github.com/nwg-piotr/autotiling)
+
 ## Some useful key bindings you might want to use
 - See here: [https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759](https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759)
 

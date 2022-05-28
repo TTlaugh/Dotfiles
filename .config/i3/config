@@ -8,12 +8,14 @@
         # Turn off border
         default_border pixel 2
         default_floating_border pixel 2
+        hide_edge_borders smart
         title_align center
         # Use Mouse+$mod to drag floating windows to their wanted position
         floating_modifier $mod
         # i3-gaps
         #gaps inner 5
         #gaps outer 5
+        #smart_gaps on
 
 # Colors
         # Window colors         border     background    text      indicator  child_border
@@ -40,7 +42,7 @@
 
 # Startup
     # Picom
-        exec_always --no-startup-id picom
+        exec --no-startup-id picom
     # Network Manager applet
         exec --no-startup-id nm-applet
     # Background use feh
@@ -49,6 +51,8 @@
         exec --no-startup-id xset s off
         exec --no-startup-id xset -dpms
         exec --no-startup-id xset s noblank
+    # AutoTiling script
+        exec_always --no-startup-id autotiling
 
 # Mappings
     # i3-gaps

@@ -119,9 +119,9 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 
   - Copy ***i3*** folder to ***~/.config/***
   - Open ***i3/config*** file and edit for use!
-  - You can read readme for more.
-  - Set background with feh: `feh --bg-scale /path/to/picture`
   - See more: [i3-README.md](https://github.com/nguyenletientrien/Dotfiles/tree/master/.config/i3)
+  - AutoTiling script: [https://github.com/nwg-piotr/autotiling](https://github.com/nwg-piotr/autotiling)
+  - Set background with feh: `feh --bg-scale /path/to/picture`
 </details>
 
 <details>

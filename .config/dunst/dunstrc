@@ -5,7 +5,7 @@
 
     width = 300
     height = 300
-    origin = top-right
+    origin = top-center
     offset = 10x25
     scale = 0
 
@@ -61,7 +61,7 @@
     title = Dunst
     class = Dunst
 
-    corner_radius = 5
+    corner_radius = 2
 
     ignore_dbusclose = false
     force_xwayland = false

@@ -78,6 +78,7 @@ mode "dmscripts" {
     bindsym s exec --no-startup-id dmwebsearch, mode "default"
     bindsym b exec --no-startup-id dmsetbg, mode "default"
     bindsym w exec --no-startup-id dmwifi, mode "default"
+    bindsym t exec --no-startup-id dmtranslate, mode "default"
     bindsym k exec --no-startup-id dmkill, mode "default"
     bindsym m exec --no-startup-id dmmount, mode "default"
     bindsym p exec --no-startup-id dmmaim, mode "default"

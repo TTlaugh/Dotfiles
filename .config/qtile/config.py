@@ -101,6 +101,7 @@ keys = [
         Key(["shift"], "m", lazy.spawn("dmunmount"),     desc='dmenu: Unmount drive'),
         Key([],        "b", lazy.spawn("dmsetbg"),       desc='dmenu: Set background'),
         Key([],        "w", lazy.spawn("dmwifi"),        desc='dmenu: Connect to wifi'),
+        Key([],        "t", lazy.spawn("dmtranslate"),   desc='dmenu: Translate using Google-Translate'),
         Key([],        "c", lazy.spawn("dmcalc"),        desc='dmenu: Simple calculator'),
         Key([],        "i", lazy.spawn("dmicons"),       desc='dmenu: Copy icons to clipboard'),
         Key([],        "r", lazy.spawn("dmrecord"),      desc='dmenu: Record'),

@@ -68,7 +68,7 @@ main() {
   to_code=${lang_map[$to_name]}
 
   # Get text to translate and url encode 
-  query=$(echo "" | ${DMENU} "Translate (${from_code} -> ${to_code}):")
+  query=$(echo -n "" | ${DMENU} "Translate (${from_code} -> ${to_code}):")
   query="$(echo "${query}" | jq -s -R -r @uri)"
 
   declare -A translate_query translate_query_jq translate_method

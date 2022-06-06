@@ -12,10 +12,20 @@
 - dunst
 - pyhon
 - feh
+- xdotool
 - xclip
 - ffmpeg
+- maim
 - slop
-- Your favorite terminal
+- curl
+- jq
+- nmcli
+- i3lock-color
+- rofi
+- *Browser*
+- *Terminal*
+- Any Nerd Font
+- ...
 
 Example for Arch:
 ```

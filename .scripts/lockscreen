@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Description: Lock screen script.
+# Dependencies: i3lock or i3lock-color or betterlockscreen
+
 i3lock_color() {
     i3lock \
     -e -f  \

@@ -27,7 +27,6 @@
   - [Optional](https://github.com/nguyenletientrien/Dotfiles#optional)
   - [Enable](https://github.com/nguyenletientrien/Dotfiles#enable)
 - [Configuration](https://github.com/nguyenletientrien/Dotfiles#configuration)
-- [Tips and Tricks](https://github.com/nguyenletientrien/Dotfiles#tips-and-tricks)
 - [Other](https://github.com/nguyenletientrien/Dotfiles#other)
 
 # Installation
@@ -48,7 +47,6 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ### AUR Packages
 > To install AUR packages: `makepkg -si`
 - [yay](https://aur.archlinux.org/packages/yay)
-- [all-repository-fonts](https://aur.archlinux.org/packages/all-repository-fonts)
 - [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete)
 
 ### Suckless
@@ -91,7 +89,6 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
   - ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts))
   - teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
      > Note: If you use startx, you won't be able to open teamviewer
-  - Powerline Fonts: [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
 </details>
 
 ### Enable
@@ -234,6 +231,10 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
   ### Random color script for terminal
   - Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)
   - Usage: add `colorscript random` to your **.zshrc** file.
+
+  ### Tips and Tricks
+  - [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
+  - [Vim](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
   
   ### My Scripts
   [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)

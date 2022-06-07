@@ -3,7 +3,7 @@
 
     follow = mouse
 
-    width = 300
+    width = 400
     height = 300
     origin = top-center
     offset = 10x25
@@ -61,7 +61,7 @@
     title = Dunst
     class = Dunst
 
-    corner_radius = 2
+    corner_radius = 10
 
     ignore_dbusclose = false
     force_xwayland = false
@@ -75,13 +75,13 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#404040"
-    foreground = "#e6e6e6"
+    background = "#2b4057"
+    foreground = "#e1e5f7"
     timeout = 3
 
 [urgency_normal]
-    background = "#11121d"
-    foreground = "#e1e5f7"
+    background = "#ffffff"
+    foreground = "#000000"
     timeout = 5
 
 [urgency_critical]

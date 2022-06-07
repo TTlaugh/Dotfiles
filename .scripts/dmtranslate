@@ -93,7 +93,7 @@ main() {
 
   # Copy translation to clipboard and send notification
   echo "${translation}" | xclip -sel c 
-  notify-send "Translation (in clipboard)" "<span foreground='#b4f9f8'>$translation</span>"
+  notify-send "Translation (in clipboard)" "<span foreground='#005473'>$translation</span>"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

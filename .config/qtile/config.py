@@ -262,12 +262,10 @@ layouts = [
                 # visible_on_warn = False,
                 # foreground = "#7dcfff"
                 # ),
-        # widget.TextBox(
-                # text = " Vol:",
-                # foreground = "#7aa2f7",
-                # padding = 0
-                # ),
-        # widget.Volume(
+        # widget.PulseVolume(
+                # limit_max_volume = True,
+                # update_interval = 0.0,
+                # fmt='Vol: {}',
                 # foreground = "#7aa2f7"
                 # ),
         # widget.Clock(
@@ -391,13 +389,10 @@ def init_widgets_list():
                 mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')},
                 ),
         upper_right_triangle("#24283b", "#2e3347"),
-        widget.TextBox(
-                text = " Vol:",
-                foreground = "#b4f9f8",
-                background = "#2e3347",
-                padding = 0,
-                ),
-        widget.Volume(
+        widget.PulseVolume(
+                limit_max_volume = True,
+                update_interval = 0.0,
+                fmt='Vol: {}',
                 foreground = "#b4f9f8",
                 background = "#2e3347",
                 ),

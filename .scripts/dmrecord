@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Description: Dmenu script to record video,audio,webcam.
-# Dependencies: dmenu, ffmpeg, pulseaudio, alsa, slop (for recording a specific area)
+# Dependencies: dmenu, ffmpeg, alsa, slop (for recording a specific area)
 
 # Usage:
 # `$0`: Ask for recording type via dmenu

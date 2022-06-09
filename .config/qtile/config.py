@@ -19,10 +19,12 @@ mybrowser = "chromium"
 #####################
 #----- Startup -----#
 #####################
+from time import sleep
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call([home])
+    sleep(3)
 
 #########################
 #----- Keybindings -----#
@@ -265,7 +267,7 @@ layouts = [
         # widget.PulseVolume(
                 # limit_max_volume = True,
                 # update_interval = 0.0,
-                # fmt='Vol: {}',
+                # fmt = 'Vol: {}',
                 # foreground = "#7aa2f7"
                 # ),
         # widget.Clock(
@@ -392,7 +394,7 @@ def init_widgets_list():
         widget.PulseVolume(
                 limit_max_volume = True,
                 update_interval = 0.0,
-                fmt='Vol: {}',
+                fmt = 'Vol: {}',
                 foreground = "#b4f9f8",
                 background = "#2e3347",
                 ),

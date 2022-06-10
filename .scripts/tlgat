@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Description: A script to toggle alacritty transparency
+# Dependencies: alacritty
+
+## If alacritty.yml does not exist, raise an alert
+[[ ! -f ~/.config/alacritty/alacritty.yml ]] && notify-send "tlgat" "alacritty.yml does not exist" && exit 0
+
+## Fetch opacity from alacritty.yml
+opacity=$(awk '$1 == "opacity:" {print $2; exit}' ~/.config/alacritty/alacritty.yml)
+
+## Assign toggle opacity value
+case $opacity in
+  1.0)
+    toggle_opacity=0.7
+    ;;
+  *)
+    toggle_opacity=1.0
+    ;;
+esac
+
+## Replace opacity value in alacritty.yml
+sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" ~/.config/alacritty/alacritty.yml

@@ -9,7 +9,6 @@ window:
 
 # Background opacity
   opacity: 0.7
-  opacity: 1.0
 
   # Window title
   title: Alacritty

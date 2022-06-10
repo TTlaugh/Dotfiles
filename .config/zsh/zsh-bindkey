@@ -1,0 +1,3 @@
+bindkey -s '^o' 'fm\n'
+bindkey -s '^n' 'tmux attach || tmux\n'
+bindkey -s '^a' 'tlgat && clear\n'

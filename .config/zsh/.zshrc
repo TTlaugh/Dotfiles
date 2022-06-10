@@ -24,6 +24,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 ### source aliases, vimode, fzf, plugins
 [ -f "$ZDOTDIR/zsh-aliases" ] && source "$ZDOTDIR"/zsh-aliases
+[ -f "$ZDOTDIR/zsh-bindkey" ] && source "$ZDOTDIR"/zsh-bindkey
 [ -f "$ZDOTDIR/zsh-vimode" ] && source "$ZDOTDIR"/zsh-vimode
 [ -f "$ZDOTDIR/zsh-fzf" ] && source "$ZDOTDIR"/zsh-fzf
 [ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR"/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

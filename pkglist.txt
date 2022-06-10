@@ -90,6 +90,7 @@ neovim
 vim
 nano
 zsh
+tmux
 neofetch
 htop
 rofi

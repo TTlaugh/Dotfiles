@@ -124,6 +124,49 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 </details>
 
 <details>
+  <summary>Tmux</summary>
+
+  #### Installation
+  Install [Oh my tmux](https://github.com/gpakosz/.tmux)
+  > [A list of awesome resources for tmux.](https://github.com/rothgar/awesome-tmux)
+  #### Configuration
+  > Pressing `<prefix> e` will open `~/.tmux.conf.local` with the editor defined by the `$EDITOR` environment variable (defaults to `vim` when empty).
+  - [Enable the Powerline look](https://github.com/gpakosz/.tmux#enabling-the-powerline-look)
+  - Theme colors
+    ```
+    # custom theme
+    tmux_conf_theme_colour_1="#16161e"
+    tmux_conf_theme_colour_2="#24283b"
+    tmux_conf_theme_colour_3="#a9b1d6"
+    tmux_conf_theme_colour_4="#8be9fd"
+    tmux_conf_theme_colour_5="#f1fa8c"
+    tmux_conf_theme_colour_6="#16161e"
+    tmux_conf_theme_colour_7="#f8f8f2"
+    tmux_conf_theme_colour_8="#16161e"
+    tmux_conf_theme_colour_9="#f1fa8c"
+    tmux_conf_theme_colour_10="#ff79c6"
+    tmux_conf_theme_colour_11="#50fa7b"
+    tmux_conf_theme_colour_12="#a9b1d6"
+    tmux_conf_theme_colour_13="#f8f8f2"
+    tmux_conf_theme_colour_14="#16161e"
+    tmux_conf_theme_colour_15="#16161e"
+    tmux_conf_theme_colour_16="#ff5555"
+    tmux_conf_theme_colour_17="#f8f8f2"
+    ```
+  - Configuring the status line:
+    ```
+    tmux_conf_theme_status_left=" ❐ #S "
+    tmux_conf_theme_status_right=" #{prefix} #{mouse}#{pairing}#{synchronized} | #{username}#{root} | #{hostname} "
+    ```
+  #### Fix *Neovim losing colorscheme when in tmux*:
+  > `$TERM` must be set to `xterm-256color`
+  - tmux.conf:
+    ```
+    set-option -ga terminal-overrides ",xterm-256color:Tc"
+    ```
+</details>
+
+<details>
   <summary>Neovim</summary>
 
   [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/NEOVIM.md)

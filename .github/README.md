@@ -92,9 +92,11 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 </details>
 
 ### Enable
-- lightdm: `systemctl enable lightdm`
-- ufw (see Arch Wiki: [Uncomplicated Firewall](https://wiki.archlinux.org/title/Uncomplicated_Firewall))
-- networkmanager: `systemctl enable NetworkManager`
+- networkmanager: `systemctl enable NetworkManager.service`
+- ufw\*: `systemctl enable ufw.service`
+- bluetooth: `systemctl enable bluetooth.service`
+- lightdm: `systemctl enable lightdm.service`
+> \*Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration
 

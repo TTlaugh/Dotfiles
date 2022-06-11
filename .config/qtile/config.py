@@ -111,7 +111,15 @@ keys = [
         Key([],        "e", lazy.spawn("dmeditconf"),    desc='dmenu: Edit selected file'),
         Key([],        "s", lazy.spawn("dmwebsearch"),   desc='dmenu: Search in web browser'),
         Key([],        "q", lazy.spawn("dmpower"),       desc='dmenu: Power action')
-    ])
+    ]),
+
+# Moc
+        Key([mod1, "control"], "s", lazy.spawn("sh -c 'mocp -S && mocp -p || mocp -p'")),
+        Key([mod1, "control"], "x", lazy.spawn("mocp -p")),
+        Key([mod1, "control"], "t", lazy.spawn("mocp -G")),
+        Key([mod1, "control"], "n", lazy.spawn("mocp -f")),
+        Key([mod1, "control"], "p", lazy.spawn("mocp -r")),
+        Key([mod1, "control"], "m", lazy.spawn("alacritty -e mocp")),
 ]
 
 ###################
@@ -282,7 +290,7 @@ widget_defaults = dict(
     font='Ubuntu Nerd Font bold',
     fontsize=12,
     padding=4,
-    background="#1c202e"
+    background = "#151924",
 )
 extension_defaults = widget_defaults.copy()
 
@@ -344,21 +352,29 @@ def init_widgets_list():
                 foreground = "#50fa7b",
                 background = "#1c202e",
                 ),
-        widget.Sep(
-                linewidth = 0,
-                padding = 100,
+        widget.WidgetBox(
+                text_closed = "Moc",
+                text_open = "Moc",
+                foreground = "#bb9af7",
+                background = "#1c202e",
+                widgets=[ widget.Moc(
+                        noplay_color = "#565f89",
+                        play_color = "#73daca",
+                        foreground = "#565f89",
+                        background = "#1c202e",
+                        ),]
                 ),
         upper_left_triangle("#151924", "#1c202e"),
         widget.WindowName(
                 font = "sans",
                 foreground = "#565f89",
-                background = "#151924",
                 ),
         widget.Sep(
                 linewidth = 0,
                 padding = 10,
                 background = "#151924",
                 ),
+        upper_right_triangle("#151924", "#1c202e"),
         widget.GroupBox(
                 font = "sans",
                 fontsize = 15,
@@ -366,7 +382,7 @@ def init_widgets_list():
                 borderwidth = 2,
                 padding_y = 1,
                 padding = 5,
-                background = "#151924",
+                background = "#1c202e",
                 active = "#7dcfff",
                 inactive = "#44475a",
                 highlight_method = "text",
@@ -374,12 +390,6 @@ def init_widgets_list():
                 this_screen_border = "#434758",
                 other_current_screen_border = "#ff9e64",
                 other_screen_border = "#434758",
-                # visible_groups = ['1', '2', '3', '4', '5'],
-                ),
-        upper_right_triangle("#151924", "#1c202e"),
-        widget.Sep(
-                linewidth = 0,
-                padding = 100,
                 ),
         upper_right_triangle("#1c202e", "#24283b"),
         widget.CheckUpdates(

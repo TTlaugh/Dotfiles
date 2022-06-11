@@ -1,5 +1,10 @@
 MusicDir = /home/nltt/Music
+
 Theme = ttheme
+Keymap = keymap
+
+HideFileExtension = yes
+
 
 # Examples:   Fastdir1 = /mp3/rock
 #             Fastdir2 = /mp3/electronic

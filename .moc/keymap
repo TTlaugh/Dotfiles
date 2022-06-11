@@ -66,13 +66,13 @@ quit                  = Q
 
 # Menu and interface control keys:
 go                    = ENTER
-menu_down             = DOWN
-menu_up               = UP
+menu_down             = j
+menu_up               = k
 menu_page_down        = PAGE_DOWN
 menu_page_up          = PAGE_UP
-menu_first_item       = HOME
-menu_last_item        = END
-search_menu           = g /
+menu_first_item       = g
+menu_last_item        = G
+search_menu           = /
 toggle_read_tags      = f
 toggle_show_time      = ^t
 toggle_show_format    = ^f
@@ -91,10 +91,10 @@ seek_forward          = RIGHT
 seek_backward         = LEFT
 seek_forward_fast     = ]
 seek_backward_fast    = [
-pause                 = p SPACE
+pause                 = SPACE
 stop                  = s
 next                  = n
-previous              = b
+previous              = p
 toggle_shuffle        = S
 toggle_repeat         = R
 toggle_auto_next      = X
@@ -130,7 +130,7 @@ go_to_fast_dir7       = &
 go_to_fast_dir8       = *
 go_to_fast_dir9       = (
 go_to_fast_dir10      = )
-go_to_playing_file    = G
+go_to_playing_file    = I
 go_up                 = U
 
 # Playlist specific keys:
@@ -139,8 +139,8 @@ add_directory         = A
 plist_add_stream      = ^u
 delete_from_playlist  = d
 playlist_full_paths   = P
-plist_move_up         = u
-plist_move_down       = j
+plist_move_up         = UP
+plist_move_down       = DOWN
 save_playlist         = V
 remove_dead_entries   = Y
 clear_playlist        = C
@@ -164,8 +164,8 @@ toggle_make_mono      = J
 # Equalizer specific keys:
 toggle_equalizer      = E
 equalizer_refresh     = e
-equalizer_prev        = K
-equalizer_next        = k
+equalizer_prev        = B
+equalizer_next        = b
 
 # External commands:
 mark_start            = '

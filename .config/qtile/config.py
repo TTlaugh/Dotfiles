@@ -115,11 +115,11 @@ keys = [
 
 # Moc
         Key([mod1, "control"], "s", lazy.spawn("sh -c 'mocp -S && mocp -p || mocp -p'")),
-        Key([mod1, "control"], "x", lazy.spawn("mocp -p")),
+        Key([mod1, "control"], "x", lazy.spawn("mocp -x")),
         Key([mod1, "control"], "t", lazy.spawn("mocp -G")),
         Key([mod1, "control"], "n", lazy.spawn("mocp -f")),
         Key([mod1, "control"], "p", lazy.spawn("mocp -r")),
-        Key([mod1, "control"], "m", lazy.spawn("alacritty -e mocp")),
+        Key([mod1, "control"], "m", lazy.spawn(myterm + ' -e mocp')),
 ]
 
 ###################
@@ -353,9 +353,9 @@ def init_widgets_list():
                 background = "#1c202e",
                 ),
         widget.WidgetBox(
-                text_closed = "Moc",
-                text_open = "Moc",
-                foreground = "#bb9af7",
+                text_closed = "",
+                text_open = "",
+                foreground = "#ff79c6",
                 background = "#1c202e",
                 widgets=[ widget.Moc(
                         noplay_color = "#565f89",

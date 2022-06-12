@@ -290,7 +290,7 @@ widget_defaults = dict(
     font='Ubuntu Nerd Font bold',
     fontsize=12,
     padding=4,
-    background = "#151924",
+    background="#151924",
 )
 extension_defaults = widget_defaults.copy()
 

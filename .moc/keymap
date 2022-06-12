@@ -65,7 +65,7 @@ quit_client           = q
 quit                  = Q
 
 # Menu and interface control keys:
-go                    = ENTER
+go                    = l
 menu_down             = j
 menu_up               = k
 menu_page_down        = PAGE_DOWN
@@ -77,12 +77,12 @@ toggle_read_tags      = f
 toggle_show_time      = ^t
 toggle_show_format    = ^f
 toggle_menu           = TAB
-toggle_layout         = l
+toggle_layout         = h
 toggle_hidden_files   = H
 next_search           = ^g ^n
 show_lyrics           = L
 theme_menu            = T
-help                  = h ?
+help                  = ?
 refresh               = ^r
 reload                = r
 

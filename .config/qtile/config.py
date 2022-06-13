@@ -363,6 +363,7 @@ def init_widgets_list():
                 foreground = "#ff79c6",
                 background = "#1c202e",
                 widgets=[ widget.Moc(
+                        font = "sans bold",
                         noplay_color = "#565f89",
                         play_color = "#73daca",
                         foreground = "#565f89",

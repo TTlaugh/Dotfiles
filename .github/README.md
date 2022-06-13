@@ -61,6 +61,7 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
   <summary>Click to expand!</summary>
   
   > You should read the application documentation for more information on the Archwiki or the application main page.
+  - mutt-wizard ([LukeSmith](https://github.com/LukeSmithxyz/mutt-wizard))
   - Kdenlive
   - GIMP
   - Audacity

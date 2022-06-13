@@ -75,17 +75,16 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
   - LibreOffice 
     > *jre-openjdk* package is needed for LibreOffice Database.
   - conky
-  - cmus
   - persepolis
   - onboard
   - xdotool
+  - cronie
   - maim
   - acpi
   - pandoc
   - texlive-most
   - speedtest-cli
   - volumeicon
-  - volnoti ([AUR](https://aur.archlinux.org/packages/volnoti))
   - shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))
   - ttf-ms-fonts ([AUR](https://aur.archlinux.org/packages/ttf-ms-fonts))
   - teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))

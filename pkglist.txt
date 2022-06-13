@@ -106,6 +106,7 @@ atool
 feh
 sxiv
 mpv
+moc
 imagemagick
 lxappearance
 picom

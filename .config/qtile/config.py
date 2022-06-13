@@ -91,6 +91,18 @@ keys = [
     Key([mod], "BackSpace",             lazy.spawn("dunstctl close"),       desc="Close notification"),
     Key([mod, "shift"], "BackSpace",    lazy.spawn("dunstctl close-all"),   desc="Close all notifications"),
     Key([mod], "backslash",             lazy.spawn("dunstctl history-pop"), desc="Show history notifications"),
+
+# Moc control
+    Key([mod1, "control"], "s", lazy.spawn("sh -c 'mocp -S && mocp -p || mocp -p'")),
+    Key([mod1, "control"], "x", lazy.spawn("mocp -x")),
+    Key([mod1, "control"], "t", lazy.spawn("mocp -G")),
+    Key([mod1, "control"], "n", lazy.spawn("mocp -f")),
+    Key([mod1, "control"], "p", lazy.spawn("mocp -r")),
+    Key([mod1, "control"], "m", lazy.spawn(myterm + ' -e mocp')),
+
+# Open Neomutt
+    Key([mod, "shift"], "n", lazy.spawn(myterm + ' -e neomutt')),
+
 # Screenshot (script)
     Key([], "Print",                    lazy.spawn("screenshot"),          desc="Take fullscreen capture"),
     Key(["shift"], "Print",             lazy.spawn("screenshot selected"), desc="Capture selected area"),
@@ -113,13 +125,6 @@ keys = [
         Key([],        "q", lazy.spawn("dmpower"),       desc='dmenu: Power action')
     ]),
 
-# Moc
-        Key([mod1, "control"], "s", lazy.spawn("sh -c 'mocp -S && mocp -p || mocp -p'")),
-        Key([mod1, "control"], "x", lazy.spawn("mocp -x")),
-        Key([mod1, "control"], "t", lazy.spawn("mocp -G")),
-        Key([mod1, "control"], "n", lazy.spawn("mocp -f")),
-        Key([mod1, "control"], "p", lazy.spawn("mocp -r")),
-        Key([mod1, "control"], "m", lazy.spawn(myterm + ' -e mocp')),
 ]
 
 ###################

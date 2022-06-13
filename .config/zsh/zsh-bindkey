@@ -1,4 +1,5 @@
-bindkey -s '^o' 'fm\n'
-bindkey -s '^n' 'tmux attach || tmux\n'
+bindkey -s '^f' 'fm\n'
+bindkey -s '^s' 'tmux attach || tmux\n'
 bindkey -s '^a' 'tlgat\n'
 bindkey -s '^p' 'mocp\n'
+bindkey -s '^n' 'neomutt\n'

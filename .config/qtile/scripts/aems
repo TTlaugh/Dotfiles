@@ -7,7 +7,7 @@ sleep 5m
 autosync() {
     croncheck=$(crontab -l | grep "mailsync")
     if [[ -z "$croncheck" ]]; then
-        mw -T
+        mw -t 5
     fi
     mw -Y
 }

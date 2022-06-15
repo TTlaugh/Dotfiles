@@ -1,0 +1,20 @@
+# My custom theme for Mutt
+
+#---------------------foreground---background----
+# tagged messages
+color index             black       blue "~T"
+color index_author      black       blue "~T"
+color index_subject     black       blue "~T"
+
+# new messages
+color index             color117    brightblack "~N"
+color index_author      brightred   brightblack "~N"
+color index_subject     brightcyan  brightblack "~N"
+
+color index             color210    default "~D" # deleted messages
+color index             color84     default "~F" # flagged messages
+color index             color141    default "~v" # messages part of a collapsed thread
+
+color normal            default     black
+color status            magenta     black
+color sidebar_highlight brightred   default

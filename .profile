@@ -36,5 +36,5 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 ### "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Remap: Caps -> Esc; L+R_Shift -> Caps; Alt <-> Super
+### Remap: Caps -> Esc; L+R_Shift -> Caps; Alt <-> Super
 setxkbmap -option caps:escape,shift:both_capslock,altwin:swap_alt_win

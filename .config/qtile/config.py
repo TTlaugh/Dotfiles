@@ -136,20 +136,20 @@ groups = [Group(i,label='') for i in "asdfg"]
 
 for i in groups:
     keys.extend([
-        # mod1 + letter of group = switch to group
+        # mod + letter of group = switch to group
         # Toggle with the last used group:
         # Key([mod], i.name, lazy.group[i.name].toscreen(toggle=True),
             # desc="Switch to group {}".format(i.name)),
         # Or not toggle with the last used group:
-        Key([mod1], i.name, lazy.group[i.name].toscreen(),
+        Key([mod], i.name, lazy.group[i.name].toscreen(),
             desc="Switch to group {}".format(i.name)),
 
-        # mod1 + shift + letter of group = switch to & move focused window to group
+        # mod + shift + letter of group = switch to & move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
             # desc="Switch to & move focused window to group {}".format(i.name)),
         # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        Key([mod1, "shift"], i.name, lazy.window.togroup(i.name),
+        # # mod + shift + letter of group = move focused window to group
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
             desc="move focused window to group {}".format(i.name)),
     ])
 

@@ -98,7 +98,7 @@ git
 wget
 curl
 pavucontrol
-pcmanfm
+pcmanfm-gtk3
 vifm
 ueberzug
 ffmpegthumbnailer
@@ -108,7 +108,7 @@ sxiv
 mpv
 moc
 imagemagick
-lxappearance
+lxappearance-gtk3
 picom
 fzf
 bat

@@ -268,17 +268,22 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
   - Fira Code (Kitty)
   - Hack Nerd Font (Alacritty, st, dmenu)
   
-  ### Lxappearance
-  - Arc Theme: [https://github.com/horst3180/Arc-theme](https://github.com/horst3180/Arc-theme)
-  - Volantes Cursors: [https://www.gnome-look.org/p/1356095](https://www.gnome-look.org/p/1356095)
-  - Tela circle icon theme: [https://www.gnome-look.org/p/1359276](https://www.gnome-look.org/p/1359276)
+  ### Appearance
+  - Themes:
+    - [Dracula](https://draculatheme.com)
+    - [Catppuccin](https://github.com/catppuccin/catppuccin)
+    - [arc-gtk](https://github.com/horst3180/Arc-theme)
+    - TokyoNight ([1](https://github.com/folke/tokyonight.nvim)), ([2](https://github.com/enkia/tokyo-night-vscode-theme)), ([3](https://www.gnome-look.org/p/1681315/))
+  - Icons:
+    - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
+    - [Tela circle icon](https://www.gnome-look.org/p/1359276)
   
   ### Random color script for terminal
   - Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)
   - Usage: add `colorscript random` to your **.zshrc** file.
 
   ### Tips and Tricks
-  - [See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
+  - [Linux](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
   - [Vim](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
   
   ### My Scripts

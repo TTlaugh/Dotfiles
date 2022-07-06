@@ -5,14 +5,24 @@
 - nodejs *lastest version*
 - npm
 - npm *provider*: `sudo npm install -g neovim`
-- python, python-pip, python2, python2-pip.
-  > If you can't find the ***python2-pip*** package, see this [documentation](https://pip.pypa.io/en/latest/installation/).
-  >> Remember to replace `python` with `python2` to install pip2.
+- python, python-pip
 - pynvim:
     ```
-    python2 -m pip install --user --upgrade pynvim 
     python3 -m pip install --user --upgrade pynvim
     ```
+- For python2 if needed (run `:checkhealth` for more infomations)
+  <details>
+    <summary>click here</summary>
+  
+    - python2, python2-pip
+      > If you can't find the ***python2-pip*** package, see this [documentation](https://pip.pypa.io/en/latest/installation/).
+      >> Remember to replace `python` with `python2` to install pip2.
+    - pynvim:
+        ```
+        python2 -m pip install --user --upgrade pynvim 
+        ```
+  </details>
+
 - ccls (for C/C++)
 ## Copy config folder
 - Copy ***nvim*** folder to ***~/.config/***

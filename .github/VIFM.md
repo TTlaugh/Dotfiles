@@ -44,6 +44,13 @@
   ```
   command sxiv sxiv -ft .
   ```
+- Feh:
+  ```
+  command feho feh -d -g 800x600 --scale-down . &
+  command fehl feh -t . &
+  command fehbg feh --bg-fill %c
+  map <space>b :fehbg<CR>
+  ```
 - Atool:
   ```
   command extract atool -x -e %f

@@ -122,7 +122,7 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
   - Open ***i3/config*** file and edit for use!
   - See more: [i3-README.md](https://github.com/nguyenletientrien/Dotfiles/tree/master/.config/i3)
   - AutoTiling script: [https://github.com/nwg-piotr/autotiling](https://github.com/nwg-piotr/autotiling)
-  - Set background with feh: `feh --bg-scale /path/to/picture`
+  - Set background with feh: `feh --bg-fill /path/to/picture`
 </details>
 
 <details>

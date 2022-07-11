@@ -50,6 +50,9 @@ alias vf='nvim `fzf`'
 ### vifm
 alias fm="$HOME/.vifm/scripts/vifmrun"
 
+### feh
+alias feh='feh --scale-down --auto-zoom'
+
 ### Convert to PDF
 alias doctopdf='libreoffice --headless --convert-to pdf:writer_pdf_Export'
 mdtopdf() {

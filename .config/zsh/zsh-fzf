@@ -5,7 +5,7 @@ FD_OPTS="--hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--height 80% \
                          --layout=reverse \
                          --border \
-                         --color 'border:#9e40bd' \
+                         --color 'border:#bb9af7' \
                          --preview 'bat -n --color=always --line-range :500 {}' \
                          --preview-window='hidden:wrap' \
                          --bind='f2:toggle-preview'"

@@ -357,30 +357,6 @@ def init_widgets_list():
                 foreground = "#50fa7b",
                 background = "#1c202e",
                 ),
-        widget.WidgetBox(
-                text_closed = "",
-                text_open = "",
-                foreground = "#ff79c6",
-                background = "#1c202e",
-                widgets=[ widget.Moc(
-                        font = "sans bold",
-                        noplay_color = "#565f89",
-                        play_color = "#73daca",
-                        foreground = "#565f89",
-                        background = "#1c202e",
-                        ),]
-                ),
-        upper_left_triangle("#151924", "#1c202e"),
-        widget.WindowName(
-                font = "sans",
-                foreground = "#565f89",
-                ),
-        widget.Sep(
-                linewidth = 0,
-                padding = 10,
-                background = "#151924",
-                ),
-        upper_right_triangle("#151924", "#1c202e"),
         widget.GroupBox(
                 font = "sans",
                 fontsize = 15,
@@ -396,6 +372,25 @@ def init_widgets_list():
                 this_screen_border = "#434758",
                 other_current_screen_border = "#ff9e64",
                 other_screen_border = "#434758",
+                ),
+        upper_left_triangle("#151924", "#1c202e"),
+        widget.WindowName(
+                font = "sans",
+                foreground = "#565f89",
+                ),
+        widget.Sep(
+                linewidth = 0,
+                padding = 10,
+                background = "#151924",
+                ),
+        upper_right_triangle("#151924", "#1c202e"),
+        widget.TextBox(
+                text = 'I Love You ♥ ',
+                font = "CodeNewRoman Nerd Font Bold Italic",
+                fontsize = 14,
+                padding = 0,
+                background = "#1c202e",
+                foreground = "#f5c2e7",
                 ),
         upper_right_triangle("#1c202e", "#24283b"),
         widget.CheckUpdates(
@@ -416,7 +411,7 @@ def init_widgets_list():
                 ),
         upper_right_triangle("#2e3347", "#373d57"),
         widget.Clock(
-                format=' %A, %b %d - %H:%M',
+                format='%a, %B %d - %H:%M',
                 foreground = "#7dcfff",
                 background = "#373d57",
                 ),

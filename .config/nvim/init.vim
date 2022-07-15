@@ -53,7 +53,16 @@ au FileType c,cpp,objc,objcpp,json set noexpandtab
 "| |     Plugin List     | |
 "| +---------------------+ |
 "+-------------------------+
-call plug#begin('~/.config/nvim/plugins/bundle')
+if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+    echo "Downloading junegunn/vim-plug to manage plugins..."
+    silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+    autocmd VimEnter * PlugInstall
+endif
+
+call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+    """ Startify
+    Plug 'mhinz/vim-startify'
     """ Code intellisense
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'preservim/nerdcommenter'
@@ -88,9 +97,9 @@ call plug#end()
 "| +------------------------+ |
 "+----------------------------+
 """ Themes
-"let g:tokyonight_style = "night"
-"colorscheme tokyonight
-colorscheme dracula
+let g:tokyonight_style = "night"
+colorscheme tokyonight
+"colorscheme dracula
 "colorscheme onedark
 
 """ Startify
@@ -143,9 +152,9 @@ function! StatusDiagnostic() abort
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 "\ 'colorscheme': 'one',
-"\ 'colorscheme': 'tokyonight',
+"\ 'colorscheme': 'dracula',
 let g:lightline = {
-      \ 'colorscheme': 'dracula',
+      \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -179,11 +188,11 @@ let g:fzf_layout = { 'down': '40%' }
 "| +----------------------+ |
 "+--------------------------+
 """ Leader Key
-let mapleader = ","
+let mapleader = " "
 
 """ Remap Esc to jk and jk
-inoremap jk <Esc>
-inoremap kj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
 
 """ j/k will move virtual lines (lines that wrap)
 noremap j gj
@@ -195,13 +204,13 @@ map <F4> :setlocal spell! spelllang=en_us<CR>
 nnoremap <leader><F4> :normal! mz1z=`z<CR>
 
 """ Check file in shellcheck
-map <leader>s :!shellcheck -x %<CR>
+nmap <leader>s :!shellcheck -x %<CR>
 
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-""" Use ,<Esc> to exit terminal-mode
-tnoremap <leader><Esc> <C-\><C-n>
+""" Use <space><Esc> to exit terminal-mode
+tnoremap <C-x> <C-\><C-n>
 """ Use ALT+{h,j,k,l} to navigate windows from any mode
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -215,20 +224,20 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-""" Resize split tab
+""" Resize split window
 noremap <C-k> <c-w>+
 noremap <C-j> <c-w>-
 noremap <C-h> <c-w>>
 noremap <C-l> <c-w><
 """ Toggle horiz/vert
-map <leader>th <C-w>t<C-w>H
-map <leader>tk <C-w>t<C-w>K
+nmap <leader>th <C-w>t<C-w>H
+nmap <leader>tk <C-w>t<C-w>K
 
-""" Open terminal in vertically split tab
-map <leader>tt :vnew term://zsh<CR>
+""" Open terminal in vertically split window
+nmap <leader>tt :vnew term://zsh<CR>
 
 """ turn off highlighting
-nmap <leader>, :nohlsearch<CR>
+nmap <leader><leader> :nohlsearch<CR>
 
 """ FZF
 nmap <leader>f :Files<CR>
@@ -243,14 +252,14 @@ vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
 """ Vimspector
-map <F9>           <Plug>VimspectorToggleBreakpoint
-map <F5>           <Plug>VimspectorContinue
-map <leader><F5>   <Plug>VimspectorRestart
-map <F6>           <Plug>VimspectorStepOver
-map <F7>           <Plug>VimspectorStepInto
-map <leader><F7>   <Plug>VimspectorStepOut
-map <F8>           <Plug>VimspectorPause
-map <leader><F8>   <Plug>VimspectorStop
+nmap <F9>           <Plug>VimspectorToggleBreakpoint
+nmap <F5>           <Plug>VimspectorContinue
+nmap <leader><F5>   <Plug>VimspectorRestart
+nmap <F6>           <Plug>VimspectorStepOver
+nmap <F7>           <Plug>VimspectorStepInto
+nmap <leader><F7>   <Plug>VimspectorStepOut
+nmap <F8>           <Plug>VimspectorPause
+nmap <leader><F8>   <Plug>VimspectorStop
 nmap <leader>dx :VimspectorReset<CR>
 nmap <leader>de :VimspectorEval
 nmap <leader>dw :VimspectorWatch

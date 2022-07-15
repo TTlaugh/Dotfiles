@@ -1,4 +1,5 @@
 # Neovim
+
 ## Installation
 - neovim
 - [vim-plug](https://github.com/junegunn/vim-plug)
@@ -23,11 +24,14 @@
         ```
   </details>
 
-- ccls (for C/C++)
+- Optional:
+  - ccls-git (for C/C++)
+
 ## Copy config folder
 - Copy ***nvim*** folder to ***~/.config/***
+
 ## Finally
-1. Open nvim (don't worry with some error message) and run `:PlugInstall` and wait to install plugins.
+1. Open nvim (don't worry with some error message) and wait a few minutes to install the plugins.
    > - You will get "**post-update hook for fzf...**" error message if you installed fzf with "`pacman -S fzf`".
    > - Press 'R' to retry.
 2. You will see the CoC extension installation after all plugins are successfully installed.

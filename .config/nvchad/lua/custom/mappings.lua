@@ -63,7 +63,7 @@ M.general = {
 M.markdown_preview = {
     n = {
         ["<leader>mp"] = { "<cmd> MarkdownPreviewToggle<cr>", "MarkdownPreviewToggle" },
-    }
+    },
 }
 
 M.cmake = {
@@ -71,7 +71,7 @@ M.cmake = {
         ["<leader>gg"] = { "<cmd> CMakeGenerate<cr>", "CMakeGenerate" },
         ["<leader>bb"] = { "<cmd> CMakeBuild<cr>", "CMakeBuild" },
         ["<leader>cx"] = { "<cmd> CMakeClose<cr>", "CMakeClose" },
-    }
+    },
 }
 
 M.nvterm = {

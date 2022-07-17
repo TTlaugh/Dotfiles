@@ -3,6 +3,9 @@
 "diagnostic.refreshOnInsertMode":true,
 "coc.preferences.jumpCommand": "vsplit",
 
+"colors.filetypes": ["*"],
+"highlight.colorNames.enable":false,
+
 "languageserver": {
   "ccls": {
     "command": "ccls",

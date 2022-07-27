@@ -94,8 +94,6 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 - ufw\*: `systemctl enable ufw.service`
 - bluetooth: `systemctl enable bluetooth.service`
 - lightdm: `systemctl enable lightdm.service`
-- teamviewer
-- auto-cpufreq (please read the documentation)
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration

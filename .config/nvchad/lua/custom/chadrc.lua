@@ -1,78 +1,30 @@
 local M = {}
 
--- UI
-M.ui = {
-    theme_toggle = { "catppuccin", "catppuccin_latte" },
-    theme = "catppuccin", -- default theme
+local override = require "custom.plugins.override"
 
-    tabufline = {
-        enabled = true,
-        lazyload = false,
-        override = {},
-    },
-}
-
--- Plugins
 M.plugins = {
     -- Add plugins
-    user = {
+    user = require "custom.plugins",
 
-        -- Markdown preview
-        ["iamcco/markdown-preview.nvim"] = {
-            run = function()
-                vim.fn["mkdp#util#install"](0)
-            end,
-            ft = {
-                "markdown",
-            },
-        },
-
-        -- Git
-        ["tpope/vim-fugitive"] = {},
-        ["airblade/vim-gitgutter"] = {},
-
-        -- Surround
-        ["tpope/vim-surround"] = {},
-
-        -- Cmake
-        ["cdelledonne/vim-cmake"] = {
-            config = function ()
-                vim.g.cmake_link_compile_commands = 1
-            end
-        },
-
-        -- ...
-    },
-
-    -- Remove plugins
-    remove = {
-        -- "NvChad/nvterm",
-    },
+    -- -- Remove plugins
+    -- remove = {
+    --     "NvChad/nvterm",
+    -- },
 
     -- Override default config of plugins
     override = {
-        -- Treesitter
-        ["nvim-treesitter/nvim-treesitter"] = {
-            ensure_installed = {
-                "c",
-                "cpp",
-                "lua",
-                "bash",
-                "python",
-            },
-        },
-
-        -- ...
-    },
-
-    options = {
-        lspconfig = {
-            setup_lspconf = "custom.plugins.lspconfig",
-        },
+        ["williamboman/mason.nvim"] = override.mason,
+        ["nvim-treesitter/nvim-treesitter"] = override.treesitter,
+        ["kyazdani42/nvim-tree.lua"] = override.nvimtree,
+        ["NvChad/ui"] = override.ui,
     },
 }
 
--- Mappings
+M.ui = {
+    theme_toggle = { "catppuccin", "catppuccin_latte" },
+    theme = "catppuccin", -- default theme
+}
+
 M.mappings = require "custom.mappings"
 
 return M

@@ -24,9 +24,6 @@ M.general = {
         ["<F4>"] = { "<cmd> setlocal spell! spelllang=en_us<cr>", "暈 spellcheck" },
         ["<leader><F4>"] = { "<cmd> normal! mz1z=`z<cr>", "Automatically fix misspelled word" },
 
-        -- shellcheck
-        ["<leader>s"] = { "<cmd> !shellcheck -x %<cr>" ,"check file in shellcheck" },
-
         -- Use ALT+{h,j,k,l} to navigate windows from normal mode
         ["<A-h>"] = { "<C-w>h", " window left", opts = {noremap = true} },
         ["<A-l>"] = { "<C-w>l", " window right", opts = {noremap = true} },

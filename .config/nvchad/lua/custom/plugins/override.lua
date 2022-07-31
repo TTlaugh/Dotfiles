@@ -4,6 +4,7 @@ M.mason = {
     ensure_installed = {
         -- lua stuff
         "lua-language-server",
+        "stylua",
 
         -- c/c++
         "clangd",
@@ -12,7 +13,8 @@ M.mason = {
         "pyright",
 
         -- shell
-        "shellcheck",
+        "bash-language-server",
+        "shfmt",
     },
 }
 
@@ -30,6 +32,15 @@ M.nvimtree = {
     git = {
         enable = true,
     },
+
+    renderer = {
+        icons = {
+            show = {
+                git = true,
+            },
+        },
+    },
+
     view = {
         adaptive_size = false,
         side = "left",

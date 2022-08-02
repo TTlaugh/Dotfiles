@@ -3,13 +3,13 @@ local M = {}
 -- Disable default keys
 M.disable = {
     t = {
-        -- nvterm --
+        -- Nvterm
         ["<A-i>"] = "",
         -- ["<A-h>"] = "",
         -- ["<A-v>"] = "",
     },
     n = {
-        -- nvterm --
+        -- Nvterm
         ["<A-i>"] = "",
         -- ["<A-h>"] = "",
         -- ["<A-v>"] = "",

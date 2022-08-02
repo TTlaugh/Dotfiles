@@ -6,10 +6,10 @@ M.plugins = {
     -- Add plugins
     user = require "custom.plugins",
 
-    -- -- Remove plugins
-    -- remove = {
-    --     "NvChad/nvterm",
-    -- },
+    -- Remove plugins
+    remove = {
+        -- "NvChad/nvterm",
+    },
 
     -- Override default config of plugins
     override = {

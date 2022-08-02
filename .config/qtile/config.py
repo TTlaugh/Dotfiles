@@ -31,7 +31,7 @@ def start_once():
 #########################
 keys = [
 # Launch terminal
-    # Key([mod], "Return",    lazy.spawn(myterm)),
+    #Key([mod], "Return",    lazy.spawn(myterm)),
     Key([mod], "Return",                lazy.spawn(terminal)),
 # Launcher
     Key([mod, "shift"], "o",            lazy.spawn("dmenu_run")),
@@ -130,7 +130,7 @@ keys = [
 ###################
 #----- Group -----#
 ###################
-# groups = [Group(i) for i in "123456789"]
+#groups = [Group(i) for i in "123456789"]
 
 groups = [Group(i,label='') for i in "asdfg"]
 
@@ -188,109 +188,19 @@ layouts = [
          panel_width = 200
          ),
     # Try more layouts by unleashing below layouts.
-    # layout.Columns(**layout_theme),
-    # layout.Stack(num_stacks=2, **layout_theme),
-    # layout.Tile(**layout_theme),
-    # layout.RatioTile(**layout_theme),
-    # layout.VerticalTile(**layout_theme),
-    # layout.Matrix(**layout_theme),
-    # layout.Zoomy(**layout_theme),
-    # layout.Slice(**layout_theme),
+    #layout.Columns(**layout_theme),
+    #layout.Stack(num_stacks=2, **layout_theme),
+    #layout.Tile(**layout_theme),
+    #layout.RatioTile(**layout_theme),
+    #layout.VerticalTile(**layout_theme),
+    #layout.Matrix(**layout_theme),
+    #layout.Zoomy(**layout_theme),
+    #layout.Slice(**layout_theme),
 ]
 
 #####################
 #----- Widgets -----#
 #####################
-# widget_defaults = dict(
-    # font='Ubuntu Nerd Font bold',
-    # fontsize=12,
-    # padding=4,
-    # background="#24283b"
-# )
-# extension_defaults = widget_defaults.copy()
-
-# def init_widgets_list():
-    # widgets_list = [
-        # widget.CurrentLayoutIcon(
-                # custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-                # scale = 0.7,
-                # padding = 0
-                # ),
-        # widget.GroupBox(
-                # font = "sans",
-                # disable_drag = True,
-                # borderwidth = 2,
-                # padding_y = 1,
-                # active = "#ffffff",
-                # inactive = "#44475a",
-                # highlight_method = "block",
-                # this_current_screen_border = "#bb9af7",
-                # this_screen_border = "#434758",
-                # other_current_screen_border = "#bb9af7",
-                # other_screen_border = "#434758"
-                # ),
-        # widget.Sep(
-                # linewidth = 0,
-                # padding = 10
-                # ),
-        # widget.TextBox(
-                # text = "",
-                # foreground = "#7aa2f7",
-                # padding = 0,
-                # mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')}
-                # ),
-        # widget.Prompt(
-                # font = "sans",
-                # prompt = 'Run: ',
-                # foreground = "#50fa7b"
-                # ),
-        # widget.Sep(
-                # linewidth = 0,
-                # padding = 40
-                # ),
-        # widget.WindowName(
-                # font = "sans",
-                # foreground = "#565f89"
-                # ),
-        # widget.Sep(
-                # linewidth = 0,
-                # padding = 40
-                # ),
-        # widget.CheckUpdates(
-                # update_interval = 1800,
-                # distro = "Arch_checkupdates",
-                # colour_have_updates = "#b4f9f8",
-                # mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')}
-                # ),
-        # widget.CPU(
-                # format = 'cpu: {load_percent}%',
-                # foreground = "#f7768e",
-                # mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')}
-                # ),
-        # widget.Memory(
-                # measure_mem = 'G',
-                # format = 'mem: {MemUsed:.2f}{mm}',
-                # foreground = "#ff9e64"
-                # ),
-        # widget.DF(
-                # format = '{p}: {uf}{m}',
-                # visible_on_warn = False,
-                # foreground = "#7dcfff"
-                # ),
-        # widget.PulseVolume(
-                # limit_max_volume = True,
-                # update_interval = 0.0,
-                # fmt = 'Vol: {}',
-                # foreground = "#7aa2f7"
-                # ),
-        # widget.Clock(
-                # format='%A, %b %d - %H:%M',
-                # foreground = "#bb9af7"
-                # ),
-        # widget.Systray(),
-    # ]
-    # return widgets_list
-
 widget_defaults = dict(
     font='Ubuntu Nerd Font bold',
     fontsize=12,
@@ -437,22 +347,22 @@ def init_widgets_screen1():
     widgets_screen1 = init_widgets_list()
     return widgets_screen1
 
-# def init_widgets_screen2():
-    # widgets_screen2 = init_widgets_list()
-    # del widgets_screen2[7:8]
-    # return widgets_screen2
+#def init_widgets_screen2():
+    #widgets_screen2 = init_widgets_list()
+    #del widgets_screen2[7:8]
+    #return widgets_screen2
 
 def init_screens():
     return [
         Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20, margin=2))
-        # Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))
+        #Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))
     ]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
     widgets_list = init_widgets_list()
     widgets_screen1 = init_widgets_screen1()
-    # widgets_screen2 = init_widgets_screen2()
+    #widgets_screen2 = init_widgets_screen2()
 
 ###################
 #----- Mouse -----#
@@ -475,8 +385,8 @@ mouse = [
 dgroups_key_binder = None
 
 dgroups_app_rules = [
-    # Rule(Match(wm_class=['Chromium']), group="1"), 
-    # Rule(Match(wm_class=['Alacritty']), group="2"), 
+    #Rule(Match(wm_class=['Chromium']), group="1"), 
+    #Rule(Match(wm_class=['Alacritty']), group="2"), 
 ] # type: List
 
 follow_mouse_focus = True
@@ -485,11 +395,11 @@ cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
-    # Match(wm_class='confirmreset'),  # gitk
-    # Match(wm_class='makebranch'),  # gitk
-    # Match(wm_class='maketag'),  # gitk
-    # Match(wm_class='ssh-askpass'),  # ssh-askpass
-    # Match(title='branchdialog'),  # gitk
+    #Match(wm_class='confirmreset'),   # gitk
+    #Match(wm_class='makebranch'),     # gitk
+    #Match(wm_class='maketag'),        # gitk
+    #Match(wm_class='ssh-askpass'),    # ssh-askpass
+    #Match(title='branchdialog'),      # gitk
     Match(wm_class='pinentry-gtk-2'), # GPG key password entry
 ], **layout_theme)
 auto_fullscreen = True

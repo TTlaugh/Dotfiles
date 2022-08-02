@@ -61,7 +61,7 @@ main() {
   # Searching the chosen engine.
   query=$(printf "" | dmenu -l 20 -i -p "Enter search query ($engine):")
 
-  #query="$(echo "${query}" | jq -s -R -r @uri)"
+  query="$(echo "${query}" | jq -s -R -r @uri)"
 
   # shellcheck disable=SC2154
   setsid -f ${DMBROWSER} "${url}${query}"

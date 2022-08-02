@@ -54,7 +54,7 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 > - To patch: `patch -p1 < your_patch_file`
 - [dmenu](https://tools.suckless.org/dmenu)
 - [st](https://st.suckless.org)
-- Patches: [font2](https://st.suckless.org/patches/font2), [dracula](https://st.suckless.org/patches/dracula), [alpha](https://st.suckless.org/patches/alpha), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback).
+  - Patches: [font2](https://st.suckless.org/patches/font2), [dracula](https://st.suckless.org/patches/dracula), [alpha](https://st.suckless.org/patches/alpha), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback).
 
 ### Optional
 <details>
@@ -70,11 +70,11 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 - persepolis
 - VirtualBox
 - Virt-Manager
-> - `pacman -S libvirt iptables-nft qemu virt-manager`
-> - `sudo systemctl start/enable libvirtd`
-> - `sudo usermod -G libvirt -a <username>`
+  > - `pacman -S libvirt iptables-nft qemu virt-manager`
+  > - `sudo systemctl start/enable libvirtd`
+  > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice 
-> *jre-openjdk* package is needed for LibreOffice Database.
+  > *jre-openjdk* package is needed for LibreOffice Database.
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
 - acpi
 - conky
@@ -86,7 +86,7 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 - volumeicon
 - shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))
 - teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
-> Note: If you use startx, you won't be able to open teamviewer
+  > Note: If you use startx, you won't be able to open teamviewer
 </details>
 
 # Enable

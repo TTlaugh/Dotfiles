@@ -1,0 +1,11 @@
+abook
+ccls-git
+gotop
+i3lock-color
+picom-jonaburg-git
+sc-im
+shell-color-scripts
+shellcheck-bin
+simple-mtpfs
+teamviewer
+urlview

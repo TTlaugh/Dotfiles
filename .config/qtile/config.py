@@ -132,7 +132,7 @@ keys = [
 ###################
 #groups = [Group(i) for i in "123456789"]
 
-groups = [Group(i,label='') for i in "asdfg"]
+groups = [Group(i,label='') for i in "asdfg"]
 
 for i in groups:
     keys.extend([

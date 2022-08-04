@@ -61,7 +61,6 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
 gvfs-smb
-mtpfs
 udiskie
 udisks2
 

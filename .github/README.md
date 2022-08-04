@@ -32,7 +32,7 @@
 # Installation
 
 ### Install packages from a list
-[pkglist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkglist.txt)
+[pkglist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkg/pkglist.txt)
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
@@ -45,9 +45,12 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 - [Xorg](https://wiki.archlinux.org/title/Xorg)
 
 ### AUR Packages
-> To install AUR packages: `makepkg -si`
-- [yay](https://aur.archlinux.org/packages/yay)
-- [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete)
+> To install manually AUR packages: `makepkg -si`
+
+First, install [yay](https://aur.archlinux.org/packages/yay), then install some necessary packages from [aurlist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkg/aurlist.txt) using yay:
+```
+yay -S - < aurlist.txt
+```
 
 ### Suckless
 > - To install Suckless softwares: `sudo make clean install`
@@ -260,11 +263,29 @@ line | config
 <summary>Click to expand!</summary>
 
 ### Fonts
-- Roboto Mono (dunst)
-- sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
-- Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
-- Fira Code (Kitty)
-- Hack Nerd Font (Alacritty, st, dmenu)
+- Dependencies:
+  - Roboto Mono (dunst)
+  - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
+  - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
+  - Fira Code (Kitty)
+  - Hack Nerd Font (Alacritty, st, dmenu)
+- Nerd Fonts:
+  - Arimo
+  - CodeNewRoman
+  - DejaVuSansMono
+  - DroidSansMono
+  - FiraCode
+  - Go-Mono
+  - Hack
+  - JetBrainsMono
+  - LiberationMono
+  - Meslo
+  - Mononoki
+  - Noto
+  - Overpass
+  - RobotoMono
+  - SourceCodePro
+  - Ubuntu
 
 ### Appearance
 - Themes:

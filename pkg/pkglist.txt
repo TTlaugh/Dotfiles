@@ -91,7 +91,6 @@ nano
 zsh
 tmux
 neofetch
-htop
 rofi
 git
 wget

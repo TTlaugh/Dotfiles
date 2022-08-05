@@ -1,6 +1,7 @@
 abook
 ccls-git
 gotop
+htop-vim
 i3lock-color
 picom-jonaburg-git
 sc-im

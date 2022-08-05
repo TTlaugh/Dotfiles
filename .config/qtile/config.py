@@ -157,7 +157,7 @@ for i in groups:
 #----- Layout -----#
 ####################
 layout_theme = {"border_width": 2,
-                "margin": 8,
+                "margin": 5,
                 "border_focus": "#2ac3de",
                 "border_normal": "#44475a",
                 }

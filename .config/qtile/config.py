@@ -1,11 +1,14 @@
 import os
-import subprocess
 from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Rule, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+from time import sleep
+@hook.subscribe.startup_once
+def start_once():
+    sleep(2)
 
 #######################
 #----- Variables -----#
@@ -15,16 +18,6 @@ mod1 = "mod1"
 terminal = guess_terminal()
 myterm = "alacritty"
 mybrowser = "chromium"
-
-#####################
-#----- Startup -----#
-#####################
-from time import sleep
-@hook.subscribe.startup_once
-def start_once():
-    home = os.path.expanduser('~/.config/qtile/autostart.sh')
-    subprocess.call([home])
-    sleep(1)
 
 #########################
 #----- Keybindings -----#

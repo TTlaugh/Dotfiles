@@ -6,7 +6,6 @@ linux-firmware
 
 grub
 efibootmgr
-dosfstools
 os-prober
 mtools
 
@@ -63,9 +62,17 @@ gvfs-nfs
 gvfs-smb
 udiskie
 udisks2
+dosfstools
+exfat-utils
+ntfs-3g
 
 gcr
 gstreamer
+
+libxft
+libnotify
+
+polkit
 
 i3-gaps
 i3status
@@ -124,6 +131,7 @@ zathura-ps
 dunst
 lightdm
 lightdm-slick-greeter
+unclutter
 xclip
 fuse2
 

@@ -41,18 +41,8 @@
         }
 
 # Startup
-    # Picom
-        exec --no-startup-id picom
-    # Network Manager applet
-        exec --no-startup-id nm-applet
-    # Background use feh
-        exec --no-startup-id ~/.fehbg
-    # No turn off display after few minute
-        exec --no-startup-id xset s off
-        exec --no-startup-id xset -dpms
-        exec --no-startup-id xset s noblank
     # AutoTiling script
-        exec_always --no-startup-id autotiling
+        exec_always --no-startup-id autotiling -w 1 2
 
 # Mappings
     # i3-gaps

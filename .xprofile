@@ -5,7 +5,7 @@
 
 autostart="picom dunst unclutter"
 for program in $autostart; do
-	pidof -s "$program" || "$program" &
+    pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
 
 nm-applet --indicator &

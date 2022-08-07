@@ -10,26 +10,11 @@ os-prober
 mtools
 
 ufw
-
 networkmanager
-networkmanager-openconnect
-networkmanager-openvpn
-networkmanager-pptp
-networkmanager-vpnc
 
-mesa
-lib32-mesa
-mesa-demos
-lib32-mesa-demos
-libva-mesa-driver
-libva-intel-driver
-libva-vdpau-driver
 xorg
 xorg-xinit
-xf86-input-elographics
-xf86-input-evdev
-xf86-input-libinput
-xf86-input-void
+#xorg-drivers
 
 ffmpeg
 gst-libav
@@ -37,6 +22,8 @@ gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
+gcr
+gstreamer
 
 pipewire
 pipewire-pulse
@@ -52,26 +39,16 @@ bluez
 bluez-utils
 blueman
 
-android-tools
-android-udev
-gvfs
-gvfs-afc
-gvfs-gphoto2
-gvfs-mtp
-gvfs-nfs
-gvfs-smb
+#android-tools
+#android-udev
 udiskie
 udisks2
 dosfstools
 exfat-utils
 ntfs-3g
 
-gcr
-gstreamer
-
 libxft
 libnotify
-
 polkit
 
 i3-gaps
@@ -134,6 +111,7 @@ lightdm-slick-greeter
 unclutter
 xclip
 fuse2
+arandr
 
 kitty
 alacritty

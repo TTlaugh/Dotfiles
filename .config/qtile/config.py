@@ -68,7 +68,7 @@ keys = [
 # window control
     Key([mod], "space",                 lazy.group.next_window()),
     Key([mod, "control"], "space",      lazy.window.bring_to_front()),
-    Key([mod, "shift"], "space",        lazy.window.toggle_floating()),
+    Key([mod, "shift"], "space",        lazy.window.toggle_floating(), lazy.window.center()),
     Key([mod, "control"], "f",          lazy.window.toggle_fullscreen()),
     Key([mod], "i",                     lazy.layout.rotate(),
                                         lazy.layout.flip()),
@@ -230,6 +230,7 @@ def init_widgets_list():
                 custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
                 scale = 0.7,
                 background = "#414868",
+                mouse_callbacks = {'Button3': lazy.prev_layout()},
                 ),
         upper_left_triangle("#373d57", "#414868"),
         widget.CPU(
@@ -288,7 +289,7 @@ def init_widgets_list():
                 ),
         upper_right_triangle("#151924", "#1c202e"),
         widget.TextBox(
-                text = 'I Love You ♥ ',
+                text = 'Welcome ♥ ',
                 font = "CodeNewRoman Nerd Font Bold Italic",
                 fontsize = 14,
                 padding = 0,

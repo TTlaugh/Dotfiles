@@ -8,6 +8,8 @@ grub
 efibootmgr
 os-prober
 mtools
+intel-ucode
+#amd-ucode
 
 ufw
 networkmanager
@@ -27,10 +29,10 @@ gstreamer
 
 pipewire
 pipewire-pulse
-pipewire-jack
-wireplumber
-helvum
-easyeffects
+#pipewire-jack
+#wireplumber
+#helvum
+#easyeffects
 
 pamixer
 pulsemixer

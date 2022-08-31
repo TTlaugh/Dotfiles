@@ -48,7 +48,7 @@ alias suvi='sudoedit'
 alias vf='nvim `fzf`'
 
 ### vifm
-alias fm="$HOME/.vifm/scripts/vifmrun"
+alias fm="$HOME/.config/vifm/scripts/vifmrun"
 
 ### feh
 alias feh='feh --scale-down --auto-zoom'

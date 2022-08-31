@@ -1,7 +1,7 @@
 # Vifm
 ## General
-- Copy [dracula.vifm](https://github.com/vifm/vifm-colors) to ***~/.vifm/colors/***
-- Copy  ***gitbranch***, ***vifmrun*** and ***vifmimg*** to ***~/.vifm/scripts/***
+- Copy [dracula.vifm](https://github.com/vifm/vifm-colors) to ***~/.config/vifm/colors/***
+- Copy  ***gitbranch***, ***vifmrun*** and ***vifmimg*** to ***~/.config/vifm/scripts/***
   > NOTE: you must execute **vifmrun** script to use vifm with ueberzug support.
 ## Config in vifmrc
 - Line 14: change "**vim**" to "**nvim**" (`set vicmd=nvim`).

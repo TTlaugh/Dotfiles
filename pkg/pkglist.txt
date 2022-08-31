@@ -8,6 +8,9 @@ grub
 efibootmgr
 os-prober
 mtools
+dosfstools
+exfat-utils
+ntfs-3g
 intel-ucode
 #amd-ucode
 
@@ -17,6 +20,9 @@ networkmanager
 xorg
 xorg-xinit
 #xorg-drivers
+
+mesa
+#xf86-video-intel
 
 ffmpeg
 gst-libav
@@ -45,9 +51,6 @@ blueman
 #android-udev
 udiskie
 udisks2
-dosfstools
-exfat-utils
-ntfs-3g
 
 libxft
 libnotify

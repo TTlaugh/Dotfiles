@@ -49,11 +49,11 @@ logout() {
 rofi_command="rofi -theme ~/.config/rofi/powermenu.rasi"
 
 # Options
-suspend=" Sleep"
-lock=" Lock"
-logout=" Logout"
-reboot=" Restart"
-shutdown=" Shutdown"
+suspend="⏾ Sleep"
+lock=" Lock"
+logout="﫼 Logout"
+reboot=" Restart"
+shutdown=" Shutdown"
 
 # Variable passed to rofi
 options="$suspend\n$lock\n$logout\n$reboot\n$shutdown"

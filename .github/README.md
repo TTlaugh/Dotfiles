@@ -214,7 +214,7 @@ line | config
   10 | bold_font        FiraCode Nerd Font Bold
   11 | italic_font      FiraCode Nerd Font Italic
   12 | bold_italic_font FiraCode Nerd Font Bold Italic
- 762 | background_opacity 0.9
+ 994 | background_opacity 0.9
 ```
 - Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
 </details>
@@ -224,7 +224,7 @@ line | config
 
 - Edit *config.def.h*:
   - Font: `Hack Nerd Font`
-  - Font size: `11`
+  - Font size: `12`
   - Colors:
     ```
     [SchemeNorm] = { "#777c99", "#1a1b26" },

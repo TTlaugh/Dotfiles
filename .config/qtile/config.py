@@ -77,9 +77,18 @@ keys = [
     Key([mod], "m",                     lazy.layout.maximize()),
 
 # Sound (pamixer)
-    Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
-    Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
-    Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Mute"),
+    Key([], "XF86AudioRaiseVolume",     lazy.spawn("pamixer -i 5"), desc="Increase volume"),
+    Key([], "XF86AudioLowerVolume",     lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
+    Key([], "XF86AudioMute",            lazy.spawn("pamixer -t"),   desc="Mute"),
+
+    # Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
+    # Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
+    # Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Mute"),
+
+# Backlight
+    Key([], "XF86MonBrightnessUp",      lazy.spawn("xbacklight -inc 10"), desc="Increase brightness"),
+    Key([], "XF86MonBrightnessDown",    lazy.spawn("xbacklight -dec 10"), desc="Decrease brightness"),
+
 # Dunst
     Key([mod], "BackSpace",             lazy.spawn("dunstctl close"),       desc="Close notification"),
     Key([mod, "shift"], "BackSpace",    lazy.spawn("dunstctl close-all"),   desc="Close all notifications"),
@@ -288,28 +297,44 @@ def init_widgets_list():
                 background = "#151924",
                 ),
         upper_right_triangle("#151924", "#1c202e"),
-        widget.TextBox(
-                text = 'Welcome ♥ ',
-                font = "CodeNewRoman Nerd Font Bold Italic",
-                fontsize = 14,
-                padding = 0,
-                background = "#1c202e",
-                foreground = "#f5c2e7",
-                ),
-        upper_right_triangle("#1c202e", "#24283b"),
         widget.CheckUpdates(
                 update_interval = 1800,
                 distro = "Arch_checkupdates",
                 display_format = " {updates}",
                 colour_have_updates = "#b4f9c6",
-                background = "#24283b",
+                background = "#1c202e",
                 mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')},
+                ),
+        upper_right_triangle("#1c202e", "#24283b"),
+        widget.Battery(
+                format = "{char} BAT {percent:2.0%}",
+                discharge_char = "",
+                charge_char    = "",
+                full_char      = "",
+                empty_char     = "",
+                unknown_char   = "",
+                low_percentage = 0.2,
+                show_short_text = False,
+                low_foreground = "#ff5555",
+                background = "#24283b",
+                foreground = "#9ece6a",
                 ),
         upper_right_triangle("#24283b", "#2e3347"),
         widget.PulseVolume(
                 limit_max_volume = True,
                 update_interval = 0.0,
-                fmt = 'Vol: {}',
+                fmt = 'Vol {}',
+                foreground = "#b4f9f8",
+                background = "#2e3347",
+                ),
+        widget.Sep(
+                size_percent = 70,
+                foreground = "#a9b1d6",
+                background = "#2e3347",
+                ),
+        widget.Backlight(
+                backlight_name = "intel_backlight",
+                format = "Bri {percent:2.0%}",
                 foreground = "#b4f9f8",
                 background = "#2e3347",
                 ),

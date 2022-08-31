@@ -4,7 +4,7 @@
         # Mod key
         set $mod Mod4
         # Font for window titles.
-        font pango:Ubuntu Nerd Font 10
+        font pango:DroidSansMono Nerd Font 11
         # Turn off border
         default_border pixel 2
         default_floating_border pixel 2
@@ -28,8 +28,8 @@
         bar {
             bindsym button2 exec "i3-nagbar -m 'Arch Linux' -t warning -B 'restart' 'reboot' -B 'shutdown' 'shutdown now' -B 'Keyboard' 'onboard' -B 'Terminal' 'i3-sensible-terminal'"
             position top
-            status_command i3status -c ~/.config/i3/i3status/i3status1.conf
-            #status_command i3status -c ~/.config/i3/i3status/i3status2.conf
+            #status_command i3status -c ~/.config/i3/i3status/i3status1.conf
+            status_command i3status -c ~/.config/i3/i3status/i3status2.conf
             #status_command exec ~/.config/i3/i3status/mybar.sh
             colors {
             background #282a36
@@ -143,16 +143,16 @@
         
         # Workspace
             # Variables
-            set $ws1 "1 "
-            set $ws2 "2 "
-            set $ws3 "3 "
-            set $ws4 "4 "
-            set $ws5 "5 "
-            set $ws6 "6 "
-            set $ws7 "7 "
-            set $ws8 "8 "
-            set $ws9 "9 "
-            set $ws10 "10 "
+            set $ws1 "1"
+            set $ws2 "2"
+            set $ws3 "3"
+            set $ws4 "4"
+            set $ws5 "5"
+            set $ws6 "6"
+            set $ws7 "7"
+            set $ws8 "8"
+            set $ws9 "9"
+            set $ws10 "10"
             # Switch to workspace
             bindsym $mod+1 workspace number $ws1
             bindsym $mod+2 workspace number $ws2
@@ -178,24 +178,17 @@
         
         # Audio
             # CONTROL AUDIO BY CUSTOM KEY
-            # PulseAudio
-                #bindsym $mod+Shift+plus            exec --no-startup-id pactl set-sink-volume 0 +5%
-                #bindsym $mod+Shift+underscore      exec --no-startup-id pactl set-sink-volume 0 -5%
-                #bindsym $mod+Shift+m               exec --no-startup-id pactl set-sink-mute 0 toggle
-            # ALSA
-                #bindsym $mod+Shift+plus            exec --no-startup-id amixer set Master 5%+
-                #bindsym $mod+Shift+underscore      exec --no-startup-id amixer set Master 5%-
-                #bindsym $mod+Shift+m               exec --no-startup-id amixer set Master toggle
-        
+                bindsym $mod+Shift+plus             exec --no-startup-id pamixer -i 5
+                bindsym $mod+Shift+underscore       exec --no-startup-id pamixer -d 5
+                bindsym $mod+Shift+m                exec --no-startup-id pamixer -t
             # CONTROL AUDIO BY VOLUME KEY
-            # Pulse Audio controls
-                #bindsym XF86AudioRaiseVolume       exec --no-startup-id pactl set-sink-volume 0 +5%
-                #bindsym XF86AudioLowerVolume       exec --no-startup-id pactl set-sink-volume 0 -5%
-                #bindsym XF86AudioMute              exec --no-startup-id pactl set-sink-mute 0 toggle
-            # ALSA controls
-                #bindsym XF86AudioRaiseVolume       exec --no-startup-id amixer set Master 5%+
-                #bindsym XF86AudioLowerVolume       exec --no-startup-id amixer set Master 5%-
-                #bindsym XF86AudioMute              exec --no-startup-id amixer set Master toggle
+                #bindsym XF86AudioRaiseVolume        exec --no-startup-id pamixer -i 5
+                #bindsym XF86AudioLowerVolume        exec --no-startup-id pamixer -d 5
+                #bindsym XF86AudioMute               exec --no-startup-id pamixer -t
+
+        # Sreen brightness controls
+                bindsym XF86MonBrightnessUp         exec --no-startup-id xbacklight -inc 10
+                bindsym XF86MonBrightnessDown       exec --no-startup-id xbacklight -dec 10
 
 # Others
     for_window [class="Sxiv"] floating enable

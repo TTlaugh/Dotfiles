@@ -21,6 +21,8 @@ xorg
 xorg-xinit
 #xorg-drivers
 
+acpilight
+
 mesa
 #xf86-video-intel
 

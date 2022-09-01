@@ -1,0 +1,36 @@
+(1) Note: 
+    - st (suckless)
+    - zshrc (Luke)
+    - qtile config (qtile, dt)
+    - dmeditconf (dt)
+    - dmkill (dt)
+    - dmrecord (Luke)
+    - dmwebsearch (dt)
+    - dmwifi (dt)
+    - dmtranslate (dt)
+
+
+
+NvChad:
+- Install:
+  - neovim
+  - nvchad
+  - checkhealth
+  - for C/C++: ccls, clangd
+    - clang
+    - llvm
+    - cmake
+    - git
+  
+
+mutt-wizard
+"$HOME/.local/share/mail/$acc/Junk/new/"\
+"$HOME/.local/share/mail/$acc/Junk/cur/"\
+
+
+
+LukeSmith scripts:
+    dmenumount, dmenuumount
+newsboat
+emacs
+awesomewm

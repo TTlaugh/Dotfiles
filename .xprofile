@@ -14,7 +14,7 @@ trayer \
    --edge top \
    --align right \
    --widthtype request \
-   --padding 6 \
+   --padding 5 \
    --margin 10 \
    --distance 2 \
    --SetDockType true \
@@ -24,7 +24,7 @@ trayer \
    --transparent true \
    --alpha 0 \
    --tint 0x414868 \
-   --height 20 &
+   --height 23 &
 
 nm-applet --indicator &
 

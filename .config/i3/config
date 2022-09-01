@@ -43,6 +43,8 @@
 # Startup
     # AutoTiling script
         exec_always --no-startup-id autotiling -w 1 2
+    # Kill trayer
+        exec --no-startup-id killall trayer
 
 # Mappings
     # i3-gaps

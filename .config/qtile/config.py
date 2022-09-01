@@ -8,7 +8,7 @@ from libqtile.utils import guess_terminal
 from time import sleep
 @hook.subscribe.startup_once
 def start_once():
-    sleep(2)
+    sleep(1)
 
 #######################
 #----- Variables -----#

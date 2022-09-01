@@ -110,6 +110,7 @@ i3status
 qtile
 xcb-util-cursor
 python-psutil
+trayer
 
 i3lock
 

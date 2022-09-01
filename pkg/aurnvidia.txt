@@ -1,2 +1,0 @@
-optimus-manager
-optimus-manager-qt

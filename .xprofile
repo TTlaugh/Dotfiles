@@ -10,6 +10,22 @@ done >/dev/null 2>&1
 
 picom --experimental-backends &
 
+trayer \
+   --edge top \
+   --align right \
+   --widthtype request \
+   --padding 6 \
+   --margin 10 \
+   --distance 2 \
+   --SetDockType true \
+   --SetPartialStrut false \
+   --expand true \
+   --monitor 0 \
+   --transparent true \
+   --alpha 0 \
+   --tint 0x414868 \
+   --height 20 &
+
 nm-applet --indicator &
 
 exec "$HOME"/.fehbg &

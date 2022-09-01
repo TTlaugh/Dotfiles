@@ -345,9 +345,6 @@ def init_widgets_list():
                 background = "#373d57",
                 ),
         upper_right_triangle("#373d57", "#414868"),
-        widget.Systray(
-                background = "#414868",
-                ),
         widget.TextBox(
                 fontsize = 14,
                 text = "",
@@ -373,7 +370,7 @@ def init_widgets_screen1():
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20, margin=2))
+        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20, margin=[2, 80, 0, 5],))
         #Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))
     ]
 

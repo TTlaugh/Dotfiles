@@ -1,14 +1,15 @@
 #!/bin/sh
 
-# This file runs when a DM logs you into a graphical session.
-# If you use startx/xinit like a Chad, this file will also be sourced.
-
-autostart="dunst unclutter"
+autostart="nm-applet unclutter"
 for program in $autostart; do
     pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
 
-picom --experimental-backends &
+xset s off &
+xset -dpms &
+xset s noblank &
+
+exec "$HOME"/.fehbg &
 
 trayer \
    --edge top \
@@ -26,13 +27,7 @@ trayer \
    --tint 0x414868 \
    --height 23 &
 
-nm-applet &
+picom --experimental-backends &
 
-exec "$HOME"/.fehbg &
-
-xset s off &
-xset -dpms &
-xset s noblank &
-
-# Run the aems script to send a message asking if the user wants to enable automatic email sync.
+# Run the aems script to send a message asking if the user wants to enable automatic email sync. (mutt-wizard)
 setsid -f "$HOME"/.scripts/aems

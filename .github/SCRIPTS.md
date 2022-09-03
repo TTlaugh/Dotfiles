@@ -22,6 +22,7 @@
 - nmcli
 - i3lock-color
 - rofi
+- nvidia-prime (for NVIDIA graphics card)
 - *Browser*
 - *Terminal*
 - Any Nerd Font
@@ -80,10 +81,11 @@ mode "dmscripts" {
     bindsym w exec --no-startup-id dmwifi, mode "default"
     bindsym t exec --no-startup-id dmtranslate, mode "default"
     bindsym k exec --no-startup-id dmkill, mode "default"
-    bindsym m exec --no-startup-id dmmount, mode "default"
     bindsym p exec --no-startup-id dmmaim, mode "default"
     bindsym i exec --no-startup-id dmicons, mode "default"
     bindsym c exec --no-startup-id dmcalc, mode "default"
+    bindsym n exec --no-startup-id dmprime-run, mode "default"
+    bindsym m exec --no-startup-id dmmount, mode "default"
     bindsym Shift+m exec --no-startup-id dmunmount, mode "default"
     bindsym Print exec --no-startup-id dmrecord, mode "default"
     bindsym Shift+Print exec --no-startup-id dmrecord kill, mode "default"

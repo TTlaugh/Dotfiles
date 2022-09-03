@@ -70,6 +70,7 @@ xorg-xinit
 acpilight
 
 mesa
+mesa-utils
 #xf86-video-intel
 
 ffmpeg

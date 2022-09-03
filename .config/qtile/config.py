@@ -124,6 +124,7 @@ keys = [
         Key(["shift"], "r", lazy.spawn("dmrecord kill"), desc='dmenu: Kill existing recording of dmrecord'),
         Key([],        "e", lazy.spawn("dmeditconf"),    desc='dmenu: Edit selected file'),
         Key([],        "s", lazy.spawn("dmwebsearch"),   desc='dmenu: Search in web browser'),
+        Key([],        "n", lazy.spawn("dmprime-run"),   desc='dmenu: Prime-run'),
         Key([],        "q", lazy.spawn("dmpower"),       desc='dmenu: Power action')
     ]),
 

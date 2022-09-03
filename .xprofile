@@ -26,7 +26,7 @@ trayer \
    --tint 0x414868 \
    --height 23 &
 
-nm-applet --indicator &
+nm-applet &
 
 exec "$HOME"/.fehbg &
 

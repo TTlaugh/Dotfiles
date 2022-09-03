@@ -224,7 +224,7 @@ line | config
 
 - Edit *config.def.h*:
   - Font: `Hack Nerd Font`
-  - Font size: `12`
+  - Font size: `13`
   - Colors:
     ```
     [SchemeNorm] = { "#777c99", "#1a1b26" },

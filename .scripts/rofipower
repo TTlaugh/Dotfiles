@@ -60,7 +60,7 @@ options="$suspend\n$lock\n$logout\n$reboot\n$shutdown"
 
 chosen="$(echo -e "$options" | $rofi_command -dmenu)"
 case $chosen in
-    "$suspend")  amixer set Master mute && systemctl suspend ;;
+    "$suspend")  systemctl suspend ;;
     "$lock")     i3lock_color || i3lock -e -f -c 24283b;;
     "$logout")   logout;;
     "$reboot")   systemctl reboot ;;

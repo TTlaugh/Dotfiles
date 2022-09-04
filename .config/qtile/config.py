@@ -1,6 +1,5 @@
 import os
 import subprocess
-from typing import List  # noqa: F401
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Rule, Screen
 from libqtile.lazy import lazy
@@ -87,9 +86,9 @@ keys = [
     Key([], "XF86AudioLowerVolume",     lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
     Key([], "XF86AudioMute",            lazy.spawn("pamixer -t"),   desc="Mute"),
 
-    # Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
-    # Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
-    # Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Mute"),
+    Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
+    Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
+    Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Mute"),
 
 # Backlight
     Key([], "XF86MonBrightnessUp",      lazy.spawn("xbacklight -inc 10"), desc="Increase brightness"),
@@ -327,13 +326,13 @@ def init_widgets_list():
                 foreground = "#9ece6a",
                 ),
         upper_right_triangle("#24283b", "#2e3347"),
-        widget.PulseVolume(
-                limit_max_volume = True,
-                update_interval = 0.0,
-                fmt = 'Vol {}',
-                foreground = "#b4f9f8",
-                background = "#2e3347",
-                ),
+        # widget.PulseVolume(
+        #         limit_max_volume = True,
+        #         update_interval = 0.0,
+        #         fmt = 'Vol {}',
+        #         foreground = "#b4f9f8",
+        #         background = "#2e3347",
+        #         ),
         widget.Sep(
                 size_percent = 70,
                 foreground = "#a9b1d6",

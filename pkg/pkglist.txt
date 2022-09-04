@@ -71,7 +71,7 @@ acpilight
 
 mesa
 mesa-utils
-#xf86-video-intel
+xf86-video-intel
 
 ffmpeg
 gst-libav
@@ -161,8 +161,6 @@ zathura-pdf-poppler
 zathura-djvu
 zathura-ps
 dunst
-lightdm
-lightdm-slick-greeter
 unclutter
 xclip
 fuse2
@@ -173,6 +171,9 @@ alacritty
 
 firefox
 chromium
+
+lightdm
+lightdm-slick-greeter
 
 gcc
 gdb

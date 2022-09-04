@@ -187,9 +187,9 @@
                 bindsym $mod+Shift+underscore       exec --no-startup-id pamixer -d 5
                 bindsym $mod+Shift+m                exec --no-startup-id pamixer -t
             # CONTROL AUDIO BY VOLUME KEY
-                #bindsym XF86AudioRaiseVolume        exec --no-startup-id pamixer -i 5
-                #bindsym XF86AudioLowerVolume        exec --no-startup-id pamixer -d 5
-                #bindsym XF86AudioMute               exec --no-startup-id pamixer -t
+                bindsym XF86AudioRaiseVolume        exec --no-startup-id pamixer -i 5
+                bindsym XF86AudioLowerVolume        exec --no-startup-id pamixer -d 5
+                bindsym XF86AudioMute               exec --no-startup-id pamixer -t
 
         # Sreen brightness controls
                 bindsym XF86MonBrightnessUp         exec --no-startup-id xbacklight -inc 10

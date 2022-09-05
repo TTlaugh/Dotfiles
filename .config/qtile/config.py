@@ -8,12 +8,10 @@ from libqtile.utils import guess_terminal
 ########################
 #----- Auto start -----#
 ########################
-from time import sleep
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.Popen([home])
-    sleep(1)
 
 #######################
 #----- Variables -----#
@@ -326,9 +324,14 @@ def init_widgets_list():
                 foreground = "#9ece6a",
                 ),
         upper_right_triangle("#24283b", "#2e3347"),
+        widget.Volume(
+                fmt = 'Vol {}',
+                foreground = "#b4f9f8",
+                background = "#2e3347",
+                ),
         # widget.PulseVolume(
         #         limit_max_volume = True,
-        #         update_interval = 0.0,
+        #         #update_interval = 0.0,
         #         fmt = 'Vol {}',
         #         foreground = "#b4f9f8",
         #         background = "#2e3347",

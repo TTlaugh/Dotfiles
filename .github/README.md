@@ -281,8 +281,7 @@ line | config
   - LiberationMono
   - Meslo
   - Mononoki
-  - Noto
-  - Overpass
+  - ProFont
   - RobotoMono
   - SourceCodePro
   - Ubuntu

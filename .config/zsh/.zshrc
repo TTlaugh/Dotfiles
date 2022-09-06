@@ -40,7 +40,7 @@ bindkey '^e' edit-command-line
 bindkey -M vicmd '^e' edit-command-line
 
 ### Random color script
-colorscript random
+# colorscript random
 
 ### starship prompt
 eval "$(starship init zsh)"

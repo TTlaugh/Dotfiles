@@ -17,12 +17,9 @@ intel-ucode
 ufw
 networkmanager
 
-xf86-video-vesa
 xorg-bdftopcf
 xorg-docs
 xorg-font-util
-xorg-fonts-100dpi
-xorg-fonts-75dpi
 xorg-fonts-encodings
 xorg-iceauth
 xorg-mkfontscale
@@ -37,6 +34,7 @@ xorg-setxkbmap
 xorg-smproxy
 xorg-x11perf
 xorg-xauth
+#xorg-xbacklight
 xorg-xcmsdb
 xorg-xcursorgen
 xorg-xdpyinfo
@@ -65,13 +63,22 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xorg-xinit
-#xorg-drivers
 
 acpilight
+
+#xf86-input-elographics
+#xf86-input-evdev
+#xf86-input-libinput
+#xf86-input-void
 
 mesa
 mesa-utils
 xf86-video-intel
+
+#intel-media-driver
+libva-intel-driver
+libva-mesa-driver
+libva-vdpau-driver
 
 ffmpeg
 gst-libav
@@ -84,10 +91,9 @@ gstreamer
 
 pipewire
 pipewire-pulse
-#pipewire-jack
-#wireplumber
-#helvum
-#easyeffects
+pipewire-jack
+wireplumber
+helvum
 
 pamixer
 pulsemixer
@@ -104,6 +110,11 @@ udisks2
 libxft
 libnotify
 polkit
+
+acpi
+acpid
+
+xdg-user-dirs
 
 i3-gaps
 i3status
@@ -208,5 +219,3 @@ ttf-opensans
 ttf-roboto
 ttf-roboto-mono
 ttf-ubuntu-font-family
-xorg-fonts-100dpi
-xorg-fonts-75dpi

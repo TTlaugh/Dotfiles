@@ -25,7 +25,7 @@
 - [AUR Packages](https://github.com/nguyenletientrien/Dotfiles#aur-packages)
 - [Suckless](https://github.com/nguyenletientrien/Dotfiles#suckless)
 - [Optional](https://github.com/nguyenletientrien/Dotfiles#optional)
-- [Enable](https://github.com/nguyenletientrien/Dotfiles#enable)
+- [Enable Service](https://github.com/nguyenletientrien/Dotfiles#enable-service)
 - [Configuration](https://github.com/nguyenletientrien/Dotfiles#configuration)
 - [Other](https://github.com/nguyenletientrien/Dotfiles#other)
 
@@ -36,13 +36,16 @@
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
-> You must choose the following packages to suit your system carefully.
-- Microcode: install `intel-ucode`(Intel) or `amd-ucode`(AMD).
-- Graphics card, see Arch Wiki:
-- [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
-- [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
-- [NVIDIA](https://wiki.archlinux.org/title/NVIDIA)
+> Note: Install packages from pkglist will install 'intel-ucode' by default.
+> To install amd-ucode instead, you have to edit *pkglist.txt* manually:
+> comment line 14 and uncomment line 15.
+
+### Graphics card
+See Arch Wiki:
 - [Xorg](https://wiki.archlinux.org/title/Xorg)
+- [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
+- [NVIDIA](https://wiki.archlinux.org/title/NVIDIA), [NVIDIA Optimus](https://wiki.archlinux.org/title/NVIDIA_Optimus)
+- [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 
 ### AUR Packages
 > To install manually AUR packages: `makepkg -si`
@@ -61,15 +64,15 @@ yay -S - < aurlist.txt
 
 ### Optional
 <details>
-<summary>Click to expand!</summary>
+<summary>Optional</summary>
 
-> You should read the application documentation for more information on the Archwiki or the application main page.
+> NOTE: You should read the application documentation for more information on the Archwiki or the application main page.
 - mutt-wizard ([LukeSmith](https://github.com/LukeSmithxyz/mutt-wizard))
 - Kdenlive
 - GIMP
 - Audacity
 - OBS
-- Simplescreenrecorder 
+- simplescreenrecorder 
 - persepolis
 - VirtualBox
 - Virt-Manager
@@ -79,7 +82,7 @@ yay -S - < aurlist.txt
 - LibreOffice 
   > *jre-openjdk* package is needed for LibreOffice Database.
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
-- acpi, acpid
+- starship
 - conky
 - onboard
 - xdotool
@@ -92,7 +95,36 @@ yay -S - < aurlist.txt
   > Note: If you use startx, you won't be able to open teamviewer
 </details>
 
-# Enable
+### Fonts
+<details>
+<summary>Fonts</summary>
+
+Fonts
+- Dependencies:
+  - Roboto Mono (dunst)
+  - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
+  - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
+  - Fira Code (Kitty)
+  - Hack Nerd Font (Alacritty, st, dmenu)
+- Nerd Fonts:
+  - Arimo
+  - CodeNewRoman
+  - DejaVuSansMono
+  - DroidSansMono
+  - FiraCode
+  - Go-Mono
+  - Hack
+  - JetBrainsMono
+  - LiberationMono
+  - Meslo
+  - Mononoki
+  - ProFont
+  - RobotoMono
+  - SourceCodePro
+  - Ubuntu
+</details>
+
+# Enable Service
 - networkmanager: `systemctl enable NetworkManager.service`
 - ufw\*: `systemctl enable ufw.service`
 - bluetooth: `systemctl enable bluetooth.service`
@@ -100,21 +132,6 @@ yay -S - < aurlist.txt
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration
-
-<details>
-<summary>Unmute the sound card and disable auto mute on startup</summary>
-
-- Unmute:
-```
-amixer sset Master unmute
-amixer sset Speaker unmute
-amixer sset Headphone unmute
-```
-- Disable auto mute:
-```
-amixer -c 0 sset "Auto-Mute Mode" Disabled
-```
-</details>
 
 <details>
 <summary>i3</summary>
@@ -262,29 +279,18 @@ line | config
 <details>
 <summary>Click to expand!</summary>
 
-### Fonts
-- Dependencies:
-  - Roboto Mono (dunst)
-  - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
-  - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
-  - Fira Code (Kitty)
-  - Hack Nerd Font (Alacritty, st, dmenu)
-- Nerd Fonts:
-  - Arimo
-  - CodeNewRoman
-  - DejaVuSansMono
-  - DroidSansMono
-  - FiraCode
-  - Go-Mono
-  - Hack
-  - JetBrainsMono
-  - LiberationMono
-  - Meslo
-  - Mononoki
-  - ProFont
-  - RobotoMono
-  - SourceCodePro
-  - Ubuntu
+#### Unmute the sound card and disable auto mute on startup (ALSA)</summary>
+
+- Unmute:
+```
+amixer sset Master unmute
+amixer sset Speaker unmute
+amixer sset Headphone unmute
+```
+- Disable auto mute:
+```
+amixer -c 0 sset "Auto-Mute Mode" Disabled
+```
 
 ### Appearance
 - Themes:

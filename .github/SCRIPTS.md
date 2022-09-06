@@ -7,21 +7,11 @@
   ```
 
 ### Dependencies:
+```
+pacman-contrib dunst python feh xdotool xclip ffmpeg maim slop curl jq nmcli rofi
+```
 - dmenu
-- pacman-contrib
-- dunst
-- pyhon
-- feh
-- xdotool
-- xclip
-- ffmpeg
-- maim
-- slop
-- curl
-- jq
-- nmcli
 - i3lock-color
-- rofi
 - nvidia-prime (for NVIDIA graphics card)
 - *Browser*
 - *Terminal*

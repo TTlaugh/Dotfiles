@@ -82,6 +82,7 @@ yay -S - < aurlist.txt
 - LibreOffice 
   > *jre-openjdk* package is needed for LibreOffice Database.
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
+- thermald
 - starship
 - conky
 - onboard

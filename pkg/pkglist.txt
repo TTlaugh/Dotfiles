@@ -86,11 +86,21 @@ gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
-gcr
 gstreamer
+gcr
+
+#alsa-firmware
+#alsa-plugins
+#alsa-utils
+#alsa-lib
+#pulseaudio
+#pulseaudio-alsa
+#pulseaudio-bluetooth
+#pulseaudio-jack
 
 pipewire
 pipewire-pulse
+pipewire-alsa
 pipewire-jack
 wireplumber
 helvum

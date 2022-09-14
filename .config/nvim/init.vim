@@ -7,20 +7,21 @@
 "+--------------------------+
 filetype plugin on
 syntax on
+
 set encoding=utf-8
-set shortmess+=c
-set updatetime=300
-set cmdheight=2
-set hidden
+
+set title
 
 set nobackup
 set nowritebackup
 set noswapfile
 
 set noshowmode
+set laststatus=3
 
 set ignorecase
-"set nowrap
+
+set nowrap
 
 set smarttab
 set cindent
@@ -39,8 +40,10 @@ set splitbelow
 
 set termguicolors
 set background=dark
-set clipboard=unnamedplus
+
+set clipboard+=unnamedplus
 set mouse=a
+
 set list listchars=tab:\|\ 
 
 """ Disable automatic comment in newline
@@ -99,8 +102,9 @@ call plug#end()
 "| +------------------------+ |
 "+----------------------------+
 """ Themes
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+colorscheme tokyonight-night
+"colorscheme tokyonight-storm
+"colorscheme tokyonight-day
 "colorscheme dracula
 "colorscheme onedark
 
@@ -151,7 +155,7 @@ function! StatusDiagnostic() abort
   if get(info, 'warning', 0)
     call add(msgs, '( ' . info['warning'] . ')')
   endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+  return join(msgs, ' '). '' . get(g:, 'coc_status', '')
 endfunction
 "\ 'colorscheme': 'one',
 "\ 'colorscheme': 'dracula',
@@ -284,6 +288,10 @@ nmap <leader>mp :MarkdownPreviewToggle<CR>
 "+-------------------------+
 if isdirectory(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/coc"'))
 
+    " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+    " delays and poor user experience.
+    set updatetime=300
+    
     " Always show the signcolumn, otherwise it would shift the text each time
     " diagnostics appear/become resolved.
     set signcolumn=yes

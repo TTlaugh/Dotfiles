@@ -36,9 +36,8 @@
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
-> Note: Install packages from pkglist will install 'intel-ucode' by default.
-> To install amd-ucode instead, you have to edit *pkglist.txt* manually:
-> comment line 14 and uncomment line 15.
+> Note: Install packages from pkglist will install 'intel-ucode' by default. To install amd-ucode instead, you have to edit *pkglist.txt* manually:
+>> **Comment line 14 and uncomment line 15.**
 
 ### Graphics card
 See Arch Wiki:
@@ -280,28 +279,15 @@ line | config
 <details>
 <summary>Click to expand!</summary>
 
-#### Unmute the sound card and disable auto mute on startup (ALSA)</summary>
-
-- Unmute:
-```
-amixer sset Master unmute
-amixer sset Speaker unmute
-amixer sset Headphone unmute
-```
-- Disable auto mute:
-```
-amixer -c 0 sset "Auto-Mute Mode" Disabled
-```
-
 ### Appearance
 - Themes:
-- [Dracula](https://draculatheme.com)
-- [Catppuccin](https://github.com/catppuccin/catppuccin)
-- [arc-gtk](https://github.com/horst3180/Arc-theme)
-- TokyoNight ([1](https://github.com/folke/tokyonight.nvim)), ([2](https://github.com/enkia/tokyo-night-vscode-theme)), ([3](https://www.gnome-look.org/p/1681315/))
+    - [Dracula](https://draculatheme.com)
+    - [Catppuccin](https://github.com/catppuccin/catppuccin)
+    - [arc-gtk](https://github.com/horst3180/Arc-theme)
+    - TokyoNight ([1](https://github.com/folke/tokyonight.nvim)), ([2](https://github.com/enkia/tokyo-night-vscode-theme)), ([3](https://www.gnome-look.org/p/1681315/))
 - Icons:
-- [Volantes Cursors](https://www.gnome-look.org/p/1356095)
-- [Tela circle icon](https://www.gnome-look.org/p/1359276)
+    - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
+    - [Tela circle icon](https://www.gnome-look.org/p/1359276)
 
 ### Random color script for terminal
 - Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)

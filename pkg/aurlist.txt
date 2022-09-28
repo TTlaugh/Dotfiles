@@ -1,11 +1,9 @@
 htop-vim
 i3lock-color
 picom-jonaburg-git
-
 simple-mtpfs
 shellcheck-bin
 ccls-git
-
 abook
 gotop
 sc-im

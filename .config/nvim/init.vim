@@ -194,7 +194,7 @@ let g:fzf_layout = { 'down': '40%' }
 "| +----------------------+ |
 "+--------------------------+
 """ Leader Key
-let mapleader = " "
+let mapleader = ","
 
 """ Remap Esc to jk and jk
 "inoremap jk <Esc>

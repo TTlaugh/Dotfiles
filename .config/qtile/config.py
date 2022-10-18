@@ -83,10 +83,10 @@ keys = [
     Key([], "XF86AudioRaiseVolume",     lazy.spawn("pamixer -i 5"), desc="Increase volume"),
     Key([], "XF86AudioLowerVolume",     lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
     Key([], "XF86AudioMute",            lazy.spawn("pamixer -t"),   desc="Mute"),
-
-    Key([mod, "shift"], "equal",        lazy.spawn("pamixer -i 5"), desc="Increase volume"),
-    Key([mod, "shift"], "minus",        lazy.spawn("pamixer -d 5"), desc="Decrease volume"),
-    Key([mod, "shift"], "m",            lazy.spawn("pamixer -t"),   desc="Mute"),
+    # (alsa)
+    Key([mod, "shift"], "equal",        lazy.spawn("amixer set Master 5%+"),    desc="Increase volume"),
+    Key([mod, "shift"], "minus",        lazy.spawn("amixer set Master 5%-"),    desc="Decrease volume"),
+    Key([mod, "shift"], "m",            lazy.spawn("amixer set Master toggle"), desc="Mute"),
 
 # Backlight
     Key([], "XF86MonBrightnessUp",      lazy.spawn("xbacklight -inc 10"), desc="Increase brightness"),
@@ -169,7 +169,7 @@ layout_theme = {"border_width": 2,
                 }
 layouts = [
     layout.MonadTall(**layout_theme, new_client_position = 'top', ratio = 0.6),
-    layout.Max(**layout_theme),
+    layout.Max(border_width = 0, margin = 0),
     layout.MonadWide(**layout_theme),
     layout.Floating(**layout_theme),
     layout.Bsp(**layout_theme, border_on_single = True),
@@ -224,7 +224,7 @@ def upper_left_triangle(bg_color, fg_color):
         foreground=fg_color)
 def upper_right_triangle(bg_color, fg_color):
     return widget.TextBox(
-        text=' ',
+        text=' ',
         padding=0,
         fontsize=20,
         background=bg_color,
@@ -310,19 +310,19 @@ def init_widgets_list():
                 mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')},
                 ),
         upper_right_triangle("#1c202e", "#24283b"),
-        widget.Battery(
-                format = "{char} BAT {percent:2.0%}",
-                discharge_char = "",
-                charge_char    = "",
-                full_char      = "",
-                empty_char     = "",
-                unknown_char   = "",
-                low_percentage = 0.2,
-                show_short_text = False,
-                low_foreground = "#ff5555",
-                background = "#24283b",
-                foreground = "#9ece6a",
-                ),
+        # widget.Battery(
+                # format = "{char} BAT {percent:2.0%}",
+                # discharge_char = "",
+                # charge_char    = "",
+                # full_char      = "",
+                # empty_char     = "",
+                # unknown_char   = "",
+                # low_percentage = 0.2,
+                # show_short_text = False,
+                # low_foreground = "#ff5555",
+                # background = "#24283b",
+                # foreground = "#9ece6a",
+                # ),
         upper_right_triangle("#24283b", "#2e3347"),
         widget.Volume(
                 fmt = 'Vol {}',
@@ -336,17 +336,17 @@ def init_widgets_list():
         #         foreground = "#b4f9f8",
         #         background = "#2e3347",
         #         ),
-        widget.Sep(
-                size_percent = 70,
-                foreground = "#a9b1d6",
-                background = "#2e3347",
-                ),
-        widget.Backlight(
-                backlight_name = "intel_backlight",
-                format = "Bri {percent:2.0%}",
-                foreground = "#b4f9f8",
-                background = "#2e3347",
-                ),
+        # widget.Sep(
+                # size_percent = 70,
+                # foreground = "#a9b1d6",
+                # background = "#2e3347",
+                # ),
+        # widget.Backlight(
+                # backlight_name = "intel_backlight",
+                # format = "Bri {percent:2.0%}",
+                # foreground = "#b4f9f8",
+                # background = "#2e3347",
+                # ),
         upper_right_triangle("#2e3347", "#373d57"),
         widget.Clock(
                 format='%a, %B %d - %H:%M',

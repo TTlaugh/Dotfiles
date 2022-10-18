@@ -9,7 +9,8 @@ xset s off &
 xset -dpms &
 xset s noblank &
 
-exec "$HOME"/.fehbg &
+#exec "$HOME"/.fehbg &
+feh --bg-fill ~/.config/qtile/images/qtile_bg.png &
 
 trayer \
    --edge top \
@@ -30,4 +31,4 @@ trayer \
 picom --experimental-backends &
 
 # Run the aems script to send a message asking if the user wants to enable automatic email sync. (mutt-wizard)
-setsid -f "$HOME"/.scripts/aems
+#setsid -f "$HOME"/.scripts/aems

@@ -195,6 +195,7 @@ let g:fzf_layout = { 'down': '40%' }
 "+--------------------------+
 """ Leader Key
 let mapleader = ","
+nnoremap <leader>e :edit ~/.config/nvim/init.vim <CR>
 
 """ Remap Esc to jk and jk
 "inoremap jk <Esc>

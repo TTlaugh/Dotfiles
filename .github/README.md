@@ -71,8 +71,6 @@ yay -S - < aurlist.txt
 - GIMP
 - Audacity
 - OBS
-- simplescreenrecorder 
-- persepolis
 - VirtualBox
 - Virt-Manager
   > - `pacman -S libvirt iptables-nft qemu virt-manager`
@@ -80,14 +78,18 @@ yay -S - < aurlist.txt
   > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice 
   > *jre-openjdk* package is needed for LibreOffice Database.
+- simplescreenrecorder 
+- persepolis
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
 - thermald
+- redshift
+- xdotool ([AUR](https://aur.archlinux.org/packages/xidlehook))
+- xidlehook
 - starship
 - conky
-- onboard
-- xdotool
-- cronie
 - maim
+- onboard
+- cronie
 - speedtest-cli
 - volumeicon
 - shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))

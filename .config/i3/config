@@ -41,9 +41,9 @@
         }
 
 # Startup
-        exec_always --no-startup-id autotiling -w 1 2
-        exec_always --no-startup-id nm-applet
-        exec_always --no-startup-id unclutter
+        exec --no-startup-id autotiling -w 1 2
+        exec --no-startup-id nm-applet
+        exec --no-startup-id unclutter
         exec --no-startup-id picom --experimental-backends
         exec --no-startup-id xset s off && xset -dpms && xset s noblank
         exec --no-startup-id exec /home/nltt/.fehbg

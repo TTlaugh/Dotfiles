@@ -78,20 +78,18 @@ yay -S - < aurlist.txt
   > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice 
   > *jre-openjdk* package is needed for LibreOffice Database.
-- simplescreenrecorder 
-- persepolis
+- openssh
+- reflector
+- tlp
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
 - thermald
 - redshift
-- xdotool ([AUR](https://aur.archlinux.org/packages/xidlehook))
-- xidlehook
-- starship
+- xidlehook ([AUR](https://aur.archlinux.org/packages/xidlehook))
 - conky
 - maim
 - onboard
 - cronie
 - speedtest-cli
-- volumeicon
 - shellcheck-bin ([AUR](https://aur.archlinux.org/packages/shellcheck-bin))
 - teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
   > Note: If you use startx, you won't be able to open teamviewer
@@ -131,6 +129,7 @@ Fonts
 - ufw\*: `systemctl enable ufw.service`
 - bluetooth: `systemctl enable bluetooth.service`
 - lightdm: `systemctl enable lightdm.service`
+- acpid: `systemctl enable acpid.service`
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration

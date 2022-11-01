@@ -66,16 +66,16 @@ xorg-xinit
 
 acpilight
 
-#xf86-input-elographics
-#xf86-input-evdev
-#xf86-input-libinput
-#xf86-input-void
+xf86-input-elographics
+xf86-input-evdev
+xf86-input-libinput
+xf86-input-void
 
 mesa
 mesa-utils
 xf86-video-intel
 
-#intel-media-driver
+intel-media-driver
 libva-intel-driver
 libva-mesa-driver
 libva-vdpau-driver
@@ -112,8 +112,8 @@ bluez
 bluez-utils
 blueman
 
-#android-tools
-#android-udev
+android-tools
+android-udev
 udiskie
 udisks2
 
@@ -123,6 +123,7 @@ polkit
 
 acpi
 acpid
+acpi_call
 
 xdg-user-dirs
 
@@ -150,17 +151,20 @@ neovim
 vim
 nano
 zsh
+starship
 tmux
 neofetch
 rofi
 git
 wget
 curl
+persepolis
 pavucontrol
 pcmanfm-gtk3
 vifm
 ueberzug
 ffmpegthumbnailer
+simplescreenrecorder
 atool
 feh
 sxiv
@@ -184,8 +188,11 @@ zathura-djvu
 zathura-ps
 dunst
 unclutter
+dialog
 xclip
+xdotool
 fuse2
+rsync
 arandr
 
 kitty

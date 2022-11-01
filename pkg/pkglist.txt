@@ -14,8 +14,10 @@ ntfs-3g
 intel-ucode
 #amd-ucode
 
+iptables-nft
 ufw
 networkmanager
+nfs-utils
 
 xorg-bdftopcf
 xorg-docs

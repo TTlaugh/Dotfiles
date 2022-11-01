@@ -125,11 +125,12 @@ Fonts
 </details>
 
 # Enable Service
-- networkmanager: `systemctl enable NetworkManager.service`
-- ufw\*: `systemctl enable ufw.service`
-- bluetooth: `systemctl enable bluetooth.service`
-- lightdm: `systemctl enable lightdm.service`
-- acpid: `systemctl enable acpid.service`
+- Networkmanager: `systemctl enable NetworkManager.service`
+- Ufw\*: `systemctl enable ufw.service`
+- Bluetooth: `systemctl enable bluetooth.service`
+- Lightdm: `systemctl enable lightdm.service`
+- Acpid: `systemctl enable acpid.service`
+- TRIM: `systemctl enable fstrim.timer`
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration

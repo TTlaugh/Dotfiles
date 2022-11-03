@@ -8,7 +8,7 @@
 
 ### Dependencies:
 ```
-pacman-contrib dunst python feh xdotool xclip ffmpeg maim slop curl jq nmcli rofi
+pacman-contrib dunst python feh xdotool xclip ffmpeg maim slop curl jq rofi
 ```
 - dmenu
 - i3lock-color
@@ -41,7 +41,7 @@ sudo pacman -S pacman-contrib dunst pyhon feh xclip ffmpeg slop alacritty
 > You can use other browser by modifying the DMBROWSER variables in the dmwebsearch.
 
 #### dmmount, dmunmount
-- You should add this line to ***/etc/sudoers***
+- Add this line to ***/etc/sudoers***
 ```
 <user-name>  ALL=NOPASSWD: /usr/bin/udisksctl, /usr/bin/mount, /usr/bin/unmount
 ```

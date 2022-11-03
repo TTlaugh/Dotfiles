@@ -125,7 +125,6 @@ polkit
 
 acpi
 acpid
-acpi_call
 
 xdg-user-dirs
 
@@ -137,8 +136,6 @@ xcb-util-cursor
 python-psutil
 alsa-utils
 trayer
-
-i3lock
 
 zip
 unzip
@@ -174,7 +171,7 @@ mpv
 moc
 imagemagick
 lxappearance-gtk3
-picom
+#picom
 fzf
 bat
 ripgrep

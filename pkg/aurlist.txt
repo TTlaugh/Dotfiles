@@ -1,3 +1,4 @@
+xidlehook
 htop-vim
 i3lock-color
 picom-jonaburg-git

@@ -84,7 +84,6 @@ yay -S - < aurlist.txt
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
 - thermald
 - redshift
-- xidlehook ([AUR](https://aur.archlinux.org/packages/xidlehook))
 - conky
 - maim
 - onboard
@@ -134,6 +133,94 @@ Fonts
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration
+
+<details>
+<summary>Lightdm, lightdm-slick-greeter</summary>
+
+#### Lightdm
+- Edit config file in ***/etc/lightdm/lightdm.conf***
+  ```
+  [Seat:*]
+  .....
+  greeter-session=lightdm-slick-greeter
+  user-session=qtile
+  #user-session=i3
+  .....
+  ```
+##### lightdm-slick-greeter
+- Copy the picture you want to set background to ***/usr/share/backgrounds/***
+- Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
+  ```
+  [Greeter]
+  background=/usr/share/backgrounds/<picture>
+  ```
+</details>
+
+<details>
+<summary>Vifm</summary>
+
+[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIFM.md)
+</details>
+
+<details>
+<summary>zsh</summary>
+
+- Copy ***zsh*** folder to ***~/.config/***
+- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
+```
+cd ~/.config/zsh/plugins
+```
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
+```
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
+- Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
+> Starship is available on the official repository.
+</details>
+
+<details>
+<summary>Neovim</summary>
+
+[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/NEOVIM.md)
+</details>
+
+<details>
+<summary>Dmenu</summary>
+
+- Edit *config.def.h*:
+  - Font: `Hack Nerd Font`
+  - Font size: `13`
+  - Colors:
+    ```
+    [SchemeNorm] = { "#777c99", "#1a1b26" },
+    [SchemeSel] = { "#0f0f14", "#7aa2f7" },
+    ```
+- Edit *dmenu_run*:
+  - Add `-p "Run:"` after `dmenu "@"`
+  - Example: `dmenu "$@" -p "Run:"`
+</details>
+
+<details>
+<summary>Kitty</summary>
+
+- Copy default config file to ***~/.config/***
+  ```
+  cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
+  ```
+- Configure
+```
+line | config
+-----|---------------------------------------
+   9 | font_family      FiraCode Nerd Font
+  10 | bold_font        FiraCode Nerd Font Bold
+  11 | italic_font      FiraCode Nerd Font Italic
+  12 | bold_italic_font FiraCode Nerd Font Bold Italic
+ 994 | background_opacity 0.9
+```
+- Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
+</details>
 
 <details>
 <summary>i3</summary>
@@ -189,92 +276,16 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 </details>
 
 <details>
-<summary>Neovim</summary>
+<summary>Power Management</summary>
 
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/NEOVIM.md)
+- [Hibernation](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation)
+- [Hibernate on low battery level](https://wiki.archlinux.org/title/laptop#Hibernate_on_low_battery_level)
+- [Hybrid graphics](https://wiki.archlinux.org/title/hybrid_graphics)
+- [TLP](https://linrunner.de/tlp/), [Arch Wiki](https://wiki.archlinux.org/title/TLP)
 </details>
 
-<details>
-<summary>zsh</summary>
-
-- Copy ***zsh*** folder to ***~/.config/***
-- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
-```
-cd ~/.config/zsh/plugins
-```
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions.git
-```
-```
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-```
-- Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
-> Starship is available on the official repository.
-</details>
-
-<details>
-<summary>Vifm</summary>
-
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIFM.md)
-</details>
-
-<details>
-<summary>Kitty</summary>
-
-- Copy default config file to ***~/.config/***
-  ```
-  cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
-  ```
-- Configure
-```
-line | config
------|---------------------------------------
-   9 | font_family      FiraCode Nerd Font
-  10 | bold_font        FiraCode Nerd Font Bold
-  11 | italic_font      FiraCode Nerd Font Italic
-  12 | bold_italic_font FiraCode Nerd Font Bold Italic
- 994 | background_opacity 0.9
-```
-- Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
-</details>
-
-<details>
-<summary>Dmenu</summary>
-
-- Edit *config.def.h*:
-  - Font: `Hack Nerd Font`
-  - Font size: `13`
-  - Colors:
-    ```
-    [SchemeNorm] = { "#777c99", "#1a1b26" },
-    [SchemeSel] = { "#0f0f14", "#7aa2f7" },
-    ```
-- Edit *dmenu_run*:
-  - Add `-p "Run:"` after `dmenu "@"`
-  - Example: `dmenu "$@" -p "Run:"`
-</details>
-
-<details>
-<summary>Lightdm, lightdm-slick-greeter</summary>
-
-#### Lightdm
-- Edit config file in ***/etc/lightdm/lightdm.conf***
-  ```
-  [Seat:*]
-  .....
-  greeter-session=lightdm-slick-greeter
-  user-session=qtile
-  #user-session=i3
-  .....
-  ```
-##### lightdm-slick-greeter
-- Copy the picture you want to set background to ***/usr/share/backgrounds/***
-- Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
-  ```
-  [Greeter]
-  background=/usr/share/backgrounds/<picture>
-  ```
-</details>
+## My Scripts
+[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)
 
 # Other
 
@@ -298,8 +309,5 @@ line | config
 ### Tips and Tricks
 - [Linux](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
 - [Vim](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
-
-### My Scripts
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)
 </details>
 

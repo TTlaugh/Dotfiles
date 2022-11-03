@@ -6,16 +6,16 @@
         # Font for window titles.
         font pango:DroidSansMono Nerd Font 11
         # Turn off border
-        default_border pixel 2
-        default_floating_border pixel 2
+        default_border pixel 0
+        default_floating_border pixel 0
         hide_edge_borders smart
         title_align center
         # Use Mouse+$mod to drag floating windows to their wanted position
         floating_modifier $mod
         # i3-gaps
-        #gaps inner 5
-        #gaps outer 5
-        #smart_gaps on
+        gaps inner 5
+        gaps outer 5
+        smart_gaps on
 
 # Colors
         # Window colors         border     background    text      indicator  child_border
@@ -28,8 +28,8 @@
         bar {
             bindsym button2 exec "i3-nagbar -m 'Arch Linux' -t warning -B 'restart' 'reboot' -B 'shutdown' 'shutdown now' -B 'Keyboard' 'onboard' -B 'Terminal' 'i3-sensible-terminal'"
             position top
-            #status_command i3status -c ~/.config/i3/i3status/i3status1.conf
-            status_command i3status -c ~/.config/i3/i3status/i3status2.conf
+            status_command i3status -c ~/.config/i3/i3status/i3status1.conf
+            #status_command i3status -c ~/.config/i3/i3status/i3status2.conf
             #status_command exec ~/.config/i3/i3status/mybar.sh
             colors {
             background #282a36
@@ -41,19 +41,20 @@
         }
 
 # Startup
-        exec --no-startup-id autotiling -w 1 2
+        exec_always --no-startup-id autotiling -w 1 2
         exec --no-startup-id nm-applet
         exec --no-startup-id unclutter
         exec --no-startup-id picom --experimental-backends
         exec --no-startup-id xset s off && xset -dpms && xset s noblank
+        exec --no-startup-id exec powersave
         exec --no-startup-id exec /home/nltt/.fehbg
-        exec --no-startup-id exec setsid -f /home/nltt/.scripts/aems
+        #exec --no-startup-id exec setsid -f /home/nltt/.scripts/aems
 
 # Mappings
     # i3-gaps
-        #bindsym $mod+g                              gaps inner current plus 5
-        #bindsym $mod+Shift+g                        gaps outer current minus 5
-        #bindsym $mod+Control+g                      gaps inner all set 0; gaps outer all set 0
+        bindsym $mod+g                              gaps inner current plus 5
+        bindsym $mod+Shift+g                        gaps outer current minus 5
+        bindsym $mod+Control+g                      gaps inner all set 0; gaps outer all set 0
     # i3wm
         # restart i3
         bindsym $mod+Shift+r                        restart
@@ -61,13 +62,8 @@
         bindsym $mod+Shift+c                        reload
         # exit i3
         bindsym $mod+Shift+q                        exec i3-msg exit
-        # system
-        bindsym $mod+F1                             exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to exit i3?") = "Yes" ] && i3-msg exit
-        bindsym $mod+F2                             exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to suspend?") = "Yes" ] && systemctl suspend
-        bindsym $mod+F3                             exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to reboot?") = "Yes" ] && reboot
-        bindsym $mod+F4                             exec [ $(echo -e "No\nYes" | dmenu -i -p "Are you sure you want to shutdown?") = "Yes" ] && shutdown now
         # lock screen with i3lock
-        bindsym $mod+Escape                         exec --no-startup-id i3lock -e -f -c 24283b
+        bindsym $mod+Escape                         exec --no-startup-id lockscreen
         # kill focused window
         bindsym $mod+q                              kill
         # change focus
@@ -131,8 +127,10 @@
         #bindsym $mod+Return                         exec --no-startup-id alacritty
         #bindsym $mod+Return                         exec --no-startup-id st
 
+        # rofi
+        bindsym $mod+o                              exec --no-startup-id rofi -show drun
         # launch dmenu
-        bindsym $mod+o                              exec --no-startup-id dmenu_run
+        bindsym $mod+Shift+o                        exec --no-startup-id dmenu_run
 
         # open chromium
         bindsym $mod+shift+Return                   exec chromium
@@ -142,11 +140,34 @@
         bindsym $mod+Shift+BackSpace                exec --no-startup-id dunstctl close-all
         bindsym $mod+backslash                      exec --no-startup-id dunstctl history-pop
 
-        # screenshot by ffmpeg
-        bindsym Print                               exec ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -i $DISPLAY -vframes 1 \
-                                                    ${HOME}/Pictures/screenshot--$(date +'%Y-%m-%d--%H-%M-%S').png
-        
-        # Workspace
+    # My Scripts
+        # screenshot
+        bindsym Print exec --no-startup-id screenshot
+        bindsym Shift+Print exec --no-startup-id screenshot selected
+        # Dmenu scripts
+        mode "dmscripts" {
+            bindsym q exec --no-startup-id dmpower, mode "default"
+                bindsym e exec --no-startup-id dmeditconf, mode "default"
+                bindsym s exec --no-startup-id dmwebsearch, mode "default"
+                bindsym b exec --no-startup-id dmsetbg, mode "default"
+                bindsym w exec --no-startup-id dmwifi, mode "default"
+                bindsym t exec --no-startup-id dmtranslate, mode "default"
+                bindsym k exec --no-startup-id dmkill, mode "default"
+                bindsym p exec --no-startup-id dmmaim, mode "default"
+                bindsym i exec --no-startup-id dmicons, mode "default"
+                bindsym c exec --no-startup-id dmcalc, mode "default"
+                bindsym n exec --no-startup-id dmprime-run, mode "default"
+                bindsym m exec --no-startup-id dmmount, mode "default"
+                bindsym Shift+m exec --no-startup-id dmunmount, mode "default"
+                bindsym Print exec --no-startup-id dmrecord, mode "default"
+                bindsym Shift+Print exec --no-startup-id dmrecord kill, mode "default"
+
+                bindsym Return mode "default"
+                bindsym Escape mode "default"
+        }
+        bindsym $mod+p mode "dmscripts"
+
+# Workspace
             # Variables
             set $ws1 " 1 "
             set $ws2 " 2 "

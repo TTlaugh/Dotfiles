@@ -15,7 +15,7 @@ xidlehook \
     'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
   `# Undim & lock after 30 more seconds` \
   --timer 30 \
-    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1; xset dpms force off' \
+    'xset dpms force off; xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
     '' \
   `# Finally, suspend an half an hour after it locks` \
   --timer 1800 \

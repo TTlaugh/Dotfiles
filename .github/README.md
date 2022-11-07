@@ -94,35 +94,6 @@ yay -S - < aurlist.txt
   > Note: If you use startx, you won't be able to open teamviewer
 </details>
 
-### Fonts
-<details>
-<summary>Fonts</summary>
-
-Fonts
-- Dependencies:
-  - Roboto Mono (dunst)
-  - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
-  - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
-  - Fira Code (Kitty)
-  - Hack Nerd Font (Alacritty, st, dmenu)
-- Nerd Fonts:
-  - Arimo
-  - CodeNewRoman
-  - DejaVuSansMono
-  - DroidSansMono
-  - FiraCode
-  - Go-Mono
-  - Hack
-  - JetBrainsMono
-  - LiberationMono
-  - Meslo
-  - Mononoki
-  - ProFont
-  - RobotoMono
-  - SourceCodePro
-  - Ubuntu
-</details>
-
 # Enable Service
 - Networkmanager: `systemctl enable NetworkManager.service`
 - Ufw\*: `systemctl enable ufw.service`
@@ -284,15 +255,35 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 - [TLP](https://linrunner.de/tlp/), [Arch Wiki](https://wiki.archlinux.org/title/TLP)
 </details>
 
-## My Scripts
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md)
+## Appearance
+- Fonts
+  - <details>
+    <summary>Dependencies</summary>
+      
+      - Roboto Mono (dunst)
+      - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
+      - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
+      - Fira Code (Kitty)
+    </details>
+  - <details>
+    <summary>Nerd Fonts</summary>
 
-# Other
-
-<details>
-<summary>Click to expand!</summary>
-
-### Appearance
+      - Arimo
+      - CodeNewRoman
+      - DejaVuSansMono
+      - DroidSansMono
+      - FiraCode
+      - Go-Mono
+      - Hack
+      - JetBrainsMono
+      - LiberationMono
+      - Meslo
+      - Mononoki
+      - ProFont
+      - RobotoMono
+      - SourceCodePro
+      - Ubuntu
+    </details>
 - Themes:
     - [Dracula](https://draculatheme.com)
     - [Catppuccin](https://github.com/catppuccin/catppuccin)
@@ -302,12 +293,9 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
     - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)
 
-### Random color script for terminal
-- Install: [shell-color-scripts](https://aur.archlinux.org/packages/shell-color-scripts) (AUR)
-- Usage: add `colorscript random` to your **.zshrc** file.
-
 ### Tips and Tricks
 - [Linux](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
-- [Vim](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIMTIPS.md)
-</details>
+
+### My Scripts
+Please read the [documentation](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md) for more information before using [my scripts](https://github.com/nguyenletientrien/Dotfiles/tree/master/.scripts).
 

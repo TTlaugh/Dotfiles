@@ -27,7 +27,7 @@ main() {
 
         local url=${translate_languages_url["${translate_service}"]}
         local jq=${translate_languages_jq["${translate_service}"]}
-        mapfile -t data < <(curl -Ss ${url} | jq -cr "${jq}")
+        mapfile -t data < <(curl -Ss "${url}" | jq -cr "${jq}")
         for ((i = 0; i < ${#data[@]}; ++i)); do
             # shellcheck disable=SC2086
             lang_map[$(echo ${data[$i]} | cut -d"'" -f4)]="$(echo ${data[$i]} | cut -d"'" -f2)"

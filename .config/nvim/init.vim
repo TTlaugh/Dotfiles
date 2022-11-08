@@ -201,10 +201,6 @@ nnoremap <leader>e :edit ~/.config/nvim/init.vim <CR>
 "inoremap jk <Esc>
 "inoremap kj <Esc>
 
-""" j/k will move virtual lines (lines that wrap)
-noremap j gj
-noremap k gk
-
 """ Built-in spell-check
 map <F4> :setlocal spell! spelllang=en_us<CR>
 """ Automatically fix misspelled word with the first suggestion

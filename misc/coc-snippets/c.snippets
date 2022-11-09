@@ -1,0 +1,94 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet main "int main() {code}" b
+int main (int argc, char const *argv[])
+{
+	${1:/* code */}
+	return 0;
+}
+endsnippet
+
+snippet for "for loop with i" b
+for(size_t i=0; i < ${1:count}; i++) {
+	${2:/* code */}
+}
+endsnippet
+
+snippet forj "for loop with j" b
+for(size_t j=0; j < ${1:count}; j++) {
+	${2:/* code */}
+}
+endsnippet
+
+snippet while "while loop" b
+while(${1}) {
+	${2:/* code */}
+}
+endsnippet
+
+snippet do "do loop" b
+do {
+	${2:/* code */}
+} while(${1});
+endsnippet
+
+snippet if "if ()" b
+if(${1}) {
+	${2:/* code */}
+}
+endsnippet
+
+snippet else "else ()" b
+else {
+	${1:/* code */}
+}
+endsnippet
+
+snippet elseif "else if ()" b
+else if(${1}) {
+	${2:/* code */}
+}
+endsnippet
+
+snippet switch "switch ()" b
+switch(${1}) {
+	case ${2:x}:
+		${3:/* code */}
+		break;
+	default:
+		${4:/* code */}
+}
+endsnippet
+
+snippet include_guard "include guard" b
+#ifndef ${1:MACRO_H}
+#define $1
+
+${2:/* code */}
+
+#endif
+endsnippet

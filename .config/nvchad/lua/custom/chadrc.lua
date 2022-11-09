@@ -1,10 +1,10 @@
 local M = {}
 
-local override = require "custom.plugins.override"
+local override = require("custom.plugins.override")
 
 M.plugins = {
     -- Add plugins
-    user = require "custom.plugins",
+    user = require("custom.plugins"),
 
     -- Remove plugins
     remove = {
@@ -25,6 +25,6 @@ M.ui = {
     theme = "catppuccin", -- default theme
 }
 
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 return M

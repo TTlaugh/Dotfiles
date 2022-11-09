@@ -82,7 +82,6 @@ yay -S - < aurlist.txt
 - reflector
 - tlp
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
-- thermald
 - redshift
 - conky
 - maim
@@ -100,6 +99,7 @@ yay -S - < aurlist.txt
 - Bluetooth: `systemctl enable bluetooth.service`
 - Lightdm: `systemctl enable lightdm.service`
 - Acpid: `systemctl enable acpid.service`
+- Thermald: `systemctl enable thermald.service`
 - TRIM: `systemctl enable fstrim.timer`
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 

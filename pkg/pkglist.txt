@@ -126,6 +126,8 @@ polkit
 acpi
 acpid
 
+thermald
+
 xdg-user-dirs
 
 i3-gaps

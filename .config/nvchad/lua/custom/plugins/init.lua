@@ -19,16 +19,16 @@ return {
 
     -- Cmake
     ["cdelledonne/vim-cmake"] = {
-        config = function ()
+        config = function()
             vim.g.cmake_link_compile_commands = 1
-        end
+        end,
     },
 
     -- Lspconfig
     ["neovim/nvim-lspconfig"] = {
         config = function()
-            require "plugins.configs.lspconfig"
-            require "custom.plugins.lspconfig"
+            require("plugins.configs.lspconfig")
+            require("custom.plugins.lspconfig")
         end,
     },
 
@@ -36,9 +36,9 @@ return {
     ["jose-elias-alvarez/null-ls.nvim"] = {
         after = "nvim-lspconfig",
         config = function()
-            require "custom.plugins.null-ls"
+            require("custom.plugins.null-ls")
         end,
-    }
+    },
 
     -- ...
 }

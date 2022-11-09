@@ -1,3 +1,11 @@
+### Git
+alias gitst='git status'
+alias gitaa='git add .'
+alias gitco='git commit -m'
+alias push='git push'
+alias pull='git pull'
+alias clone='git clone'
+
 ### Changing "ls" to "exa"
 alias ll='exa -l --color=always --group-directories-first'
 alias la='exa -al --color=always --group-directories-first'

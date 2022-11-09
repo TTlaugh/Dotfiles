@@ -17,7 +17,7 @@ local sources = {
     b.formatting.clang_format,
 }
 
-null_ls.setup {
+null_ls.setup({
     debug = true,
     sources = sources,
-}
+})

@@ -45,6 +45,9 @@ alias rmdir='rmdir -v'
 ### Get error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
+### CPU frequency monitoring
+alias cpufreq='watch grep \"cpu MHz\" /proc/cpuinfo'
+
 ### Colorize grep output (good for log files)
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'

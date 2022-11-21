@@ -1,9 +1,8 @@
 {
 
-"diagnostic.refreshOnInsertMode":true,
 "coc.preferences.jumpCommand": "vsplit",
 
-"colors.filetypes": ["*"],
+"colors.enable": true,
 "highlight.colorNames.enable":false,
 
 "languageserver": {

@@ -19,7 +19,8 @@ def autostart():
 mod = "mod4"
 mod1 = "mod1"
 terminal = guess_terminal()
-myterm = "alacritty"
+myterm1 = "alacritty"
+myterm2 = "kitty"
 mybrowser = "chromium"
 
 #########################
@@ -27,8 +28,9 @@ mybrowser = "chromium"
 #########################
 keys = [
 # Launch terminal
-    #Key([mod], "Return",    lazy.spawn(myterm)),
     Key([mod], "Return",                lazy.spawn(terminal)),
+    Key([mod1], "Return",               lazy.spawn(myterm2)),
+    # Key([mod], "Return",                lazy.spawn(myterm1)),
 # Launcher
     Key([mod, "shift"], "o",            lazy.spawn("dmenu_run")),
     Key([mod], "o",                     lazy.spawn("rofi -show drun")),
@@ -103,10 +105,10 @@ keys = [
     Key([mod1, "control"], "t", lazy.spawn("mocp -G")),
     Key([mod1, "control"], "n", lazy.spawn("mocp -f")),
     Key([mod1, "control"], "p", lazy.spawn("mocp -r")),
-    Key([mod1, "control"], "m", lazy.spawn(myterm + ' -e mocp')),
+    Key([mod1, "control"], "m", lazy.spawn(myterm1 + ' -e mocp')),
 
 # Open Neomutt
-    Key([mod, "shift"], "n", lazy.spawn(myterm + ' -e neomutt')),
+    Key([mod, "shift"], "n", lazy.spawn(myterm1 + ' -e neomutt')),
 
 # Screenshot (script)
     Key([], "Print",                    lazy.spawn("screenshot"),          desc="Take fullscreen capture"),
@@ -250,7 +252,7 @@ def init_widgets_list():
                 format = ' {load_percent}%',
                 foreground = "#7dcfff",
                 background = "#373d57",
-                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e htop')},
+                mouse_callbacks = {'Button1': lazy.spawn(myterm1 + ' -e htop')},
                 ),
         upper_left_triangle("#2e3347", "#373d57"),
         widget.Memory(
@@ -307,22 +309,22 @@ def init_widgets_list():
                 display_format = " {updates}",
                 colour_have_updates = "#b4f9c6",
                 background = "#1c202e",
-                mouse_callbacks = {'Button1': lazy.spawn(myterm + ' -e sudo pacman -Syu')},
+                mouse_callbacks = {'Button1': lazy.spawn(myterm1 + ' -e sudo pacman -Syu')},
                 ),
         upper_right_triangle("#1c202e", "#24283b"),
-        # widget.Battery(
-                # format = "{char} BAT {percent:2.0%}",
-                # discharge_char = "",
-                # charge_char    = "",
-                # full_char      = "",
-                # empty_char     = "",
-                # unknown_char   = "",
-                # low_percentage = 0.2,
-                # show_short_text = False,
-                # low_foreground = "#ff5555",
-                # background = "#24283b",
-                # foreground = "#9ece6a",
-                # ),
+        widget.Battery(
+                format = "{char} BAT {percent:2.0%}",
+                discharge_char = "",
+                charge_char    = "",
+                full_char      = "",
+                empty_char     = "",
+                unknown_char   = "",
+                low_percentage = 0.2,
+                show_short_text = False,
+                low_foreground = "#ff5555",
+                background = "#24283b",
+                foreground = "#9ece6a",
+                ),
         upper_right_triangle("#24283b", "#2e3347"),
         widget.Volume(
                 fmt = 'Vol {}',
@@ -336,17 +338,17 @@ def init_widgets_list():
         #         foreground = "#b4f9f8",
         #         background = "#2e3347",
         #         ),
-        # widget.Sep(
-                # size_percent = 70,
-                # foreground = "#a9b1d6",
-                # background = "#2e3347",
-                # ),
-        # widget.Backlight(
-                # backlight_name = "intel_backlight",
-                # format = "Bri {percent:2.0%}",
-                # foreground = "#b4f9f8",
-                # background = "#2e3347",
-                # ),
+        widget.Sep(
+                size_percent = 70,
+                foreground = "#a9b1d6",
+                background = "#2e3347",
+                ),
+        widget.Backlight(
+                backlight_name = "intel_backlight",
+                format = "Bri {percent:2.0%}",
+                foreground = "#b4f9f8",
+                background = "#2e3347",
+                ),
         upper_right_triangle("#2e3347", "#373d57"),
         widget.Clock(
                 format='%a, %B %d - %H:%M',

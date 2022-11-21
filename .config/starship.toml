@@ -93,3 +93,123 @@ format = "[S](yellow bold)"
 [status]
 disabled = false
 format = "[$status ↵](red)"
+
+#format = """
+#[╭─](white bold)\
+#[](#A82F87)\
+#$username\
+#[](bg:#A82F87 fg:#DB566E)\
+#$directory\
+#[](fg:#DB566E)\
+#$git_branch\
+#$git_status\
+#$c\
+#$golang\
+#$haskell\
+#$java\
+#$nodejs\
+#$rust\
+#$lua\
+#$python\
+#$docker_context\
+#$line_break\
+#[╰─](white bold)\
+#$shell\
+#$sudo\
+#$character\
+#"""
+#right_format = """
+#$status\
+#"""
+
+## Disable the blank line at the start of the prompt
+#add_newline = false
+
+#[username]
+#show_always = true
+#style_user = "bg:#A82F87"
+#style_root = "bg:#A82F87"
+#format = '[$user ]($style)'
+
+#[directory]
+#style = "bg:#DB566E"
+#format = "[ $path ]($style)[$read_only]($read_only_style)"
+#read_only = "  "
+#read_only_style = "black bg:#DB566E"
+#truncation_length = 0
+#truncate_to_repo = false
+
+## Here is how you can shorten some long paths by text replacement
+#[directory.substitutions]
+#"Documents" = " "
+#"Downloads" = " "
+#"Pictures"  = " "
+#"Videos"    = "辶"
+#"Music"     = " "
+## Keep in mind that the order matters. For example:
+## "Important Documents" = "  "
+## will not be replaced, because "Documents" was already substituted before.
+## So either put "Important Documents" before "Documents" or use the substituted version:
+## "Important  " = "  "
+
+#[c]
+#symbol = " "
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[docker_context]
+#symbol = " "
+#style = "black bg:#06969A"
+#format = '[ ](fg:#06969A)[ $symbol $context ]($style)[](fg:#06969A)'
+
+#[git_branch]
+#symbol = ""
+#style = "black bg:#FF9E64"
+#format = '[ ](fg:#FF9E64)[ $symbol $branch ]($style)'
+
+#[git_status]
+#style = "black bg:#FF9E64"
+#format = '[$all_status$ahead_behind ]($style)[](fg:#FF9E64)'
+
+#[golang]
+#symbol = " "
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[haskell]
+#symbol = " "
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[java]
+#symbol = " "
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[nodejs]
+#symbol = ""
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[rust]
+#symbol = ""
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[lua]
+#symbol = ""
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[python]
+#symbol = ""
+#style = "black bg:#86BBD8"
+#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+
+#[sudo]
+#disabled = false
+#format = "[S](yellow bold)"
+
+#[status]
+#disabled = false
+#format = "[$status ↵](red)"

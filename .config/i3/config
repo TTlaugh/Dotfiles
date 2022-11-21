@@ -123,7 +123,7 @@
     # Applications
         # start a terminal
         bindsym $mod+Return                         exec --no-startup-id i3-sensible-terminal
-        #bindsym $mod+Return                         exec --no-startup-id kitty
+        bindsym Mod1+Return                         exec --no-startup-id kitty
         #bindsym $mod+Return                         exec --no-startup-id alacritty
         #bindsym $mod+Return                         exec --no-startup-id st
 

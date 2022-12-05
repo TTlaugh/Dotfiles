@@ -1,17 +1,20 @@
+# Neofetch with my custom ascii art
+alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
+
 ### Git
-alias gitst='git status'
-alias gitaa='git add .'
-alias gitco='git commit -m'
-alias push='git push'
-alias pull='git pull'
-alias clone='git clone'
+alias gitst="git status"
+alias gitaa="git add ."
+alias gitco="git commit -m"
+alias push="git push"
+alias pull="git pull"
+alias clone="git clone"
 
 ### Changing "ls" to "exa"
-alias ll='exa -l --color=always --group-directories-first'
-alias la='exa -al --color=always --group-directories-first'
-alias ls='exa -a --color=always --group-directories-first'
-alias lt='exa -aT --color=always --group-directories-first'
-alias l.='exa -a | egrep "^\."'
+alias ll="exa -l --color=always --group-directories-first"
+alias la="exa -al --color=always --group-directories-first"
+alias ls="exa -a --color=always --group-directories-first"
+alias lt="exa -aT --color=always --group-directories-first"
+alias l.="exa -a | egrep '^\.'"
 
 ### navigation
 up() {
@@ -34,13 +37,13 @@ up() {
 }
 
 ### Confirm before overwriting something
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -i'
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
 
 ### Verbose
-alias mkdir='mkdir -v'
-alias rmdir='rmdir -v'
+alias mkdir="mkdir -v"
+alias rmdir="rmdir -v"
 
 ### Get error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
@@ -49,23 +52,23 @@ alias jctl="journalctl -p 3 -xb"
 alias cpufreq='watch grep \"cpu MHz\" /proc/cpuinfo'
 
 ### Colorize grep output (good for log files)
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
 
 ### nvim, nvim + fzf
-alias vi='nvim'
-alias suvi='sudoedit'
+alias vi="nvim"
+alias suvi="sudoedit"
 alias vf='nvim `fzf`'
 
 ### vifm
 alias fm="$HOME/.config/vifm/scripts/vifmrun"
 
 ### feh
-alias feh='feh --scale-down --auto-zoom'
+alias feh="feh --scale-down --auto-zoom"
 
 ### Convert to PDF
-alias doctopdf='libreoffice --headless --convert-to pdf:writer_pdf_Export'
+alias doctopdf="libreoffice --headless --convert-to pdf:writer_pdf_Export"
 mdtopdf() {
     fullname=$(basename -- "$1")
     filename="${fullname%.*}"
@@ -78,14 +81,14 @@ cheat() {
 }
 
 ### Terminal rickroll!!!!
-alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
 
 ### pacman + fzf
 alias pacQi="pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias pacSi="pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse"
 alias pacS="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S"
 alias pacR="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns"
-alias supac='sudo pacman'
+alias supac="sudo pacman"
 alias pacRu="pacman -Qtdq | sudo pacman -Rns -"
 paclsdep() {
     LC_ALL=C pacman -Qi $1 | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u

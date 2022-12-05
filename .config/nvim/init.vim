@@ -10,6 +10,7 @@ syntax on
 
 set encoding=utf-8
 
+set shortmess=FI
 set title
 
 set nobackup
@@ -41,10 +42,10 @@ set splitbelow
 set termguicolors
 set background=dark
 
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set mouse=a
 
-set list listchars=tab:\|\ 
+set list listchars=tab:\▏\ 
 
 """ Disable automatic comment in newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -102,8 +103,8 @@ call plug#end()
 "| +------------------------+ |
 "+----------------------------+
 """ Themes
-colorscheme tokyonight-night
-"colorscheme tokyonight-storm
+colorscheme tokyonight-moon
+"colorscheme tokyonight
 "colorscheme tokyonight-day
 "colorscheme dracula
 "colorscheme onedark
@@ -212,6 +213,9 @@ nmap <leader>s :!shellcheck -x %<CR>
 """ Switch to V-mode and Ctrl-r to replace with new word
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
+vnoremap < <gv-gv
+vnoremap > >gv-gv
+
 """ Use <space><Esc> to exit terminal-mode
 tnoremap <C-x> <C-\><C-n>
 """ Use ALT+{h,j,k,l} to navigate windows from any mode
@@ -227,11 +231,22 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
 """ Resize split window
-noremap <C-k> <c-w>+
-noremap <C-j> <c-w>-
-noremap <C-h> <c-w>>
-noremap <C-l> <c-w><
+noremap <C-Up>    <c-w>+
+noremap <C-Down>  <c-w>-
+noremap <C-Left>  <c-w><
+noremap <C-Right> <c-w>>
+
+imap <C-n> <ESC>:move .+1<CR>==gi
+imap <C-p> <ESC>:move .-2<CR>==gi
+
+nmap <C-n> :move .+1<CR>==
+nmap <C-p> :move .-2<CR>==
+
+vmap <C-n> :move '>+1<CR>gv-gv
+vmap <C-p> :move '<-2<CR>gv-gv
+
 """ Toggle horiz/vert
 nmap <leader>th <C-w>t<C-w>H
 nmap <leader>tk <C-w>t<C-w>K
@@ -257,12 +272,12 @@ vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
 """ Vimspector
-nmap <F9>           <Plug>VimspectorToggleBreakpoint
-nmap <F5>           <Plug>VimspectorContinue
-nmap <leader><F5>   <Plug>VimspectorRestart
-nmap <F6>           <Plug>VimspectorStepOver
-nmap <F7>           <Plug>VimspectorStepInto
-nmap <leader><F7>   <Plug>VimspectorStepOut
+nmap <leader>db     <Plug>VimspectorToggleBreakpoint
+nmap <F9>           <Plug>VimspectorContinue
+nmap <leader><F9>   <Plug>VimspectorRestart
+nmap <F5>           <Plug>VimspectorStepOver
+nmap <F6>           <Plug>VimspectorStepInto
+nmap <F7>           <Plug>VimspectorStepOut
 nmap <F8>           <Plug>VimspectorPause
 nmap <leader><F8>   <Plug>VimspectorStop
 nmap <leader>dx :VimspectorReset<CR>

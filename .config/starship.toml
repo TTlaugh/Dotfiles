@@ -1,215 +1,197 @@
-add_newline = false
-
-format = """
-[╭─](white bold)\
-$username\
-$hostname\
-$directory\
-$git_status\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$line_break\
-[╰─](white bold)\
-$shell\
-$sudo\
-$character\
-"""
-
-right_format = """$status"""
-
-##############
-#   Normal   #
-##############
-#[username]
-#show_always = true
-#format = '([\[](cyan bold)[$user](purple bold)[@](green bold))'
-
-#[hostname]
-#ssh_only = false
-#format = "[$hostname](yellow bold) "
-
-#[directory]
-#truncation_length = 0
-#truncate_to_repo = false
-#format = '([$path]($style)[$read_only]($read_only_style)[\]](cyan bold) )'
-#read_only = " "
-#style = "blue bold"
-
-#[git_status]
-#format = "[$all_status$ahead_behind]($style)"
-
-#[git_branch]
-#format = "[$symbol$branch](yellow) "
-#symbol=" "
-
-##[shell]
-##disabled = false
-##format = "[$indicator](green bold) "
-
-#[sudo]
-#disabled = false
-#format = "[S](yellow bold)"
-
-#[status]
-#disabled = false
-#format = "[$status ↵](red)"
-
-#################
-#   Powerline   #
-#################
-[username]
-show_always = true
-format = "[](black)[ ](cyan bg:black)[](black bold bg:black)[ $user](purple bold bg:black)[@](green bold bg:black)"
-
-[hostname]
-ssh_only = false
-format = "[$hostname ](yellow bold bg:black)[](black bold bg:black)"
-
-[directory]
-truncation_length = 0
-truncate_to_repo = false
-format = "[ ﱮ ](white bg:black)[$path]($style)[$read_only]($read_only_style)[ ](black bold bg:black)[](black) "
-style = "blue bold bg:black"
-read_only = "  "
-read_only_style = "red bg:black"
-
-[git_status]
-format = "[$all_status$ahead_behind]($style)"
-
-[git_branch]
-format = "[$symbol$branch](yellow) "
-symbol=" "
-
-[sudo]
-disabled = false
-format = "[S](yellow bold)"
-
-#[shell]
-#disabled = false
-#format = "[$indicator](cyan bold) "
-
-[status]
-disabled = false
-format = "[$status ↵](red)"
-
+###########################
+#        Powerline        #
+###########################
 #format = """
 #[╭─](white bold)\
-#[](#A82F87)\
+#[](black)[ ](cyan bg:black)[](black bold bg:black)\
 #$username\
-#[](bg:#A82F87 fg:#DB566E)\
+#[@](green bold bg:black)\
+#$hostname\
+#[](black bold bg:black)\
+#[ ﱮ ](white bg:black)\
 #$directory\
-#[](fg:#DB566E)\
-#$git_branch\
+#[ ](black bold bg:black)[ ](black)\
 #$git_status\
-#$c\
-#$golang\
-#$haskell\
-#$java\
-#$nodejs\
-#$rust\
-#$lua\
-#$python\
-#$docker_context\
+#$git_branch\
+#$git_commit\
+#$git_state\
+#$git_metrics\
 #$line_break\
 #[╰─](white bold)\
 #$shell\
 #$sudo\
 #$character\
 #"""
-#right_format = """
-#$status\
-#"""
+#right_format = """$status"""
 
-## Disable the blank line at the start of the prompt
 #add_newline = false
 
 #[username]
 #show_always = true
-#style_user = "bg:#A82F87"
-#style_root = "bg:#A82F87"
-#format = '[$user ]($style)'
+#style_user = "purple bold bg:black"
+#style_root = "purple bold bg:black"
+#format = "[ $user]($style)"
+
+#[hostname]
+#ssh_only = false
+#style = "yellow bold bg:black"
+#format = "[$hostname ]($style)"
 
 #[directory]
-#style = "bg:#DB566E"
-#format = "[ $path ]($style)[$read_only]($read_only_style)"
-#read_only = "  "
-#read_only_style = "black bg:#DB566E"
 #truncation_length = 0
 #truncate_to_repo = false
-
-## Here is how you can shorten some long paths by text replacement
-#[directory.substitutions]
-#"Documents" = " "
-#"Downloads" = " "
-#"Pictures"  = " "
-#"Videos"    = "辶"
-#"Music"     = " "
-## Keep in mind that the order matters. For example:
-## "Important Documents" = "  "
-## will not be replaced, because "Documents" was already substituted before.
-## So either put "Important Documents" before "Documents" or use the substituted version:
-## "Important  " = "  "
-
-#[c]
-#symbol = " "
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[docker_context]
-#symbol = " "
-#style = "black bg:#06969A"
-#format = '[ ](fg:#06969A)[ $symbol $context ]($style)[](fg:#06969A)'
-
-#[git_branch]
-#symbol = ""
-#style = "black bg:#FF9E64"
-#format = '[ ](fg:#FF9E64)[ $symbol $branch ]($style)'
+#format = "[$path]($style)[$read_only]($read_only_style)"
+#style = "blue bold bg:black"
+#read_only = "  "
+#read_only_style = "red bg:black"
 
 #[git_status]
-#style = "black bg:#FF9E64"
-#format = '[$all_status$ahead_behind ]($style)[](fg:#FF9E64)'
+#format = "[$all_status$ahead_behind]($style)"
 
-#[golang]
-#symbol = " "
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[haskell]
-#symbol = " "
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[java]
-#symbol = " "
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[nodejs]
-#symbol = ""
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[rust]
-#symbol = ""
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[lua]
-#symbol = ""
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
-
-#[python]
-#symbol = ""
-#style = "black bg:#86BBD8"
-#format = '[ ](fg:#86BBD8)[ $symbol ($version) ]($style)[](fg:#86BBD8)'
+#[git_branch]
+#format = "[$symbol $branch](yellow)"
+#symbol=""
 
 #[sudo]
 #disabled = false
 #format = "[S](yellow bold)"
 
+##[shell]
+##disabled = false
+##format = "[$indicator](cyan bold) "
+
 #[status]
 #disabled = false
 #format = "[$status ↵](red)"
+
+#########################
+#        Bubbles        #
+#########################
+format = """
+[╭─](fg:#0077C2 bold)\
+[](#0077C2)\
+$username\
+[](bg:#0077C2 fg:#444444)\
+$directory\
+[](fg:#444444)\
+$git_branch\
+$git_status\
+$line_break\
+[╰─](fg:#21C7C7 bold)\
+$shell\
+$sudo\
+$character\
+"""
+right_format = """
+$status\
+$c\
+$golang\
+$haskell\
+$java\
+$nodejs\
+$rust\
+$lua\
+$python\
+$docker_context\
+[](fg:#40C4FF)\
+$time\
+[](fg:#40C4FF)\
+"""
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+[username]
+show_always = true
+style_user = "bg:#0077C2 fg:#FFFFFF"
+style_root = "bg:#0077C2 fg:#FFFFFF"
+format = '[$user ]($style)'
+
+[directory]
+style = "bg:#444444"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+read_only = "  "
+read_only_style = "red bg:#444444"
+truncation_length = 0
+truncate_to_repo = false
+
+# Here is how you can shorten some long paths by text replacement
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Pictures"  = " "
+"Videos"    = "辶"
+"Music"     = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[c]
+symbol = " "
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[docker_context]
+symbol = " "
+style = "fg:#3C873A bg:#06969A"
+format = '[](fg:#06969A)[ $symbol $context ]($style)[ ](fg:#06969A)'
+
+[git_branch]
+symbol = ""
+style = "black bg:#FFFb38"
+format = '[ ](fg:#FFFb38)[$symbol $branch ]($style)'
+
+[git_status]
+style = "black bg:#FFFb38"
+format = '[$all_status$ahead_behind]($style)[](fg:#FFFb38)'
+
+[golang]
+symbol = " "
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[haskell]
+symbol = " "
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[java]
+symbol = " "
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[nodejs]
+symbol = ""
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[rust]
+symbol = ""
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[lua]
+symbol = ""
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[python]
+symbol = ""
+style = "fg:#3C873A bg:#303030"
+format = '[](fg:#303030)[ $symbol ($version) ]($style)[ ](fg:#303030)'
+
+[sudo]
+disabled = false
+format = "[S](yellow bold)"
+
+[status]
+disabled = false
+format = "[$status ↵ ](red)"
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:#FFFFFF bg:#40C4FF"
+format = '[$time]($style)'

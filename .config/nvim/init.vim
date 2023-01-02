@@ -50,7 +50,7 @@ set list listchars=tab:\▏\
 """ Disable automatic comment in newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-au FileType c,cpp,objc,objcpp,json set noexpandtab
+autocmd FileType c,cpp,objc,objcpp,json set noexpandtab
 
 "+-------------------------+
 "| +---------------------+ |
@@ -173,14 +173,14 @@ let g:lightline = {
       \ }
 
 """ RainBow Bracket
-au FileType c,cpp,objc,objcpp,json,python call rainbow#load()
+autocmd FileType c,cpp,objc,objcpp,json,python call rainbow#load()
 "let g:rainbow_active = 1
 
 """ Turn off default mappings of NerdCommenter
 let g:NERDCreateDefaultMappings = 0
 let g:NERDCustomDelimiters = {
-            \ 'c': { 'left': '/* ','right': ' */' },
-            \ 'cpp': { 'left': '/* ','right': ' */' },
+            \ 'c': { 'left': '// ','right': '' },
+            \ 'cpp': { 'left': '// ','right': '' },
             \ }
 
 """ Vim-Cmake
@@ -196,27 +196,29 @@ let g:fzf_layout = { 'down': '40%' }
 "+--------------------------+
 """ Leader Key
 let mapleader = ","
-nnoremap <leader>e :edit ~/.config/nvim/init.vim <CR>
+nmap <leader>e :edit ~/.config/nvim/init.vim <CR>
 
 """ Remap Esc to jk and jk
 "inoremap jk <Esc>
 "inoremap kj <Esc>
 
-""" Built-in spell-check
+""" Built-in spell-checker
 map <F4> :setlocal spell! spelllang=en_us<CR>
 """ Automatically fix misspelled word with the first suggestion
-nnoremap <leader><F4> :normal! mz1z=`z<CR>
+nmap <leader><F4> :normal! mz1z=`z<CR>
 
 """ Check file in shellcheck
 nmap <leader>s :!shellcheck -x %<CR>
 
 """ Switch to V-mode and Ctrl-r to replace with new word
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+vmap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-vnoremap < <gv-gv
-vnoremap > >gv-gv
+vmap <S-p> "_dP
 
-""" Use <space><Esc> to exit terminal-mode
+vmap < <gv-gv
+vmap > >gv-gv
+
+""" Exit terminal-mode
 tnoremap <C-x> <C-\><C-n>
 """ Use ALT+{h,j,k,l} to navigate windows from any mode
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -238,14 +240,8 @@ noremap <C-Down>  <c-w>-
 noremap <C-Left>  <c-w><
 noremap <C-Right> <c-w>>
 
-imap <C-n> <ESC>:move .+1<CR>==gi
-imap <C-p> <ESC>:move .-2<CR>==gi
-
-nmap <C-n> :move .+1<CR>==
-nmap <C-p> :move .-2<CR>==
-
-vmap <C-n> :move '>+1<CR>gv-gv
-vmap <C-p> :move '<-2<CR>gv-gv
+vmap <C-j> :move '>+1<CR>gv-gv
+vmap <C-k> :move '<-2<CR>gv-gv
 
 """ Toggle horiz/vert
 nmap <leader>th <C-w>t<C-w>H
@@ -270,6 +266,10 @@ nmap <leader>n :NERDTreeToggle<CR>
 """ NerdCommenter
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
+
+""" Custom mappings for C/C++ auto comment
+autocmd FileType c,cpp,objc,objcpp nmap <C-/> i/***/<left><left><cr><cr><up>
+autocmd FileType c,cpp,objc,objcpp vmap <C-/> I<CR><up>/**<ESC>gv<ESC>o*/<ESC>0
 
 """ Vimspector
 nmap <leader>db     <Plug>VimspectorToggleBreakpoint

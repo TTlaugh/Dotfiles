@@ -44,11 +44,6 @@ autocmd({ "FileType" }, {
 }) -- Don't auto commenting new lines
 
 autocmd({ "FileType" }, {
-    pattern = { "c", "cpp", "objc", "objcpp", "json" },
-    command = "set noexpandtab",
-})
-
-autocmd({ "FileType" }, {
     pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
     callback = function()
         vim.cmd([[

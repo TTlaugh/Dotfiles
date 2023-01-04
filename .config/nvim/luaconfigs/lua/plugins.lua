@@ -3,6 +3,8 @@ local ensure_packer = function()
     local fn = vim.fn
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     if fn.empty(fn.glob(install_path)) > 0 then
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
+        print "Cloning packer .."
         fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
         vim.cmd([[packadd packer.nvim]])
         return true
@@ -13,12 +15,12 @@ end
 local packer_bootstrap = ensure_packer()
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-    command = "source <afile> | PackerCompile",
-    group = packer_group,
-    pattern = vim.fn.expand("plugins.lua"),
-})
+-- local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     command = "source <afile> | PackerCompile",
+--     group = packer_group,
+--     pattern = vim.fn.expand("plugins.lua"),
+-- })
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -115,12 +117,17 @@ return packer.startup(function(use)
                 char = "▏",
                 show_trailing_blankline_indent = false,
                 show_first_indent_level = false,
-                use_treesitter = true,
                 show_current_context = true,
-                buftype_exclude = { "terminal", "nofile" },
+                -- use_treesitter = true,
                 filetype_exclude = {
-                    "help",
+                    "python",
+                    "markdown",
+                    "lspinfo",
                     "packer",
+                    "checkhealth",
+                    "help",
+                    "man",
+                    "",
                 },
             })
         end
@@ -155,7 +162,7 @@ return packer.startup(function(use)
             local luasnip = require("luasnip")
             local autopairs = require("nvim-autopairs")
 
-            require("luasnip/loaders/from_vscode").lazy_load()
+            require("luasnip.loaders.from_vscode").lazy_load()
 
             local check_backspace = function()
                 local col = vim.fn.col(".") - 1
@@ -170,8 +177,8 @@ return packer.startup(function(use)
                 },
 
                 mapping = cmp.mapping.preset.insert({
-                    ["<Tab>"] = cmp.mapping.select_next_item(),
-                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    ["<C-k>"] = cmp.mapping.select_prev_item(),
+                    ["<C-j>"] = cmp.mapping.select_next_item(),
                     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
                     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
                     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -182,9 +189,9 @@ return packer.startup(function(use)
                     -- Accept currently selected item. If none selected, `select` first item.
                     -- Set `select` to `false` to only confirm explicitly selected items.
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-j>"] = cmp.mapping(function(fallback)
-                        if luasnip.expandable() then
-                            luasnip.expand()
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
                         elseif luasnip.expand_or_jumpable() then
                             luasnip.expand_or_jump()
                         elseif check_backspace() then
@@ -196,8 +203,10 @@ return packer.startup(function(use)
                         "i",
                         "s",
                     }),
-                    ["<C-k>"] = cmp.mapping(function(fallback)
-                        if luasnip.jumpable(-1) then
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.jumpable(-1) then
                             luasnip.jump(-1)
                         else
                             fallback()

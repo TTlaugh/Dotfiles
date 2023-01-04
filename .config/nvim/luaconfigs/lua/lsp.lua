@@ -1,6 +1,14 @@
 -- LSP settings.
 
--- UI
+local mason_status_ok, mason = pcall(require, "mason")
+if not mason_status_ok then
+  return
+end
+
+--------
+-- UI --
+--------
+
 local signs = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "" },
@@ -39,8 +47,21 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
     border = "rounded",
 })
 
+-- Setup mason so it can manage external tooling
+mason.setup({
+    ui = {
+        icons = {
+            package_pending = " ",
+            package_installed = " ",
+            package_uninstalled = " ",
+        }
+    }
+})
 
--- CORE
+----------
+-- CORE --
+----------
+
 -- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
     require("keymaps").lsp_keymaps(_, bufnr)
@@ -58,10 +79,7 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
     clangd = {},
-    -- gopls = {},
     pyright = {},
-    -- rust_analyzer = {},
-    -- tsserver = {},
 
     sumneko_lua = {
         Lua = {
@@ -86,11 +104,11 @@ local servers = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Setup mason so it can manage external tooling
-require('mason').setup()
-
 -- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
+local mason_lspconfig_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not mason_lspconfig_status_ok then
+  return
+end
 
 mason_lspconfig.setup {
     ensure_installed = vim.tbl_keys(servers),
@@ -106,4 +124,3 @@ mason_lspconfig.setup_handlers {
         }
     end,
 }
-

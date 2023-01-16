@@ -73,7 +73,7 @@ if (builtin_status_ok and themes_status_ok) then
         builtin.colorscheme( themes.get_dropdown { previewer = false, })
     end
 
-keymap('n', '<leader>/'      , textsearch,            { desc = '[/] Fuzzily search in current buffer]' })
+keymap('n', '<leader>/'      , textsearch,            { desc = '[/] Fuzzily search in current buffer' })
 keymap('n', '<leader>?'      , builtin.oldfiles,      { desc = '[?] Find recently opened files' })
 keymap('n', '<leader><space>', builtin.buffers,       { desc = '[ ] Find existing buffers' })
 keymap('n', '<leader>sf'     , builtin.find_files,    { desc = '[S]earch [F]iles' })
@@ -104,6 +104,9 @@ keymap({ 'i', 's' }, '<C-a>', function()
         end
     end
 end, { desc = 'LuaSnip: Change choice' }, opts)
+
+-- Colorizer
+keymap("n", "<leader>h", "<cmd> ColorizerToggle<CR>", { desc = '[N]vimTree' }, opts)
 
 -- NvimTree
 keymap("n", "<leader>n", "<cmd> NvimTreeToggle<CR>", { desc = '[N]vimTree' }, opts)

@@ -91,21 +91,21 @@ gst-plugins-ugly
 gstreamer
 gcr
 
-#alsa-firmware
-#alsa-plugins
-#alsa-utils
-#alsa-lib
-#pulseaudio
-#pulseaudio-alsa
-#pulseaudio-bluetooth
-#pulseaudio-jack
+#pipewire
+#pipewire-pulse
+#pipewire-alsa
+#pipewire-jack
+#wireplumber
+#helvum
 
-pipewire
-pipewire-pulse
-pipewire-alsa
-pipewire-jack
-wireplumber
-helvum
+alsa-firmware
+alsa-plugins
+alsa-utils
+alsa-lib
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
+pulseaudio-jack
 
 pamixer
 pulsemixer

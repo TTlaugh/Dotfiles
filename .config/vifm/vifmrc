@@ -352,14 +352,16 @@ filetype *.tudu tudu -f %c
 " Qt projects
 filextype *.pro qtcreator %f &
 
+" SC-IM
+filetype *.sc sc-im %c
+
 " Directories
 filextype */
         \ {View in thunar}
         \ Thunar %f &,
+fileviewer */,.*/ ls -1 --color=always %c
 
 fileviewer *[^/],.*[^/] bat --color=always %c -pp
-
-fileviewer */,.*/ ls -1 --color=always %c
 
 " Syntax highlighting in preview
 "

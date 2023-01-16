@@ -346,21 +346,22 @@ return packer.startup(function(use)
             require("telescope").load_extension("fzf")
         end,
     })
-    use({
-        "https://github.com/ahmedkhalf/project.nvim",
-        config = function()
-            require("project_nvim").setup({
-                detection_methods = { "pattern" },
-                patterns = {
-                    ".git",
-                    "shell.nix",
-                },
-                silent_chdir = false,
-            })
-
-            require("telescope").load_extension("projects")
-        end,
-    })
+    -- use({
+    --     "https://github.com/ahmedkhalf/project.nvim",
+    --     config = function()
+    --         require("project_nvim").setup({
+    --             detection_methods = { "pattern" },
+    --             patterns = {
+    --                 "src",
+    --                 ".git",
+    --                 "shell.nix",
+    --             },
+    --             silent_chdir = false,
+    --         })
+    --
+    --         require("telescope").load_extension("projects")
+    --     end,
+    -- })
 
     -- Treesitter
     use({
@@ -446,6 +447,14 @@ return packer.startup(function(use)
         end
     })
     use({ "https://github.com/tpope/vim-fugitive" })
+    use({ "https://github.com/norcalli/nvim-colorizer.lua" })
+    use({
+        "https://github.com/kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup()
+        end
+    })
 
     -- Cmake
     use({
@@ -488,7 +497,12 @@ return packer.startup(function(use)
             -- dap.listeners.before.event_exited["dapui_config"] = function()
             --     dapui.close()
             -- end
-        end
+        end,
+        ft = {
+            "python",
+            "cpp",
+            "c",
+        },
     })
     use({
         "https://github.com/ravenxrz/DAPInstall.nvim",
@@ -497,7 +511,12 @@ return packer.startup(function(use)
             dap_install.setup({})
             dap_install.config("python", {})
             dap_install.config( "ccppr_vsc", { adapters = { id = 'cppdbg', }, })
-        end
+        end,
+        ft = {
+            "python",
+            "cpp",
+            "c",
+        },
     })
 
     -- Automatically set up your configuration after cloning packer.nvim

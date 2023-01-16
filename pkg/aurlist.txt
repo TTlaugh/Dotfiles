@@ -1,7 +1,7 @@
 xidlehook
 htop-vim
 i3lock-color
-picom-jonaburg-git
+picom-git
 simple-mtpfs
 shellcheck-bin
 ccls-git

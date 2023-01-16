@@ -28,7 +28,7 @@ trayer \
    --tint 0x414868 \
    --height 23 &
 
-picom --experimental-backends &
+picom --experimental-backends || picom &
 
 # Run the aems script to send a message asking if the user wants to enable automatic email sync. (mutt-wizard)
 #setsid -f "$HOME"/.scripts/aems

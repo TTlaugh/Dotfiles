@@ -39,66 +39,40 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-    use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
-    use({
-        "https://github.com/lewis6991/impatient.nvim",
+
+    use({ "https://github.com/lewis6991/impatient.nvim",
         config = function()
             require("impatient")
         end
     })
+
+    use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
+
     use({ "https://github.com/nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
-    use({
-        "https://github.com/numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup({
-                ---Add a space b/w comment and the line
-                padding = true,
-                ---LHS of toggle mappings in NORMAL mode
-                toggler = {
-                    ---Line-comment toggle keymap
-                    line = '\\\\',
-                    ---Block-comment toggle keymap
-                    block = '||',
-                },
-                ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-                opleader = {
-                    ---Line-comment keymap
-                    line = '\\',
-                    ---Block-comment keymap
-                    block = '|',
-                },
-                ---LHS of extra mappings
-                extra = {
-                    ---Add comment on the line above
-                    above = '\\O',
-                    ---Add comment on the line below
-                    below = '\\o',
-                    ---Add comment at the end of line
-                    eol = '\\A',
-                },
-            })
-        end,
-    })
+
     use({ "https://github.com/kyazdani42/nvim-web-devicons" })
-    use({
-        "https://github.com/kyazdani42/nvim-tree.lua",
+
+    -- Colorschemes
+    use({ "https://github.com/navarasu/onedark.nvim" })
+    use({ "https://github.com/folke/tokyonight.nvim" })
+    use({ "https://github.com/catppuccin/nvim", as = "catppuccin" })
+
+    use({ "https://github.com/kyazdani42/nvim-tree.lua",
         config = function()
             require("nvim-tree").setup({
                 update_focused_file = {
                     enable = true,
-                    update_cwd = true,
                 },
             })
         end,
     })
-    use({
-        "https://github.com/akinsho/bufferline.nvim",
+
+    use({ "https://github.com/akinsho/bufferline.nvim",
         config = function()
             require("bufferline").setup()
         end
     })
-    use({
-        "https://github.com/nvim-lualine/lualine.nvim",
+    use({ "https://github.com/nvim-lualine/lualine.nvim",
         config = function()
             require("lualine").setup({
                 options = {
@@ -110,8 +84,7 @@ return packer.startup(function(use)
             })
         end,
     })
-    use({
-        "https://github.com/lukas-reineke/indent-blankline.nvim",
+    use({ "https://github.com/lukas-reineke/indent-blankline.nvim",
         config = function()
             require("indent_blankline").setup({
                 char = "▏",
@@ -132,41 +105,55 @@ return packer.startup(function(use)
             })
         end
     })
-    use({
-        "https://github.com/iamcco/markdown-preview.nvim",
-        run = 'cd app && npm install',
-        setup = function() vim.g.mkdp_filetypes = { 'markdown' } end,
-        ft = { 'markdown' },
+
+    -- Treesitter
+    use({ "https://github.com/nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "c",
+                    "cpp",
+                    "bash",
+                    "dockerfile",
+                    "go",
+                    "javascript",
+                    "json",
+                    "latex",
+                    "lua",
+                    "nix",
+                    "python",
+                    "rego",
+                    "rust",
+                    "typescript",
+                    "yaml",
+                    "markdown_inline",
+                },
+                highlight = {
+                    enable = true,
+                },
+                indent = {
+                    enable = true,
+                },
+            })
+        end
     })
 
-    -- Colorschemes
-    use({ "https://github.com/navarasu/onedark.nvim" })
-    use({ "https://github.com/folke/tokyonight.nvim" })
-    use({ "https://github.com/catppuccin/nvim", as = "catppuccin" })
-
     -- Completion
-    use({
-        "https://github.com/hrsh7th/nvim-cmp",
+    use({ "https://github.com/hrsh7th/nvim-cmp",
         requires = {
             "https://github.com/hrsh7th/cmp-buffer",
             "https://github.com/hrsh7th/cmp-nvim-lsp",
             "https://github.com/hrsh7th/cmp-nvim-lua",
             "https://github.com/hrsh7th/cmp-path",
-            "https://github.com/saadparwaiz1/cmp_luasnip",
-            "https://github.com/L3MON4D3/LuaSnip",
-            "https://github.com/rafamadriz/friendly-snippets",
-            "https://github.com/windwp/nvim-autopairs",
         },
         config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-            local autopairs = require("nvim-autopairs")
 
-            require("luasnip.loaders.from_vscode").lazy_load()
-
-            local check_backspace = function()
-                local col = vim.fn.col(".") - 1
-                return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+            local has_words_before = function()
+                unpack = unpack or table.unpack
+                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
 
             cmp.setup({
@@ -175,7 +162,6 @@ return packer.startup(function(use)
                         luasnip.lsp_expand(args.body) -- For `luasnip` users.
                     end,
                 },
-
                 mapping = cmp.mapping.preset.insert({
                     ["<C-k>"] = cmp.mapping.select_prev_item(),
                     ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -194,15 +180,12 @@ return packer.startup(function(use)
                             cmp.select_next_item()
                         elseif luasnip.expand_or_jumpable() then
                             luasnip.expand_or_jump()
-                        elseif check_backspace() then
-                            fallback()
+                        elseif has_words_before() then
+                            cmp.complete()
                         else
                             fallback()
                         end
-                    end, {
-                        "i",
-                        "s",
-                    }),
+                    end, { "i", "s" }),
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.select_prev_item()
@@ -211,10 +194,7 @@ return packer.startup(function(use)
                         else
                             fallback()
                         end
-                    end, {
-                        "i",
-                        "s",
-                    }),
+                    end, { "i", "s" }),
                 }),
                 sources = {
                     { name = "luasnip" },
@@ -223,56 +203,64 @@ return packer.startup(function(use)
                     { name = "nvim_lua" },
                     { name = "path" },
                 },
-                confirm_opts = {
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = false,
-                },
                 -- window = {
                 --     completion = cmp.config.window.bordered(),
                 --     documentation = cmp.config.window.bordered(),
                 -- },
-                experimental = {
-                    ghost_text = false,
+            })
+        end
+    })
+    use({ "https://github.com/L3MON4D3/LuaSnip",
+        require = {
+            "https://github.com/saadparwaiz1/cmp_luasnip",
+            "https://github.com/rafamadriz/friendly-snippets",
+        },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+    })
+    use({ "https://github.com/windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup({
+                check_ts = true,
+            })
+        end,
+    })
+    use({ "https://github.com/numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup({
+                padding = true,     ---Add a space b/w comment and the line
+                toggler = {         ---LHS of toggle mappings in NORMAL mode
+                    line = '\\\\',  ---Line-comment toggle keymap
+                    block = '||',   ---Block-comment toggle keymap
+                },
+                opleader = {        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+                    line = '\\',    ---Line-comment keymap
+                    block = '|',    ---Block-comment keymap
+                },
+                extra = {           ---LHS of extra mappings
+                    above = '\\O',  ---Add comment on the line above
+                    below = '\\o',  ---Add comment on the line below
+                    eol = '\\A',    ---Add comment at the end of line
                 },
             })
-
-            autopairs.setup({
-                check_ts = true, -- treesitter integration
-                disable_filetype = { "TelescopePrompt" },
-                ts_config = {
-                    lua = { "string", "source" },
-                    javascript = { "string", "template_string" },
-                    java = false,
-                },
-
-                fast_wrap = {
-                    map = "<M-e>",
-                    chars = { "{", "[", "(", '"', "'" },
-                    pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-                    offset = 0, -- Offset from pattern match
-                    end_key = "$",
-                    keys = "qwertyuiopzxcvbnmasdfghjkl",
-                    check_comma = true,
-                    highlight = "PmenuSel",
-                    highlight_grey = "LineNr",
-                },
-            })
-
-            cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done({}))
+        end,
+    })
+    use({ "https://github.com/kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup()
         end
     })
 
     -- LSP
-    use({
-        "https://github.com/neovim/nvim-lspconfig",
+    use({ "https://github.com/neovim/nvim-lspconfig",
         requires = {
             "https://github.com/williamboman/mason.nvim",
             "https://github.com/williamboman/mason-lspconfig.nvim",
-            -- "https://github.com/jose-elias-alvarez/null-ls.nvim",
         },
     })
-    use({
-        "https://github.com/j-hui/fidget.nvim",
+    use({ "https://github.com/j-hui/fidget.nvim",
         config = function()
             require("fidget").setup({
                 text = {
@@ -283,8 +271,7 @@ return packer.startup(function(use)
     })
 
     -- Telescope
-    use({
-        "https://github.com/nvim-telescope/telescope.nvim",
+    use({ "https://github.com/nvim-telescope/telescope.nvim",
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
@@ -339,78 +326,15 @@ return packer.startup(function(use)
             })
         end,
     })
-    use({
-        "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+    use({ "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
         config = function()
             require("telescope").load_extension("fzf")
         end,
     })
-    -- use({
-    --     "https://github.com/ahmedkhalf/project.nvim",
-    --     config = function()
-    --         require("project_nvim").setup({
-    --             detection_methods = { "pattern" },
-    --             patterns = {
-    --                 "src",
-    --                 ".git",
-    --                 "shell.nix",
-    --             },
-    --             silent_chdir = false,
-    --         })
-    --
-    --         require("telescope").load_extension("projects")
-    --     end,
-    -- })
-
-    -- Treesitter
-    use({
-        "https://github.com/nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "c",
-                    "cpp",
-                    "bash",
-                    "dockerfile",
-                    "go",
-                    "javascript",
-                    "json",
-                    "latex",
-                    "lua",
-                    "nix",
-                    "python",
-                    "rego",
-                    "rust",
-                    "typescript",
-                    "yaml",
-                },
-
-                highlight = {
-                    enable = true,
-                },
-                autopairs = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
-
-                context_commentstring = {
-                    enable = true,
-                    enable_autocmd = false,
-                },
-
-                endwise = {
-                    enable = true,
-                },
-            })
-        end
-    })
 
     -- Git
-    use({
-        "https://github.com/lewis6991/gitsigns.nvim",
+    use({ "https://github.com/lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup({
                 signs = {
@@ -420,45 +344,21 @@ return packer.startup(function(use)
                     topdelete = { text = '‾' },
                     changedelete = { text = '~' },
                 },
-                signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-                watch_gitdir = {
-                    interval = 1000,
-                    follow_files = true,
-                },
-                attach_to_untracked = true,
-                current_line_blame = true,
-                current_line_blame_opts = {
-                    virt_text = true,
-                    virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-                    delay = 1000,
-                },
-                sign_priority = 6,
-                update_debounce = 100,
-                status_formatter = nil, -- Use default
-                preview_config = {
-                    -- Options passed to nvim_open_win
-                    border = "single",
-                    style = "minimal",
-                    relative = "cursor",
-                    row = 0,
-                    col = 1,
-                },
             })
         end
     })
     use({ "https://github.com/tpope/vim-fugitive" })
+
     use({ "https://github.com/norcalli/nvim-colorizer.lua" })
-    use({
-        "https://github.com/kylechui/nvim-surround",
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function()
-            require("nvim-surround").setup()
-        end
+
+    use({ "https://github.com/iamcco/markdown-preview.nvim",
+        run = 'cd app && npm install',
+        setup = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+        ft = { 'markdown' },
     })
 
     -- Cmake
-    use({
-        "https://github.com/cdelledonne/vim-cmake",
+    use({ "https://github.com/cdelledonne/vim-cmake",
         setup = function() vim.g.cmake_link_compile_commands = 1 end,
     })
 
@@ -466,8 +366,7 @@ return packer.startup(function(use)
     -- use({ "https://github.com/puremourning/vimspector" })
 
     -- DAP
-    use({
-        "https://github.com/mfussenegger/nvim-dap",
+    use({ "https://github.com/mfussenegger/nvim-dap",
         requires = {
             "https://github.com/rcarriga/nvim-dap-ui",
         },
@@ -475,13 +374,7 @@ return packer.startup(function(use)
             local dap = require("dap")
             local dapui = require("dapui")
 
-            -- dap.defaults.fallback.force_external_terminal = true
-            -- dap.defaults.fallback.external_terminal = {
-            --     command = '/usr/bin/alacritty',
-            --     args = {'-e'},
-            -- }
-
-            dapui.setup({})
+            dapui.setup()
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
             dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -490,33 +383,16 @@ return packer.startup(function(use)
             dap.listeners.before.disconnect["dapui_config"] = function()
                 dapui.close()
             end
-            -- -- terminated and exited events are not working!
-            -- dap.listeners.before.event_terminated["dapui_config"] = function()
-            --     dapui.close()
-            -- end
-            -- dap.listeners.before.event_exited["dapui_config"] = function()
-            --     dapui.close()
-            -- end
         end,
-        ft = {
-            "python",
-            "cpp",
-            "c",
-        },
     })
     use({
         "https://github.com/ravenxrz/DAPInstall.nvim",
         config = function()
             local dap_install = require("dap-install")
-            dap_install.setup({})
+            dap_install.setup()
             dap_install.config("python", {})
             dap_install.config( "ccppr_vsc", { adapters = { id = 'cppdbg', }, })
         end,
-        ft = {
-            "python",
-            "cpp",
-            "c",
-        },
     })
 
     -- Automatically set up your configuration after cloning packer.nvim

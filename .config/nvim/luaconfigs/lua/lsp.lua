@@ -81,7 +81,7 @@ local servers = {
     clangd = {},
     pyright = {},
 
-    sumneko_lua = {
+    lua_ls = {
         Lua = {
             diagnostics = {
                 globals = { "vim" },

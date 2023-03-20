@@ -14,8 +14,10 @@ create_folder() {
             fi
         else
             echo "$project folder existed."
-            exit 0
+            exit 1
         fi
+    else
+        exit 0
     fi
     cd "$project"
     mkdir -p Debug bin src include lib
@@ -28,8 +30,8 @@ create_main() {
             echo -e "#include <stdlib.h>\n"
             echo -e "int main (int argc, char const *argv[])"
             echo -e "{"
-            echo -e "	printf(\"Hello world!\\\n\");"
-            echo -e "	return 0;"
+            echo -e "    printf(\"Hello world!\\\n\");"
+            echo -e "    return 0;"
             echo -e "}"
         } >> src/main.c
     elif [[ "$language" = "cpp" ]]; then
@@ -38,8 +40,8 @@ create_main() {
             echo -e "using namespace std;\n"
             echo -e "int main (int argc, char const *argv[])"
             echo -e "{"
-            echo -e "	cout << \"Hello world!\" << endl;"
-            echo -e "	return 0;"
+            echo -e "    cout << \"Hello world!\" << endl;"
+            echo -e "    return 0;"
             echo -e "}"
         } >> src/main.cpp
     else

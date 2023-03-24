@@ -199,14 +199,12 @@ return packer.startup(function(use)
         end
     })
     use({ "https://github.com/L3MON4D3/LuaSnip",
-        require = {
-            "https://github.com/saadparwaiz1/cmp_luasnip",
-            "https://github.com/rafamadriz/friendly-snippets",
-        },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     })
+    use({ "https://github.com/saadparwaiz1/cmp_luasnip" })
+    use({ "https://github.com/rafamadriz/friendly-snippets" })
     use({ "https://github.com/windwp/nvim-autopairs",
         config = function()
             require("nvim-autopairs").setup({

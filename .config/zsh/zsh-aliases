@@ -1,4 +1,4 @@
-# Neofetch with my custom ascii art
+### Neofetch with my custom ascii art
 alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
 
 ### Git
@@ -75,13 +75,15 @@ mdtopdf() {
     pandoc "$fullname" -t beamer -o "$filename.pdf"
 }
 
-# Cheat
+### Cheat
 cheat() {
     curl "cheat.sh/$1"
 }
 
-### Terminal rickroll!!!!
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash"
+### Funny
+alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" # Terminal rickroll!!!!
+alias parrot="curl parrot.live"
+alias weather="curl wttr.in"
 
 ### pacman + fzf
 alias pacQi="pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"

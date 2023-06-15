@@ -1,90 +1,50 @@
--- Automatically install packer
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-    if fn.empty(fn.glob(install_path)) > 0 then
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
-        print "Cloning packer .."
-        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-        vim.cmd([[packadd packer.nvim]])
-        return true
-    end
-    return false
-end
-
-local packer_bootstrap = ensure_packer()
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
--- vim.api.nvim_create_autocmd("BufWritePost", {
---     command = "source <afile> | PackerCompile",
---     group = packer_group,
---     pattern = vim.fn.expand("plugins.lua"),
--- })
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-    return
-end
-
--- Have packer use a popup window
-packer.init({
-    display = {
-        open_fn = function()
-            return require("packer.util").float({ border = "single" })
-        end,
-    },
-})
-
--- Install your plugins here
-return packer.startup(function(use)
-
-    use({ "https://github.com/lewis6991/impatient.nvim",
-        config = function()
-            require("impatient")
-        end
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
     })
+end
+vim.opt.rtp:prepend(lazypath)
 
-    use({ "https://github.com/wbthomason/packer.nvim" }) -- Have packer manage itself
+return require("lazy").setup({
+    -- Install your plugins here
+    { "https://github.com/nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
 
-    use({ "https://github.com/nvim-lua/plenary.nvim" }) -- Useful lua functions used by lots of plugins
-
-    use({ "https://github.com/kyazdani42/nvim-web-devicons" })
+    { "https://github.com/kyazdani42/nvim-web-devicons" },
 
     -- Colorschemes
-    use({ "https://github.com/navarasu/onedark.nvim" })
-    use({ "https://github.com/folke/tokyonight.nvim" })
-    use({ "https://github.com/catppuccin/nvim", as = "catppuccin" })
+    { "https://github.com/folke/tokyonight.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+    },
+    { "https://github.com/navarasu/onedark.nvim", lazy = false },
+    { "https://github.com/catppuccin/nvim", name = "catppuccin", lazy = false },
 
-    use({ "https://github.com/kyazdani42/nvim-tree.lua",
-        config = function()
-            require("nvim-tree").setup({
-                update_focused_file = {
-                    enable = true,
-                },
-            })
-        end,
-    })
-
-    use({ "https://github.com/akinsho/bufferline.nvim",
+    { "https://github.com/akinsho/bufferline.nvim",
+        event = "VeryLazy",
         config = function()
             require("bufferline").setup()
         end
-    })
-    use({ "https://github.com/nvim-lualine/lualine.nvim",
+    },
+    { "https://github.com/nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         config = function()
             require("lualine").setup({
                 options = {
                     globalstatus = true,
-                    -- theme = 'tokyonight',
                     component_separators = '|',
                     section_separators = '',
                 },
             })
         end,
-    })
-    use({ "https://github.com/lukas-reineke/indent-blankline.nvim",
+    },
+    { "https://github.com/lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("indent_blankline").setup({
                 char = "▏",
@@ -103,11 +63,14 @@ return packer.startup(function(use)
                     "",
                 },
             })
-        end
-    })
+        end,
+    },
 
     -- Treesitter
-    use({ "https://github.com/nvim-treesitter/nvim-treesitter",
+    { "https://github.com/nvim-treesitter/nvim-treesitter",
+        event = { "BufReadPost", "BufNewFile" },
+        cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+        build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = {
@@ -136,15 +99,30 @@ return packer.startup(function(use)
                 },
             })
         end
-    })
+    },
 
     -- Completion
-    use({ "https://github.com/hrsh7th/nvim-cmp",
-        requires = {
+    { "https://github.com/hrsh7th/nvim-cmp",
+        event = "InsertEnter",
+        dependencies = {
+            { "https://github.com/L3MON4D3/LuaSnip",
+                dependencies = { "https://github.com/rafamadriz/friendly-snippets", },
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                end,
+            },
+            { "https://github.com/windwp/nvim-autopairs",
+                config = function()
+                    require("nvim-autopairs").setup({ check_ts = true, })
+                    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                end,
+            },
             "https://github.com/hrsh7th/cmp-buffer",
             "https://github.com/hrsh7th/cmp-nvim-lsp",
             "https://github.com/hrsh7th/cmp-nvim-lua",
             "https://github.com/hrsh7th/cmp-path",
+            "https://github.com/saadparwaiz1/cmp_luasnip",
         },
         config = function()
             local cmp = require("cmp")
@@ -197,22 +175,9 @@ return packer.startup(function(use)
                 -- },
             })
         end
-    })
-    use({ "https://github.com/L3MON4D3/LuaSnip",
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    })
-    use({ "https://github.com/saadparwaiz1/cmp_luasnip" })
-    use({ "https://github.com/rafamadriz/friendly-snippets" })
-    use({ "https://github.com/windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup({
-                check_ts = true,
-            })
-        end,
-    })
-    use({ "https://github.com/numToStr/Comment.nvim",
+    },
+    { "https://github.com/numToStr/Comment.nvim",
+        event = "VeryLazy",
         config = function()
             require("Comment").setup({
                 padding = true,     ---Add a space b/w comment and the line
@@ -231,22 +196,30 @@ return packer.startup(function(use)
                 },
             })
         end,
-    })
-    use({ "https://github.com/kylechui/nvim-surround",
-        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    },
+    { "https://github.com/kylechui/nvim-surround",
+        event = "VeryLazy",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
             require("nvim-surround").setup()
         end
-    })
+    },
 
     -- LSP
-    use({ "https://github.com/neovim/nvim-lspconfig",
-        requires = {
+    { "https://github.com/neovim/nvim-lspconfig",
+        event = { "BufReadPost", "BufNewFile" },
+        cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate", "LspInfo", "LspLog" },
+        dependencies = {
             "https://github.com/williamboman/mason.nvim",
             "https://github.com/williamboman/mason-lspconfig.nvim",
         },
-    })
-    use({ "https://github.com/j-hui/fidget.nvim",
+        config = function ()
+            require("configs.lsp")
+        end
+    },
+    { "https://github.com/j-hui/fidget.nvim",
+        event = { "BufReadPost", "BufNewFile" },
+        version = "legacy",
         config = function()
             require("fidget").setup({
                 text = {
@@ -254,10 +227,18 @@ return packer.startup(function(use)
                 },
             })
         end,
-    })
+    },
 
     -- Telescope
-    use({ "https://github.com/nvim-telescope/telescope.nvim",
+    { "https://github.com/nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
+        dependencies = {
+            "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+                config = function()
+                    require("telescope").load_extension("fzf")
+                end,
+            },
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
@@ -311,16 +292,47 @@ return packer.startup(function(use)
                 },
             })
         end,
-    })
-    use({ "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-        run = "make",
+    },
+
+    { "https://github.com/stevearc/oil.nvim",
+        cmd = "Oil",
         config = function()
-            require("telescope").load_extension("fzf")
+            require("oil").setup({
+                columns = {},
+                view_options = {
+                    show_hidden = true,
+                },
+            })
+            vim.api.nvim_create_autocmd({ "FileType" }, {
+                pattern = "oil",
+                callback = function()
+                    vim.cmd([[
+                        nnoremap <silent> <buffer> q :close<CR>
+                        set nobuflisted
+                    ]])
+                end,
+            })
         end,
-    })
+    },
 
     -- Git
-    use({ "https://github.com/lewis6991/gitsigns.nvim",
+    { "https://github.com/lewis6991/gitsigns.nvim",
+        ft = { "gitcommit", "diff" },
+        init = function()
+            -- load gitsigns only when a git file is opened
+            vim.api.nvim_create_autocmd({ "BufRead" }, {
+                group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
+                callback = function()
+                    vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
+                    if vim.v.shell_error == 0 then
+                        vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+                        vim.schedule(function()
+                            require("lazy").load { plugins = { "gitsigns.nvim" } }
+                        end)
+                    end
+                end,
+            })
+        end,
         config = function()
             require("gitsigns").setup({
                 signs = {
@@ -332,58 +344,43 @@ return packer.startup(function(use)
                 },
             })
         end
-    })
-    use({ "https://github.com/tpope/vim-fugitive" })
+    },
 
-    use({ "https://github.com/norcalli/nvim-colorizer.lua" })
+    { "https://github.com/norcalli/nvim-colorizer.lua",
+        cmd = "ColorizerToggle",
+    },
 
-    use({ "https://github.com/iamcco/markdown-preview.nvim",
-        run = 'cd app && npm install',
-        setup = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+    { "https://github.com/iamcco/markdown-preview.nvim",
+        build = 'cd app && npm install',
+        init = function() vim.g.mkdp_filetypes = { 'markdown' } end,
         ft = { 'markdown' },
-    })
+    },
 
     -- Cmake
-    use({ "https://github.com/cdelledonne/vim-cmake",
-        setup = function() vim.g.cmake_link_compile_commands = 1 end,
-    })
-
-    -- Vimspector
-    -- use({ "https://github.com/puremourning/vimspector" })
+    { "https://github.com/cdelledonne/vim-cmake",
+        cmd = { "CMakeGenerate", "CMakeBuild", "CMakeClose", "CMakeClean" },
+        init = function() vim.g.cmake_link_compile_commands = 1 end,
+    },
 
     -- DAP
-    use({ "https://github.com/mfussenegger/nvim-dap",
-        requires = {
-            "https://github.com/rcarriga/nvim-dap-ui",
-        },
+    { "https://github.com/mfussenegger/nvim-dap",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = { "https://github.com/rcarriga/nvim-dap-ui", },
         config = function()
             local dap = require("dap")
             local dapui = require("dapui")
-
             dapui.setup()
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+            dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+            dap.listeners.before.disconnect["dapui_config"]       = dapui.close
+            dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+            dap.listeners.before.event_exited['dapui_config']     = dapui.close
 
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.disconnect["dapui_config"] = function()
-                dapui.close()
-            end
+            require("configs.daps")
         end,
-    })
-    use({
-        "https://github.com/ravenxrz/DAPInstall.nvim",
-        config = function()
-            local dap_install = require("dap-install")
-            dap_install.setup()
-            dap_install.config("python", {})
-            dap_install.config( "ccppr_vsc", { adapters = { id = 'cppdbg', }, })
-        end,
-    })
-
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require("packer").sync()
-    end
-end)
+    },
+},
+{ -- Lazy opts
+    defaults = { lazy = true },
+    install = { colorscheme = { "habamax" } },
+})

@@ -93,7 +93,7 @@
                \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
                \*.as[fx]},
               \<video/*>
-             \ vifmimg videopreview %px %py %pw %ph %c
+             \ vifmimg video %px %py %pw %ph %c
              \ %pc
              \ vifmimg clear
     ```

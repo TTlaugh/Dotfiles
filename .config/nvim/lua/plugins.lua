@@ -342,6 +342,9 @@ return require("lazy").setup({
                     topdelete = { text = '‾' },
                     changedelete = { text = '~' },
                 },
+                on_attach = function(bufnr)
+                    require("mappings").load_mappings("gitsigns", { buffer = bufnr })
+                end,
             })
         end
     },

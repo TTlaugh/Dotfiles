@@ -11,13 +11,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Install your plugins here
 return require("lazy").setup({
-    -- Install your plugins here
-    { "https://github.com/nvim-lua/plenary.nvim" }, -- Useful lua functions used by lots of plugins
+
+    -- Libraries
+    { "https://github.com/nvim-lua/plenary.nvim" },
 
     { "https://github.com/kyazdani42/nvim-web-devicons" },
 
-    -- Colorschemes
+    -- UI
     { "https://github.com/folke/tokyonight.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
@@ -180,29 +182,39 @@ return require("lazy").setup({
         event = "VeryLazy",
         config = function()
             require("Comment").setup({
-                padding = true,     ---Add a space b/w comment and the line
-                toggler = {         ---LHS of toggle mappings in NORMAL mode
-                    line = '\\\\',  ---Line-comment toggle keymap
-                    block = '||',   ---Block-comment toggle keymap
+                padding = true,     -- Add a space b/w comment and the line
+                toggler = {         -- LHS of toggle mappings in NORMAL mode
+                    line = '\\\\',  -- Line-comment toggle keymap
+                    block = '||',   -- Block-comment toggle keymap
                 },
-                opleader = {        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-                    line = '\\',    ---Line-comment keymap
-                    block = '|',    ---Block-comment keymap
+                opleader = {        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
+                    line = '\\',    -- Line-comment keymap
+                    block = '|',    -- Block-comment keymap
                 },
-                extra = {           ---LHS of extra mappings
-                    above = '\\O',  ---Add comment on the line above
-                    below = '\\o',  ---Add comment on the line below
-                    eol = '\\A',    ---Add comment at the end of line
+                extra = {           -- LHS of extra mappings
+                    above = '\\O',  -- Add comment on the line above
+                    below = '\\o',  -- Add comment on the line below
+                    eol = '\\A',    -- Add comment at the end of line
                 },
             })
         end,
     },
+
+    -- Surround
     { "https://github.com/kylechui/nvim-surround",
         event = "VeryLazy",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         config = function()
             require("nvim-surround").setup()
         end
+    },
+
+    -- Motions
+    { "https://github.com/ggandor/leap.nvim",
+        event = "VeryLazy",
+        -- config = function()
+        --     require('leap').add_default_mappings()
+        -- end
     },
 
     -- LSP

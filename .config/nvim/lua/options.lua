@@ -50,6 +50,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     command = "set fo-=c fo-=r fo-=o",
 }) -- Don't auto commenting new lines
 
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+    pattern = "*",
+    command = "setlocal nonumber norelativenumber|startinsert",
+}) -- Don't show line number and auto enter insert mode when open terminal
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "qf", "help", "man", "lspinfo" },
     callback = function()
@@ -59,4 +64,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         ]])
     end,
 })
-

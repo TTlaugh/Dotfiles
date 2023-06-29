@@ -66,8 +66,8 @@ M.general = {
     { 'n'       ,'<leader><leader>', '<cmd> nohlsearch<CR>'                     , 'Turn off highlighting'                              },
     { 'n'       ,'[d'              , vim.diagnostic.goto_prev                   , 'Go to the previous diagnostic'                      },
     { 'n'       ,']d'              , vim.diagnostic.goto_next                   , 'Go to the next diagnostic'                          },
-    { 'n'       ,'F'               , vim.diagnostic.open_float                  , 'Show the diagnostics in the floating window'        },
-    { 'n'       ,'L'               , vim.diagnostic.setloclist                  , 'List all diagnostics'                               },
+    { 'n'       ,'<leader>k'       , vim.diagnostic.open_float                  , 'Show the diagnostics in the floating window'        },
+    { 'n'       ,'<leader>l'       , vim.diagnostic.setloclist                  , 'List all diagnostics'                               },
 }
 
 M.plugins = {
@@ -104,6 +104,19 @@ M.plugins = {
     { 'n'       , '<leader>dr'     , '<cmd> DapToggleRepl<CR>'                            , ' DAP: Opens the REPL'                    },
     { 'n'       , '<leader>du'     , '<cmd> lua require"dapui".toggle()<CR>'              , ' DAP: UI Toggle'                         },
     { 'n'       , '<leader>dl'     , '<cmd> lua require"dap".run_last()<CR>'              , ' DAP: Re-runs the last debug adapter'    },
+    -- leap
+    { {'n', 'x', 'o'}, 'm'         , '<Plug>(leap-forward-to)'                            , '󰷺 Leap: forward to'                         },
+    { {'n', 'x', 'o'}, 'M'         , '<Plug>(leap-backward-to)'                           , '󰷺 Leap: backward to'                        },
+    { {     'x', 'o'}, 'n'         , '<Plug>(leap-forward-till)'                          , '󰷺 Leap: forward till'                       },
+    { {     'x', 'o'}, 'N'         , '<Plug>(leap-backward-till)'                         , '󰷺 Leap: backward till'                      },
+    { {'n', 'v', 'o'}, 'g<space>'  , '<Plug>(leap-from-window)'                           , '󰷺 Leap: from window'                        },
+    { {'n', 'v', 'o'}, '<space>'   ,
+        function()
+            local current_window = vim.fn.win_getid()
+            require("leap").leap { target_windows = { current_window } }
+        end,
+        '󰷺 Leap: current window'
+    },
 }
 
 M.gitsigns = {
@@ -112,7 +125,7 @@ M.gitsigns = {
             if vim.wo.diff then return "]c" end
             vim.schedule(function() require("gitsigns").next_hunk() end)
             return "<Ignore>"
-        end ,
+        end,
         'Jump to next hunk',
         opts = { expr = true },
     },
@@ -121,7 +134,7 @@ M.gitsigns = {
             if vim.wo.diff then return "[c" end
             vim.schedule(function() require("gitsigns").prev_hunk() end)
             return "<Ignore>"
-        end ,
+        end,
         'Jump to prev hunk',
         opts = { expr = true },
     },

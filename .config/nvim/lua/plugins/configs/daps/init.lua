@@ -1,8 +1,8 @@
 local dap = require("dap")
-local dbgs_path = vim.fn.stdpath("config") .. "/lua/configs/debuggers/"
+local dbgs_path = vim.fn.stdpath("config") .. "/lua/plugins/configs/daps/debuggers/"
 
 local function load(filename)
-    local dbg = require("configs.debuggers." .. filename)
+    local dbg = require("plugins.configs.daps.debuggers." .. filename)
     if type(dbg) == "table" then
         local adapter = dbg.dap_info["name_adapter"]
         local langs   = dbg.dap_info["name_configuration"]

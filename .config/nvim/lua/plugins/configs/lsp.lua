@@ -86,7 +86,7 @@ local servers = {
 
 -- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-    require("mappings").load_mappings("lspconfig", { buffer = bufnr })
+    require("core.mappings").load_mappings("lspconfig", { buffer = bufnr })
 
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)

@@ -1,6 +1,6 @@
 vim.g.mapleader = ","
 
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = { "menuone", "noselect" }
 
 vim.opt.title = true
 
@@ -22,18 +22,17 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
-vim.opt.scrolloff = 5
-vim.opt.sidescrolloff = 5
+vim.opt.scrolloff = 3
+vim.opt.sidescrolloff = 3
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.termguicolors = true
-vim.opt.background = "dark"
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"

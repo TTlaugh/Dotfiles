@@ -1,3 +1,4 @@
+-- vim:foldmethod=marker
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -14,19 +15,23 @@ vim.opt.rtp:prepend(lazypath)
 -- Install your plugins here
 return require("lazy").setup({
 
-    -- Libraries
+    -- {{{ Libraries
     { "https://github.com/nvim-lua/plenary.nvim" },
-
     { "https://github.com/kyazdani42/nvim-web-devicons" },
+    -- }}}
 
-    -- UI
-    { "https://github.com/folke/tokyonight.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-    },
+    -- {{{ UI
+    { "https://github.com/folke/tokyonight.nvim", lazy = false, priority = 1000, },
     { "https://github.com/navarasu/onedark.nvim", lazy = false },
     { "https://github.com/catppuccin/nvim", name = "catppuccin", lazy = false },
 
+    { "https://github.com/rcarriga/nvim-notify",
+        lazy = false, -- event = "VeryLazy",
+        config = function()
+            require("notify").setup()
+            vim.notify = require("notify")
+        end
+    },
     { "https://github.com/akinsho/bufferline.nvim",
         event = "VeryLazy",
         config = function()
@@ -67,8 +72,9 @@ return require("lazy").setup({
             })
         end,
     },
+    -- }}}
 
-    -- Treesitter
+    -- {{{ Syntax highlighting
     { "https://github.com/nvim-treesitter/nvim-treesitter",
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
@@ -102,8 +108,9 @@ return require("lazy").setup({
             })
         end
     },
+    -- }}}
 
-    -- Completion
+    -- {{{ Completion
     { "https://github.com/hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
@@ -178,46 +185,9 @@ return require("lazy").setup({
             })
         end
     },
-    { "https://github.com/numToStr/Comment.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("Comment").setup({
-                padding = true,     -- Add a space b/w comment and the line
-                toggler = {         -- LHS of toggle mappings in NORMAL mode
-                    line = '\\\\',  -- Line-comment toggle keymap
-                    block = '||',   -- Block-comment toggle keymap
-                },
-                opleader = {        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
-                    line = '\\',    -- Line-comment keymap
-                    block = '|',    -- Block-comment keymap
-                },
-                extra = {           -- LHS of extra mappings
-                    above = '\\O',  -- Add comment on the line above
-                    below = '\\o',  -- Add comment on the line below
-                    eol = '\\A',    -- Add comment at the end of line
-                },
-            })
-        end,
-    },
+    -- }}}
 
-    -- Surround
-    { "https://github.com/kylechui/nvim-surround",
-        event = "VeryLazy",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function()
-            require("nvim-surround").setup()
-        end
-    },
-
-    -- Motions
-    { "https://github.com/ggandor/leap.nvim",
-        event = "VeryLazy",
-        -- config = function()
-        --     require('leap').add_default_mappings()
-        -- end
-    },
-
-    -- LSP
+    -- {{{ IntelliSense
     { "https://github.com/neovim/nvim-lspconfig",
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate", "LspInfo", "LspLog" },
@@ -226,11 +196,11 @@ return require("lazy").setup({
             "https://github.com/williamboman/mason-lspconfig.nvim",
         },
         config = function ()
-            require("configs.lsp")
+            require("plugins.configs.lsp")
         end
     },
     { "https://github.com/j-hui/fidget.nvim",
-        event = { "BufReadPost", "BufNewFile" },
+        event = "VeryLazy",
         version = "legacy",
         config = function()
             require("fidget").setup({
@@ -240,8 +210,9 @@ return require("lazy").setup({
             })
         end,
     },
+    -- }}}
 
-    -- Telescope
+    -- {{{ Search
     { "https://github.com/nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         dependencies = {
@@ -305,7 +276,9 @@ return require("lazy").setup({
             })
         end,
     },
+    -- }}}
 
+    -- {{{ File Manager
     { "https://github.com/stevearc/oil.nvim",
         cmd = "Oil",
         config = function()
@@ -326,8 +299,9 @@ return require("lazy").setup({
             })
         end,
     },
+    -- }}}
 
-    -- Git
+    -- {{{ Git
     { "https://github.com/lewis6991/gitsigns.nvim",
         ft = { "gitcommit", "diff" },
         init = function()
@@ -355,29 +329,14 @@ return require("lazy").setup({
                     changedelete = { text = '~' },
                 },
                 on_attach = function(bufnr)
-                    require("mappings").load_mappings("gitsigns", { buffer = bufnr })
+                    require("core.mappings").load_mappings("gitsigns", { buffer = bufnr })
                 end,
             })
         end
     },
+    -- }}}
 
-    { "https://github.com/norcalli/nvim-colorizer.lua",
-        cmd = "ColorizerToggle",
-    },
-
-    { "https://github.com/iamcco/markdown-preview.nvim",
-        build = 'cd app && npm install',
-        init = function() vim.g.mkdp_filetypes = { 'markdown' } end,
-        ft = { 'markdown' },
-    },
-
-    -- Cmake
-    { "https://github.com/cdelledonne/vim-cmake",
-        cmd = { "CMakeGenerate", "CMakeBuild", "CMakeClose", "CMakeClean" },
-        init = function() vim.g.cmake_link_compile_commands = 1 end,
-    },
-
-    -- DAP
+    -- {{{ Debugging
     { "https://github.com/mfussenegger/nvim-dap",
         event = { "BufReadPost", "BufNewFile" },
         dependencies = { "https://github.com/rcarriga/nvim-dap-ui", },
@@ -391,9 +350,67 @@ return require("lazy").setup({
             dap.listeners.before.event_terminated['dapui_config'] = dapui.close
             dap.listeners.before.event_exited['dapui_config']     = dapui.close
 
-            require("configs.daps")
+            require("plugins.configs.daps")
         end,
     },
+    -- }}}
+
+    -- {{{ Editing & motion
+    { "https://github.com/numToStr/Comment.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("Comment").setup({
+                padding = true,     -- Add a space b/w comment and the line
+                toggler = {         -- LHS of toggle mappings in NORMAL mode
+                    line = '\\\\',  -- Line-comment toggle keymap
+                    block = '||',   -- Block-comment toggle keymap
+                },
+                opleader = {        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
+                    line = '\\',    -- Line-comment keymap
+                    block = '|',    -- Block-comment keymap
+                },
+                extra = {           -- LHS of extra mappings
+                    above = '\\O',  -- Add comment on the line above
+                    below = '\\o',  -- Add comment on the line below
+                    eol = '\\A',    -- Add comment at the end of line
+                },
+            })
+        end,
+    },
+
+    { "https://github.com/kylechui/nvim-surround",
+        event = "VeryLazy",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup()
+        end
+    },
+
+    { "https://github.com/ggandor/leap.nvim",
+        event = "VeryLazy",
+        -- config = function()
+        --     require('leap').add_default_mappings()
+        -- end
+    },
+    -- }}}
+
+    -- {{{ Miscellaneous
+    { "https://github.com/norcalli/nvim-colorizer.lua",
+        cmd = "ColorizerToggle",
+    },
+
+    { "https://github.com/iamcco/markdown-preview.nvim",
+        build = 'cd app && npm install',
+        init = function() vim.g.mkdp_filetypes = { 'markdown' } end,
+        ft = { 'markdown' },
+    },
+
+    { "https://github.com/cdelledonne/vim-cmake",
+        cmd = { "CMakeGenerate", "CMakeBuild", "CMakeClose", "CMakeClean" },
+        init = function() vim.g.cmake_link_compile_commands = 1 end,
+    },
+    -- }}}
+
 },
 { -- Lazy opts
     defaults = { lazy = true },

@@ -2,7 +2,7 @@ local M = {}
 
 M.load_mappings = function(section, mapping_opt)
     vim.schedule(function()
-        local mappings = require("mappings")
+        local mappings = require("core.mappings")
         if type(section) == "string" then
             mappings = mappings[section]
         else
@@ -19,18 +19,20 @@ M.load_mappings = function(section, mapping_opt)
 end
 
 -- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
--- Ex:
+--  "n" = normal
+--  "i" = insert
+--  "v" = visual & select
+--  "x" = visual
+--  "s" = select
+--  "o" = operator
+--  "t" = term
+--  "c" = command
+-- Usage:
 -- local opts = { silent = true, noremap = true }
 -- { 'mode' , 'key', function, 'desciption', opts = opts },
 -- { {mode} , 'key', function, 'desciption', opts = {} },
 M.general = {
-    { {'n', 'v'},'<Space>'         , '<Nop>'                                                                                           },
+    -- { {'n', 'v'},'<Space>'         , '<Nop>'                                                                                           },
     { 'n'       ,'<leader>e'       , '<cmd> e $MYVIMRC<CR>'                     , '[E]dit init.lua'                                    },
     { 'n'       ,'<leader>sl'      , '<cmd> set list!<CR>'                      , '[S]how [L]istchars'                                 },
     { 'n'       ,'<F4>'            , '<cmd> setlocal spell! spelllang=en_us<CR>', '暈Built-in spell-checker'                           },
@@ -84,38 +86,36 @@ M.plugins = {
     { 'n'       ,'<leader>gc'      , '<cmd> Telescope git_commits <CR>'                   , '[G]it [C]ommits'                          },
     { 'n'       ,'<leader>gs'      , '<cmd> Telescope git_status  <CR>'                   , '[G]it [S]tatus'                           },
     { 'n'       ,'<leader>:'       , '<cmd> Telescope commands    <CR>'                   , '[:] Lists available plugin/user commands' },
+    -- notify
+    { 'n'       ,'<backspace>'     , '<cmd> lua require("notify").dismiss()<CR>'          , 'Dismiss all Notifications'                },
     -- colorizer
-    { 'n'       , '<leader>h'      , '<cmd> ColorizerToggle<CR>'                          , '[C]olorizer'                              },
+    { 'n'       ,'<leader>h'       , '<cmd> ColorizerToggle<CR>'                          , '[C]olorizer'                              },
     -- oil
-    { 'n'       , '-'              , '<cmd> Oil --float<CR>'                              , '[O]il file explorer'                      },
+    { 'n'       ,'-'               , '<cmd> Oil --float<CR>'                              , '[O]il file explorer'                      },
     -- markdownpreview
-    { 'n'       , '<leader>mp'     , '<cmd> MarkdownPreviewToggle<CR>'                    , '[M]arkdown [P]review'                     },
+    { 'n'       ,'<leader>mp'      , '<cmd> MarkdownPreviewToggle<CR>'                    , '[M]arkdown [P]review'                     },
     -- cmake
-    { 'n'       , '<leader>gg'     , '<cmd> CMakeGenerate<CR>'                            , '[G]enerate build system'                  },
-    { 'n'       , '<leader>bb'     , '<cmd> CMakeBuild<CR>'                               , '[B]uild a project'                        },
-    { 'n'       , '<leader>cx'     , '<cmd> CMakeClose<CR>'                               , '[C]lose Cmake console window'             },
+    { 'n'       ,'<leader>gg'      , '<cmd> CMakeGenerate<CR>'                            , '[G]enerate build system'                  },
+    { 'n'       ,'<leader>bb'      , '<cmd> CMakeBuild<CR>'                               , '[B]uild a project'                        },
+    { 'n'       ,'<leader>cx'      , '<cmd> CMakeClose<CR>'                               , '[C]lose Cmake console window'             },
     -- dap
-    { 'n'       , '<A-Left>'       , '<cmd> DapContinue<CR>'                              , ' DAP: Start/Continue'                    },
-    { 'n'       , '<A-Right>'      , '<cmd> DapStepOver<CR>'                              , ' DAP: Step Over'                         },
-    { 'n'       , '<A-Down>'       , '<cmd> DapStepInto<CR>'                              , ' DAP: Step Into'                         },
-    { 'n'       , '<A-Up>'         , '<cmd> DapStepOut<CR>'                               , ' DAP: Step Out'                          },
-    { 'n'       , '<leader>db'     , '<cmd> DapToggleBreakpoint<CR>'                      , ' DAP: Breakpoint Toggle'                 },
-    { 'n'       , '<leader>dx'     , '<cmd> DapTerminate<CR>'                             , ' DAP: Terminate'                         },
-    { 'n'       , '<leader>dr'     , '<cmd> DapToggleRepl<CR>'                            , ' DAP: Opens the REPL'                    },
-    { 'n'       , '<leader>du'     , '<cmd> lua require"dapui".toggle()<CR>'              , ' DAP: UI Toggle'                         },
-    { 'n'       , '<leader>dl'     , '<cmd> lua require"dap".run_last()<CR>'              , ' DAP: Re-runs the last debug adapter'    },
+    { 'n'       ,'<A-Left>'        , '<cmd> DapContinue<CR>'                              , ' DAP: Start/Continue'                    },
+    { 'n'       ,'<A-Right>'       , '<cmd> DapStepOver<CR>'                              , ' DAP: Step Over'                         },
+    { 'n'       ,'<A-Down>'        , '<cmd> DapStepInto<CR>'                              , ' DAP: Step Into'                         },
+    { 'n'       ,'<A-Up>'          , '<cmd> DapStepOut<CR>'                               , ' DAP: Step Out'                          },
+    { 'n'       ,'<leader>db'      , '<cmd> DapToggleBreakpoint<CR>'                      , ' DAP: Breakpoint Toggle'                 },
+    { 'n'       ,'<leader>dx'      , '<cmd> DapTerminate<CR>'                             , ' DAP: Terminate'                         },
+    { 'n'       ,'<leader>dr'      , '<cmd> DapToggleRepl<CR>'                            , ' DAP: Opens the REPL'                    },
+    { 'n'       ,'<leader>du'      , '<cmd> lua require"dapui".toggle()<CR>'              , ' DAP: UI Toggle'                         },
+    { 'n'       ,'<leader>dl'      , '<cmd> lua require"dap".run_last()<CR>'              , ' DAP: Re-runs the last debug adapter'    },
     -- leap
-    { {'n', 'x', 'o'}, 'm'         , '<Plug>(leap-forward-to)'                            , '󰷺 Leap: forward to'                         },
-    { {'n', 'x', 'o'}, 'M'         , '<Plug>(leap-backward-to)'                           , '󰷺 Leap: backward to'                        },
-    { {     'x', 'o'}, 'n'         , '<Plug>(leap-forward-till)'                          , '󰷺 Leap: forward till'                       },
-    { {     'x', 'o'}, 'N'         , '<Plug>(leap-backward-till)'                         , '󰷺 Leap: backward till'                      },
-    { {'n', 'v', 'o'}, 'g<space>'  , '<Plug>(leap-from-window)'                           , '󰷺 Leap: from window'                        },
+    { {'n', 'x', 'o'}, 'm'         , '<Plug>(leap-forward-to)'                            , '󰷺 Leap: forward to'                       },
+    { {'n', 'x', 'o'}, 'M'         , '<Plug>(leap-backward-to)'                           , '󰷺 Leap: backward to'                      },
+    { {     'x', 'o'}, 'n'         , '<Plug>(leap-forward-till)'                          , '󰷺 Leap: forward till'                     },
+    { {     'x', 'o'}, 'N'         , '<Plug>(leap-backward-till)'                         , '󰷺 Leap: backward till'                    },
+    { {'n', 'v', 'o'}, 'g<space>'  , '<Plug>(leap-from-window)'                           , '󰷺 Leap: from window'                      },
     { {'n', 'v', 'o'}, '<space>'   ,
-        function()
-            local current_window = vim.fn.win_getid()
-            require("leap").leap { target_windows = { current_window } }
-        end,
-        '󰷺 Leap: current window'
+        '<cmd> lua require("leap").leap { target_windows = { vim.fn.win_getid() } }<CR>'  , '󰷺 Leap: current window'
     },
 }
 
@@ -159,16 +159,5 @@ M.lspconfig = {
     { 'n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,                                     'LSP: [W]orkspace [R]emove Folder'   },
     { 'n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, 'LSP: [W]orkspace [L]ist Folders'    },
 }
-
--- M.luasnip = {
---     { { 'i', 's' }, '<C-a>', function()
---         local ok, ls = pcall(require, "luasnip")
---         if ok then
---             if ls.choice_active() then
---                 ls.change_choice(1)
---             end
---         end
---     end, 'LuaSnip: Change choice' },
--- }
 
 return M

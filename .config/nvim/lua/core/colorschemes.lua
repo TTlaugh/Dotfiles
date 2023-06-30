@@ -1,6 +1,7 @@
 local M = {}
 
 --[[
+habamax is default colorscheme
 [1]  onedark
 [2]  tokyonight
 [3]  tokyonight-moon

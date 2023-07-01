@@ -1,4 +1,13 @@
 local dap = require("dap")
+local dapui = require("dapui")
+
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+dap.listeners.before.disconnect["dapui_config"]       = dapui.close
+dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+dap.listeners.before.event_exited['dapui_config']     = dapui.close
+
+
 local dbgs_path = vim.fn.stdpath("config") .. "/lua/plugins/configs/daps/debuggers/"
 
 local function load(filename)

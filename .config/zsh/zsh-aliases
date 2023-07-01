@@ -5,7 +5,7 @@ alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
 alias gitst="git status"
 alias gitaa="git add ."
 alias gitco="git commit -m"
-alias push="git push"
+alias push="printf '' | xclip -selection clipboard && git push"
 alias pull="git pull"
 alias clone="git clone"
 
@@ -16,7 +16,7 @@ alias ls="exa -a --color=always --group-directories-first"
 alias lt="exa -aT --color=always --group-directories-first"
 alias l.="exa -a | egrep '^\.'"
 
-### navigation
+### Navigation
 up() {
     local d=""
     local limit="$1"
@@ -56,15 +56,15 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
-### nvim, nvim + fzf
+### Nvim
 alias vi="nvim"
 alias suvi="sudoedit"
 alias vf='nvim `fzf`'
 
-### vifm
+### Vifm
 alias fm="$HOME/.config/vifm/scripts/vifmrun"
 
-### feh
+### Feh
 alias feh="feh --scale-down --auto-zoom"
 
 ### Convert to PDF
@@ -85,7 +85,7 @@ alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 alias parrot="curl parrot.live"
 alias weather="curl wttr.in"
 
-### pacman + fzf
+### Pacman + fzf
 alias pacQi="pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias pacSi="pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse"
 alias pacS="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S"

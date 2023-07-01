@@ -21,91 +21,101 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ UI
-    { "https://github.com/folke/tokyonight.nvim", lazy = false, priority = 1000, },
+    { "https://github.com/folke/tokyonight.nvim", lazy = false, priority = 1000 },
     { "https://github.com/navarasu/onedark.nvim", lazy = false },
     { "https://github.com/catppuccin/nvim", name = "catppuccin", lazy = false },
 
     { "https://github.com/rcarriga/nvim-notify",
         lazy = false, -- event = "VeryLazy",
+        opts = {},
         config = function()
-            require("notify").setup()
             vim.notify = require("notify")
         end
     },
     { "https://github.com/akinsho/bufferline.nvim",
         event = "VeryLazy",
-        config = function()
-            require("bufferline").setup()
-        end
+        opts = {},
     },
     { "https://github.com/nvim-lualine/lualine.nvim",
         event = "VeryLazy",
-        config = function()
-            require("lualine").setup({
-                options = {
-                    globalstatus = true,
-                    component_separators = '|',
-                    section_separators = '',
-                },
-            })
-        end,
+        opts = {
+            options = {
+                globalstatus = true,
+                component_separators = '|',
+                section_separators = '',
+            },
+        },
     },
     { "https://github.com/lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            char = "▏",
+            show_trailing_blankline_indent = false,
+            show_first_indent_level = false,
+            show_current_context = true,
+            -- use_treesitter = true,
+            filetype_exclude = {
+                "python",
+                "markdown",
+                "lspinfo",
+                "packer",
+                "checkhealth",
+                "help",
+                "man",
+                "",
+            },
+        },
+    },
+    { "https://github.com/folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {},
         config = function()
-            require("indent_blankline").setup({
-                char = "▏",
-                show_trailing_blankline_indent = false,
-                show_first_indent_level = false,
-                show_current_context = true,
-                -- use_treesitter = true,
-                filetype_exclude = {
-                    "python",
-                    "markdown",
-                    "lspinfo",
-                    "packer",
-                    "checkhealth",
-                    "help",
-                    "man",
-                    "",
-                },
+            require("which-key").register({
+                ["<leader>m"] = { name = "+markdown" },
+                ["<leader>g"] = { name = "+git" },
+                ["<leader>f"] = { name = "+find/file" },
+                ["<leader>t"] = { name = "+sw split type" },
+                ["<leader>d"] = { name = "+dap" },
+                ["<leader>w"] = { name = "+workspace" },
+                ["<leader>c"] = { name = "+code/cmake" },
             })
         end,
     },
-    -- }}}
+        -- }}}
 
     -- {{{ Syntax highlighting
     { "https://github.com/nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-        build = ":TSUpdate",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "c",
-                    "cpp",
-                    "bash",
-                    "dockerfile",
-                    "go",
-                    "javascript",
-                    "json",
-                    "latex",
-                    "lua",
-                    "nix",
-                    "python",
-                    "rego",
-                    "rust",
-                    "typescript",
-                    "yaml",
-                    "markdown_inline",
-                },
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
-            })
+        opts = {
+            ensure_installed = {
+                "c",
+                "cpp",
+                "bash",
+                "dockerfile",
+                "go",
+                "javascript",
+                "json",
+                "latex",
+                "lua",
+                "nix",
+                "python",
+                "rego",
+                "rust",
+                "typescript",
+                "yaml",
+                "markdown_inline",
+            },
+            highlight = {
+                enable = true,
+            },
+            indent = {
+                enable = true,
+            },
+        },
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
         end
     },
     -- }}}
@@ -115,16 +125,17 @@ return require("lazy").setup({
         event = "InsertEnter",
         dependencies = {
             { "https://github.com/L3MON4D3/LuaSnip",
-                dependencies = { "https://github.com/rafamadriz/friendly-snippets", },
+                dependencies = { "https://github.com/rafamadriz/friendly-snippets" },
                 config = function()
                     require("luasnip.loaders.from_vscode").lazy_load()
                 end,
             },
             { "https://github.com/windwp/nvim-autopairs",
-                config = function()
-                    require("nvim-autopairs").setup({ check_ts = true, })
-                    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                event = "InsertEnter",
+                opts = { check_ts = true },
+                config = function(_, opts)
+                    require("nvim-autopairs").setup(opts)
+                    require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
                 end,
             },
             "https://github.com/hrsh7th/cmp-buffer",
@@ -133,11 +144,10 @@ return require("lazy").setup({
             "https://github.com/hrsh7th/cmp-path",
             "https://github.com/saadparwaiz1/cmp_luasnip",
         },
-        config = function()
+        opts = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-
-            cmp.setup({
+            return {
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -182,8 +192,8 @@ return require("lazy").setup({
                 --     completion = cmp.config.window.bordered(),
                 --     documentation = cmp.config.window.bordered(),
                 -- },
-            })
-        end
+            }
+        end,
     },
     -- }}}
 
@@ -192,7 +202,7 @@ return require("lazy").setup({
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate", "LspInfo", "LspLog" },
         dependencies = {
-            "https://github.com/williamboman/mason.nvim",
+            { "https://github.com/williamboman/mason.nvim", build = ":MasonUpdate" },
             "https://github.com/williamboman/mason-lspconfig.nvim",
         },
         config = function ()
@@ -202,13 +212,20 @@ return require("lazy").setup({
     { "https://github.com/j-hui/fidget.nvim",
         event = "VeryLazy",
         version = "legacy",
-        config = function()
-            require("fidget").setup({
-                text = {
-                    spinner = "dots",
-                },
-            })
-        end,
+        opts = {
+            text = {
+                spinner = "dots",
+            },
+        },
+    },
+    { "https://github.com/folke/trouble.nvim",
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            height = 5,
+            auto_open = true,
+            auto_close = true,
+            use_diagnostic_signs = true
+        },
     },
     -- }}}
 
@@ -217,15 +234,14 @@ return require("lazy").setup({
         cmd = "Telescope",
         dependencies = {
             "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
-                build = "make",
-                config = function()
-                    require("telescope").load_extension("fzf")
-                end,
-            },
-        config = function()
-            local telescope = require("telescope")
+            build = "make",
+            config = function()
+                require("telescope").load_extension("fzf")
+            end,
+        },
+        opts = function()
             local actions = require("telescope.actions")
-            telescope.setup({
+            return {
                 defaults = {
                     path_display = { "absolute" },
                     file_ignore_patterns = { ".git/", "node_modules" },
@@ -273,7 +289,7 @@ return require("lazy").setup({
                         sort_lastused = true,
                     },
                 },
-            })
+            }
         end,
     },
     -- }}}
@@ -281,22 +297,20 @@ return require("lazy").setup({
     -- {{{ File Manager
     { "https://github.com/stevearc/oil.nvim",
         cmd = "Oil",
-        config = function()
-            require("oil").setup({
-                columns = {},
-                view_options = {
-                    show_hidden = true,
-                },
-            })
-            vim.api.nvim_create_autocmd({ "FileType" }, {
+        opts = {
+            view_options = {
+                show_hidden = true,
+            },
+        },
+        config = function(_, opts)
+            require("oil").setup(opts)
+            vim.api.nvim_create_autocmd("FileType", {
                 pattern = "oil",
-                callback = function()
-                    vim.cmd([[
-                        nnoremap <silent> <buffer> q :close<CR>
-                        set nobuflisted
-                    ]])
+                callback = function(event)
+                    vim.bo[event.buf].buflisted = false
+                    vim.keymap.set("n", "q", "<cmd>bdelete<cr>", { buffer = event.buf, silent = true })
                 end,
-            })
+            }) -- Close oil with <q>
         end,
     },
     -- }}}
@@ -319,37 +333,28 @@ return require("lazy").setup({
                 end,
             })
         end,
-        config = function()
-            require("gitsigns").setup({
-                signs = {
-                    add = { text = '+' },
-                    change = { text = '~' },
-                    delete = { text = '_' },
-                    topdelete = { text = '‾' },
-                    changedelete = { text = '~' },
-                },
-                on_attach = function(bufnr)
-                    require("core.mappings").load_mappings("gitsigns", { buffer = bufnr })
-                end,
-            })
-        end
+        opts = {
+            signs = {
+                add = { text = '+' },
+                change = { text = '~' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+            },
+            on_attach = function(bufnr)
+                require("core.mappings").load_mappings("gitsigns", { buffer = bufnr })
+            end,
+        },
     },
     -- }}}
 
     -- {{{ Debugging
     { "https://github.com/mfussenegger/nvim-dap",
         event = { "BufReadPost", "BufNewFile" },
-        dependencies = { "https://github.com/rcarriga/nvim-dap-ui", },
+        dependencies = {
+            { "https://github.com/rcarriga/nvim-dap-ui", opts = {} }
+        },
         config = function()
-            local dap = require("dap")
-            local dapui = require("dapui")
-            dapui.setup()
-            vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-            dap.listeners.after.event_initialized["dapui_config"] = dapui.open
-            dap.listeners.before.disconnect["dapui_config"]       = dapui.close
-            dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-            dap.listeners.before.event_exited['dapui_config']     = dapui.close
-
             require("plugins.configs.daps")
         end,
     },
@@ -358,32 +363,28 @@ return require("lazy").setup({
     -- {{{ Editing & motion
     { "https://github.com/numToStr/Comment.nvim",
         event = "VeryLazy",
-        config = function()
-            require("Comment").setup({
-                padding = true,     -- Add a space b/w comment and the line
-                toggler = {         -- LHS of toggle mappings in NORMAL mode
-                    line = '\\\\',  -- Line-comment toggle keymap
-                    block = '||',   -- Block-comment toggle keymap
-                },
-                opleader = {        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
-                    line = '\\',    -- Line-comment keymap
-                    block = '|',    -- Block-comment keymap
-                },
-                extra = {           -- LHS of extra mappings
-                    above = '\\O',  -- Add comment on the line above
-                    below = '\\o',  -- Add comment on the line below
-                    eol = '\\A',    -- Add comment at the end of line
-                },
-            })
-        end,
+        opts = {
+            padding = true,     -- Add a space b/w comment and the line
+            toggler = {         -- LHS of toggle mappings in NORMAL mode
+                line = '\\\\',  -- Line-comment toggle keymap
+                block = '||',   -- Block-comment toggle keymap
+            },
+            opleader = {        -- LHS of operator-pending mappings in NORMAL and VISUAL mode
+                line = '\\',    -- Line-comment keymap
+                block = '|',    -- Block-comment keymap
+            },
+            extra = {           -- LHS of extra mappings
+                above = '\\O',  -- Add comment on the line above
+                below = '\\o',  -- Add comment on the line below
+                eol = '\\A',    -- Add comment at the end of line
+            },
+        },
     },
 
     { "https://github.com/kylechui/nvim-surround",
         event = "VeryLazy",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        config = function()
-            require("nvim-surround").setup()
-        end
+        opts = {},
     },
 
     { "https://github.com/ggandor/leap.nvim",

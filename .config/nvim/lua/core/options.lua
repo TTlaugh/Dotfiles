@@ -1,8 +1,11 @@
 vim.g.mapleader = ","
 
+vim.opt.title = true
+
 vim.opt.completeopt = { "menuone", "noselect" }
 
-vim.opt.title = true
+vim.opt.timeoutlen = 500
+vim.opt.updatetime = 300
 
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -12,12 +15,13 @@ vim.opt.showmode = false
 vim.opt.laststatus = 3
 
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.wrap = false
 vim.opt.breakindent = true
 
 vim.opt.smarttab = true
-vim.opt.cindent = true
+vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
@@ -54,12 +58,17 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     command = "setlocal nonumber norelativenumber|startinsert",
 }) -- Don't show line number and auto enter insert mode when open terminal
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "qf", "help", "man", "lspinfo" },
-    callback = function()
-        vim.cmd([[
-            nnoremap <silent> <buffer> q :close<CR>
-            set nobuflisted
-        ]])
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "help",
+        "lspinfo",
+        "man",
+        "qf",
+        "startuptime",
+        "checkhealth",
+    },
+    callback = function(event)
+        vim.bo[event.buf].buflisted = false
+        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end,
-})
+}) -- Close some filetypes with <q>

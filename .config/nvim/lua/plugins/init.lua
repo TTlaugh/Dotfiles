@@ -219,13 +219,8 @@ return require("lazy").setup({
         },
     },
     { "https://github.com/folke/trouble.nvim",
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {
-            height = 5,
-            auto_open = true,
-            auto_close = true,
-            use_diagnostic_signs = true
-        },
+        cmd = { "TroubleToggle", "Trouble" },
+        opts = { use_diagnostic_signs = true },
     },
     -- }}}
 

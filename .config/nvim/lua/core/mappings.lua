@@ -83,6 +83,11 @@ M.plugins = {
     { 'n'          ,'<leader>gc'      , '<cmd> Telescope git_commits <CR>'                   , '[G]it [C]ommits'                     },
     { 'n'          ,'<leader>gs'      , '<cmd> Telescope git_status  <CR>'                   , '[G]it [S]tatus'                      },
     { 'n'          ,'<leader>:'       , '<cmd> Telescope commands    <CR>'                   , '[:] Lists all commands'              },
+    -- trouble
+    { 'n'          ,'<leader>xx'      , '<cmd> TroubleToggle document_diagnostics <CR>'      , 'Trouble: Document Diagnostics'       },
+    { 'n'          ,'<leader>xz'      , '<cmd> TroubleToggle workspace_diagnostics <CR>'     , 'Trouble: Workspace Diagnostics'      },
+    { 'n'          ,'<leader>xl'      , '<cmd> TroubleToggle loclist <CR>'                   , 'Trouble: Location List'              },
+    { 'n'          ,'<leader>xq'      , '<cmd> TroubleToggle quickfix <CR>'                  , 'Trouble: Quickfix List'              },
     -- notify
     { 'n'          ,'<backspace>'     , '<cmd> lua require("notify").dismiss() <CR>'         , 'Dismiss all Notifications'           },
     -- colorizer

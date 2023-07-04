@@ -57,11 +57,12 @@ M.general = {
     { 'i'          ,'<C-l>'           , '<Right>'                                            , ' Move cursor Right'                 },
     { 'n'          ,'<leader>th'      , '<C-w>t<C-w>H'                                       , 'Switch to horizontal split'          },
     { 'n'          ,'<leader>tk'      , '<C-w>t<C-w>K'                                       , 'Switch to vertical split'            },
-    { 'n'          ,'<A-t>'           , '<cmd> new term://zsh <CR>'                          , 'Horiz Terminal (zsh)'                },
+    { 'n'          ,'<A-t>'           , '<cmd> split|term <CR>'                              , 'Terminal in horiz split'             },
+    { 'n'          ,'<leader>bf'      , '<cmd> split|term compiler %:p  Run <CR>'           , 'Compile file from terminal'          },
     { 't'          ,'<esc><esc>'      , '<c-\\><c-n>'                                        , 'Enter Normal mode'                   },
     { 'n'          ,'<C-x>'           , '<cmd> bdelete! <CR>'                                , 'Delete Buffer'                       },
-    { 'n'          ,'<C-h>'           , '<cmd> bprev <CR>'                                   , 'Delete Buffer'                       },
-    { 'n'          ,'<C-l>'           , '<cmd> bnext <CR>'                                   , 'Delete Buffer'                       },
+    { 'n'          ,'<C-h>'           , '<cmd> bprev <CR>'                                   , 'Previous Buffer'                     },
+    { 'n'          ,'<C-l>'           , '<cmd> bnext <CR>'                                   , 'Next Buffer'                         },
     { 'n'          ,'<leader><leader>', '<cmd> nohlsearch <CR>'                              , 'Turn off highlighting'               },
     { 'n'          ,'[d'              , vim.diagnostic.goto_prev                             , 'Previous diagnostic'                 },
     { 'n'          ,']d'              , vim.diagnostic.goto_next                             , 'Next diagnostic'                     },
@@ -97,9 +98,9 @@ M.plugins = {
     -- markdownpreview
     { 'n'          ,'<leader>mp'      , '<cmd> MarkdownPreviewToggle <CR>'                   , '[M]arkdown [P]review'                },
     -- cmake
-    { 'n'          ,'<leader>cg'      , '<cmd> CMakeGenerate <CR>'                           , '[G]enerate build system'             },
-    { 'n'          ,'<leader>cb'      , '<cmd> CMakeBuild <CR>'                              , '[B]uild a project'                   },
-    { 'n'          ,'<leader>cx'      , '<cmd> CMakeClose <CR>'                              , '[C]lose Cmake console window'        },
+    { 'n'          ,'<leader>bg'      , '<cmd> CMakeGenerate <CR>'                           , '[G]enerate build system'             },
+    { 'n'          ,'<leader>bb'      , '<cmd> CMakeBuild <CR>'                              , '[B]uild a project'                   },
+    { 'n'          ,'<leader>bx'      , '<cmd> CMakeClose <CR>'                              , '[C]lose Cmake console window'        },
     -- dap
     { 'n'          ,'<A-Left>'        , '<cmd> DapContinue <CR>'                             , ' DAP: Start/Continue'               },
     { 'n'          ,'<A-Right>'       , '<cmd> DapStepOver <CR>'                             , ' DAP: Step Over'                    },

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Description: Auto-generate C/C++ project.
-# Dependencies:
+# Dependencies: cmake
 
 set -euo pipefail
 
@@ -19,11 +19,10 @@ create_folder() {
     else
         exit 0
     fi
-    cd "$project"
-    mkdir -p Debug bin src include lib
 }
 
 create_main() {
+    [[ -d src ]] && src="src" || src="."
     if [[ "$language" = "c" ]]; then
         {
             echo -e "#include <stdio.h>"
@@ -33,7 +32,7 @@ create_main() {
             echo -e "    printf(\"Hello world!\\\n\");"
             echo -e "    return 0;"
             echo -e "}"
-        } >> src/main.c
+        } >> "$src"/main.c
     elif [[ "$language" = "cpp" ]]; then
         {
             echo -e "#include <iostream>\n"
@@ -43,7 +42,7 @@ create_main() {
             echo -e "    cout << \"Hello world!\" << endl;"
             echo -e "    return 0;"
             echo -e "}"
-        } >> src/main.cpp
+        } >> "$src"/main.cpp
     else
     	exit 1
     fi
@@ -59,47 +58,19 @@ create_cmake() {
     } >> CMakeLists.txt
 }
 
-create_ccls() {
-    {
-        echo "clang"
-        echo "%c -std=c11"
-        echo "%cpp -std=c++2a"
-        echo "%h %hpp --include=Global.h"
-    } >> .ccls
-}
-
-create_vimspector() {
-    {
-        echo -e "{"
-        echo -e "	\"configurations\": {"
-        echo -e "		\"Launch\": {"
-        echo -e "			\"adapter\": \"vscode-cpptools\","
-        echo -e "			\"configuration\": {"
-        echo -e "				\"request\": \"launch\","
-        echo -e "				\"program\": \"Debug/$exe\","
-        echo -e "				\"cwd\": \"$PWD\","
-        echo -e "				\"externalConsole\": true,"
-        echo -e "				\"MIMode\": \"gdb\""
-        echo -e "			}"
-        echo -e "		}"
-        echo -e "	}"
-        echo -e "}"
-    } >> .vimspector.json
-}
-
 main() {
     read -r -p "Enter project name: " project
-    read -r -p "Enter execute file name: " exe
+    read -r -p "[S]impled or [E]xtended: " mode
+    [[ "$mode" = "extended" || "$mode" = "e" || "$mode" = "E" ]] && read -r -p "Enter execute file name: " exe
     read -r -p "'c' or 'cpp'?: " language
     [[ "$language" != "c" ]] && [[ "$language" != "cpp" ]] && exit 1
     
     create_folder
+    cd "$project" || exit 1
     create_main
-    create_cmake
-    create_ccls
-    create_vimspector
+    [[ "$mode" = "extended" || "$mode" = "e" || "$mode" = "E" ]] && create_cmake && mkdir -p Debug bin src include build data docs tests lib
     
-    echo -e "Create project successfully!\n"
+    echo -e "Create project successfully!"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

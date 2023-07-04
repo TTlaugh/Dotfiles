@@ -51,15 +51,21 @@ alias jctl="journalctl -p 3 -xb"
 ### CPU frequency monitoring
 alias cpufreq='watch grep \"cpu MHz\" /proc/cpuinfo'
 
-### Colorize grep output (good for log files)
+### Colorize commands when possible
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
+alias diff="diff --color=auto"
+alias ip="ip -color=auto"
 
 ### Nvim
 alias vi="nvim"
 alias suvi="sudoedit"
-alias vf='nvim `fzf`'
+vf() {
+    file="$(fzf)"
+    [[ -z "$file" ]] && exit 0
+    nvim $file
+}
 
 ### Vifm
 alias fm="$HOME/.config/vifm/scripts/vifmrun"

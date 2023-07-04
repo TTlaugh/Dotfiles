@@ -77,7 +77,8 @@ return require("lazy").setup({
                 ["<leader>t"] = { name = "+sw split type" },
                 ["<leader>d"] = { name = "+dap" },
                 ["<leader>w"] = { name = "+workspace" },
-                ["<leader>c"] = { name = "+code/cmake" },
+                ["<leader>c"] = { name = "+code" },
+                ["<leader>b"] = { name = "+build" },
             })
         end,
     },

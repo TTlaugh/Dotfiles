@@ -6,8 +6,7 @@ require("core.mappings").load_mappings("general")
 require("core.mappings").load_mappings("plugins")
 
 require("core.colorschemes").colorscheme(3)
---[[
-habamax is default colorscheme
+--[[ habamax is default colorscheme
 [1]  onedark
 [2]  tokyonight
 [3]  tokyonight-moon

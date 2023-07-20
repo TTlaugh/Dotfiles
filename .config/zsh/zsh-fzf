@@ -1,5 +1,8 @@
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+# Ubuntu:
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/completion.zsh
 
 [[ -n "$(command -v bat)" ]] && previewtool="bat -n --color=always --line-range :500" || previewtool="less"
 FD_OPTS="--hidden --follow --exclude .git"

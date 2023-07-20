@@ -16,19 +16,36 @@ vim.opt.rtp:prepend(lazypath)
 return require("lazy").setup({
 
     -- {{{ Libraries
-    { "https://github.com/nvim-lua/plenary.nvim" },
-    { "https://github.com/kyazdani42/nvim-web-devicons" },
+    { "https://github.com/nvim-lua/plenary.nvim" }, -- lua functions
+    { "https://github.com/kyazdani42/nvim-web-devicons" }, -- icons
+    { "https://github.com/MunifTanjim/nui.nvim" }, -- UI Component Library for Neovim.
     -- }}}
 
     -- {{{ UI
-    { "https://github.com/folke/tokyonight.nvim", lazy = false, priority = 1000 },
-    { "https://github.com/navarasu/onedark.nvim", lazy = false },
-    { "https://github.com/catppuccin/nvim", name = "catppuccin", lazy = false },
+    { "https://github.com/navarasu/onedark.nvim",
+        lazy = false, priority=1000,
+        opts = { style = "deep" }, -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    },
+    { "https://github.com/folke/tokyonight.nvim",
+        lazy = false, priority=1000,
+        opts = {},
+    },
+    { "https://github.com/catppuccin/nvim", name = "catppuccin",
+        lazy = false, priority=1000,
+        opts = {},
+    },
+
+    { "https://github.com/stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
 
     { "https://github.com/rcarriga/nvim-notify",
         lazy = false, -- event = "VeryLazy",
-        opts = {},
-        config = function()
+        opts = {
+            timeout = 3000,
+            stages = "static",
+            minimum_width = 30,
+        },
+        config = function(_,opts)
+            require("notify").setup(opts)
             vim.notify = require("notify")
         end
     },
@@ -82,7 +99,7 @@ return require("lazy").setup({
             })
         end,
     },
-        -- }}}
+    -- }}}
 
     -- {{{ Syntax highlighting
     { "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -93,16 +110,16 @@ return require("lazy").setup({
             ensure_installed = {
                 "c",
                 "cpp",
+                "cmake",
                 "bash",
                 "dockerfile",
                 "go",
                 "javascript",
+                "java",
                 "json",
                 "latex",
                 "lua",
-                "nix",
                 "python",
-                "rego",
                 "rust",
                 "typescript",
                 "yaml",
@@ -203,11 +220,17 @@ return require("lazy").setup({
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate", "LspInfo", "LspLog" },
         dependencies = {
-            { "https://github.com/williamboman/mason.nvim", build = ":MasonUpdate" },
+            "https://github.com/williamboman/mason.nvim",
             "https://github.com/williamboman/mason-lspconfig.nvim",
         },
-        config = function ()
+        config = function()
             require("plugins.configs.lsp")
+        end
+    },
+    { "https://github.com/mfussenegger/nvim-jdtls",
+        ft = { "java" },
+        config = function()
+            require("plugins.configs.lsp.jdtls")
         end
     },
     { "https://github.com/j-hui/fidget.nvim",
@@ -221,7 +244,11 @@ return require("lazy").setup({
     },
     { "https://github.com/folke/trouble.nvim",
         cmd = { "TroubleToggle", "Trouble" },
-        opts = { use_diagnostic_signs = true },
+        opts = {
+            use_diagnostic_signs = true,
+            auto_open = false,
+            auto_close = true,
+        },
     },
     -- }}}
 
@@ -239,7 +266,7 @@ return require("lazy").setup({
             local actions = require("telescope.actions")
             return {
                 defaults = {
-                    path_display = { "absolute" },
+                    path_display = { "truncate" },
                     file_ignore_patterns = { ".git/", "node_modules" },
                     prompt_prefix = "   ",
                     selection_caret = "  ",
@@ -276,11 +303,6 @@ return require("lazy").setup({
                     },
                 },
                 pickers = {
-                    find_files = {
-                        hidden = true,
-                        no_ignore = true,
-                        no_ignore_parent = true,
-                    },
                     buffers = {
                         sort_lastused = true,
                     },
@@ -406,10 +428,14 @@ return require("lazy").setup({
         cmd = { "CMakeGenerate", "CMakeBuild", "CMakeClose", "CMakeClean" },
         init = function() vim.g.cmake_link_compile_commands = 1 end,
     },
+    -- { "https://github.com/Civitasv/cmake-tools.nvim",
+    --     cmd = { "CMakeGenerate", "CMakeBuild", "CMakeRun", "CMakeClose", "CMakeClean" },
+    --     opts = { cmake_quickfix_opts = { size = 15 } },
+    -- }
     -- }}}
 
 },
-{ -- Lazy opts
-    defaults = { lazy = true },
-    install = { colorscheme = { "habamax" } },
-})
+    { -- Lazy opts
+        defaults = { lazy = true },
+        install = { colorscheme = { "habamax" } },
+    })

@@ -10,6 +10,7 @@ vim.opt.updatetime = 300
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
+vim.opt.confirm = true
 
 vim.opt.showmode = false
 vim.opt.laststatus = 3
@@ -55,7 +56,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
     pattern = "*",
-    command = "setlocal nonumber norelativenumber|startinsert",
+    command = "setlocal nonumber norelativenumber",
 }) -- Don't show line number and auto enter insert mode when open terminal
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -72,3 +73,8 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     end,
 }) -- Close some filetypes with <q>
+
+-- disable some default providers
+for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
+  vim.g["loaded_" .. provider .. "_provider"] = 0
+end

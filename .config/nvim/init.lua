@@ -19,3 +19,12 @@ require("core.colorschemes").colorscheme(3)
 [10] catppuccin-frappe
 [11] catppuccin-macchiato
 ]]
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyVimStarted",
+    callback = function()
+        local stats = require("lazy").stats()
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        vim.notify("⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms", vim.log.levels.INFO, { render = "minimal" })
+    end,
+})

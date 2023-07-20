@@ -1,7 +1,6 @@
 local M = {}
 
---[[
-habamax is default colorscheme
+--[[ habamax is default colorscheme
 [1]  onedark
 [2]  tokyonight
 [3]  tokyonight-moon
@@ -18,13 +17,7 @@ function M.colorscheme(name_or_index)
     local colorscheme = vim.cmd.colorscheme
 
     if (name_or_index == 1 or name_or_index == "onedark") then
-        local onedark_style = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }
-
-        local ok, onedark = pcall(require, "onedark")
-        if ok then
-            onedark.setup({ style = onedark_style[4] })
-            onedark.load()
-        end
+        colorscheme "onedark"
     elseif (name_or_index == 2 or name_or_index == "tokyonight") then
         colorscheme "tokyonight"
     elseif (name_or_index == 3 or name_or_index == "tokyonight-moon") then
@@ -46,8 +39,7 @@ function M.colorscheme(name_or_index)
     elseif (name_or_index == 11 or name_or_index == "catppuccin-macchiato") then
         colorscheme "catppuccin-macchiato"
     else
-        print("Can't load third party colorscheme!")
-        print("Use nvim's builtin colorscheme: 'habamax'")
+        vim.notify("Can't load third party colorscheme! Use nvim's builtin colorscheme: 'habamax'", vim.log.levels.WARN)
         colorscheme "habamax"
     end
 end

@@ -58,7 +58,7 @@ M.general = {
     { 'n'          ,'<leader>th'      , '<C-w>t<C-w>H'                                       , 'Switch to horizontal split'          },
     { 'n'          ,'<leader>tk'      , '<C-w>t<C-w>K'                                       , 'Switch to vertical split'            },
     { 'n'          ,'<A-t>'           , '<cmd> split|term <CR>'                              , 'Terminal in horiz split'             },
-    { 'n'          ,'<leader>bf'      , '<cmd> split|term compiler %:p  Run <CR>'           , 'Compile file from terminal'          },
+    { 'n'          ,'<leader>bf'      , '<cmd> split|term compiler %<CR>'                    , 'Compile file from terminal'          },
     { 't'          ,'<esc><esc>'      , '<c-\\><c-n>'                                        , 'Enter Normal mode'                   },
     { 'n'          ,'<C-x>'           , '<cmd> bdelete! <CR>'                                , 'Delete Buffer'                       },
     { 'n'          ,'<C-h>'           , '<cmd> bprev <CR>'                                   , 'Previous Buffer'                     },
@@ -75,6 +75,8 @@ M.plugins = {
     { 'n'          ,'<leader>?'       , '<cmd> Telescope oldfiles    <CR>'                   , '[?] Find recently files'             },
     { 'n'          ,'<leader><space>' , '<cmd> Telescope buffers     <CR>'                   , '[ ] Find buffers'                    },
     { 'n'          ,'<leader>ff'      , '<cmd> Telescope find_files  <CR>'                   , '[F]ind [F]iles'                      },
+    { 'n'          ,'<leader>fa'      ,
+        '<cmd> Telescope find_files hidden=true no_ignore=true <CR>'                         , '[F]ind [A]ll files'                  },
     { 'n'          ,'<leader>fh'      , '<cmd> Telescope help_tags   <CR>'                   , '[F]ind [H]elp'                       },
     { 'n'          ,'<leader>fw'      , '<cmd> Telescope grep_string <CR>'                   , '[F]ind current [W]ord'               },
     { 'n'          ,'<leader>fg'      , '<cmd> Telescope live_grep   <CR>'                   , '[F]ind by [G]rep'                    },
@@ -99,8 +101,8 @@ M.plugins = {
     { 'n'          ,'<leader>mp'      , '<cmd> MarkdownPreviewToggle <CR>'                   , '[M]arkdown [P]review'                },
     -- cmake
     { 'n'          ,'<leader>bg'      , '<cmd> CMakeGenerate <CR>'                           , '[G]enerate build system'             },
-    { 'n'          ,'<leader>bb'      , '<cmd> CMakeBuild <CR>'                              , '[B]uild a project'                   },
-    { 'n'          ,'<leader>bx'      , '<cmd> CMakeClose <CR>'                              , '[C]lose Cmake console window'        },
+    { 'n'          ,'<leader>bb'      , '<cmd> CMakeBuild    <CR>'                           , '[B]uild a project'                   },
+    { 'n'          ,'<leader>bc'      , '<cmd> CMakeClose    <CR>'                           , '[C]lose Cmake window'                },
     -- dap
     { 'n'          ,'<A-Left>'        , '<cmd> DapContinue <CR>'                             , ' DAP: Start/Continue'               },
     { 'n'          ,'<A-Right>'       , '<cmd> DapStepOver <CR>'                             , ' DAP: Step Over'                    },
@@ -112,16 +114,17 @@ M.plugins = {
     { 'n'          ,'<leader>du'      , '<cmd> lua require"dapui".toggle() <CR>'             , ' DAP: UI Toggle'                    },
     { 'n'          ,'<leader>dl'      , '<cmd> lua require"dap".run_last() <CR>'             , ' DAP: Rerun the last db adapter'    },
     -- leap
+    { {'n','v','o'}, '<space>'        ,
+        '<cmd> lua require("leap").leap{target_windows={vim.fn.win_getid()}}<CR>'            , '󰷺 Leap: current window'              },
     { {'n','x','o'}, 'm'              , '<Plug>(leap-forward-to)'                            , '󰷺 Leap: forward to'                  },
     { {'n','x','o'}, 'M'              , '<Plug>(leap-backward-to)'                           , '󰷺 Leap: backward to'                 },
     { {    'x','o'}, 'n'              , '<Plug>(leap-forward-till)'                          , '󰷺 Leap: forward till'                },
     { {    'x','o'}, 'N'              , '<Plug>(leap-backward-till)'                         , '󰷺 Leap: backward till'               },
     { {'n','v','o'}, 'g<space>'       , '<Plug>(leap-from-window)'                           , '󰷺 Leap: from window'                 },
-    { {'n','v','o'}, '<space>', '<cmd> lua require("leap").leap{target_windows={vim.fn.win_getid()}}<CR>', '󰷺 Leap: current window'  },
 }
 
 M.gitsigns = {
-    { 'n'       , ']c',
+    { 'n', ']c',
         function()
             if vim.wo.diff then return "]c" end
             vim.schedule(function() require("gitsigns").next_hunk() end)
@@ -130,7 +133,7 @@ M.gitsigns = {
         'Jump to next hunk',
         opts = { expr = true },
     },
-    { 'n'       , '[c',
+    { 'n', '[c',
         function()
             if vim.wo.diff then return "[c" end
             vim.schedule(function() require("gitsigns").prev_hunk() end)

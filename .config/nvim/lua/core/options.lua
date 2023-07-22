@@ -74,7 +74,10 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 }) -- Close some filetypes with <q>
 
--- disable some default providers
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
-end
+-- Disable some default providers
+for _, provider in ipairs {
+    -- "node",
+    -- "python3",
+    "perl",
+    "ruby",
+} do vim.g["loaded_" .. provider .. "_provider"] = 0 end

@@ -1,13 +1,13 @@
-local download_url  = "https://www.eclipse.org/downloads/download.php?file=/jdtls/snapshots/jdt-language-server-latest.tar.gz"
+local download_url = "https://www.eclipse.org/downloads/download.php?file=/jdtls/snapshots/jdt-language-server-latest.tar.gz"
 
-local jdtls_path    = vim.fn.expand("$HOME/.local/share/jdtls")
+local jdtls_path = vim.fn.expand("$HOME/.local/share/jdtls")
 
 local root_dir      = require('jdtls.setup').find_root({'gradlew', 'mvnw', '.git'} or vim.fn.getcwd())
 local workspace_dir = vim.fn.expand("$HOME/.cache/jdtls/workspace/") .. vim.fn.fnamemodify(root_dir, ':p:h:t')
 
-local path = {
-    java11 = vim.fn.glob("/usr/lib/jvm/java-11-openjdk*/"),
-    java17 = vim.fn.glob("/usr/lib/jvm/java-17-openjdk*/"),
+local java_path = {
+    v11 = vim.fn.glob("/usr/lib/jvm/java-11-openjdk*/"),
+    v17 = vim.fn.glob("/usr/lib/jvm/java-17-openjdk*/"),
 }
 
 local config = {
@@ -27,7 +27,7 @@ local config = {
     end,
 
     cmd = {
-        path.java17 .. '/bin/java',
+        java_path.v17 .. '/bin/java',
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -56,11 +56,11 @@ local config = {
                 runtimes = {
                     {
                         name = "JavaSE-11",
-                        path = path.java17,
+                        path = java_path.v11,
                     },
                     {
                         name = "JavaSE-17",
-                        path = path.java17,
+                        path = java_path.v17,
                     },
                 }
             }
@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 "",
                 "  You need to install jdtls to the path /home/nltt/ for it to work.",
                 "",
-                "  You can install it manually following this guide https://github.com/eclipse/eclipse.jdt.ls#installation",
+                "  Install it manually following this guide https://github.com/eclipse/eclipse.jdt.ls#installation",
                 "",
                 "  Or run this command:",
                 "",
@@ -122,5 +122,4 @@ vim.api.nvim_create_autocmd("VimEnter", {
         end
     end,
 })
-
 require('jdtls').start_or_attach(config)

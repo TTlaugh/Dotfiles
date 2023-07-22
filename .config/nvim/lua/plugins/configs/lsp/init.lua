@@ -6,6 +6,9 @@ if (not mason_ok) or (not mason_lspconfig_ok) then
   return
 end
 
+-- add binaries installed by mason.nvim to path
+vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. ":" .. vim.env.PATH
+
 --------
 -- UI --
 --------
@@ -62,6 +65,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
+    bashls = {},
     clangd = {},
     pyright = {},
 

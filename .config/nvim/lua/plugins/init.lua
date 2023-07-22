@@ -1,6 +1,6 @@
 -- vim:foldmethod=marker
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -22,33 +22,32 @@ return require("lazy").setup({
     -- }}}
 
     -- {{{ UI
-    { "https://github.com/navarasu/onedark.nvim",
-        lazy = false, priority=1000,
-        opts = { style = "deep" }, -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    },
     { "https://github.com/folke/tokyonight.nvim",
         lazy = false, priority=1000,
         opts = {},
     },
-    { "https://github.com/catppuccin/nvim", name = "catppuccin",
-        lazy = false, priority=1000,
-        opts = {},
-    },
+    -- { "https://github.com/catppuccin/nvim", name = "catppuccin",
+    --     lazy = false, priority=1000,
+    --     opts = {},
+    -- },
+    -- { "https://github.com/navarasu/onedark.nvim",
+    --     lazy = false, priority=1000,
+    --     opts = { style = "deep" }, -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    -- },
 
     { "https://github.com/stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
 
-    { "https://github.com/rcarriga/nvim-notify",
-        lazy = false, -- event = "VeryLazy",
-        opts = {
-            timeout = 3000,
-            stages = "static",
-            minimum_width = 30,
-        },
-        config = function(_,opts)
-            require("notify").setup(opts)
-            vim.notify = require("notify")
-        end
-    },
+    -- { "https://github.com/rcarriga/nvim-notify",
+    --     lazy = false, -- event = "VeryLazy",
+    --     opts = {
+    --         stages = "static",
+    --         minimum_width = 30,
+    --     },
+    --     config = function(_,opts)
+    --         require("notify").setup(opts)
+    --         vim.notify = require("notify")
+    --     end
+    -- },
     { "https://github.com/akinsho/bufferline.nvim",
         event = "VeryLazy",
         opts = {},
@@ -58,14 +57,33 @@ return require("lazy").setup({
         opts = {
             options = {
                 globalstatus = true,
-                component_separators = '|',
+                component_separators = '',
                 section_separators = '',
+            },
+            sections = {
+                lualine_x = {
+                    -- {
+                    --     function() if vim.fn.exists(':Codeium') > 0 then
+                    --         return '%{codeium#GetStatusString()}' else return '' end
+                    --     end,
+                    --     icon = { '󰚩 ', align = 'right'}, --󰚩 󰘦 {…}
+                    --     color = { fg = '#09b6a2', gui = 'bold' },
+                    -- },
+                    { 'filetype',
+                        padding = 2,
+                    },
+                    'encoding',
+                    { 'fileformat',
+                        icons_enabled = false,
+                        padding = { left = 0, right = 1 },
+                    },
+                },
             },
         },
     },
     { "https://github.com/lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
-        opts = {
+            opts = {
             char = "▏",
             show_trailing_blankline_indent = false,
             show_first_indent_level = false,
@@ -96,6 +114,7 @@ return require("lazy").setup({
                 ["<leader>w"] = { name = "+workspace" },
                 ["<leader>c"] = { name = "+code" },
                 ["<leader>b"] = { name = "+build" },
+                ["<leader>x"] = { name = "+diagnostics/quickfix" },
             })
         end,
     },
@@ -206,12 +225,25 @@ return require("lazy").setup({
                     { name = "nvim_lua" },
                     { name = "path" },
                 },
+                experimental = {
+                    ghost_text = false,
+                },
                 -- window = {
                 --     completion = cmp.config.window.bordered(),
                 --     documentation = cmp.config.window.bordered(),
                 -- },
             }
         end,
+    },
+    { "https://github.com/Exafunction/codeium.vim",
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            vim.g.codeium_manual = true
+            vim.g.codeium_no_map_tab = true
+            vim.g.codeium_filetypes = {
+                TelescopePrompt = false,
+            }
+        end
     },
     -- }}}
 
@@ -242,14 +274,14 @@ return require("lazy").setup({
             },
         },
     },
-    { "https://github.com/folke/trouble.nvim",
-        cmd = { "TroubleToggle", "Trouble" },
-        opts = {
-            use_diagnostic_signs = true,
-            auto_open = false,
-            auto_close = true,
-        },
-    },
+    -- { "https://github.com/folke/trouble.nvim",
+    --     cmd = { "TroubleToggle", "Trouble" },
+    --     opts = {
+    --         use_diagnostic_signs = true,
+    --         auto_open = false,
+    --         auto_close = true,
+    --     },
+    -- },
     -- }}}
 
     -- {{{ Search
@@ -401,7 +433,7 @@ return require("lazy").setup({
 
     { "https://github.com/kylechui/nvim-surround",
         event = "VeryLazy",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        version = "*",
         opts = {},
     },
 
@@ -437,5 +469,5 @@ return require("lazy").setup({
 },
     { -- Lazy opts
         defaults = { lazy = true },
-        install = { colorscheme = { "habamax" } },
+        install = { colorscheme = { "morning" } },
     })

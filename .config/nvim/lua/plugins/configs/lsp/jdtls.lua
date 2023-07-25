@@ -13,12 +13,12 @@ local java_path = {
 local config = {
     on_attach = function(_, bufnr)
         require("core.mappings").load_mappings("lspconfig", { buffer = bufnr })
-        vim.keymap.set('n', '<leader>jo', 'lua require("jdtls").organize_imports()    <CR>', 'jdtls: Organize imports', { buffer = bufnr })
-        vim.keymap.set('n', '<leader>jv', 'lua require("jdtls").extract_variable()    <CR>', 'jdtls: Extract variable', { buffer = bufnr })
-        vim.keymap.set('v', '<leader>jv', 'lua require("jdtls").extract_variable(true)<CR>', 'jdtls: Extract variable', { buffer = bufnr })
-        vim.keymap.set('n', '<leader>jc', 'lua require("jdtls").extract_constant()    <CR>', 'jdtls: Extract constant', { buffer = bufnr })
-        vim.keymap.set('v', '<leader>jc', 'lua require("jdtls").extract_constant(true)<CR>', 'jdtls: Extract constant', { buffer = bufnr })
-        vim.keymap.set('v', '<leader>jm', 'lua require("jdtls").extract_method(true)  <CR>', 'jdtls: Extract method'  , { buffer = bufnr })
+        vim.keymap.set('n', '<leader>jo', 'lua require("jdtls").organize_imports()    <CR>', { desc = 'jdtls: Organize imports', buffer = bufnr })
+        vim.keymap.set('n', '<leader>jv', 'lua require("jdtls").extract_variable()    <CR>', { desc = 'jdtls: Extract variable', buffer = bufnr })
+        vim.keymap.set('v', '<leader>jv', 'lua require("jdtls").extract_variable(true)<CR>', { desc = 'jdtls: Extract variable', buffer = bufnr })
+        vim.keymap.set('n', '<leader>jc', 'lua require("jdtls").extract_constant()    <CR>', { desc = 'jdtls: Extract constant', buffer = bufnr })
+        vim.keymap.set('v', '<leader>jc', 'lua require("jdtls").extract_constant(true)<CR>', { desc = 'jdtls: Extract constant', buffer = bufnr })
+        vim.keymap.set('v', '<leader>jm', 'lua require("jdtls").extract_method(true)  <CR>', { desc = 'jdtls: Extract method'  , buffer = bufnr })
 
         -- Create a command `:Format` local to the LSP buffer
         vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -73,7 +73,8 @@ local config = {
 }
 
 vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = { "*.java" },
+    group = vim.api.nvim_create_augroup("jdtls_screen", { clear = true }),
+    pattern = "*.java",
     callback = function()
         if vim.fn.empty(vim.fn.glob(jdtls_path.."/bin/jdtls")) > 0 then
             local text_on_screen = {
@@ -84,15 +85,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
                 "",
                 "  This configuration uses jdtls (Eclipse JDT Language Server) for Java.",
                 "",
-                "  You need to install jdtls to the path /home/nltt/ for it to work.",
+                "  You need to install jdtls to the path '"..jdtls_path.."' for it to work.",
                 "",
                 "  Install it manually following this guide https://github.com/eclipse/eclipse.jdt.ls#installation",
                 "",
                 "  Or run this command:",
                 "",
-                "mkdir -p '"..jdtls_path.."' &&\\",
-                "   wget -c '"..download_url.."' -O - |\\",
-                "      tar -xz -C  '"..jdtls_path.."'",
+                "   mkdir -p '"..jdtls_path.."' &&\\",
+                "       wget -c '"..download_url.."' -O - |\\",
+                "           tar -xz -C  '"..jdtls_path.."'",
                 "",
             }
             vim.cmd("echo ''|redraw") -- clear cmdline
@@ -112,9 +113,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
             vim.api.nvim_buf_set_lines(buf, 0, -1, false, text_on_screen) -- Append the text
 
             -- Adds a highlight to buffer.
-            local javalspnote = vim.api.nvim_create_namespace("javalspnote")
+            local jdtlsscreen = vim.api.nvim_create_namespace("jdtlsscreen")
             for i = 1, #text_on_screen do
-                vim.api.nvim_buf_add_highlight(buf, javalspnote, "string", i, 0, -1)
+                vim.api.nvim_buf_add_highlight(buf, jdtlsscreen, "string", i, 0, -1)
             end
 
             vim.api.nvim_buf_set_option(buf, "readonly", false) -- Make readonly again.
@@ -122,4 +123,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
         end
     end,
 })
-require('jdtls').start_or_attach(config)
+
+require("jdtls").start_or_attach(config)

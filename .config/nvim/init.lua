@@ -21,6 +21,7 @@ require("core.colorschemes").colorscheme(3)
 ]]
 
 vim.api.nvim_create_autocmd("User", {
+    group = vim.api.nvim_create_augroup("Startuptime", { clear = true }),
     pattern = "LazyVimStarted",
     callback = function()
         vim.cmd("echo '' | redraw")

@@ -130,7 +130,16 @@ yay -S - < aurlist.txt
 <details>
 <summary>Vifm</summary>
 
-[See here.](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/VIFM.md)
+- Copy [dracula.vifm](https://github.com/vifm/vifm-colors/blob/master/dracula.vifm), [dwmlight.vifm](https://github.com/vifm/vifm-colors/blob/master/dwmlight.vifm) to `~/.config/vifm/colors/`
+- Copy  **gitbranch**, **vifmrun** and **vifmimg** to `~/.config/vifm/scripts/`
+- Copy **myvifmrc** to `~/.config/vifm/`
+- In vifmrc files:
+    - Comment or delete the line that set default colorscheme.
+    - Search for `gvim` and comment or delete these lines.
+    - Add this to your vifmrc: `source $HOME/.config/vifm/myvifmrc`
+- If you want to have *image preview* then you need to read the **myvifmrc** and follow the steps in it (line 70).
+
+> NOTE: you must execute **vifmrun** script to use vifm with Ueberzug support. In other way, you can create symbolic links to add this script to PATH (assuming ~/.local/bin is in your system-wide PATH): `ln -sf ~/.config/vifm/scripts/vifmrun ~/.local/bin/ifm`
 </details>
 
 <details>
@@ -181,16 +190,28 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
   cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
   ```
 - Configure
-```
-line | config
------|---------------------------------------
-   9 | font_family      FiraCode Nerd Font
-  10 | bold_font        FiraCode Nerd Font Bold
-  11 | italic_font      FiraCode Nerd Font Italic
-  12 | bold_italic_font FiraCode Nerd Font Bold Italic
- 994 | background_opacity 0.9
-```
-- Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/davidmathers/tokyo-night-kitty-theme)
+    ```
+    #: Fonts
+    font_family      JetBrains Mono 
+    bold_font        JetBrains Mono Bold
+    italic_font      JetBrains Mono Italic
+    bold_italic_font JetBrains Mono Bold Italic
+    font_size 15.0
+    
+    #: Window layout
+    window_padding_width 5
+    hide_window_decorations yes
+    
+    #: Color scheme
+    background_opacity 0.9
+    
+    #: TokyoNight theme
+    include tokyonight_moon.conf
+    #: Dracula theme
+    # include dracula.conf
+    ```
+- Icons: download your favourite [icons](https://sw.kovidgoyal.net/kitty/faq/#i-do-not-like-the-kitty-icon) and edit `/usr/share/applications/kitty.desktop` to replace the `Icon` path
+- Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/folke/tokyonight.nvim/tree/main/extras/kitty)
 </details>
 
 <details>
@@ -263,7 +284,8 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
       - Roboto Mono (dunst)
       - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
       - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
-      - Fira Code (Kitty)
+      - Hack Nerd Font (Dmenu)
+      - JetBrains Mono (Kitty)
     </details>
   - <details>
     <summary>Nerd Fonts</summary>

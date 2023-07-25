@@ -1,3 +1,11 @@
+###### Ubuntu only ######
+### APT
+alias aptclean="sudo apt --purge autoremove && sudo apt autoclean sudo apt clean"
+alias aptremove="sudo apt remove --purge"
+### Remote-Touchpad
+alias reto="remote-touchpad -bind :55555 -secret UbuntuNLTT" # first, yout must run: sudo ufw allow 55555 (if you have ufw enabled)
+#########################
+
 ### Neofetch with my custom ascii art
 alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
 
@@ -68,7 +76,8 @@ vf() {
 }
 
 ### Vifm
-alias fm="$HOME/.config/vifm/scripts/vifmrun"
+# Or create symbolic links to add this script to PATH: ln -sf ~/.config/vifm/scripts/vifmrun ~/.local/bin/ifm
+alias ifm="$HOME/.config/vifm/scripts/vifmrun"
 
 ### Feh
 alias feh="feh --scale-down --auto-zoom"

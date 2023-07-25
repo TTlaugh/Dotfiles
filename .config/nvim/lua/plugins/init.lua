@@ -62,13 +62,13 @@ return require("lazy").setup({
             },
             sections = {
                 lualine_x = {
-                    -- {
-                    --     function() if vim.fn.exists(':Codeium') > 0 then
-                    --         return '%{codeium#GetStatusString()}' else return '' end
-                    --     end,
-                    --     icon = { '󰚩 ', align = 'right'}, --󰚩 󰘦 {…}
-                    --     color = { fg = '#09b6a2', gui = 'bold' },
-                    -- },
+                    {
+                        function() if vim.fn.exists(':Codeium') > 0 then
+                            return '%{codeium#GetStatusString()}' else return '' end
+                        end,
+                        icon = { '󰚩 ', align = 'right'}, --󰚩 󰘦 {…}
+                        color = { fg = '#09b6a2', gui = 'bold' },
+                    },
                     { 'filetype',
                         padding = 2,
                     },
@@ -88,13 +88,17 @@ return require("lazy").setup({
             show_trailing_blankline_indent = false,
             show_first_indent_level = false,
             show_current_context = true,
-            -- use_treesitter = true,
+            buftype_exclude = { "terminal" },
             filetype_exclude = {
                 "python",
                 "markdown",
                 "lspinfo",
-                "packer",
+                "lazy",
+                "mason",
+                "TelescopePrompt",
+                "TelescopeResults",
                 "checkhealth",
+                "terminal",
                 "help",
                 "man",
                 "",
@@ -355,6 +359,7 @@ return require("lazy").setup({
         config = function(_, opts)
             require("oil").setup(opts)
             vim.api.nvim_create_autocmd("FileType", {
+                group = vim.api.nvim_create_augroup("close_oil", { clear = true }),
                 pattern = "oil",
                 callback = function(event)
                     vim.bo[event.buf].buflisted = false

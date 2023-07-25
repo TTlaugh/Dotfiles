@@ -49,17 +49,38 @@ vim.opt.listchars = {
     precedes = '',
 }
 
+local function augroup(name)
+  return vim.api.nvim_create_augroup(name, { clear = true })
+end
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = "*",
+    group = augroup("not_cmt_newline"),
     command = "set fo-=c fo-=r fo-=o",
 }) -- Don't auto commenting new lines
 
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  group = augroup("resize_splits"),
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+}) -- resize splits if window got resized
+
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
-    pattern = "*",
+    group = augroup("term_no_numline"),
     command = "setlocal nonumber norelativenumber",
-}) -- Don't show line number and auto enter insert mode when open terminal
+}) -- Don't show line number
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("wrap_spell"),
+  pattern = { "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+}) -- wrap and check for spell in text filetypes
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = augroup("close_with_q"),
     pattern = {
         "help",
         "lspinfo",

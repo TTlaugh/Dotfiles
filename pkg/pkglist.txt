@@ -184,6 +184,7 @@ bat
 ripgrep
 fd
 jq
+bc
 exa
 network-manager-applet
 pacman-contrib
@@ -217,6 +218,9 @@ jdk-openjdk
 gcc
 gdb
 cmake
+
+socat
+moreutils
 
 adobe-source-code-pro-fonts
 awesome-terminal-fonts

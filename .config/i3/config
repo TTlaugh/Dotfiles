@@ -46,7 +46,7 @@
         exec --no-startup-id unclutter
         exec --no-startup-id picom --experimental-backends || picom
         exec --no-startup-id xset s off && xset -dpms && xset s noblank
-        exec --no-startup-id exec powersave
+        # exec --no-startup-id exec powersave
         exec --no-startup-id exec /home/nltt/.fehbg
         #exec --no-startup-id exec setsid -f /home/nltt/.scripts/aems
 
@@ -217,5 +217,5 @@
                 bindsym XF86MonBrightnessDown       exec --no-startup-id xbacklight -dec 10
 
 # Others
-    for_window [class="Sxiv"] floating enable
+    # for_window [class="Sxiv"] floating enable
     for_window [class="mpv"] floating enable

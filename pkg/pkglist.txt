@@ -11,13 +11,16 @@ mtools
 dosfstools
 exfat-utils
 ntfs-3g
+btrfs-progs
 intel-ucode
 #amd-ucode
 
-iptables-nft
 ufw
 networkmanager
+iptables-nft
 nfs-utils
+net-tools
+bridge-utils
 
 xorg-bdftopcf
 xorg-docs
@@ -98,14 +101,14 @@ gcr
 #wireplumber
 #helvum
 
-alsa-firmware
 alsa-plugins
 alsa-utils
-alsa-lib
+#alsa-firmware
+#alsa-lib
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
-pulseaudio-jack
+#pulseaudio-jack
 
 pamixer
 pulsemixer
@@ -114,10 +117,12 @@ bluez
 bluez-utils
 blueman
 
-android-tools
-android-udev
+#cups #enable is required
+
+usbutils
 udiskie
 udisks2
+mtpfs
 
 libxft
 libnotify
@@ -130,8 +135,9 @@ thermald
 
 xdg-user-dirs
 
-i3-gaps
+i3-wm
 i3status
+#i3status-rust
 
 qtile
 xcb-util-cursor
@@ -148,6 +154,7 @@ bzip2
 tar
 xz
 
+#picom
 neovim
 vim
 nano
@@ -168,19 +175,16 @@ ffmpegthumbnailer
 simplescreenrecorder
 atool
 feh
-sxiv
+nsxiv
 mpv
-moc
 imagemagick
 lxappearance-gtk3
-#picom
 fzf
 bat
 ripgrep
-the_silver_searcher
 fd
+jq
 exa
-net-tools
 network-manager-applet
 pacman-contrib
 zathura
@@ -192,9 +196,13 @@ unclutter
 dialog
 xclip
 xdotool
-fuse2
 rsync
 arandr
+dmidecode
+
+fuse2
+#fuse3
+#fuseiso
 
 kitty
 alacritty
@@ -205,36 +213,24 @@ chromium
 lightdm
 lightdm-slick-greeter
 
+jdk-openjdk
 gcc
 gdb
 cmake
 
 adobe-source-code-pro-fonts
-adobe-source-sans-fonts
-adobe-source-serif-fonts
 awesome-terminal-fonts
-libertinus-font
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
-noto-fonts-extra
-otf-fira-mono
-otf-fira-sans
 otf-font-awesome
 powerline-fonts
 terminus-font
 ttf-dejavu
 ttf-droid
 ttf-fira-code
-ttf-fira-mono
-ttf-fira-sans
 ttf-font-awesome
 ttf-hack
 ttf-jetbrains-mono
-ttf-joypixels
-ttf-junicode
-ttf-liberation
-ttf-opensans
 ttf-roboto
 ttf-roboto-mono
-ttf-ubuntu-font-family

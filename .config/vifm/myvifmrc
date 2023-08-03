@@ -1,5 +1,6 @@
-" vim: filetype=vim :
-
+""""""""""
+"  Marks "
+""""""""""
 mark h ~/
 mark c ~/.config/
 mark d ~/Documents/
@@ -8,29 +9,36 @@ mark s ~/.scripts/
 mark p ~/Dev/
 mark m ~/Github/MyGitHub/
 
-" Colorscheme
-colorscheme dracula
-" colorscheme dwmlight
+"""""""""""""""""
+"  Colorscheme  "
+"""""""""""""""""
+" colorscheme dark
+colorscheme light
 
-" Default editor (nvim)
-set vicmd=nvim
-" Use nvim for diff command
-command! diff nvim -d %f %F
-
-" Options
+"""""""""""""
+"  Options  "
+"""""""""""""
 only
 set number
 set relativenumber
+
+""""""""""""""""""""""""""
+"  Command and mappings  "
+""""""""""""""""""""""""""
 map af za
 map <c-j> 5j
 map <c-k> 5k
 map <space>f /
 map f<space> /
 map q :q<CR>
+" Default editor (nvim)
+set vicmd=nvim
+" Use nvim for diff command
+command! diff nvim -d %f %F
 
-" SXIV
-" use :sxiv command to list all images in current directory.
-command sxiv sxiv -ft .
+" NSXIV
+" use :nsxiv command to list all images in current directory.
+command nsxiv nsxiv -ft .
 
 " Feh
 command feho feh -d -g 800x600 --scale-down . &
@@ -49,6 +57,9 @@ map <space>c  :compressZ<CR>
 " space+c+t to compress .tar.xz
 map <space>ct :compressT<CR>
 
+""""""""""""""""
+"  Statusline  "
+""""""""""""""""
 " Default format with add more colors:
 " highlight User1 ctermfg=cyan
 " highlight User2 ctermfg=yellow
@@ -78,8 +89,8 @@ fileviewer {*.pdf},<application/pdf>
             \ vifmimg clear %N
 " Image
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-            \ {View in sxiv}
-            \ sxiv %f &,
+            \ {View in nsxiv}
+            \ nsxiv %f &,
             \ {View in feh}
             \ feh -d -g 800x600 --scale-down %c &,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
@@ -87,22 +98,22 @@ fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
             \ %pc
             \ vifmimg clear %N
 " Audio
-filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus, *.aac,*.mpga}, <audio/*>
+filetype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.aac,*.mpga},<audio/*>
             \ {Play using mpv}
             \ mpv %f,
             \ {Play using ffplay}
             \ ffplay -nodisp -autoexit %c,
-fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus, *.aac,*.mpga}, <audio/*>
+fileviewer {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.aac,*.mpga},<audio/*>
             \ vifmimg audio %px %py %pw %ph %c %N
             \ %pc
             \ vifmimg clear %N
 " Video
-filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob, *.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx, *.as[fx],*.unknown_video}, <video/*>
+filextype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx],*.unknown_video},<video/*>
             \ {View using mpv}
             \ mpv %f 2>/dev/null &,
             \ {View using ffplay}
             \ ffplay -fs -autoexit %f,
-fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob, *.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx, *.as[fx],*.unknown_video}, <video/*>
+fileviewer {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx],*.unknown_video},<video/*>
             \ vifmimg video %px %py %pw %ph %c %N
             \ %pc
             \ vifmimg clear %N
@@ -136,7 +147,7 @@ set classify+=' ::ledger::'
 set classify+=' ::license,,copyright,,copying,,LICENSE,,COPYRIGHT,,COPYING::'
 set classify+=' ::node_modules::'
 set classify+=' ::react.jsx::'
-set classify+=' ::.git/,,*.git/::'
+set classify+=' ::.git*/,,*.git/::'
 
 " File extensions
 set classify+='λ ::*.ml,,*.mli::'
@@ -190,3 +201,4 @@ set classify+=' ::*.log::'
 set classify+=' ::*.doc,,*.docx,,*.adoc::'
 set classify+=' ::*.xls,,*.xlsmx::'
 set classify+=' ::*.pptx,,*.ppt::'
+" vim:filetype=vim

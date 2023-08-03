@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Only exported variables can be used within the timer's command.
-export PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
+PRIMARY_DISPLAY="$(xrandr | awk '/ primary/{print $1}')"
+export PRIMARY_DISPLAY
 
 # Run xidlehook
 xidlehook \
@@ -11,11 +12,11 @@ xidlehook \
   --not-when-audio \
   `# Dim the screen after 5 minutes, undim if user becomes active` \
   --timer 300 \
-    'xrandr --output "$PRIMARY_DISPLAY" --brightness .3' \
-    'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
+    "xrandr --output $PRIMARY_DISPLAY --brightness .3" \
+    "xrandr --output $PRIMARY_DISPLAY --brightness 1" \
   `# Undim & turn off the display after 60 more seconds` \
   --timer 60 \
-    'xset dpms force off; xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
+    "xset dpms force off; xrandr --output $PRIMARY_DISPLAY --brightness 1" \
     '' \
   `# Finally, suspend after half an hour` \
   --timer 1800 \

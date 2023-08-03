@@ -10,19 +10,6 @@
     - dmtranslate (dt)
 
 
-
-NvChad:
-- Install:
-  - neovim
-  - nvchad
-  - checkhealth
-  - for C/C++: ccls, clangd
-    - clang
-    - llvm
-    - cmake
-    - git
-  
-
 mutt-wizard
 "$HOME/.local/share/mail/$acc/Junk/new/"\
 "$HOME/.local/share/mail/$acc/Junk/cur/"\
@@ -40,4 +27,3 @@ awesomewm
 how to adjust micro volume arch linux
 bluetooth headset volume
 lock - suspend
-nvchad

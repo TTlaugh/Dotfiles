@@ -1,6 +1,6 @@
 #!/bin/sh
 
-autostart="nm-applet unclutter powersave"
+autostart="nm-applet unclutter" # powersave
 for program in $autostart; do
     pidof -s "$program" || "$program" &
 done >/dev/null 2>&1

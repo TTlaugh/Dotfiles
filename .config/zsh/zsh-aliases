@@ -1,7 +1,7 @@
 ###### Ubuntu only ######
 ### APT
 alias aptclean="sudo apt --purge autoremove && sudo apt autoclean sudo apt clean"
-alias aptremove="sudo apt remove --purge"
+alias aptremove="sudo apt autoremove --purge"
 ### Remote-Touchpad
 alias reto="remote-touchpad -bind :55555 -secret UbuntuNLTT" # first, yout must run: sudo ufw allow 55555 (if you have ufw enabled)
 #########################
@@ -13,11 +13,11 @@ alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
 alias gitst="git status"
 alias gitaa="git add ."
 alias gitco="git commit -m"
-alias push="printf '' | xclip -selection clipboard && git push"
+alias push="printf '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' | xclip -selection clipboard && git push"
 alias pull="git pull"
 alias clone="git clone"
 
-### Changing "ls" to "exa"
+### Use `exa` instead of `ls`
 alias ll="exa -l --color=always --group-directories-first"
 alias la="exa -al --color=always --group-directories-first"
 alias ls="exa -a --color=always --group-directories-first"

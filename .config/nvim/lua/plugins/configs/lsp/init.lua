@@ -59,34 +59,47 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 -- CORE --
 ----------
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
-    shellcheck = {},
-    clangd = {},
-    pyright = {},
+local mason_list = {
+    -- Enable the following language servers
+    --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+    --
+    --  Add any additional override configuration in the following tables. They will be passed to
+    --  the `settings` field of the server config. You must look up that documentation yourself.
+    servers = {
+        bashls = {},
+        clangd = {},
+        pyright = {},
 
-    lua_ls = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.stdpath("config") .. "/lua"] = true,
+        lua_ls = {
+            Lua = {
+                diagnostics = {
+                    globals = { "vim" },
                 },
-            },
-            telemetry = {
-                enable = false,
+                workspace = {
+                    checkThirdParty = false,
+                    library = {
+                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                        [vim.fn.stdpath("config") .. "/lua"] = true,
+                    },
+                },
+                telemetry = {
+                    enable = false,
+                },
             },
         },
     },
+
+    -- DAP, Linter, Formatter (must be the full name)
+    others = {
+        "shellcheck",
+        "cpptools",
+    }
 }
+
+-- Custom cmd to install all mason binaries listed by mason_list.others
+vim.api.nvim_create_user_command("MasonInstallDLF", function()
+    vim.cmd("MasonInstall " .. table.concat(mason_list.others, " "))
+end, {desc = 'Install DAP, Linter, Formatter'})
 
 -- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -103,7 +116,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 mason_lspconfig.setup {
-    ensure_installed = vim.tbl_keys(servers),
+    ensure_installed = vim.tbl_keys(mason_list.servers),
     automatic_installation = true,
 }
 
@@ -112,7 +125,7 @@ mason_lspconfig.setup_handlers {
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
             on_attach = on_attach,
-            settings = servers[server_name],
+            settings = mason_list.servers[server_name],
         }
     end,
 }

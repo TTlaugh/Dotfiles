@@ -1,13 +1,5 @@
-xidlehook
 htop-vim
 i3lock-color
 picom-git
 simple-mtpfs
-shellcheck-bin
-ccls-git
-abook
-gotop
 sc-im
-shell-color-scripts
-teamviewer
-urlview

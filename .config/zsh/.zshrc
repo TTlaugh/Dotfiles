@@ -39,8 +39,5 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^e' edit-command-line
 
-### Random color script
-# colorscript random
-
 ### starship prompt
 eval "$(starship init zsh)"

@@ -1,16 +1,19 @@
-#!/bin/sh
+#!/usr/bin/env bash 
 
-autostart="nm-applet unclutter" # powersave
+autostart="nm-applet unclutter dunst" # powersave
 for program in $autostart; do
-    pidof -s "$program" || "$program" &
+    pidof -sx "$program" || "$program" &
 done >/dev/null 2>&1
 
 xset s off &
 xset -dpms &
 xset s noblank &
 
-#exec "$HOME"/.fehbg &
-feh --bg-fill ~/.config/qtile/images/qtile_bg.png &
+if [[ -f "$HOME/.fehbg" ]]; then
+    exec "$HOME"/.fehbg &
+else
+    feh --bg-fill ~/.config/qtile/images/qtile_bg.png &
+fi
 
 trayer \
    --edge top \

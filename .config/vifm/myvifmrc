@@ -3,17 +3,18 @@
 """"""""""
 mark h ~/
 mark c ~/.config/
-mark d ~/Documents/
+mark D ~/Documents/
+mark w ~/Downloads/
 mark t ~/tmp/
 mark s ~/.scripts/
-mark p ~/Dev/
+mark d ~/Dev/
 mark m ~/Github/MyGitHub/
 
 """""""""""""""""
 "  Colorscheme  "
 """""""""""""""""
-" colorscheme dark
-colorscheme light
+colorscheme dark
+" colorscheme light
 
 """""""""""""
 "  Options  "

@@ -36,7 +36,7 @@
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
-> Note: Install packages from pkglist will install 'intel-ucode' by default. To install amd-ucode instead, you have to edit *pkglist.txt* manually:
+> Note: Install packages from pkglist will install `intel-ucode` by default. To install `amd-ucode` instead, you have to edit *pkglist.txt* manually:
 >> **Comment line 14 and uncomment line 15.**
 
 ### Graphics card
@@ -77,7 +77,7 @@ yay -S - < aurlist.txt
   > - `sudo systemctl start/enable libvirtd`
   > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice 
-  > *jre-openjdk* package is needed for LibreOffice Database.
+  > `jre-openjdk` is needed for LibreOffice Database.
 - grub-customizer
 - openssh
 - reflector
@@ -105,11 +105,13 @@ yay -S - < aurlist.txt
 
 # Configuration
 
+> Before you use this configuration you need copy `.profile` and `.Xresources` to your home directory.
+
 <details>
 <summary>Lightdm, lightdm-slick-greeter</summary>
 
 #### Lightdm
-- Edit config file in ***/etc/lightdm/lightdm.conf***
+- Edit config file in */etc/lightdm/lightdm.conf*
   ```
   [Seat:*]
   .....
@@ -119,8 +121,8 @@ yay -S - < aurlist.txt
   .....
   ```
 ##### lightdm-slick-greeter
-- Copy the picture you want to set background to ***/usr/share/backgrounds/***
-- Create slick-greeter.conf as /etc/lightdm/slick-greeter.conf and edit:
+- Copy the picture you want to set background to */usr/share/backgrounds/*
+- Create *slick-greeter.conf* as */etc/lightdm/slick-greeter.conf* and edit:
   ```
   [Greeter]
   background=/usr/share/backgrounds/<picture>
@@ -145,8 +147,8 @@ yay -S - < aurlist.txt
 <details>
 <summary>zsh</summary>
 
-- Copy ***zsh*** folder to ***~/.config/***
-- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into ***~/.config/zsh/plugins/***
+- Copy ***zsh*** folder to **~/.config/**
+- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into **~/.config/zsh/plugins/**
 ```
 cd ~/.config/zsh/plugins
 ```
@@ -156,12 +158,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git
 ```
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 ```
-- Install [Starship prompt](https://starship.rs) and copy ***starship.toml*** file to ***~/.config/***
+- Install [Starship prompt](https://starship.rs) and copy **starship.toml*** file to ***~/.config/***
 > Starship is available on the official repository.
 </details>
 
-<detail
-s>
+<details>
 <summary>Neovim</summary>
 
 - Requirements:
@@ -175,6 +176,7 @@ s>
     - nodejs & npm
     - clipboard: `xclip`
     - See `help provider`, `checkhealth provider`
+- Usage: Copy **nvim** folder to **~/.config/**
 </details>
 
 <details>

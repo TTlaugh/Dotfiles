@@ -50,7 +50,7 @@ vim.opt.listchars = {
 }
 
 local function augroup(name)
-  return vim.api.nvim_create_augroup(name, { clear = true })
+    return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -58,26 +58,38 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     command = "set fo-=c fo-=r fo-=o",
 }) -- Don't auto commenting new lines
 
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    group = augroup("rm_whitespace_onsave"),
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+}) -- Remove trailing white space on save
+
 vim.api.nvim_create_autocmd({ "VimResized" }, {
-  group = augroup("resize_splits"),
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
-}) -- resize splits if window got resized
+    group = augroup("resize_splits"),
+    callback = function()
+        vim.cmd("tabdo wincmd =")
+    end,
+}) -- Resize splits if window got resized
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
     group = augroup("term_no_numline"),
     command = "setlocal nonumber norelativenumber",
-}) -- Don't show line number
+}) -- Don't show line number in terminal
+
+vim.api.nvim_create_autocmd({ "TermClose" }, {
+    group = augroup("term_close"),
+    pattern = "term://*",
+    command = "bdelete! " .. vim.fn.expand('<abuf'),
+}) -- Close terminal buffer on process exit
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("wrap_spell"),
-  pattern = { "gitcommit", "markdown" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
-}) -- wrap and check for spell in text filetypes
+    group = augroup("wrap_spell"),
+    pattern = { "gitcommit", "markdown" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
+}) -- Wrap and check for spell in text filetypes
 
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("close_with_q"),

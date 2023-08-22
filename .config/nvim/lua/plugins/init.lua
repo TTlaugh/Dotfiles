@@ -30,10 +30,10 @@ return require("lazy").setup({
     --     lazy = false, priority=1000,
     --     opts = {},
     -- },
-    -- { "https://github.com/navarasu/onedark.nvim",
-    --     lazy = false, priority=1000,
-    --     opts = { style = "deep" }, -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    -- },
+    { "https://github.com/navarasu/onedark.nvim",
+        lazy = false, priority=1000,
+        opts = { style = "deep" }, -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+    },
 
     { "https://github.com/stevearc/dressing.nvim", event = "VeryLazy", opts = {} },
 
@@ -474,5 +474,5 @@ return require("lazy").setup({
 },
     { -- Lazy opts
         defaults = { lazy = true },
-        install = { colorscheme = { "morning" } },
+        install = { colorscheme = { "habamax" } },
     })

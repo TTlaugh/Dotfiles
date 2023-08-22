@@ -13,7 +13,7 @@ c=(
     "$(printf '\033[1;37m')"    # Bold Grey
 )
 
-ifexists() {
+ifexist() {
     if [[ -f "$1" ]]; then
         echo "Aborted: ’$1’ exists"
     elif [[ -d "$1"  ]]; then
@@ -24,7 +24,7 @@ ifexists() {
 }
 
 create_main() {
-    ifexists "$1" && return
+    ifexist "$1" && return
     [[ -d src ]] && src="src" || src="."
     filename="$1"
     lang="${filename##*.}"
@@ -57,7 +57,7 @@ create_main() {
 }
 
 create_cmake() {
-    ifexists "CMakeLists.txt" && return
+    ifexist "CMakeLists.txt" && return
     {
         echo -e "cmake_minimum_required(VERSION 3.10)"
         echo -e "project($1 VERSION 1.0)"
@@ -73,7 +73,7 @@ create_cmake() {
 }
 
 creat_clangd_conf() {
-    ifexists ".clangd" && return
+    ifexist ".clangd" && return
     {
         echo "If:"
         echo "  PathMatch: .*\.cpp"
@@ -101,7 +101,7 @@ create_project() {
     printf "%s Execute file name: %s" "${c[1]}" "${c[0]}" && read -r exe
     echo
 
-    ifexists "$project" && return
+    ifexist "$project" && return
     [[ "$lang" != "c" && "$lang" != "cpp" ]] && lang="cpp"
 
     mkdir "$project" && cd "$project"

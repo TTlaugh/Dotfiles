@@ -69,7 +69,6 @@ local mason_list = {
         bashls = {},
         clangd = {},
         pyright = {},
-
         lua_ls = {
             Lua = {
                 diagnostics = {
@@ -99,7 +98,7 @@ local mason_list = {
 -- Custom cmd to install all mason binaries listed by mason_list.others
 vim.api.nvim_create_user_command("MasonInstallDLF", function()
     vim.cmd("MasonInstall " .. table.concat(mason_list.others, " "))
-end, {desc = 'Install DAP, Linter, Formatter'})
+end, { desc = 'Install DAP, Linter, Formatter' })
 
 -- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)

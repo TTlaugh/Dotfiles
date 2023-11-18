@@ -200,6 +200,7 @@ xdotool
 rsync
 arandr
 dmidecode
+translate-shell
 
 fuse2
 #fuse3

@@ -76,11 +76,11 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     command = "setlocal nonumber norelativenumber",
 }) -- Don't show line number in terminal
 
-vim.api.nvim_create_autocmd({ "TermClose" }, {
-    group = augroup("term_close"),
-    pattern = "term://*",
-    command = "bdelete! " .. vim.fn.expand('<abuf'),
-}) -- Close terminal buffer on process exit
+-- vim.api.nvim_create_autocmd({ "TermClose" }, {
+--     group = augroup("term_close"),
+--     pattern = "term://*",
+--     command = "bdelete! " .. vim.fn.expand('<abuf'),
+-- }) -- Close terminal buffer on process exit
 
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("wrap_spell"),

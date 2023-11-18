@@ -92,7 +92,7 @@ M.plugins = {
     { 'n'          ,'<leader>xl'      , '<cmd> TroubleToggle loclist <CR>'                   , 'Trouble: Location List'              },
     { 'n'          ,'<leader>xq'      , '<cmd> TroubleToggle quickfix <CR>'                  , 'Trouble: Quickfix List'              },
     -- notify
-    { 'n'          ,'<backspace>'     , '<cmd> lua require("notify").dismiss() <CR>'         , 'Dismiss all Notifications'           },
+    -- { 'n'          ,'<backspace>'     , '<cmd> lua require("notify").dismiss() <CR>'         , 'Dismiss all Notifications'           },
     -- colorizer
     { 'n'          ,'<leader>h'       , '<cmd> ColorizerToggle <CR>'                         , '[C]olorizer'                         },
     -- oil

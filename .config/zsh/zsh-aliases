@@ -1,9 +1,13 @@
 ###### Ubuntu only ######
 ### APT
-alias aptclean="sudo apt --purge autoremove && sudo apt autoclean sudo apt clean"
-alias aptremove="sudo apt autoremove --purge"
+alias aptclean="sudo apt autoremove --purge && sudo apt autoclean && sudo apt clean"
+alias aptremove="sudo apt remove --purge"
 ### Remote-Touchpad
 alias reto="remote-touchpad -bind :55555 -secret UbuntuNLTT" # first, yout must run: sudo ufw allow 55555 (if you have ufw enabled)
+### Graphics Card
+alias psi="sudo prime-select intel && echo -e '\nLOGOUT IS REQUIRED!'"
+alias psn="sudo prime-select nvidia && echo -e '\nLOGOUT IS REQUIRED!'"
+alias gpufreq="watch -n0.1 nvidia-smi"
 #########################
 
 ### Neofetch with my custom ascii art
@@ -13,7 +17,7 @@ alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
 alias gitst="git status"
 alias gitaa="git add ."
 alias gitco="git commit -m"
-alias push="printf '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' | xclip -selection clipboard && git push"
+alias push="printf '' | xclip -selection clipboard && git push && killall xclip"
 alias pull="git pull"
 alias clone="git clone"
 
@@ -28,16 +32,16 @@ alias l.="exa -a | egrep '^\.'"
 up() {
     local d=""
     local limit="$1"
-    
+
     # Default to limit of 1
     if [ -z "$limit" ] || [ "$limit" -le 0 ]; then
         limit=1
     fi
-    
+
     for ((i=1;i<=limit;i++)); do
         d="../$d"
     done
-    
+
     # perform cd. Show error if cd fails
     if ! cd "$d"; then
         echo "Couldn't go up $limit dirs.";
@@ -72,12 +76,12 @@ alias suvi="sudoedit"
 vf() {
     file="$(fzf)"
     [[ -z "$file" ]] && exit 0
-    nvim $file
+    nvim "$file"
 }
 
 ### Vifm
 # Or create symbolic links to add this script to PATH: ln -sf ~/.config/vifm/scripts/vifmrun ~/.local/bin/ifm
-alias ifm="$HOME/.config/vifm/scripts/vifmrun"
+alias ifm="~/.config/vifm/scripts/vifmrun"
 
 ### Feh
 alias feh="feh --scale-down --auto-zoom"
@@ -92,7 +96,26 @@ mdtopdf() {
 
 ### Cheat
 cheat() {
-    curl "cheat.sh/$1"
+    old="$IFS"
+    IFS="+"
+    curl "cheat.sh/$*"
+    IFS="$old"
+}
+
+### Translate by translate-shell
+alias vtrans="trans -shell -brief :vi"
+alias etrans="trans -shell -brief :en"
+transtovi() {
+    t=$(trans -brief :vi "$*")
+    printf "%s" "$t" | xclip -sel clipboard
+    echo -e "$t"
+    killall xclip
+}
+transtoen() {
+    t=$(trans -brief :en "$*")
+    printf "%s" "$t" | xclip -sel clipboard
+    echo -e "$t"
+    killall xclip
 }
 
 ### Funny
@@ -108,8 +131,8 @@ alias pacR="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window
 alias supac="sudo pacman"
 alias pacRu="pacman -Qtdq | sudo pacman -Rns -"
 paclsdep() {
-    LC_ALL=C pacman -Qi $1 | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
+    LC_ALL=C pacman -Qi "$1" | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
 }
 paclsfile() {
-    pacman -Qlq $1 | grep -v '/$' | xargs -r du -h | sort -h
+    pacman -Qlq "$1" | grep -v '/$' | xargs -r du -h | sort -h
 }

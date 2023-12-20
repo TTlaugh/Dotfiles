@@ -22,16 +22,15 @@ mason.setup({
     }
 })
 
-local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-}
-
-for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+local function lspSymbol(name, icon)
+    local hl = "DiagnosticSign" .. name
+    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
+
+lspSymbol("Error", "󰅙")
+lspSymbol("Info", "󰋼")
+lspSymbol("Hint", "󰌵")
+lspSymbol("Warn", "")
 
 vim.diagnostic.config({
     signs = true,
@@ -78,8 +77,12 @@ local mason_list = {
                     checkThirdParty = false,
                     library = {
                         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                        [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
                         [vim.fn.stdpath("config") .. "/lua"] = true,
+                        [vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy"] = true,
                     },
+                    -- maxPreload = 100000,
+                    -- preloadFileSize = 10000,
                 },
                 telemetry = {
                     enable = false,

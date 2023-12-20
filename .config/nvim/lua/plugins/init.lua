@@ -1,6 +1,6 @@
 -- vim:foldmethod=marker
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -78,26 +78,26 @@ return require("lazy").setup({
     },
     { "https://github.com/lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
-            opts = {
-            char = "▏",
-            show_trailing_blankline_indent = false,
-            show_first_indent_level = false,
-            show_current_context = true,
-            buftype_exclude = { "terminal" },
-            filetype_exclude = {
-                "python",
-                "markdown",
-                "lspinfo",
-                "lazy",
-                "mason",
-                "TelescopePrompt",
-                "TelescopeResults",
-                "checkhealth",
-                "terminal",
-                "help",
-                "man",
-                "",
-            },
+        main = "ibl",
+        opts = {
+            indent = { char = "▏", tab_char = "→", },
+            scope = { enabled = false, },
+            exclude = {
+                filetypes = {
+                    "python",
+                    "markdown",
+                    "lspinfo",
+                    "lazy",
+                    "mason",
+                    "TelescopePrompt",
+                    "TelescopeResults",
+                    "checkhealth",
+                    "terminal",
+                    "help",
+                    "man",
+                    "",
+                },
+            }
         },
     },
     { "https://github.com/folke/which-key.nvim",
@@ -266,12 +266,7 @@ return require("lazy").setup({
     },
     { "https://github.com/j-hui/fidget.nvim",
         event = "VeryLazy",
-        version = "legacy",
-        opts = {
-            text = {
-                spinner = "dots",
-            },
-        },
+        opts = {},
     },
     -- { "https://github.com/folke/trouble.nvim",
     --     cmd = { "TroubleToggle", "Trouble" },
@@ -373,13 +368,18 @@ return require("lazy").setup({
             vim.api.nvim_create_autocmd({ "BufRead" }, {
                 group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
                 callback = function()
-                    vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
-                    if vim.v.shell_error == 0 then
-                        vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
-                        vim.schedule(function()
-                            require("lazy").load { plugins = { "gitsigns.nvim" } }
-                        end)
-                    end
+                    vim.fn.jobstart({"git", "-C", vim.loop.cwd(), "rev-parse"},
+                        {
+                            on_exit = function(_, return_code)
+                                if return_code == 0 then
+                                    vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+                                    vim.schedule(function()
+                                        require("lazy").load { plugins = { "gitsigns.nvim" } }
+                                    end)
+                                end
+                            end
+                        }
+                    )
                 end,
             })
         end,
@@ -450,10 +450,14 @@ return require("lazy").setup({
         cmd = "ColorizerToggle",
     },
 
-    { "https://github.com/iamcco/markdown-preview.nvim",
-        build = 'cd app && npm install',
-        init = function() vim.g.mkdp_filetypes = { 'markdown' } end,
-        ft = { 'markdown' },
+    {
+        "https://github.com/iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
     },
 
     { "https://github.com/cdelledonne/vim-cmake",

@@ -11,7 +11,6 @@ mtools
 dosfstools
 exfat-utils
 ntfs-3g
-btrfs-progs
 intel-ucode
 #amd-ucode
 
@@ -22,95 +21,39 @@ nfs-utils
 net-tools
 bridge-utils
 
-xorg-bdftopcf
-xorg-docs
-xorg-font-util
-xorg-fonts-encodings
-xorg-iceauth
-xorg-mkfontscale
 xorg-server
-xorg-server-common
-xorg-server-devel
-xorg-server-xephyr
-xorg-server-xnest
-xorg-server-xvfb
-xorg-sessreg
 xorg-setxkbmap
-xorg-smproxy
-xorg-x11perf
-xorg-xauth
-#xorg-xbacklight
-xorg-xcmsdb
-xorg-xcursorgen
-xorg-xdpyinfo
-xorg-xdriinfo
 xorg-xev
-xorg-xgamma
-xorg-xhost
-xorg-xinput
-xorg-xkbcomp
-xorg-xkbevd
-xorg-xkbutils
-xorg-xkill
-xorg-xlsatoms
-xorg-xlsclients
 xorg-xmodmap
-xorg-xpr
 xorg-xprop
 xorg-xrandr
 xorg-xrdb
-xorg-xrefresh
-xorg-xset
-xorg-xsetroot
-xorg-xvinfo
-xorg-xwayland
-xorg-xwd
 xorg-xwininfo
-xorg-xwud
 xorg-xinit
 
+#xorg-xbacklight
 acpilight
 
-xf86-input-elographics
 xf86-input-evdev
 xf86-input-libinput
-xf86-input-void
 
 mesa
 mesa-utils
-xf86-video-intel
+#xf86-video-intel
 
 intel-media-driver
 libva-intel-driver
 libva-mesa-driver
-libva-vdpau-driver
+libva-nvidia-driver
 
 ffmpeg
-gst-libav
-gst-plugins-bad
-gst-plugins-base
-gst-plugins-good
-gst-plugins-ugly
 gstreamer
+gst-libav
 gcr
 
-#pipewire
-#pipewire-pulse
-#pipewire-alsa
-#pipewire-jack
-#wireplumber
-#helvum
-
-alsa-plugins
-alsa-utils
-#alsa-firmware
-#alsa-lib
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
-#pulseaudio-jack
-
-pamixer
+pipewire
+pipewire-pulse
+wireplumber
 pulsemixer
 
 bluez
@@ -139,11 +82,11 @@ i3-wm
 i3status
 #i3status-rust
 
-qtile
-xcb-util-cursor
-python-psutil
-alsa-utils
-trayer
+#qtile
+#xcb-util-cursor
+#python-psutil
+#alsa-utils
+#trayer
 
 zip
 unzip
@@ -190,8 +133,7 @@ network-manager-applet
 pacman-contrib
 zathura
 zathura-pdf-poppler
-zathura-djvu
-zathura-ps
+zathura-pdf-mupdf
 dunst
 unclutter
 dialog

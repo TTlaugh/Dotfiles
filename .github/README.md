@@ -36,8 +36,9 @@
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
-> Note: Install packages from pkglist will install `intel-ucode` by default. To install `amd-ucode` instead, you have to edit *pkglist.txt* manually:
->> **Comment line 14 and uncomment line 15.**
+> Note: Install packages from pkglist will install `intel-ucode` by default. Replace `intel-ucode` by `amd-ucode` in *pkglist.txt* to install `amd-ucode` instead. <br>
+After install microcode, you must regenerate the GRUB configuration: <br>
+`grub-mkconfig -o /boot/grub/grub.cfg`
 
 ### Graphics card
 See Arch Wiki:
@@ -76,7 +77,7 @@ yay -S - < aurlist.txt
   > - `pacman -S libvirt iptables-nft qemu virt-manager`
   > - `sudo systemctl start/enable libvirtd`
   > - `sudo usermod -G libvirt -a <username>`
-- LibreOffice 
+- LibreOffice
   > `jre-openjdk` is needed for LibreOffice Database.
 - grub-customizer
 - openssh
@@ -205,19 +206,19 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 - Configure
     ```
     #: Fonts
-    font_family      JetBrains Mono 
+    font_family      JetBrains Mono
     bold_font        JetBrains Mono Bold
     italic_font      JetBrains Mono Italic
     bold_italic_font JetBrains Mono Bold Italic
     font_size 15.0
-    
+
     #: Window layout
     window_padding_width 5
     hide_window_decorations yes
-    
+
     #: Color scheme
     background_opacity 0.9
-    
+
     #: TokyoNight theme
     include tokyonight_moon.conf
     #: Dracula theme
@@ -228,50 +229,50 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
     # - Use additional nerd symbols
     # See https://github.com/be5invis/Iosevka/issues/248
     # See https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
-    
+
     # Seti-UI + Custom
     symbol_map U+E5FA-U+E6AC Symbols Nerd Font
-    
+
     # Devicons
     symbol_map U+E700-U+E7C5 Symbols Nerd Font
-    
+
     # Font Awesome
     symbol_map U+F000-U+F2E0 Symbols Nerd Font
-    
+
     # Font Awesome Extension
     symbol_map U+E200-U+E2A9 Symbols Nerd Font
-    
+
     # Material Design Icons
     symbol_map U+F0001-U+F1AF0 Symbols Nerd Font
-    
+
     # Weather
     symbol_map U+E300-U+E3E3 Symbols Nerd Font
-    
+
     # Octicons
     symbol_map U+F400-U+F532,U+2665,U+26A1 Symbols Nerd Font
-    
+
     # Powerline Symbols
     symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 Symbols Nerd Font
-    
+
     # Powerline Extra Symbols
     symbol_map U+E0A3,U+E0B4-U+E0C8,U+E0CA,U+E0CC-U+E0D4 Symbols Nerd Font
-    
+
     # IEC Power Symbols
     symbol_map U+23FB-U+23FE,U+2B58 Symbols Nerd Font
-    
+
     # Font Logos
     symbol_map U+F300-U+F32F Symbols Nerd Font
-    
+
     # Pomicons
     symbol_map U+E000-U+E00A Symbols Nerd Font
-    
+
     # Codicons
     symbol_map U+EA60-U+EBEB Symbols Nerd Font
-    
+
     # Additional sets
     symbol_map U+E276C-U+E2771 Symbols Nerd Font # Heavy Angle Brackets
     symbol_map U+2500-U+259F Symbols Nerd Font # Box Drawing
-    
+
     # Some symbols not covered by Symbols Nerd Font
     # nonicons contains icons in the range: U+F101-U+F27D
     # U+F167 is HTML logo, but YouTube logo in Symbols Nerd Font
@@ -347,7 +348,7 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 - Fonts
   - <details>
     <summary>Dependencies</summary>
-      
+
       - Roboto Mono (dunst)
       - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
       - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))

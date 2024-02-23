@@ -30,6 +30,10 @@ xorg-xrandr
 xorg-xrdb
 xorg-xwininfo
 xorg-xinit
+xorg-xinput
+xorg-xset
+xorg-xsetroot
+xorg-xdpyinfo
 
 #xorg-xbacklight
 acpilight
@@ -67,16 +71,19 @@ udiskie
 udisks2
 mtpfs
 
+man-db
+
 libxft
 libnotify
 polkit
 
-acpi
-acpid
+#acpi
+#acpid
 
 thermald
 
 xdg-user-dirs
+slock
 
 i3-wm
 i3status
@@ -98,6 +105,7 @@ tar
 xz
 
 #picom
+xcompmgr
 neovim
 vim
 nano
@@ -128,17 +136,18 @@ ripgrep
 fd
 jq
 bc
-exa
+eza
 network-manager-applet
 pacman-contrib
 zathura
 zathura-pdf-poppler
-zathura-pdf-mupdf
+#zathura-pdf-mupdf
 dunst
 unclutter
 dialog
 xclip
 xdotool
+slop
 rsync
 arandr
 dmidecode

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Description: Lock screen script.
-# Dependencies: i3lock or i3lock-color or betterlockscreen
+# Dependencies: i3lock or i3lock-color
 
 i3lock_color() {
     i3lock \
@@ -33,12 +33,7 @@ i3lock_color() {
     --clock                         \
     --indicator                     \
     --time-str="%H:%M"              \
-    --date-str="%A, %Y-%m-%d"       \
-    --greeter-text="Type password to unlock"
+    --date-str="%A, %Y-%m-%d"
 }
 
-if [[ -f /usr/bin/i3lock ]]; then
-    i3lock_color || i3lock -e -f -c 24283b
-elif [[ -f /usr/bin/betterlockscreen ]]; then
-    betterlockscreen -l
-fi
+[[ -f /usr/bin/i3lock ]] && (i3lock_color || i3lock -e -f -c 24283b) || exit 1

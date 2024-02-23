@@ -1,0 +1,58 @@
+#!/bin/sh
+
+SEP="│"
+printf "Loading moduls...\n" && sleep 1
+
+exec 2>&1
+printf "$$" > ~/.cache/pidofbar
+sec=0
+
+update_internet () {
+	internet="$(sb_internet)"
+}
+
+update_volume () {
+	volume="$(sb_volume)"
+}
+update_volume
+
+update_backlight () { 
+	backlight="$(sb_backlight)"
+}
+#update_backlight
+
+update_battery () {
+	battery="$(sb_battery)"
+}
+
+update_datetime () {
+	datetime="$(date "+%b %d %Y (%a) %H:%M")"
+}
+
+update_mics () {
+	weather=" $(curl -s 'wttr.in/?0T&format=%C+%f')"
+	pkgupdates=" $(checkupdates | wc -l)"
+	mics="$weather $SEP $pkgupdates"
+}
+
+display () { 
+	printf "%s\n" " $datetime $SEP $mics $SEP $internet $volume $backlight $battery "
+}
+
+# signals for each module to update while updating display. RTMIN is 34
+trap "update_volume;display" "RTMIN"
+trap "update_backlight;display" "RTMIN+1"
+
+while true
+do
+	# how many seconds each module updates
+	[ $(( sec % 10   )) -eq 0 ] && update_internet
+	[ $(( sec % 60   )) -eq 0 ] && update_battery
+	[ $(( sec % 5    )) -eq 0 ] && update_datetime
+	[ $(( sec % 3605 )) -eq 0 ] && update_mics
+
+	# how often the display updates
+	[ $((sec % 5 )) -eq 0 ] && display
+
+	sleep 1 & wait && sec=$((sec + 1))
+done

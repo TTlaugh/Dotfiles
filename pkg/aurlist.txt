@@ -1,5 +1,4 @@
 htop-vim
 i3lock-color
-picom-git
 simple-mtpfs
 sc-im

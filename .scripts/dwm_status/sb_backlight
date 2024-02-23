@@ -1,0 +1,8 @@
+#!/bin/sh
+
+read -r actual_brightness </sys/class/backlight/intel_backlight/actual_brightness
+read -r max_brightness </sys/class/backlight/intel_backlight/max_brightness
+
+brightness="$((actual_brightness*100/max_brightness))"
+
+printf "%s" "󰃟 $brightness%"

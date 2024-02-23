@@ -1,0 +1,96 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[[colors.indexed_colors]]
+color = "#ff966c"
+index = 16
+
+[[colors.indexed_colors]]
+color = "#c53b53"
+index = 17
+
+[colors.bright]
+black = "#444a73"
+blue = "#82aaff"
+cyan = "#86e1fc"
+green = "#c3e88d"
+magenta = "#c099ff"
+red = "#ff757f"
+white = "#c8d3f5"
+yellow = "#ffc777"
+
+[colors.normal]
+black = "#1b1d2b"
+blue = "#82aaff"
+cyan = "#86e1fc"
+green = "#c3e88d"
+magenta = "#c099ff"
+red = "#ff757f"
+white = "#828bb8"
+yellow = "#ffc777"
+
+[colors.primary]
+background = "#222436"
+foreground = "#c8d3f5"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 15.0
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "Hack Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "K"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "J"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageUp"
+key = "H"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageDown"
+key = "L"
+mods = "Control|Shift"
+
+[scrolling]
+history = 10000
+multiplier = 5
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[window]
+opacity = 0.9
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 5
+y = 5

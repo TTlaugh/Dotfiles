@@ -8,7 +8,7 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH="${HOME}/.local/bin:$PATH"
 fi
 if [ -d "$HOME/.scripts" ]; then
-    export PATH="${HOME}/.scripts:$PATH"
+    export PATH="$PATH:$(find ~/.scripts -type d | paste -sd ':' -)"
 fi
 
 ### Export

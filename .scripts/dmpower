@@ -13,7 +13,7 @@ esac
 
 wmpid(){ # This function is needed if there are multiple instances of the window manager.
 	tree="$(pstree -ps $$)"
-	tree="${tree#*$WM(}"
+	tree=${tree#*"$WM"(}
 	echo "${tree%%)*}"
 }
 

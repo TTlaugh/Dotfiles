@@ -12,7 +12,6 @@ dosfstools
 exfat-utils
 ntfs-3g
 intel-ucode
-#amd-ucode
 
 ufw
 networkmanager
@@ -43,7 +42,6 @@ xf86-input-libinput
 
 mesa
 mesa-utils
-#xf86-video-intel
 
 intel-media-driver
 libva-intel-driver
@@ -77,9 +75,6 @@ libxft
 libnotify
 polkit
 
-#acpi
-#acpid
-
 thermald
 
 xdg-user-dirs
@@ -87,13 +82,6 @@ slock
 
 i3-wm
 i3status
-#i3status-rust
-
-#qtile
-#xcb-util-cursor
-#python-psutil
-#alsa-utils
-#trayer
 
 zip
 unzip
@@ -104,7 +92,6 @@ bzip2
 tar
 xz
 
-#picom
 xcompmgr
 neovim
 vim
@@ -137,7 +124,6 @@ fd
 jq
 bc
 eza
-network-manager-applet
 pacman-contrib
 zathura
 zathura-pdf-poppler
@@ -152,6 +138,7 @@ rsync
 arandr
 dmidecode
 translate-shell
+socat
 
 fuse2
 #fuse3
@@ -160,7 +147,6 @@ fuse2
 kitty
 alacritty
 
-firefox
 chromium
 
 lightdm
@@ -170,9 +156,6 @@ jdk-openjdk
 gcc
 gdb
 cmake
-
-socat
-moreutils
 
 adobe-source-code-pro-fonts
 awesome-terminal-fonts

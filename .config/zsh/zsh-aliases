@@ -49,12 +49,12 @@ up() {
 }
 
 ### Confirm before overwriting something
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
 
 ### Verbose
-alias mkdir="mkdir -v"
+alias mkdir="mkdir -pv"
 alias rmdir="rmdir -v"
 
 ### Get error messages from journalctl

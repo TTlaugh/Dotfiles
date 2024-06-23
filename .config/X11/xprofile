@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# This file runs when a DM logs you into a graphical session.
+# If you use startx/xinit like a Chad, this file will also be sourced.
+
+#xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/X11/Xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+
+autostart="xcompmgr dunst unclutter"
+
+for program in $autostart; do
+	pidof -sx "$program" || "$program" &
+done >/dev/null 2>&1
+(pidof -sx wireplumber || wpctl status)>/dev/null 2>&1
+
+xset s off &
+xset -dpms &
+xset s noblank &
+
+if [ -f "$HOME"/.fehbg ]; then
+	. "$HOME"/.fehbg &
+else
+	feh --bg-fill "$HOME"/Github/MyGithub/Dotfiles/misc/img.jpg &
+fi
+
+# dwm status bar
+dwm_statusbar | dwm_setstatus &
+
+# Ensure that xrdb has finished running before moving on to start the WM/DE.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"

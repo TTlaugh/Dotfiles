@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Description: prime-run via dmenu
 # Dependencies: dmenu, nvidia-prime
 

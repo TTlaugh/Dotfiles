@@ -65,7 +65,7 @@ main() {
             ;;
         "font")
             ifnocache ".jpg" && fontpreview -i "$6" -o "${PCACHE}.jpg"
-            image "$1" "$2" "$3" "$4" "$5" "${PCACHE}.jpg"
+            preview "$1" "$2" "$3" "$4" "$5" "${PCACHE}.jpg"
             ;;
         *)
     esac

@@ -22,14 +22,6 @@ _comp_options+=(globdots)       # Include hidden files.
 ### Ignore upper and lowercase when TAB completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-### source aliases, vimode, fzf, plugins
-[ -f "$ZDOTDIR/zsh-aliases" ] && source "$ZDOTDIR"/zsh-aliases
-[ -f "$ZDOTDIR/zsh-bindkey" ] && source "$ZDOTDIR"/zsh-bindkey
-[ -f "$ZDOTDIR/zsh-vimode" ] && source "$ZDOTDIR"/zsh-vimode
-[ -f "$ZDOTDIR/zsh-fzf" ] && source "$ZDOTDIR"/zsh-fzf
-[ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] && source "$ZDOTDIR"/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] && source "$ZDOTDIR"/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 bindkey '^[[P' delete-char
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M visual '^[[P' vi-delete
@@ -38,6 +30,18 @@ bindkey -M visual '^[[P' vi-delete
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^e' edit-command-line
+
+### source aliases, vimode, fzf, plugins
+[ -f "$ZDOTDIR/zsh-aliases" ] && source "$ZDOTDIR"/zsh-aliases
+[ -f "$ZDOTDIR/zsh-bindkey" ] && source "$ZDOTDIR"/zsh-bindkey
+[ -f "$ZDOTDIR/zsh-vimode" ] && source "$ZDOTDIR"/zsh-vimode
+[ -f "$ZDOTDIR/zsh-fzf" ] && source "$ZDOTDIR"/zsh-fzf
+[ -d "$ZDOTDIR/plugins/zsh-autosuggestions" ] \
+    && source "$ZDOTDIR"/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    || git clone https://github.com/zsh-users/zsh-autosuggestions "$ZDOTDIR/plugins/zsh-autosuggestions"
+[ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] \
+    && source "$ZDOTDIR"/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZDOTDIR/plugins/zsh-syntax-highlighting"
 
 ### starship prompt
 eval "$(starship init zsh)"

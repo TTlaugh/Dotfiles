@@ -4,7 +4,7 @@ SEP="│"
 printf "Loading moduls...\n" && sleep 1
 
 exec 2>&1
-printf "$$" > ~/.cache/pidofbar
+printf "%s" "$$" > ~/.cache/pidofbar
 sec=0
 
 update_internet () {
@@ -16,7 +16,7 @@ update_volume () {
 }
 update_volume
 
-update_backlight () { 
+update_backlight () {
 	backlight="$(sb_backlight)"
 }
 #update_backlight
@@ -35,7 +35,7 @@ update_mics () {
 	mics="$weather $SEP $pkgupdates"
 }
 
-display () { 
+display () {
 	printf "%s\n" " $datetime $SEP $mics $SEP $internet $volume $backlight $battery "
 }
 

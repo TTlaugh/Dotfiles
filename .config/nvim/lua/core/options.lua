@@ -12,7 +12,7 @@ vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.confirm = true
 
-vim.opt.showmode = false
+-- vim.opt.showmode = false
 vim.opt.laststatus = 3
 
 vim.opt.ignorecase = true
@@ -48,6 +48,18 @@ vim.opt.listchars = {
     extends  = '',
     precedes = '',
 }
+
+vim.opt.statusline =
+    "%#Substitute# %Y %0*" .. -- filetype
+    " %f " ..                 -- path to file
+    "%m" ..                   -- modifed
+    "%r" ..                   -- readonly
+    "%=" ..                   -- separator
+    " %{&fileencoding} " ..   -- file encoding
+    "|" ..                    -- padding
+    " %{&fileformat} " ..     -- file format
+    "|" ..                    -- padding
+    " %c:%l/%L "              -- column at line per total lines
 
 local function augroup(name)
     return vim.api.nvim_create_augroup(name, { clear = true })

@@ -94,7 +94,6 @@ local mason_list = {
     -- DAP, Linter, Formatter (must be the full name)
     others = {
         "shellcheck",
-        "cpptools",
     }
 }
 

@@ -35,7 +35,7 @@ M.general = {
     -- { {'n', 'v'},'<Space>'         , '<Nop>'                                                                                      },
     { 'n'          ,'<leader>e'       , '<cmd> e $MYVIMRC <CR>'                              , '[E]dit init.lua'                     },
     { 'n'          ,'<leader>ll'      , '<cmd> set list! <CR>'                               , '[S]how [L]istchars'                  },
-    { 'n'          ,'<F4>'            , '<cmd> setlocal spell! spelllang=en_us<CR>'          , '暈Built-in spell-checker'            },
+    { 'n'          ,'<F4>'            , '<cmd> setlocal spell! spelllang=en_us<CR>'          , '󰓆 Built-in spell-checker'            },
     { 'n'          ,'<leader><F4>'    , '<cmd> normal! mz1z=`z <CR>'                         , ' Auto-fix misspelled word'          },
     { 'v'          ,'<C-r>'           , '"hy:%s/<C-r>h//gc<left><left><left>'                , '﯒ Find & replace selected words'     },
     { 'v'          ,'<S-p>'           , '"_dP'                                               , 'Replace text & do not copy'          },
@@ -71,48 +71,29 @@ M.general = {
 }
 
 M.plugins = {
-    { 'n'          ,'<leader>/'       , '<cmd> Telescope current_buffer_fuzzy_find <CR>'     , '[/] Find in current buffer'          },
-    { 'n'          ,'<leader>?'       , '<cmd> Telescope oldfiles    <CR>'                   , '[?] Find recently files'             },
-    { 'n'          ,'<leader><space>' , '<cmd> Telescope buffers     <CR>'                   , '[ ] Find buffers'                    },
-    { 'n'          ,'<leader>ff'      , '<cmd> Telescope find_files  <CR>'                   , '[F]ind [F]iles'                      },
-    { 'n'          ,'<leader>fa'      ,
-        '<cmd> Telescope find_files hidden=true no_ignore=true <CR>'                         , '[F]ind [A]ll files'                  },
-    { 'n'          ,'<leader>fh'      , '<cmd> Telescope help_tags   <CR>'                   , '[F]ind [H]elp'                       },
-    { 'n'          ,'<leader>fw'      , '<cmd> Telescope grep_string <CR>'                   , '[F]ind current [W]ord'               },
-    { 'n'          ,'<leader>fg'      , '<cmd> Telescope live_grep   <CR>'                   , '[F]ind by [G]rep'                    },
-    { 'n'          ,'<leader>fd'      , '<cmd> Telescope diagnostics <CR>'                   , '[F]ind [D]iagnostics'                },
-    { 'n'          ,'<leader>fk'      , '<cmd> Telescope keymaps     <CR>'                   , '[F]ind [K]eymaps'                    },
-    { 'n'          ,'<leader>ft'      , '<cmd> Telescope colorscheme enable_preview=true<CR>', '[F]ind [T]heme'                      },
-    { 'n'          ,'<leader>gc'      , '<cmd> Telescope git_commits <CR>'                   , '[G]it [C]ommits'                     },
-    { 'n'          ,'<leader>gs'      , '<cmd> Telescope git_status  <CR>'                   , '[G]it [S]tatus'                      },
-    { 'n'          ,'<leader>:'       , '<cmd> Telescope commands    <CR>'                   , '[:] Lists all commands'              },
-    -- trouble
-    { 'n'          ,'<leader>xx'      , '<cmd> TroubleToggle document_diagnostics <CR>'      , 'Trouble: Document Diagnostics'       },
-    { 'n'          ,'<leader>xz'      , '<cmd> TroubleToggle workspace_diagnostics <CR>'     , 'Trouble: Workspace Diagnostics'      },
-    { 'n'          ,'<leader>xl'      , '<cmd> TroubleToggle loclist <CR>'                   , 'Trouble: Location List'              },
-    { 'n'          ,'<leader>xq'      , '<cmd> TroubleToggle quickfix <CR>'                  , 'Trouble: Quickfix List'              },
-    -- notify
-    -- { 'n'          ,'<backspace>'     , '<cmd> lua require("notify").dismiss() <CR>'         , 'Dismiss all Notifications'           },
+    { 'n'          ,'<leader>/'       , '<cmd> FzfLua blines      <CR>'                      , '[/] Find in current buffer'          },
+    { 'n'          ,'<leader>?'       , '<cmd> FzfLua oldfiles    <CR>'                      , '[?] Find recently files'             },
+    { 'n'          ,'<leader><space>' , '<cmd> FzfLua buffers     <CR>'                      , '[ ] Find buffers'                    },
+    { 'n'          ,'<leader>ff'      , '<cmd> FzfLua files       <CR>'                      , '[F]ind [F]iles'                      },
+    { 'n'          ,'<leader>fh'      , '<cmd> FzfLua helptags    <CR>'                      , '[F]ind [H]elp'                       },
+    { 'n'          ,'<leader>fw'      , '<cmd> FzfLua grep_cword  <CR>'                      , '[F]ind current [W]ord'               },
+    { 'n'          ,'<leader>fg'      , '<cmd> FzfLua grep        <CR>'                      , '[F]ind by [G]rep'                    },
+    { 'n'          ,'<leader>fd'      , '<cmd> FzfLua diagnostics_document <CR>'             , '[F]ind [D]iagnostics'                },
+    { 'n'          ,'<leader>fk'      , '<cmd> FzfLua keymaps     <CR>'                      , '[F]ind [K]eymaps'                    },
+    { 'n'          ,'<leader>gf'      , '<cmd> FzfLua git_files   <CR>'                      , '[G]it [F]iles'                       },
+    { 'n'          ,'<leader>:'       , '<cmd> FzfLua commands    <CR>'                      , '[:] Lists all commands'              },
+    -- fugitive & mini.diff
+    { 'n'          ,'<leader>gs'      , '<cmd> Git <CR>'                                     , '[G]it [S]tatus'                      },
+    { 'n'          ,'<leader>gb'      , '<cmd> Git blame <CR>'                               , '[G]it [B]lame'                       },
+    { 'n'          ,'<leader>gd'      , '<cmd> Git diff <CR>'                                , '[G]it [D]iff'                        },
+    { 'n'          ,'<leader>gl'      , '<cmd> Git log <CR>'                                 , '[G]it [L]og'                         },
+    { 'n'          ,'<leader>go'      , require("mini.diff").toggle_overlay                  , '[G]it [O]verlay diff'                },
     -- colorizer
     { 'n'          ,'<leader>h'       , '<cmd> ColorizerToggle <CR>'                         , '[C]olorizer'                         },
     -- oil
     { 'n'          ,'-'               , '<cmd> Oil --float <CR>'                             , '[O]il file explorer'                 },
     -- markdownpreview
     { 'n'          ,'<leader>mp'      , '<cmd> MarkdownPreviewToggle <CR>'                   , '[M]arkdown [P]review'                },
-    -- cmake
-    { 'n'          ,'<leader>bg'      , '<cmd> CMakeGenerate <CR>'                           , '[G]enerate build system'             },
-    { 'n'          ,'<leader>bb'      , '<cmd> CMakeBuild    <CR>'                           , '[B]uild a project'                   },
-    { 'n'          ,'<leader>bc'      , '<cmd> CMakeClose    <CR>'                           , '[C]lose Cmake window'                },
-    -- dap
-    { 'n'          ,'<A-Left>'        , '<cmd> DapContinue <CR>'                             , ' DAP: Start/Continue'               },
-    { 'n'          ,'<A-Right>'       , '<cmd> DapStepOver <CR>'                             , ' DAP: Step Over'                    },
-    { 'n'          ,'<A-Down>'        , '<cmd> DapStepInto <CR>'                             , ' DAP: Step Into'                    },
-    { 'n'          ,'<A-Up>'          , '<cmd> DapStepOut <CR>'                              , ' DAP: Step Out'                     },
-    { 'n'          ,'<leader>db'      , '<cmd> DapToggleBreakpoint <CR>'                     , ' DAP: Breakpoint Toggle'            },
-    { 'n'          ,'<leader>dx'      , '<cmd> DapTerminate <CR>'                            , ' DAP: Terminate'                    },
-    { 'n'          ,'<leader>dr'      , '<cmd> DapToggleRepl <CR>'                           , ' DAP: Opens the REPL'               },
-    { 'n'          ,'<leader>du'      , '<cmd> lua require"dapui".toggle() <CR>'             , ' DAP: UI Toggle'                    },
-    { 'n'          ,'<leader>dl'      , '<cmd> lua require"dap".run_last() <CR>'             , ' DAP: Rerun the last db adapter'    },
     -- leap
     { {'n','v','o'}, '<space>'        ,
         '<cmd> lua require("leap").leap{target_windows={vim.fn.win_getid()}}<CR>'            , '󰷺 Leap: current window'              },
@@ -121,44 +102,25 @@ M.plugins = {
     { {    'x','o'}, 'n'              , '<Plug>(leap-forward-till)'                          , '󰷺 Leap: forward till'                },
     { {    'x','o'}, 'N'              , '<Plug>(leap-backward-till)'                         , '󰷺 Leap: backward till'               },
     { {'n','v','o'}, 'g<space>'       , '<Plug>(leap-from-window)'                           , '󰷺 Leap: from window'                 },
+    -- cmake
+    -- { 'n'          ,'<leader>bg'      , '<cmd> CMakeGenerate <CR>'                           , '[G]enerate build system'             },
+    -- { 'n'          ,'<leader>bb'      , '<cmd> CMakeBuild    <CR>'                           , '[B]uild a project'                   },
+    -- { 'n'          ,'<leader>bc'      , '<cmd> CMakeClose    <CR>'                           , '[C]lose Cmake window'                },
     -- Codeium
-    { 'i'          , '<A-c>'     ,
-        function() require("cmp").abort() return vim.fn['codeium#Complete']()             end, "Codeium: Get"   , opts={expr = true} },
-    { 'i'          , '<A-a>'     , function()return vim.fn['codeium#Accept']()            end, "Codeium: Accept", opts={expr = true} },
-    { 'i'          , '<A-d>'     , function()return vim.fn['codeium#CycleCompletions'](1) end, "Codeium: Next"  , opts={expr = true} },
-    { 'i'          , '<A-s>'     , function()return vim.fn['codeium#CycleCompletions'](-1)end, "Codeium: Prev"  , opts={expr = true} },
-    { 'i'          , '<A-x>'     , function()return vim.fn['codeium#Clear']()             end, "Codeium: Clear" , opts={expr = true} },
-}
-
-M.gitsigns = {
-    { 'n', ']c',
-        function()
-            if vim.wo.diff then return "]c" end
-            vim.schedule(function() require("gitsigns").next_hunk() end)
-            return "<Ignore>"
-        end,
-        'Jump to next hunk',
-        opts = { expr = true },
-    },
-    { 'n', '[c',
-        function()
-            if vim.wo.diff then return "[c" end
-            vim.schedule(function() require("gitsigns").prev_hunk() end)
-            return "<Ignore>"
-        end,
-        'Jump to prev hunk',
-        opts = { expr = true },
-    },
+    -- { 'i'          , '<A-c>'     ,
+    --     function() require("cmp").abort() return vim.fn['codeium#Complete']()             end, "Codeium: Get"   , opts={expr = true} },
+    -- { 'i'          , '<A-a>'     , function()return vim.fn['codeium#Accept']()            end, "Codeium: Accept", opts={expr = true} },
+    -- { 'i'          , '<A-d>'     , function()return vim.fn['codeium#CycleCompletions'](1) end, "Codeium: Next"  , opts={expr = true} },
+    -- { 'i'          , '<A-s>'     , function()return vim.fn['codeium#CycleCompletions'](-1)end, "Codeium: Prev"  , opts={expr = true} },
+    -- { 'i'          , '<A-x>'     , function()return vim.fn['codeium#Clear']()             end, "Codeium: Clear" , opts={expr = true} },
 }
 
 M.lspconfig = {
     { 'n', 'K'         , vim.lsp.buf.hover,                                                       'LSP: Hover Documentation'         },
     { 'n', '<C-k>'     , vim.lsp.buf.signature_help,                                              'LSP: Signature Documentation'     },
-    { 'n', 'gd'        , "<cmd>Telescope lsp_definitions<CR>",                                    'LSP: [G]oto [D]efinition'         },
-    -- { 'n', 'gd'        , vim.lsp.buf.definition,                                                  'LSP: [G]oto [D]efinition'         },
+    { 'n', 'gd'        , vim.lsp.buf.definition,                                                  'LSP: [G]oto [D]efinition'         },
     { 'n', 'gD'        , vim.lsp.buf.declaration,                                                 'LSP: [G]oto [D]eclaration'        },
-    { 'n', 'gr'        , '<cmd> Telescope lsp_references <CR>',                                   'LSP: [G]oto [R]eferences'         },
-    -- { 'n', 'gr'        , vim.lsp.buf.references,                                                  'LSP: [G]oto [R]eferences'         },
+    { 'n', 'gr'        , vim.lsp.buf.references,                                                  'LSP: [G]oto [R]eferences'         },
     { 'n', 'gI'        , vim.lsp.buf.implementation,                                              'LSP: [G]oto [I]mplementation'     },
     { 'n', '<leader>rn', vim.lsp.buf.rename,                                                      'LSP: [R]e[n]ame'                  },
     { 'n', '<leader>ca', vim.lsp.buf.code_action,                                                 'LSP: [C]ode [A]ction'             },

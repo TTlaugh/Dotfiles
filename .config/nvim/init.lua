@@ -5,19 +5,13 @@ require("plugins")
 require("core.mappings").load_mappings("general")
 require("core.mappings").load_mappings("plugins")
 
-require("core.colorschemes").colorscheme(3)
+require("core.colorschemes").colorscheme(2)
 --[[ habamax is default colorscheme
-[1]  onedark
-[2]  tokyonight
-[3]  tokyonight-moon
-[4]  tokyonight-storm
-[5]  tokyonight-night
-[6]  tokyonight-day
-[7]  catppuccin
-[8]  catppuccin-mocha
-[9]  catppuccin-latte
-[10] catppuccin-frappe
-[11] catppuccin-macchiato
+[1]  tokyonight
+[2]  tokyonight-moon
+[3]  tokyonight-storm
+[4]  tokyonight-night
+[5]  tokyonight-day
 ]]
 
 vim.api.nvim_create_autocmd("User", {

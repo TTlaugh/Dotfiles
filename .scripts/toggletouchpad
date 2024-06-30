@@ -9,19 +9,19 @@ TouchpadID="$(xinput | grep -i 'touchpad' | grep -Eo 'id=[0-9]{1,2}')"
 TouchpadID="${TouchpadID#id=}"
 
 toggle () {
-        isEnable="$(xinput list-props $TouchpadID | awk 'NR==2{print $4}')"
+        isEnable="$(xinput list-props "$TouchpadID" | awk 'NR==2{print $4}')"
         if [ "$isEnable" = 1 ]; then
-                xinput disable $TouchpadID
+                xinput disable "$TouchpadID"
                 notify-send "Touchpad" "disabled"
         else
-                xinput enable $TouchpadID
+                xinput enable "$TouchpadID"
                 notify-send "Touchpad" "enabled"
         fi
 }
 
 case "$@" in
         "") toggle;;
-        "enable") xinput enabled $TouchpadID;;
-        "disable") xinput disable $TouchpadID;;
+        "enable") xinput enabled "$TouchpadID";;
+        "disable") xinput disable "$TouchpadID";;
         *) exit 1;;
 esac

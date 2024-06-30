@@ -98,9 +98,7 @@ vim
 nano
 zsh
 starship
-tmux
-neofetch
-rofi
+fastfetch
 git
 wget
 curl

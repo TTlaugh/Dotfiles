@@ -16,7 +16,7 @@ fi
 ### Default programs:
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="chromium"
 
 ### ~/ Clean-up:

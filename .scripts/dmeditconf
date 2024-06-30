@@ -7,8 +7,8 @@ set -euo pipefail
 
 # This script use st terminal and nvim as default.
 # You can use other apps by changing the DMTERM and DMEDITOR variables.
-DMTERM="st"
-DMEDITOR="nvim"
+DMTERM="$TERMINAL"
+DMEDITOR="$EDITOR"
 
 declare -A confedit_list
 # List of files ####################################################

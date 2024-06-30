@@ -1,16 +1,12 @@
 [Unit]
-Description = Lock screen when going to sleep/suspend
+Description=Lock X session using slock for user %i
 Before=sleep.target
-Before=suspend.target
 
 [Service]
 User=%i
-Type=forking
 Environment=DISPLAY=:0
-ExecStart=/home/%i/.scripts/lockscreen
-ExecStartPost=/usr/bin/sleep 1
-TimeoutSec=infinity
+ExecStartPre=/usr/bin/xset dpms force suspend
+ExecStart=/usr/bin/slock
 
 [Install]
 WantedBy=sleep.target
-WantedBy=suspend.target

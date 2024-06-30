@@ -6,7 +6,7 @@
 set -euo pipefail
 
 saveas() {
-    echo "$(echo -e "$HOME/screenshot_$(date +'%y%m%d_%H%M-%S').png\n$(find "$HOME" -maxdepth 2 -type d -not -path '*/\.*')" | dmenu -l 10 -i -p "Save as:")"
+    echo -e "$HOME/screenshot_$(date +'%y%m%d_%H%M-%S').png\n$(find "$HOME" -maxdepth 2 -type d -not -path '*/\.*')" | dmenu -l 10 -i -p "Save as:"
 }
 
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in

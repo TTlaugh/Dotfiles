@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# Description: prime-run via dmenu
-# Dependencies: dmenu, nvidia-prime
-
-set -euo pipefail
-
-program=$(dmenu_path | dmenu "$@" -p "PRIME-RUN:")
-
-/usr/bin/prime-run "$program" &

@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # You can change default browser by modifying DMBROWSER variable.
-DMBROWSER="chromium"
+DMBROWSER="$BROWSER"
 
 declare -A websearch
 # Syntax:
@@ -64,7 +64,7 @@ main() {
   query="$(echo "${query}" | jq -s -R -r @uri)"
 
   # shellcheck disable=SC2154
-  setsid -f ${DMBROWSER} "${url}${query}"
+  setsid -f "${DMBROWSER}" "${url}${query}"
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

@@ -79,7 +79,7 @@ M.plugins = {
     { 'n'          ,'<leader>fw'      , '<cmd> FzfLua grep_cword  <CR>'                      , '[F]ind current [W]ord'               },
     { 'n'          ,'<leader>fg'      , '<cmd> FzfLua grep        <CR>'                      , '[F]ind by [G]rep'                    },
     { 'n'          ,'<leader>fd'      , '<cmd> FzfLua diagnostics_document <CR>'             , '[F]ind [D]iagnostics'                },
-    { 'n'          ,'<leader>fk'      , '<cmd> FzfLua keymaps     <CR>'                      , '[F]ind [K]eymaps'                    },
+    { 'n'          ,'<leader>fk'      , '<cmd> FzfLua keymaps previewer=false<CR>'           , '[F]ind [K]eymaps'                    },
     { 'n'          ,'<leader>gf'      , '<cmd> FzfLua git_files   <CR>'                      , '[G]it [F]iles'                       },
     { 'n'          ,'<leader>:'       , '<cmd> FzfLua commands    <CR>'                      , '[:] Lists all commands'              },
     -- fugitive & mini.diff

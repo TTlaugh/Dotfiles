@@ -1,4 +1,4 @@
--- vvim:foldmethod=marker
+-- vim:foldmethod=marker
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -8,6 +8,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install your plugins here
 return require("lazy").setup({
+    defaults = { lazy = true },
+    install = { colorscheme = { "habamax" } },
 
     -- {{{ Libraries
     { "https://github.com/nvim-lua/plenary.nvim" }, -- lua functions
@@ -16,6 +18,16 @@ return require("lazy").setup({
     -- {{{ UI
     { "https://github.com/folke/tokyonight.nvim", lazy = false, priority=1000, opts = {} },
     { "https://github.com/akinsho/bufferline.nvim", event = "VeryLazy", opts = {} },
+    { "https://github.com/nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
+        opts = {
+            options = {
+                globalstatus = true,
+                component_separators = '',
+                section_separators = '',
+            },
+        },
+    },
     { "https://github.com/lukas-reineke/indent-blankline.nvim",
         event = { "BufReadPost", "BufNewFile" },
         main = "ibl",
@@ -24,22 +36,26 @@ return require("lazy").setup({
             scope = { enabled = false, },
         },
     },
-    { "https://github.com/folke/which-key.nvim",
+    { "https://github.com/j-hui/fidget.nvim",
         event = "VeryLazy",
         opts = {},
-        config = function()
-            require("which-key").register({
-                ["<leader>m"] = { name = "+markdown" },
-                ["<leader>g"] = { name = "+git" },
-                ["<leader>f"] = { name = "+find/file" },
-                ["<leader>t"] = { name = "+sw split type" },
-                ["<leader>w"] = { name = "+workspace" },
-                ["<leader>c"] = { name = "+code" },
-                ["<leader>b"] = { name = "+build" },
-                ["<leader>x"] = { name = "+diagnostics/quickfix" },
-            })
-        end,
     },
+    -- { "https://github.com/folke/which-key.nvim",
+    --     event = "VeryLazy",
+    --     opts = {},
+    --     config = function()
+    --         require("which-key").register({
+    --             ["<leader>m"] = { name = "+markdown" },
+    --             ["<leader>g"] = { name = "+git" },
+    --             ["<leader>f"] = { name = "+find/file" },
+    --             ["<leader>t"] = { name = "+sw split type" },
+    --             ["<leader>w"] = { name = "+workspace" },
+    --             ["<leader>c"] = { name = "+code" },
+    --             ["<leader>b"] = { name = "+build" },
+    --             ["<leader>x"] = { name = "+diagnostics/quickfix" },
+    --         })
+    --     end,
+    -- },
     -- }}}
 
     -- {{{ Syntax highlighting
@@ -75,80 +91,22 @@ return require("lazy").setup({
     { "https://github.com/hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
-            { "https://github.com/L3MON4D3/LuaSnip",
-                dependencies = { "https://github.com/rafamadriz/friendly-snippets" },
-                config = function()
-                    require("luasnip.loaders.from_vscode").lazy_load()
-                end,
-            },
-            { "https://github.com/windwp/nvim-autopairs",
-                event = "InsertEnter",
-                opts = { check_ts = true },
-                config = function(_, opts)
-                    require("nvim-autopairs").setup(opts)
-                    require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-                end,
-            },
             "https://github.com/hrsh7th/cmp-buffer",
             "https://github.com/hrsh7th/cmp-nvim-lsp",
             "https://github.com/hrsh7th/cmp-nvim-lua",
             "https://github.com/hrsh7th/cmp-path",
+
+            "https://github.com/windwp/nvim-autopairs",
+
             "https://github.com/saadparwaiz1/cmp_luasnip",
+            "https://github.com/L3MON4D3/LuaSnip",
+            "https://github.com/rafamadriz/friendly-snippets",
         },
-        opts = function()
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
-            return {
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body) -- For `luasnip` users.
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<Tab>"] = cmp.mapping.select_next_item(),
-                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-                    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-                    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-                    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-                    ["<C-c>"] = cmp.mapping({
-                        i = cmp.mapping.abort(),
-                        c = cmp.mapping.close(),
-                    }),
-                    -- Accept currently selected item. If none selected, `select` first item.
-                    -- Set `select` to `false` to only confirm explicitly selected items.
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-n>"] = cmp.mapping(function(fallback)
-                        if luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                    ["<C-p>"] = cmp.mapping(function(fallback)
-                        if luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                }),
-                sources = {
-                    { name = "luasnip" },
-                    { name = "nvim_lsp" },
-                    { name = "buffer" },
-                    { name = "nvim_lua" },
-                    { name = "path" },
-                },
-                experimental = {
-                    ghost_text = false,
-                },
-                -- window = {
-                --     completion = cmp.config.window.bordered(),
-                --     documentation = cmp.config.window.bordered(),
-                -- },
-            }
+        config = function()
+            require("plugins.configs.cmp")
         end,
     },
+    -- }}}
 
     -- {{{ IntelliSense
     { "https://github.com/neovim/nvim-lspconfig",
@@ -162,45 +120,16 @@ return require("lazy").setup({
             require("plugins.configs.lsp")
         end
     },
-    { "https://github.com/j-hui/fidget.nvim",
-        event = "VeryLazy",
-        opts = {},
-    },
     -- }}}
 
     -- {{{ Search
-    { "https://github.com/ibhagwan/fzf-lua",
-        event = "VeryLazy",
-        opts = {
-            "max-perf",
-            winopts = {
-                height = 0.5,
-                width = 1,
-                row = 1,
-            }
-        },
-    },
+    { "https://github.com/ibhagwan/fzf-lua", event = "VeryLazy", opts = {} },
     -- }}}
 
     -- {{{ File Manager
     { "https://github.com/stevearc/oil.nvim",
         cmd = "Oil",
-        opts = {
-            view_options = {
-                show_hidden = true,
-            },
-        },
-        config = function(_, opts)
-            require("oil").setup(opts)
-            vim.api.nvim_create_autocmd("FileType", {
-                group = vim.api.nvim_create_augroup("close_oil", { clear = true }),
-                pattern = "oil",
-                callback = function(event)
-                    vim.bo[event.buf].buflisted = false
-                    vim.keymap.set("n", "q", "<cmd>bdelete<cr>", { buffer = event.buf, silent = true })
-                end,
-            }) -- Close oil with <q>
-        end,
+        opts = { view_options = { show_hidden = true } },
     },
     -- }}}
 
@@ -229,11 +158,7 @@ return require("lazy").setup({
             },
         },
     },
-    { "https://github.com/kylechui/nvim-surround",
-        event = "VeryLazy",
-        version = "*",
-        opts = {},
-    },
+    { "https://github.com/kylechui/nvim-surround", event = "VeryLazy", version = "*", opts = {} },
     { "https://github.com/ggandor/leap.nvim", event = "VeryLazy" },
     -- }}}
 
@@ -266,9 +191,6 @@ return require("lazy").setup({
     --     cmd = { "CMakeGenerate", "CMakeBuild", "CMakeClose", "CMakeClean" },
     --     init = function() vim.g.cmake_link_compile_commands = 1 end,
     -- },
+    -- }}}
 
-},
-    { -- Lazy opts
-        defaults = { lazy = true },
-        install = { colorscheme = { "habamax" } },
-    })
+})

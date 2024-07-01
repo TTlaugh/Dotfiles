@@ -114,6 +114,7 @@ feh
 nsxiv
 mpv
 imagemagick
+maim
 lxappearance-gtk3
 fzf
 bat

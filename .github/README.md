@@ -57,41 +57,24 @@ yay -S - < aurlist.txt
 
 ### Suckless
 > - To install Suckless softwares: `sudo make clean install`
-> - To patch: `patch -p1 < your_patch_file`
+- [dwm](https://github.com/nguyenletientrien/dwm)
 - [dmenu](https://tools.suckless.org/dmenu)
 - [st](https://st.suckless.org)
-  - Patches: [font2](https://st.suckless.org/patches/font2), [dracula](https://st.suckless.org/patches/dracula), [alpha](https://st.suckless.org/patches/alpha), [dynamic-cursor-color](https://st.suckless.org/patches/dynamic-cursor-color), [scrollback + scrollback-mouse + scrollback-mouse-altscreen](https://st.suckless.org/patches/scrollback).
 
 ### Optional
 <details>
 <summary>Optional</summary>
 
 > NOTE: You should read the application documentation for more information on the Archwiki or the application main page.
-- mutt-wizard ([LukeSmith](https://github.com/LukeSmithxyz/mutt-wizard))
-- Kdenlive
-- GIMP
-- Audacity
-- OBS
 - VirtualBox
-- Virt-Manager
-  > - `pacman -S libvirt iptables-nft qemu virt-manager`
-  > - `sudo systemctl start/enable libvirtd`
-  > - `sudo usermod -G libvirt -a <username>`
 - LibreOffice
-  > `jre-openjdk` is needed for LibreOffice Database.
-- grub-customizer
-- openssh
-- reflector
 - tlp
 - auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
-- redshift
-- conky
-- maim
-- onboard
-- cronie
+- mutt-wizard ([LukeSmith](https://github.com/LukeSmithxyz/mutt-wizard))
+- openssh
+- reflector
+- rofi
 - speedtest-cli
-- teamviewer ([AUR](https://aur.archlinux.org/packages/teamviewer))
-  > Note: If you use startx, you won't be able to open teamviewer
 </details>
 
 # Enable Service
@@ -99,14 +82,11 @@ yay -S - < aurlist.txt
 - Ufw\*: `systemctl enable ufw.service`
 - Bluetooth: `systemctl enable bluetooth.service`
 - Lightdm: `systemctl enable lightdm.service`
-- Acpid: `systemctl enable acpid.service`
 - Thermald: `systemctl enable thermald.service`
 - TRIM: `systemctl enable fstrim.timer`
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
 # Configuration
-
-> Before you use this configuration you need copy `.profile` and `.Xresources` to your home directory.
 
 <details>
 <summary>Lightdm, lightdm-slick-greeter</summary>
@@ -117,7 +97,7 @@ yay -S - < aurlist.txt
   [Seat:*]
   .....
   greeter-session=lightdm-slick-greeter
-  user-session=qtile
+  user-session=dwm
   #user-session=i3
   .....
   ```
@@ -133,51 +113,14 @@ yay -S - < aurlist.txt
 <details>
 <summary>Vifm</summary>
 
-- Copy [dracula.vifm](https://github.com/vifm/vifm-colors/blob/master/dracula.vifm), [dwmlight.vifm](https://github.com/vifm/vifm-colors/blob/master/dwmlight.vifm) to `~/.config/vifm/colors/`
-- Copy  **gitbranch**, **vifmrun** and **vifmimg** to `~/.config/vifm/scripts/`
 - Copy **myvifmrc** to `~/.config/vifm/`
-- In vifmrc files:
+- In default *vifmrc* files:
     - Comment or delete the line that set default colorscheme.
     - Search for `gvim` and comment or delete these lines.
     - Add this to your vifmrc: `source $HOME/.config/vifm/myvifmrc`
-- If you want to have *image preview* then you need to read the **myvifmrc** and follow the steps in it (line 70).
+- If you want to have *image preview* then you need to read the **myvifmrc** and follow the steps in it.
 
 > NOTE: you must execute **vifmrun** script to use vifm with Ueberzug support. In other way, you can create symbolic links to add this script to PATH (assuming ~/.local/bin is in your system-wide PATH): `ln -sf ~/.config/vifm/scripts/vifmrun ~/.local/bin/ifm`
-</details>
-
-<details>
-<summary>zsh</summary>
-
-- Copy ***zsh*** folder to **~/.config/**
-- To use [zsh-autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) and [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), git clone from repository into **~/.config/zsh/plugins/**
-```
-cd ~/.config/zsh/plugins
-```
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions.git
-```
-```
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-```
-- Install [Starship prompt](https://starship.rs) and copy **starship.toml*** file to ***~/.config/***
-> Starship is available on the official repository.
-</details>
-
-<details>
-<summary>Neovim</summary>
-
-- Requirements:
-  - Neovim >= 0.8.0
-  - Git
-  - Nerd Font
-  - [ripgrep](https://github.com/BurntSushi/ripgrep)
-  - [fd](https://github.com/sharkdp/fd)
-  - Provider:
-    - python & pip
-    - nodejs & npm
-    - clipboard: `xclip`
-    - See `help provider`, `checkhealth provider`
-- Usage: Copy **nvim** folder to **~/.config/**
 </details>
 
 <details>
@@ -278,61 +221,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
     # U+F167 is HTML logo, but YouTube logo in Symbols Nerd Font
     symbol_map U+F102,U+F116-U+F118,U+F12F,U+F13E,U+F1AF,U+F1BF,U+F1CF,U+F1FF,U+F20F,U+F21F-U+F220,U+F22E-U+F22F,U+F23F,U+F24F,U+F25F nonicons
     ```
-- Icons: download your favourite [icons](https://sw.kovidgoyal.net/kitty/faq/#i-do-not-like-the-kitty-icon) and edit `/usr/share/applications/kitty.desktop` to replace the `Icon` path
 - Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/folke/tokyonight.nvim/tree/main/extras/kitty)
-</details>
-
-<details>
-<summary>i3</summary>
-
-- Copy ***i3*** folder to ***~/.config/***
-- Open ***i3/config*** file and edit for use!
-- See more: [i3-README.md](https://github.com/nguyenletientrien/Dotfiles/tree/master/.config/i3)
-- AutoTiling script: [https://github.com/nwg-piotr/autotiling](https://github.com/nwg-piotr/autotiling)
-- Set background with feh: `feh --bg-fill /path/to/picture`
-</details>
-
-<details>
-<summary>Tmux</summary>
-
-#### Installation
-Install [Oh my tmux](https://github.com/gpakosz/.tmux)
-> [A list of awesome resources for tmux.](https://github.com/rothgar/awesome-tmux)
-#### Configuration
-> Pressing `<prefix> e` will open `~/.tmux.conf.local` with the editor defined by the `$EDITOR` environment variable (defaults to `vim` when empty).
-- [Enable the Powerline look](https://github.com/gpakosz/.tmux#enabling-the-powerline-look)
-- Theme colors
-```
-# custom theme
-tmux_conf_theme_colour_1="#16161e"
-tmux_conf_theme_colour_2="#24283b"
-tmux_conf_theme_colour_3="#a9b1d6"
-tmux_conf_theme_colour_4="#8be9fd"
-tmux_conf_theme_colour_5="#f1fa8c"
-tmux_conf_theme_colour_6="#16161e"
-tmux_conf_theme_colour_7="#f8f8f2"
-tmux_conf_theme_colour_8="#16161e"
-tmux_conf_theme_colour_9="#f1fa8c"
-tmux_conf_theme_colour_10="#ff79c6"
-tmux_conf_theme_colour_11="#50fa7b"
-tmux_conf_theme_colour_12="#a9b1d6"
-tmux_conf_theme_colour_13="#f8f8f2"
-tmux_conf_theme_colour_14="#16161e"
-tmux_conf_theme_colour_15="#16161e"
-tmux_conf_theme_colour_16="#ff5555"
-tmux_conf_theme_colour_17="#f8f8f2"
-```
-- Configuring the status line:
-```
-tmux_conf_theme_status_left=" ❐ #S "
-tmux_conf_theme_status_right=" #{prefix} #{mouse}#{pairing}#{synchronized} | #{username}#{root} | #{hostname} "
-```
-#### Fix *Neovim losing colorscheme when in tmux*:
-> `$TERM` must be set to `xterm-256color`
-- tmux.conf:
-```
-set-option -ga terminal-overrides ",xterm-256color:Tc"
-```
 </details>
 
 <details>
@@ -350,8 +239,8 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
     <summary>Dependencies</summary>
 
       - Roboto Mono (dunst)
-      - sans (Qtile, [dwm](https://github.com/nguyenletientrien/dwm))
-      - Ubuntu Nerd Font (Qtile, i3, [dwm](https://github.com/nguyenletientrien/dwm))
+      - sans ([dwm](https://github.com/nguyenletientrien/dwm))
+      - Ubuntu Nerd Font (i3, [dwm](https://github.com/nguyenletientrien/dwm))
       - Hack Nerd Font (Dmenu)
       - JetBrains Mono (Kitty)
     </details>

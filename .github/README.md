@@ -29,9 +29,9 @@
 - [Configuration](https://github.com/nguyenletientrien/Dotfiles#configuration)
 - [Other](https://github.com/nguyenletientrien/Dotfiles#other)
 
-# Installation
+## Installation
 
-### Install packages from a list
+#### Install packages from a list
 [pkglist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkg/pkglist.txt)
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
@@ -40,14 +40,14 @@ pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 After install microcode, you must regenerate the GRUB configuration: <br>
 `grub-mkconfig -o /boot/grub/grub.cfg`
 
-### Graphics card
+#### Graphics card
 See Arch Wiki:
 - [Xorg](https://wiki.archlinux.org/title/Xorg)
 - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)
 - [NVIDIA](https://wiki.archlinux.org/title/NVIDIA), [NVIDIA Optimus](https://wiki.archlinux.org/title/NVIDIA_Optimus)
 - [AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 
-### AUR Packages
+#### AUR Packages
 > To install manually AUR packages: `makepkg -si`
 
 First, install [yay](https://aur.archlinux.org/packages/yay), then install some necessary packages from [aurlist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkg/aurlist.txt) using yay:
@@ -55,13 +55,13 @@ First, install [yay](https://aur.archlinux.org/packages/yay), then install some 
 yay -S - < aurlist.txt
 ```
 
-### Suckless
+#### Suckless
 > - To install Suckless softwares: `sudo make clean install`
 - [dwm](https://github.com/nguyenletientrien/dwm)
 - [dmenu](https://tools.suckless.org/dmenu)
 - [st](https://st.suckless.org)
 
-### Optional
+#### Optional
 <details>
 <summary>Optional</summary>
 
@@ -77,16 +77,16 @@ yay -S - < aurlist.txt
 - speedtest-cli
 </details>
 
-# Enable Service
+##### Enable Service
 - Networkmanager: `systemctl enable NetworkManager.service`
 - Ufw\*: `systemctl enable ufw.service`
-- Bluetooth: `systemctl enable bluetooth.service`
+- Bluetooth (don't run if you not use Bluetooth): `systemctl enable bluetooth.service`
 - Lightdm: `systemctl enable lightdm.service`
 - Thermald: `systemctl enable thermald.service`
 - TRIM: `systemctl enable fstrim.timer`
 > (\*) Note: This command is only needed *once* the first time you install the package: `ufw enable`
 
-# Configuration
+## Configuration
 
 <details>
 <summary>Lightdm, lightdm-slick-greeter</summary>
@@ -224,14 +224,13 @@ yay -S - < aurlist.txt
 - Theme: [Dracula](https://draculatheme.com/kitty), [TokyoNight](https://github.com/folke/tokyonight.nvim/tree/main/extras/kitty)
 </details>
 
-<details>
-<summary>Power Management</summary>
+## Power Management
 
 - [Hibernation](https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation)
 - [Hibernate on low battery level](https://wiki.archlinux.org/title/laptop#Hibernate_on_low_battery_level)
 - [Hybrid graphics](https://wiki.archlinux.org/title/hybrid_graphics)
-- [TLP](https://linrunner.de/tlp/), [Arch Wiki](https://wiki.archlinux.org/title/TLP)
-</details>
+- [Hardware video acceleration](https://wiki.archlinux.org/title/Hardware_video_acceleration)
+- [TLP](https://linrunner.de/tlp/) ([Arch Wiki](https://wiki.archlinux.org/title/TLP))
 
 ## Appearance
 - Fonts
@@ -272,9 +271,9 @@ yay -S - < aurlist.txt
     - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)
 
-### Tips and Tricks
+## Tips and Tricks
 - [Linux](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
 
-### My Scripts
+## My Scripts
 Please read the [documentation](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md) for more information before using [my scripts](https://github.com/nguyenletientrien/Dotfiles/tree/master/.scripts).
 

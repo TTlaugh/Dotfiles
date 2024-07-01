@@ -44,8 +44,7 @@ mesa
 mesa-utils
 
 intel-media-driver
-libva-intel-driver
-libva-mesa-driver
+#libva-mesa-driver #for open-source dGPU driver
 libva-nvidia-driver
 
 ffmpeg
@@ -60,6 +59,7 @@ pulsemixer
 
 bluez
 bluez-utils
+bluez-obex
 blueman
 
 #cups #enable is required
@@ -73,7 +73,6 @@ man-db
 
 libxft
 libnotify
-polkit
 
 thermald
 
@@ -116,6 +115,8 @@ mpv
 imagemagick
 maim
 lxappearance-gtk3
+lxsession-gtk3
+polkit
 fzf
 bat
 ripgrep
@@ -151,18 +152,15 @@ chromium
 lightdm
 lightdm-slick-greeter
 
-jdk-openjdk
+#jdk-openjdk
 gcc
 gdb
 cmake
 
-adobe-source-code-pro-fonts
-awesome-terminal-fonts
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 otf-font-awesome
-powerline-fonts
 terminus-font
 ttf-dejavu
 ttf-droid

@@ -5,7 +5,7 @@
 
 #xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/X11/Xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 
-autostart="xcompmgr dunst unclutter"
+autostart="xcompmgr dunst unclutter lxsession"
 
 for program in $autostart; do
 	pidof -sx "$program" || "$program" &

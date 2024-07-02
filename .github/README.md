@@ -1,24 +1,6 @@
 # Set up Arch Linux
 
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile0.png)
-
-<details>
-<summary>Previews</summary>
-
-- ***i3-wm, i3bar, pfetch, gotop.***
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/i3.png)
-
-- ***Qtile, nvim, neofetch, gotop, rofi, conky, i3lock-color.***
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile1.png)
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile2.png)
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile3.png)
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile4.png)
-![](https://raw.githubusercontent.com/nguyenletientrien/Dotfiles/master/.github/qtile5.png)
-> [Download](https://github.com/nguyenletientrien/Wallpapers) Wallpapers.
-
-</details>
-
-# Table of contents
+## Table of contents
 
 - [Installation](https://github.com/nguyenletientrien/Dotfiles#installation)
 - [Package List](https://github.com/nguyenletientrien/Dotfiles#install-packages-from-a-list)

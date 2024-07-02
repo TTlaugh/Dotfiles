@@ -18,7 +18,7 @@ wmpid(){ # This function is needed if there are multiple instances of the window
 }
 
 main() {
-    choice=$(echo -e "Lock\nLeave\nHibernate\nSuspend\nRestart\nShutdown\nDisplay-off\nExit" | dmenu -i -p " ")
+    choice=$(echo -e "Lock\nLeave\nHibernate\nSuspend\nRestart\nShutdown\nDisplay-off\nCancel" | dmenu -i -p " ")
     case $choice in
         Lock)        slock;;
         Leave)       kill -TERM "$(wmpid)";;

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PWD=$(pwd)
+
 GitRepos="$HOME/GitRepos"
 Suckless="$HOME/Suckless"
 
@@ -17,6 +19,7 @@ createDir() {
 }
 
 install_pacpack(){
+    # shellcheck disable=SC2046
     sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $pkglist))
 }
 install_yaypack() {
@@ -27,7 +30,7 @@ install_yay() {
     git clone "$yaylink"
     cd yay || exit
     makepkg -si
-    cd ../..
+    cd "$PWD" || exit
 }
 install_sl() {
     cd "$Suckless" || exit
@@ -39,7 +42,7 @@ install_sl() {
         git checkout mydwm && \
         git pull "$mydwm" master && \
         sudo make clean install && cd ..
-    cd ..
+    cd "$PWD" || exit
 }
 
 createDir

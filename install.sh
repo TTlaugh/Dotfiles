@@ -10,7 +10,7 @@ aurlist="pkg/aurlist"
 
 yaylink="https://aur.archlinux.org/yay.git"
 sldwm="https://git.suckless.org/dwm"
-sldmenu="https://tools.suckless.org/dmenu"
+sldmenu="https://git.suckless.org/dmenu"
 mydwm="https://github.com/nguyenletientrien/dwm"
 
 createDir() {

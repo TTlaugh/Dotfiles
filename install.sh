@@ -11,6 +11,11 @@ sldwm="https://git.suckless.org/dwm"
 sldmenu="https://tools.suckless.org/dmenu"
 mydwm="https://github.com/nguyenletientrien/dwm"
 
+createDir() {
+    [[ ! -d "$GitRepos" ]] && mkdir -p "$GitRepos"
+    [[ ! -d "$Suckless" ]] && mkdir -p "$Suckless"
+}
+
 install_pacpack(){
     pacman -S --needed "$(comm -12 <(pacman -Slq | sort) <(sort $pkglist))"
 }
@@ -37,6 +42,7 @@ install_sl() {
     cd ..
 }
 
+createDir
 install_pacpack
 install_yay
 install_yaypack

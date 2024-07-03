@@ -1,6 +1,4 @@
 bindkey -s '^o' 'ifm\n'
 bindkey -s '^p' 'mkc\n'
-bindkey -s '^s' 'tmux attach || tmux\n'
 bindkey -s '^a' 'tlgat\n'
-bindkey -s '^n' 'neomutt\n'
 bindkey -s '^v' 'vtrans\n'

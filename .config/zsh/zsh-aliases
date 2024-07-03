@@ -1,18 +1,3 @@
-###### Ubuntu only ######
-### APT
-alias aptclean="sudo apt autoremove --purge && sudo apt autoclean && sudo apt clean"
-alias aptremove="sudo apt remove --purge"
-### Remote-Touchpad
-alias reto="remote-touchpad -bind :55555 -secret UbuntuNLTT" # first, yout must run: sudo ufw allow 55555 (if you have ufw enabled)
-### Graphics Card
-alias psi="sudo prime-select intel && echo -e '\nLOGOUT IS REQUIRED!'"
-alias psn="sudo prime-select nvidia && echo -e '\nLOGOUT IS REQUIRED!'"
-alias gpufreq="watch -n0.1 nvidia-smi"
-#########################
-
-### Neofetch with my custom ascii art
-alias dragon="neofetch --ascii ~/.config/neofetch/ascii/dragon"
-
 ### Git
 alias gitst="git status"
 alias gitaa="git add ."
@@ -60,8 +45,9 @@ alias rmdir="rmdir -v"
 ### Get error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-### CPU frequency monitoring
+### CPU/GPU frequency monitoring
 alias cpufreq='watch grep \"cpu MHz\" /proc/cpuinfo'
+alias gpufreq="watch -n0.1 nvidia-smi"
 
 ### Colorize commands when possible
 alias grep="grep --color=auto"

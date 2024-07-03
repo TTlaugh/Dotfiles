@@ -19,7 +19,7 @@ xset s noblank &
 if [ -f "$HOME"/.fehbg ]; then
 	. "$HOME"/.fehbg &
 else
-	feh --bg-fill "$HOME"/Github/MyGitHub/Dotfiles/misc/img.jpg &
+	feh --bg-fill "$HOME"/img.jpg &
 fi
 
 # dwm status bar

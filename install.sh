@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PWD=$(pwd)
+pwd=$(pwd)
 
 GitRepos="$HOME/GitRepos"
 Suckless="$HOME/Suckless"
@@ -30,7 +30,7 @@ install_yay() {
     git clone "$yaylink"
     cd yay || exit
     makepkg -si
-    cd "$PWD" || exit
+    cd "$pwd" || exit
 }
 install_sl() {
     cd "$Suckless" || exit
@@ -42,7 +42,7 @@ install_sl() {
         git checkout mydwm && \
         git pull "$mydwm" master && \
         sudo make clean install && cd ..
-    cd "$PWD" || exit
+    cd "$pwd" || exit
 }
 
 createDir

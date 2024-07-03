@@ -23,22 +23,18 @@ install_pacpack(){
     sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $pkglist))
 }
 install_yaypack() {
-    yay -S - < "$aurlist"
+    yay -S --needed - < "$aurlist"
 }
 install_yay() {
     cd "$GitRepos" || exit
-    git clone "$yaylink"
-    cd yay || exit
-    makepkg -si
+    git clone "$yaylink" && cd yay && makepkg -si
     cd "$pwd" || exit
 }
 install_sl() {
     cd "$Suckless" || exit
-    git clone "$sldmenu"
-    (cd dmenu || exit) && sudo make clean install
+    git clone "$sldmenu" && cd dmenu && sudo make clean install
     cd "$Suckless" || exit
-    git clone "$sldwm"
-    (cd dwm || exit) && \
+    git clone "$sldwm" && cd dwm && \
         git branch mydwm && \
         git checkout mydwm && \
         git pull "$mydwm" master && \

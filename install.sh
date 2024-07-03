@@ -35,13 +35,14 @@ install_yay() {
 install_sl() {
     cd "$Suckless" || exit
     git clone "$sldmenu"
-    (cd dmenu || exit) && sudo make clean install && cd ..
+    (cd dmenu || exit) && sudo make clean install
+    cd "$Suckless" || exit
     git clone "$sldwm"
     (cd dwm || exit) && \
         git branch mydwm && \
         git checkout mydwm && \
         git pull "$mydwm" master && \
-        sudo make clean install && cd ..
+        sudo make clean install
     cd "$pwd" || exit
 }
 

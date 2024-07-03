@@ -17,7 +17,7 @@ createDir() {
 }
 
 install_pacpack(){
-    sudo pacman -S --needed "$(comm -12 <(pacman -Slq | sort) <(sort $pkglist))"
+    sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $pkglist))
 }
 install_yaypack() {
     yay -S - < "$aurlist"

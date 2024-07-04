@@ -3,11 +3,11 @@
 # Description: A script to toggle alacritty transparency
 # Dependencies: alacritty
 
-## If alacritty.yml does not exist, raise an alert
-[[ ! -f ~/.config/alacritty/alacritty.yml ]] && notify-send "tlgat" "alacritty.yml does not exist" && exit 0
+## If alacritty.toml does not exist, raise an alert
+[[ ! -f ~/.config/alacritty/alacritty.toml ]] && notify-send "tlgat" "alacritty.toml does not exist" && exit 0
 
-## Fetch opacity from alacritty.yml
-opacity=$(awk '$1 == "opacity:" {print $2; exit}' ~/.config/alacritty/alacritty.yml)
+## Fetch opacity from alacritty.toml
+opacity=$(awk '$1 == "opacity:" {print $2; exit}' ~/.config/alacritty/alacritty.toml)
 
 ## Assign toggle opacity value
 case $opacity in
@@ -19,5 +19,5 @@ case $opacity in
     ;;
 esac
 
-## Replace opacity value in alacritty.yml
-sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" ~/.config/alacritty/alacritty.yml
+## Replace opacity value in alacritty.toml
+sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" ~/.config/alacritty/alacritty.toml

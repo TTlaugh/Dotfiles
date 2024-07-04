@@ -7,12 +7,12 @@
 [[ ! -f ~/.config/alacritty/alacritty.toml ]] && notify-send "tlgat" "alacritty.toml does not exist" && exit 0
 
 ## Fetch opacity from alacritty.toml
-opacity=$(awk '$1 == "opacity:" {print $2; exit}' ~/.config/alacritty/alacritty.toml)
+opacity=$(awk '$1 == "opacity" {print $3; exit}' ~/.config/alacritty/alacritty.toml)
 
 ## Assign toggle opacity value
 case $opacity in
   1.0)
-    toggle_opacity=0.8
+    toggle_opacity=0.9
     ;;
   *)
     toggle_opacity=1.0
@@ -20,4 +20,4 @@ case $opacity in
 esac
 
 ## Replace opacity value in alacritty.toml
-sed -i -- "s/opacity: $opacity/opacity: $toggle_opacity/" ~/.config/alacritty/alacritty.toml
+sed -i -- "s/opacity = $opacity/opacity = $toggle_opacity/" ~/.config/alacritty/alacritty.toml

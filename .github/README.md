@@ -116,9 +116,6 @@ yay -S - < aurlist.txt
     [SchemeNorm] = { "#777c99", "#1a1b26" },
     [SchemeSel] = { "#0f0f14", "#7aa2f7" },
     ```
-- Edit *dmenu_run*:
-  - Add `-p "Run:"` after `dmenu "@"`
-  - Example: `dmenu "$@" -p "Run:"`
 </details>
 
 <details>

@@ -1,7 +1,13 @@
 ### Enable colors and change prompt
 autoload -U colors && colors    # Load colors
 
-#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats "(%b)"
+precmd() { vcs_info }
+setopt prompt_subst
+
+PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$fg[cyan]%} ${vcs_info_msg_0_}%{$reset_color%}'$'\n''$%b '
+RPROMPT='%(?..%{$fg[red]%}%?)%{$reset_color%}'
 
 setopt autocd       # Automatically cd into typed directory.
 stty stop undef     # Disable ctrl-s to freeze terminal.
@@ -42,6 +48,3 @@ bindkey -M vicmd '^e' edit-command-line
 [ -d "$ZDOTDIR/plugins/zsh-syntax-highlighting" ] \
     && source "$ZDOTDIR"/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZDOTDIR/plugins/zsh-syntax-highlighting"
-
-### starship prompt
-eval "$(starship init zsh)"

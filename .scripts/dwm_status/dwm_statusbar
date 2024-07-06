@@ -19,7 +19,7 @@ update_volume
 update_backlight () {
     backlight="$(sb_backlight)"
 }
-#update_backlight
+update_backlight
 
 update_battery () {
     battery="$(sb_battery)"

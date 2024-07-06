@@ -8,19 +8,19 @@ VOL="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
 VOL="${VOL#Volume: }"
 
 split() {
-	# For ommiting the . without calling and external program.
-	IFS=$2
-	set -- $1
-	printf '%s' "$@"
+    # For ommiting the . without calling and external program.
+    IFS=$2
+    set -- $1
+    printf '%s' "$@"
 }
 
 VOL="$(printf "%.0f" "$(split "$VOL" ".")")"
 
 case 1 in
-	$((VOL >= 70)) ) ICON="󰕾" ;;
-	$((VOL >= 30)) ) ICON="󰖀" ;;
-	$((VOL >= 1))  ) ICON="󰕿" ;;
-	*) echo 󰖁 && exit ;;
+    $((VOL >= 70)) ) ICON="󰕾" ;;
+    $((VOL >= 30)) ) ICON="󰖀" ;;
+    $((VOL >= 1))  ) ICON="󰕿" ;;
+    *) echo "󰖁" && exit ;;
 esac
 
 printf "%s %s" "$ICON" "$VOL%"

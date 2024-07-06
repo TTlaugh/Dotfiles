@@ -7,20 +7,20 @@ STATUS="$(cat $BAT/status 2>&1)"
 ICON=""
 
 case "$STATUS" in
-	"Discharging")
-		case "$CAPACITY" in
-			100|9[0-9]|8[0-9]) ICON=" ";;
-			7[0-9]|6[0-9])     ICON=" ";;
-			5[0-9]|4[0-9])     ICON=" ";;
-			3[0-9]|2[0-9])     ICON=" ";;
-			*)                 ICON=" ";;
-		esac
-		;;
-	"Full")         ICON=" " ;;
-	"Charging")     ICON="󰂂󱐋" ;;
-	"Not charging") ICON="󰂎󱈸" ;;
-	"Unknown")      ICON="󰂎" ;;
-	*) exit 1 ;;
+    "Discharging")
+        case "$CAPACITY" in
+            100|9[0-9]|8[0-9]) ICON=" ";;
+            7[0-9]|6[0-9])     ICON=" ";;
+            5[0-9]|4[0-9])     ICON=" ";;
+            3[0-9]|2[0-9])     ICON=" ";;
+            *)                 ICON=" ";;
+        esac
+        ;;
+    "Full")         ICON=" " ;;
+    "Charging")     ICON="󰂂󱐋" ;;
+    "Not charging") ICON="󰂎󱈸" ;;
+    "Unknown")      ICON="󰂎" ;;
+    *) exit 1 ;;
 esac
 
 printf "%s %s" "$ICON" "$CAPACITY%"

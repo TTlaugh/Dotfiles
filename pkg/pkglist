@@ -47,6 +47,7 @@ bluez-obex
 blueman
 
 fuse2
+udiskie
 
 xf86-input-libinput
 libxft

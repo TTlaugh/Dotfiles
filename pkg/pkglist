@@ -9,16 +9,12 @@ efibootmgr
 os-prober
 mtools
 dosfstools
-exfat-utils
 ntfs-3g
 intel-ucode
 
 ufw
 networkmanager
 iptables-nft
-nfs-utils
-net-tools
-bridge-utils
 
 xorg-server
 xorg-setxkbmap
@@ -33,24 +29,12 @@ xorg-xinput
 xorg-xset
 xorg-xsetroot
 xorg-xdpyinfo
-
 #xorg-xbacklight
 acpilight
 
-xf86-input-evdev
-xf86-input-libinput
-
 mesa
 mesa-utils
-
 intel-media-driver
-#libva-mesa-driver #for open-source dGPU driver
-libva-nvidia-driver
-
-ffmpeg
-gstreamer
-gst-libav
-gcr
 
 pipewire
 pipewire-pulse
@@ -62,41 +46,31 @@ bluez-utils
 bluez-obex
 blueman
 
-#cups #enable is required
+fuse2
 
-usbutils
-udiskie
-udisks2
-mtpfs
-
-man-db
-
+xf86-input-libinput
 libxft
 libnotify
 
-thermald
+jdk-openjdk
+gcc
+gdb
+cmake
 
-xdg-user-dirs
+#lightdm
+#lightdm-slick-greeter
+
+alacritty
+chromium
 slock
-
-i3-wm
-i3status
-
-zip
-unzip
-unrar
-p7zip
-gzip
-bzip2
-tar
-xz
-
+thermald
+xdg-user-dirs
+man-db
 xcompmgr
 neovim
 vim
 nano
 zsh
-starship
 fastfetch
 git
 wget
@@ -106,6 +80,7 @@ pavucontrol
 pcmanfm-gtk3
 vifm
 ueberzug
+ffmpeg
 ffmpegthumbnailer
 atool
 feh
@@ -133,28 +108,19 @@ dialog
 xclip
 xdotool
 slop
-rsync
 arandr
 dmidecode
 translate-shell
 socat
 
-fuse2
-#fuse3
-#fuseiso
-
-kitty
-alacritty
-
-chromium
-
-lightdm
-lightdm-slick-greeter
-
-#jdk-openjdk
-gcc
-gdb
-cmake
+zip
+unzip
+unrar
+p7zip
+gzip
+bzip2
+tar
+xz
 
 noto-fonts
 noto-fonts-cjk

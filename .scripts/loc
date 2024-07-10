@@ -1,0 +1,12 @@
+#!/bin/bash
+DIR="$1"
+[[ -z "$DIR" ]] && DIR="."
+TOTAL=0
+mapfile -t files < <(find "$DIR" -type f -name "*.java")
+for FILE in "${files[@]}"; do
+     count=$(grep -c ^ < "$FILE")
+     # echo "$FILE has $count lines"
+     echo -e "$count\t$FILE"
+     TOTAL=$(( TOTAL+count ))
+done
+echo "TOTAL LINES COUNTED: $TOTAL"

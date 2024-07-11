@@ -44,17 +44,14 @@ fi
 export JAVA_HOME="$java_home"
 export PATH="$JAVA_HOME/bin:$PATH"
 ### "bat" as manpager
-if [ -n "$(command -v bat)" ]; then
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
+# if [ -n "$(command -v bat)" ]; then
+#     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# fi
 ### Other settings:
 export QT_QPA_PLATFORMTHEME="gtk2"        # Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2=1                  # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1      # Fix for Java applications in dwm
 
-### Remap: Caps -> Esc; L+R_Shift -> Caps; Alt <-> Super
-setxkbmap -option caps:escape,shift:both_capslock,altwin:swap_alt_win
-
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+#[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"

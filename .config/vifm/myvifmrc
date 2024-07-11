@@ -7,8 +7,6 @@ mark D ~/Documents/
 mark w ~/Downloads/
 mark t ~/tmp/
 mark s ~/.scripts/
-mark d ~/Dev/
-mark m ~/Github/MyGitHub/
 
 """""""""""""""""
 "  Colorscheme  "

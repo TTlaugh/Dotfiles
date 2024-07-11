@@ -37,7 +37,7 @@ foreground = "#c8d3f5"
 TERM = "xterm-256color"
 
 [font]
-size = 15.0
+size = 12.0
 
 [font.bold]
 family = "Hack Nerd Font"
@@ -84,7 +84,7 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [window]
-opacity = 0.9
+opacity = 1.0
 title = "Alacritty"
 
 [window.class]

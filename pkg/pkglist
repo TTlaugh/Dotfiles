@@ -57,6 +57,8 @@ jdk-openjdk
 gcc
 gdb
 cmake
+npm
+yarn
 
 #lightdm
 #lightdm-slick-greeter
@@ -76,6 +78,7 @@ fastfetch
 git
 wget
 curl
+openssh
 persepolis
 pavucontrol
 pcmanfm-gtk3

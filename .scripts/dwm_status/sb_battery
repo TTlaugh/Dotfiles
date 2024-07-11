@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BAT="/sys/class/power_supply/BAT0"
+BAT="/sys/class/power_supply/BAT1" # BAT1 for me but it usually BAT0
 CAPACITY="$(cat $BAT/capacity 2>&1)"
 STATUS="$(cat $BAT/status 2>&1)"
 

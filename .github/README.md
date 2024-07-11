@@ -70,6 +70,11 @@ yay -S - < aurlist.txt
 
 ## Configuration
 
+First, the user need to be in these groups: wheel,video,input,audio,optical,storage
+```
+sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
+```
+
 <details>
 <summary>Lightdm, lightdm-slick-greeter</summary>
 
@@ -108,9 +113,10 @@ yay -S - < aurlist.txt
 <details>
 <summary>Dmenu</summary>
 
+- Add this patch for [mouse support](https://tools.suckless.org/dmenu/patches/mouse-support).
 - Edit *config.def.h*:
   - Font: `Hack Nerd Font`
-  - Font size: `13`
+  - Font size: `12`
   - Colors:
     ```
     [SchemeNorm] = { "#777c99", "#1a1b26" },

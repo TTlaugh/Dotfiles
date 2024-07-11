@@ -47,6 +47,6 @@ install_pacpack
 install_yay
 install_yaypack
 install_sl
-
+sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 chsh -s "$(which zsh)"
 cp misc/img.jpg "$HOME"

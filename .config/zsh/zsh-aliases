@@ -61,7 +61,7 @@ alias vi="nvim"
 alias suvi="sudoedit"
 vf() {
     file="$(fzf)"
-    [[ -z "$file" ]] && exit 0
+    [[ -z "$file" ]] && return 1
     nvim "$file"
 }
 
@@ -116,9 +116,19 @@ alias pacS="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-windo
 alias pacR="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns"
 alias supac="sudo pacman"
 alias pacRu="pacman -Qtdq | sudo pacman -Rns -"
-paclsdep() {
+paclsdeps() {
     LC_ALL=C pacman -Qi "$1" | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u
 }
-paclsfile() {
+paclsfiles() {
     pacman -Qlq "$1" | grep -v '/$' | xargs -r du -h | sort -h
 }
+
+### power off usb drive
+eject() {
+    echo 1 | sudo tee /sys/block/"$1"/device/delete >/dev/null
+}
+
+### Phone handle
+alias lsphone="simple-mtpfs -l"
+alias mphone="simple-mtpfs --device"
+alias uphone="fusermount -u"

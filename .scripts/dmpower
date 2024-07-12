@@ -7,14 +7,14 @@ set -euo pipefail
 
 export WM="dwm"
 case "$(readlink -f /sbin/init)" in
-	*systemd*) ctl='systemctl' ;;
-	*) ctl='loginctl' ;;
+    *systemd*) ctl='systemctl' ;;
+    *) ctl='loginctl' ;;
 esac
 
 wmpid(){ # This function is needed if there are multiple instances of the window manager.
-	tree="$(pstree -ps $$)"
-	tree=${tree#*"$WM"(}
-	echo "${tree%%)*}"
+    tree="$(pstree -ps $$)"
+    tree=${tree#*"$WM"(}
+    echo "${tree%%)*}"
 }
 
 main() {
@@ -26,7 +26,7 @@ main() {
         Suspend)     slock "$ctl" suspend -i;;
         Restart)     reboot;;
         Shutdown)    shutdown now;;
-	Display-off) slock xset dpms force off;;
+        Display-off) slock xset dpms force off;;
         *) exit 1;;
     esac
 }

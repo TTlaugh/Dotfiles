@@ -16,7 +16,7 @@ xidlehook \
     "xrandr --output $PRIMARY_DISPLAY --brightness 1" \
   `# Undim & turn off the display after 60 more seconds` \
   --timer 60 \
-    "xset dpms force off; xrandr --output $PRIMARY_DISPLAY --brightness 1" \
+    "slock & xset dpms force off; xrandr --output $PRIMARY_DISPLAY --brightness 1" \
     '' \
   `# Finally, suspend after half an hour` \
   --timer 1800 \

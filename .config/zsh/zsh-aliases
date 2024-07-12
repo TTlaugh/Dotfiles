@@ -2,7 +2,7 @@
 alias gitst="git status"
 alias gitaa="git add ."
 alias gitco="git commit -m"
-alias push="printf '' | xclip -selection clipboard && git push && killall xclip"
+alias push="git push"
 alias pull="git pull"
 alias clone="git clone"
 

@@ -95,6 +95,7 @@ maim
 lxappearance-gtk3
 lxsession-gtk3
 polkit
+pass
 fzf
 bat
 ripgrep

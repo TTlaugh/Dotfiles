@@ -1,8 +1,8 @@
 ### Nvidia Optimus
-ncard="sudo envycontrol -s nvidia"
-icard="sudo envycontrol -s integrated"
-hcard="sudo envycontrol -s hybrid"
-qcard="envycontrol --query"
+alias ncard="sudo envycontrol -s nvidia"
+alias icard="sudo envycontrol -s integrated"
+alias hcard="sudo envycontrol -s hybrid"
+alias qcard="envycontrol --query"
 
 ### Git
 alias gst="git status"

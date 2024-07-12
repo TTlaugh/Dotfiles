@@ -30,7 +30,7 @@
     separator_color = frame
 
     sort = yes
-    font = Roboto Mono 10
+    font = Monospace 12
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"

@@ -6,7 +6,7 @@ zstyle ':vcs_info:git:*' formats "(%b)"
 precmd() { vcs_info }
 setopt prompt_subst
 
-PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$fg[cyan]%} ${vcs_info_msg_0_}%{$reset_color%}'$'\n''$%b '
+PROMPT='%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$fg[cyan]%} ${vcs_info_msg_0_}%{$reset_color%}%b'$'\n''%B$%b '
 RPROMPT='%(?..%{$fg[red]%}%?)%{$reset_color%}'
 
 setopt autocd       # Automatically cd into typed directory.

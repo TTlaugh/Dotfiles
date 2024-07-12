@@ -1,7 +1,13 @@
+### Nvidia Optimus
+ncard="sudo envycontrol -s nvidia"
+icard="sudo envycontrol -s integrated"
+hcard="sudo envycontrol -s hybrid"
+qcard="envycontrol --query"
+
 ### Git
-alias gitst="git status"
-alias gitaa="git add ."
-alias gitco="git commit -m"
+alias gst="git status"
+alias gaa="git add ."
+alias gco="git commit -m"
 alias push="git push"
 alias pull="git pull"
 alias clone="git clone"

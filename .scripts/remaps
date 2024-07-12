@@ -1,0 +1,3 @@
+#!/bin/sh
+
+setxkbmap -option caps:escape,shift:both_capslock,altwin:swap_alt_win

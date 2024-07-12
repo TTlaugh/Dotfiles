@@ -79,7 +79,6 @@ git
 wget
 curl
 openssh
-persepolis
 pavucontrol
 pcmanfm-gtk3
 vifm

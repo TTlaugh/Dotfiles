@@ -59,11 +59,6 @@ alias ip="ip -color=auto"
 ### Nvim
 alias vi="nvim"
 alias suvi="sudoedit"
-vf() {
-    file="$(fzf)"
-    [[ -z "$file" ]] && return 1
-    nvim "$file"
-}
 
 ### Vifm
 # Or create symbolic links to add this script to PATH: ln -sf ~/.config/vifm/scripts/vifmrun ~/.local/bin/ifm
@@ -78,14 +73,6 @@ mdtopdf() {
     fullname=$(basename -- "$1")
     filename="${fullname%.*}"
     pandoc "$fullname" -t beamer -o "$filename.pdf"
-}
-
-### Cheat
-cheat() {
-    old="$IFS"
-    IFS="+"
-    curl "cheat.sh/$*"
-    IFS="$old"
 }
 
 ### Translate by translate-shell
@@ -123,12 +110,15 @@ paclsfiles() {
     pacman -Qlq "$1" | grep -v '/$' | xargs -r du -h | sort -h
 }
 
-### power off usb drive
+### Drives handle
+alias lsblk="lsblk -po 'uuid,name,type,size,label,mountpoint,fstype'"
+alias mount='sudo mount -o uid="$(id -u)",gid="$(id -g)"'
+alias umount="sudo umount -l"
 eject() {
     echo 1 | sudo tee /sys/block/"$1"/device/delete >/dev/null
 }
 
-### Phone handle
+### Phones handle
 alias lsphone="simple-mtpfs -l"
-alias mphone="simple-mtpfs --device"
+alias mphone="simple-mtpfs -o allow_other --device"
 alias uphone="fusermount -u"

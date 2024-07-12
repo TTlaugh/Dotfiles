@@ -50,12 +50,12 @@ yay -S - < aurlist.txt
 > NOTE: You should read the application documentation for more information on the Archwiki or the application main page.
 - VirtualBox
 - LibreOffice
-- tlp
-- auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
 - mutt-wizard ([LukeSmith](https://github.com/LukeSmithxyz/mutt-wizard))
-- openssh
+- auto-cpufreq ([github](https://github.com/AdnanHodzic/auto-cpufreq))
+- tlp
 - reflector
-- rofi
+- aria2
+- yt-dlp
 - speedtest-cli
 </details>
 

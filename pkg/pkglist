@@ -53,7 +53,7 @@ xf86-input-libinput
 libxft
 libnotify
 
-jdk-openjdk
+#jdk-openjdk
 gcc
 gdb
 cmake

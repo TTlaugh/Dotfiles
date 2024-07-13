@@ -31,23 +31,22 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export HISTFILE="$XDG_DATA_HOME/history"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+
 ### Go
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 ### Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
-### Java
-java_home="$(find /usr/lib/jvm/ -name 'java-1.11.0-openjdk*')"
-if [ -z "$java_home" ]; then
-    java_home="$(find /usr/lib/jvm/ -name 'java-1.*.0-openjdk*'|tail -n 1)"
-fi
-export JAVA_HOME="$java_home"
+### Java (java 17 as default)
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk/bin/java"
 export PATH="$JAVA_HOME/bin:$PATH"
+
 ### "bat" as manpager
-# if [ -n "$(command -v bat)" ]; then
-#     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# fi
+export MANROFFOPT='-c'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 ### Other settings:
+export LESS="R"
 export QT_QPA_PLATFORMTHEME="gtk2"        # Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2=1                  # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 DIR="$1"
 [[ -z "$DIR" ]] && DIR="."
 TOTAL=0

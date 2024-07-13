@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -f "$HOME"/.fehbg ]; then
+    . "$HOME"/.fehbg &
+else
+    feh --bg-fill "$HOME"/img.jpg &
+fi
+

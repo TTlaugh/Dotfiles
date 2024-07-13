@@ -10,24 +10,12 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 xrandr --dpi 96 # Set DPI. User may want to use a larger number for larger screens
 
-autostart="xcompmgr dunst unclutter lxsession remapd"
+setbg &
+
+autostart="xcompmgr dunst unclutter lxsession pipewire xidle remapd"
 for program in $autostart; do
     pidof -sx "$program" || "$program" &
 done >/dev/null 2>&1
-(pidof -sx wireplumber || wpctl status)>/dev/null 2>&1
-
-xset s off &
-xset -dpms &
-xset s noblank &
-
-if [ -f "$HOME"/.fehbg ]; then
-    . "$HOME"/.fehbg &
-else
-    feh --bg-fill "$HOME"/img.jpg &
-fi
-
-### Remap: Caps -> Esc; L+R_Shift -> Caps; Alt <-> Super
-setxkbmap -option caps:escape,shift:both_capslock,altwin:swap_alt_win
 
 # dwm status bar
 dwm_statusbar | dwm_setstatus &

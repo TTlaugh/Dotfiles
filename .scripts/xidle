@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Locks after 5 minutes (including screen off), sleeps after 15 minutes.
-xautolock -time 15 -locker 'systemctl suspend' -notify 600 -notifier 'i3lock | xset dpms force off'
+xautolock -time 15 -locker 'systemctl suspend' -notify 600 -notifier 'slock & xset dpms force off'

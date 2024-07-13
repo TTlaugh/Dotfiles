@@ -1,7 +1,7 @@
-source <(fzf --zsh) || ( \
+source <(fzf --zsh) || { \
     source /usr/share/fzf/key-bindings.zsh && \
     source /usr/share/fzf/completion.zsh \
-)
+}
 
 command -v bat &>/dev/null && previewtool="bat -n --color=always --line-range :500" || previewtool="less"
 FD_OPTS="--hidden --follow --exclude .git"

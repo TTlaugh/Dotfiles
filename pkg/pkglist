@@ -45,7 +45,6 @@ pulsemixer
 bluez
 bluez-utils
 bluez-obex
-blueman
 
 fuse2
 
@@ -91,6 +90,8 @@ nsxiv
 mpv
 imagemagick
 maim
+capitaine-cursors
+arc-gtk-theme
 lxappearance-gtk3
 lxsession-gtk3
 polkit

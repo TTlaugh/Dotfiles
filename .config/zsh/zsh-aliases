@@ -1,4 +1,4 @@
-### Nvidia Optimus
+### Nvidia Optimus (Envycontrol)
 alias ncard="sudo envycontrol -s nvidia"
 alias icard="sudo envycontrol -s integrated"
 alias hcard="sudo envycontrol -s hybrid"

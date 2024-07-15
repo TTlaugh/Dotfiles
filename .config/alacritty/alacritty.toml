@@ -40,19 +40,19 @@ TERM = "xterm-256color"
 size = 12.0
 
 [font.bold]
-family = "Hack Nerd Font"
+family = "Hack"
 style = "Bold"
 
 [font.bold_italic]
-family = "Hack Nerd Font"
+family = "Hack"
 style = "Bold Italic"
 
 [font.italic]
-family = "Hack Nerd Font"
+family = "Hack"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font"
+family = "Hack"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -84,7 +84,7 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
 [window]
-opacity = 1.0
+opacity = 0.9
 title = "Alacritty"
 
 [window.class]

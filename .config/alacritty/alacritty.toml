@@ -40,19 +40,19 @@ TERM = "xterm-256color"
 size = 12.0
 
 [font.bold]
-family = "Hack"
+family = "monospace"
 style = "Bold"
 
 [font.bold_italic]
-family = "Hack"
+family = "monospace"
 style = "Bold Italic"
 
 [font.italic]
-family = "Hack"
+family = "monospace"
 style = "Italic"
 
 [font.normal]
-family = "Hack"
+family = "monospace"
 style = "Regular"
 
 [[keyboard.bindings]]

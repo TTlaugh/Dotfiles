@@ -1,7 +1,12 @@
+! Transparency (0-1):
+*.alpha: 0.9
+
+! Set a default font and font size as below:
+*.font: monospace:size=12
+
 ! TokyoNight-moon colors for Xresources
 *background: #222436
 *foreground: #c8d3f5
-
 *color0: #1b1d2b
 *color1: #ff757f
 *color2: #c3e88d
@@ -10,7 +15,6 @@
 *color5: #c099ff
 *color6: #86e1fc
 *color7: #828bb8
-
 *color8: #444a73
 *color9: #ff757f
 *color10: #c3e88d

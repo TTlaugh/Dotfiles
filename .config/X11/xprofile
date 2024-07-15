@@ -3,7 +3,8 @@
 # This file runs when a DM logs you into a graphical session.
 # If you use startx/xinit like a Chad, this file will also be sourced.
 
-#xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/X11/Xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+# Use Xresources colors/settings on startup
+xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/X11/Xresources & xrdbpid=$!
 
 # EnvyControl settings for NVIDIA mode if not use DM
 xrandr --setprovideroutputsource modesetting NVIDIA-0

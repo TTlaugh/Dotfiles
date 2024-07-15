@@ -1,7 +1,12 @@
 #!/bin/sh
+# Run by itself, set the wallpaper (at X start).
 
-if [ -f "$HOME"/.fehbg ]; then
-    . "$HOME"/.fehbg
-else
-    feh --bg-fill "$HOME"/img.jpg
-fi
+# Location of link to wallpaper link.
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+trueloc="$(readlink -f "$1")" && \
+case "$(file --mime-type -b "$trueloc")" in
+	image/* ) ln -sf "$trueloc" "$bgloc" ;;
+	*) notify-send "Set Background Error" "Not a valid image." ; exit 1;;
+esac
+
+feh --no-fehbg --bg-fill "$bgloc"

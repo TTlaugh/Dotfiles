@@ -3,7 +3,8 @@
 pwd=$(pwd)
 
 GitRepos="$HOME/GitRepos"
-Suckless="$HOME/Suckless"
+Suckless="$GitRepos/Suckless"
+tools="$GitRepos/tools"
 
 pkglist="pkg/pkglist"
 aurlist="pkg/aurlist"
@@ -16,6 +17,7 @@ mydwm="https://github.com/nguyenletientrien/dwm"
 createDir() {
     [[ ! -d "$GitRepos" ]] && mkdir -p "$GitRepos"
     [[ ! -d "$Suckless" ]] && mkdir -p "$Suckless"
+    [[ ! -d "$tools"    ]] && mkdir -p "$tools"
 }
 
 install_pacpack(){
@@ -26,7 +28,7 @@ install_yaypack() {
     yay -S --needed - < "$aurlist"
 }
 install_yay() {
-    cd "$GitRepos" || exit
+    cd "$tools" || exit
     git clone "$yaylink" && cd yay && makepkg -si
     cd "$pwd" || exit
 }
@@ -49,4 +51,3 @@ install_yaypack
 install_sl
 sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 chsh -s "$(which zsh)"
-cp misc/img.jpg "$HOME"

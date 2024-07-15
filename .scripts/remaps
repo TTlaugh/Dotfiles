@@ -1,4 +1,4 @@
 #!/bin/sh
 
-### Remap: Caps -> Esc; L+R_Shift -> Caps; Alt <-> Super
+# Remap: Caps -> Esc; L+R_Shift -> Caps; Alt <-> Super
 setxkbmap -option caps:escape,shift:both_capslock,altwin:swap_alt_win

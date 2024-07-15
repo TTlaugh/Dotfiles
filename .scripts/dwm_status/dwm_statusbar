@@ -30,13 +30,12 @@ update_datetime () {
 }
 
 update_mics () {
-    weather=" $(curl -s 'wttr.in/?0T&format=%C+%f')"
-    pkgupdates=" $(checkupdates | wc -l)"
-    mics="$weather $SEP $pkgupdates"
+    pkgupdates="Updates:$(checkupdates | wc -l)"
+    mics="$pkgupdates"
 }
 
 display () {
-    printf "%s\n" " $datetime $SEP $mics $SEP $internet $volume $backlight $battery "
+    printf "%s\n" " $datetime $SEP $mics $SEP $internet  $volume  $backlight  $battery "
 }
 
 # signals for each module to update while updating display. RTMIN is 34

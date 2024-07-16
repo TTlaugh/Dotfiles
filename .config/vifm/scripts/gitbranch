@@ -4,6 +4,4 @@ cur_path=$(readlink -f "$1")
 cd "$cur_path" || exit
 if branch=$(git branch --show-current 2>/dev/null); then
     echo " $branch"
-else
-    echo ""
 fi

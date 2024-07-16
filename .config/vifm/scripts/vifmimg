@@ -6,7 +6,7 @@ export PCACHE="${PCACHE%% *}"
 
 # Ueberzug
 ueberzug_preview() {
-    printf '{"action": "add", "identifier": "vifm-preview", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$2" "$3" "$4" "$5" "$6" > "$FIFO_UEBERZUG"
+    printf '{"action": "add", "identifier": "vifm-preview", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$2" "$3" "$4" "$5" "$1" > "$FIFO_UEBERZUG"
 }
 ueberzug_clear() {
     printf '{"action": "remove", "identifier": "vifm-preview"}\n' > "$FIFO_UEBERZUG"
@@ -14,19 +14,23 @@ ueberzug_clear() {
 
 # Kitty builtin image preview
 kitty_preview() {
-    kitten icat --silent --transfer-mode=file --place="${4}x${5}@${2}x${3}" "$6" >/dev/tty </dev/tty
+    kitten icat --silent --transfer-mode=file --place="${4}x${5}@${2}x${3}" "$1" >/dev/tty </dev/tty
 }
 kitty_clear() {
     kitten icat --clear --silent >/dev/tty </dev/tty
 }
 
 preview() {
-    if [[ -n "$KITTY_WINDOW_ID" ]]; then
-        kitty_preview "$@"
-    elif [[ -n "$FIFO_UEBERZUG" ]]; then
-        ueberzug_preview "$@"
+    if [ -f "$1" ] && [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && command -V ueberzug >/dev/null 2>&1; then
+        if [[ -n "$KITTY_WINDOW_ID" ]]; then
+            kitty_preview "$@"
+        elif [[ -n "$FIFO_UEBERZUG" ]]; then
+            ueberzug_preview "$@"
+        else
+            echo "There is no tool to support image preview"
+        fi
     else
-        echo "There is no tool to support image preview"
+        mediainfo "$6"
     fi
 }
 clear() {
@@ -37,35 +41,29 @@ clear() {
     fi
 }
 
-ifnocache() {
-    echo "Loading preview ..."
-    [ ! -f "${PCACHE}$1" ]
-}
-
 main() {
     case "$1" in
         "clear")
             clear "$@"
             ;;
         "draw")
-            preview "$1" "$2" "$3" "$4" "$5" "$PWD/$6"
+            preview "$PWD/$6" "$2" "$3" "$4" "$5" "$PWD/$6"
             ;;
         "video")
-            # Replace "jpg" by "png" if you want higher quality previews, but it have a biger size
-            ifnocache ".jpg" && ffmpegthumbnailer -i "$6" -o "${PCACHE}.jpg" -s 0 -q 5
-            preview "$1" "$2" "$3" "$4" "$5" "${PCACHE}.jpg"
+            [ ! -f "${PCACHE}.jpg" ] && ffmpegthumbnailer -i "$6" -o "${PCACHE}.jpg" -s 0 -q 5
+            preview "${PCACHE}.jpg" "$2" "$3" "$4" "$5" "$6"
             ;;
         "pdf")
-            ifnocache ".jpg" && pdftoppm -jpeg -f 1 -singlefile "$6" "$PCACHE"
-            preview "$1" "$2" "$3" "$4" "$5" "${PCACHE}.jpg"
+            [ ! -f "${PCACHE}.jpg" ] && pdftoppm -jpeg -f 1 -singlefile "$6" "$PCACHE"
+            preview "${PCACHE}.jpg" "$2" "$3" "$4" "$5" "$6"
             ;;
         "audio")
-            ifnocache ".jpg" && ffmpeg -hide_banner -i "$6" "${PCACHE}.jpg" -y >/dev/null
-            preview "$1" "$2" "$3" "$4" "$5" "${PCACHE}.jpg"
+            [ ! -f "${PCACHE}.jpg" ] && ffmpeg -hide_banner -i "$6" "${PCACHE}.jpg" -y >/dev/null
+            preview "${PCACHE}.jpg" "$2" "$3" "$4" "$5" "$6"
             ;;
         "font")
-            ifnocache ".jpg" && fontpreview -i "$6" -o "${PCACHE}.jpg"
-            preview "$1" "$2" "$3" "$4" "$5" "${PCACHE}.jpg"
+            [ ! -f "${PCACHE}.jpg" ] && fontpreview -i "$6" -o "${PCACHE}.jpg"
+            preview "${PCACHE}.jpg" "$2" "$3" "$4" "$5" "$6"
             ;;
         *)
     esac

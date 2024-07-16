@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+set -e
+
+cleanup() {
+    exec 3>&-
+    rm "$FIFO_UEBERZUG"
+}
+
 if [ -z "$(command -v vifm)" ]; then
     printf "vifm isn't installed on your system!\n"
     exit 1
@@ -9,18 +16,10 @@ elif [ -z "$(command -v ueberzug)" ]; then
     printf "ueberzug isn't installed on your system!\n"
     exec vifm "$@"
 else
-    export FIFO_UEBERZUG="/tmp/vifm-ueberzug-${PPID}"
-
-    cleanup() {
-        rm "$FIFO_UEBERZUG" 2>/dev/null
-        pkill -P $$ 2>/dev/null
-    }
-
-    rm "$FIFO_UEBERZUG" 2>/dev/null
+    export FIFO_UEBERZUG="/tmp/vifm-ueberzug-${$}"
     mkfifo "$FIFO_UEBERZUG"
-    trap cleanup EXIT
-    tail --follow "$FIFO_UEBERZUG" | ueberzug layer --silent --parser json &
-
-    vifm "$@"
-    cleanup
+    ueberzug layer -s <"$FIFO_UEBERZUG" -p json &
+    exec 3>"$FIFO_UEBERZUG"
+    trap cleanup HUP INT QUIT TERM PWR EXIT
+    vifm "$@" 3>&-
 fi

@@ -16,11 +16,6 @@ split() {
 
 VOL="$(printf "%.0f" "$(split "$VOL" ".")")"
 
-case 1 in
-    $((VOL == 100)) ) ICON="Vol:" ;;
-    $((VOL >= 10)) )  ICON="Vol: " ;;
-    $((VOL >= 1))  )  ICON="Vol:  " ;;
-    *) echo "Muted" && exit ;;
-esac
+[ "$VOL" -eq 0 ] && echo Muted && exit
 
-printf "%s%s" "$ICON" "$VOL"
+printf "Vol:%s" "$VOL"

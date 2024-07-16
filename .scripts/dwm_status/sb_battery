@@ -7,9 +7,9 @@ STATUS="$(cat $BAT/status 2>&1)"
 case "$STATUS" in
     "Discharging")                   ;;
     "Full")                          ;;
-    "Charging")     INFO="($STATUS)" ;;
-    "Not charging") INFO="($STATUS)" ;;
-    "Unknown")      INFO="($STATUS)" ;;
+    "Charging")     INFO=" ($STATUS)" ;;
+    "Not charging") INFO=" ($STATUS)" ;;
+    "Unknown")      INFO=" ($STATUS)" ;;
     *) exit 1 ;;
 esac
 

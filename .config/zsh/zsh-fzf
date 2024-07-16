@@ -3,7 +3,7 @@ source <(fzf --zsh) || { \
     source /usr/share/fzf/completion.zsh \
 }
 
-command -v bat &>/dev/null && previewtool="bat -n --color=always --line-range :500" || previewtool="less"
+[ -x "$(command -v bat)" ] && previewtool="bat -n --color=always --line-range :500" || previewtool="less"
 FD_OPTS="--hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--height 80% \
                          --layout=reverse \

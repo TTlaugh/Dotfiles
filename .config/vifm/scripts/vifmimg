@@ -21,7 +21,7 @@ kitty_clear() {
 }
 
 preview() {
-    if [ -f "$1" ] && [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && command -V ueberzug >/dev/null 2>&1; then
+    if [ -f "$1" ] && [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ -x "$(command -v ueberzug)" ]; then
         if [[ -n "$KITTY_WINDOW_ID" ]]; then
             kitty_preview "$@"
         elif [[ -n "$FIFO_UEBERZUG" ]]; then

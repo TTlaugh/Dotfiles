@@ -7,12 +7,12 @@ cleanup() {
     rm "$FIFO_UEBERZUG"
 }
 
-if [ -x "$(command -v vifm)" ]; then
+if [ ! -x "$(command -v vifm)" ]; then
     printf "vifm isn't installed on your system!\n"
     exit 1
 elif [[ -n "$KITTY_WINDOW_ID" ]]; then
     exec vifm "$@"
-elif [ -x "$(command -v ueberzug)" ]; then
+elif [ ! -x "$(command -v ueberzug)" ]; then
     printf "ueberzug isn't installed on your system!\n"
     exec vifm "$@"
 else

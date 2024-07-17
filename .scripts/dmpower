@@ -3,8 +3,6 @@
 # Description: Suspend, Restart, Shutdown with dmenu.
 # Dependencies: dmenu, any Nerd Font
 
-set -euo pipefail
-
 export WM="dwm"
 case "$(readlink -f /sbin/init)" in
     *systemd*) ctl='systemctl' ;;
@@ -13,22 +11,17 @@ esac
 
 wmpid(){ # This function is needed if there are multiple instances of the window manager.
     tree="$(pstree -ps $$)"
-    tree=${tree#*"$WM"(}
+    tree="${tree#*"$WM"(}"
     echo "${tree%%)*}"
 }
 
-main() {
-    choice=$(echo -e "Lock\nLeave\nHibernate\nSuspend\nRestart\nShutdown\nDisplay-off\nCancel" | dmenu -i -p " ")
-    case $choice in
-        Lock)        slock;;
-        Leave)       kill -TERM "$(wmpid)";;
-        Hibernate)   slock "$ctl" hibernate -i;;
-        Suspend)     slock "$ctl" suspend -i;;
-        Restart)     reboot;;
-        Shutdown)    shutdown now;;
-        Display-off) slock xset dpms force off;;
-        *) exit 1;;
-    esac
-}
-
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
+case "$(printf "Lock\nLeave\nHibernate\nSuspend\nRestart\nShutdown\nDisplay-off\nCancel" | dmenu -i -p "Action:")" in
+    Lock)        slock;;
+    Leave)       kill -TERM "$(wmpid)";;
+    Hibernate)   slock "$ctl" hibernate -i;;
+    Suspend)     slock "$ctl" suspend -i;;
+    Restart)     reboot;;
+    Shutdown)    shutdown now;;
+    Display-off) slock xset dpms force off;;
+    *) exit 1;;
+esac

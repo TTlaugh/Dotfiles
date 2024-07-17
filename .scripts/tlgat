@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Description: A script to toggle alacritty transparency
 # Dependencies: alacritty
 
 ## If alacritty.toml does not exist, raise an alert
-[[ ! -f ~/.config/alacritty/alacritty.toml ]] && notify-send "tlgat" "alacritty.toml does not exist" && exit 0
+[ ! -f ~/.config/alacritty/alacritty.toml ] && notify-send "tlgat" "alacritty.toml does not exist" && exit 0
 
 ## Fetch opacity from alacritty.toml
 opacity=$(awk '$1 == "opacity" {print $3; exit}' ~/.config/alacritty/alacritty.toml)

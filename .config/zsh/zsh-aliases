@@ -75,30 +75,14 @@ alias feh="feh --scale-down --auto-zoom"
 
 ### Convert to PDF
 alias doctopdf="libreoffice --headless --convert-to pdf:writer_pdf_Export"
-mdtopdf() {
-    fullname=$(basename -- "$1")
-    filename="${fullname%.*}"
-    pandoc "$fullname" -t beamer -o "$filename.pdf"
-}
 
 ### Translate by translate-shell
 alias vtrans="trans -shell -brief :vi"
 alias etrans="trans -shell -brief :en"
-transtovi() {
-    t=$(trans -brief :vi "$*")
-    printf "%s" "$t" | xclip -sel clipboard
-    echo -e "$t"
-    killall xclip
-}
-transtoen() {
-    t=$(trans -brief :en "$*")
-    printf "%s" "$t" | xclip -sel clipboard
-    echo -e "$t"
-    killall xclip
-}
+alias tovi="trans -brief :vi"
+alias toen="trans -brief :en"
 
 ### Funny
-alias rr="curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash" # Terminal rickroll!!!!
 alias parrot="curl parrot.live"
 alias weather="curl wttr.in"
 

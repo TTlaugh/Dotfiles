@@ -104,7 +104,6 @@ fd
 jq
 bc
 eza
-pacman-contrib
 zathura
 zathura-pdf-poppler
 #zathura-pdf-mupdf

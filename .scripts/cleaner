@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Description: Arch linux cleanup script.
-# Dependencies: pacman-contrib
 
 # shellcheck disable=SC2162,SC2086
 

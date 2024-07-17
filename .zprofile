@@ -46,7 +46,7 @@ export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ### Other settings:
-export LESS="R"
+# export LESS="R"
 export QT_QPA_PLATFORMTHEME="gtk2"        # Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2=1                  # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname

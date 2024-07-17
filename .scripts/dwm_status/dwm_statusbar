@@ -30,7 +30,7 @@ update_datetime () {
 }
 
 update_mics () {
-    pkgupdates="Updates:$(checkupdates | wc -l)"
+    pkgupdates="Updates:$(pacman -Qu | grep -Fcv "[ignored]")"
     mics="$pkgupdates"
 }
 

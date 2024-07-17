@@ -5,8 +5,12 @@ CAPACITY="$(cat $BAT/capacity 2>&1)"
 STATUS="$(cat $BAT/status 2>&1)"
 
 case "$STATUS" in
-    "Discharging")                   ;;
-    "Full")                          ;;
+    "Discharging")
+        case 1 in
+            $((CAPACITY <= 30)) ) notify-send "Low Battery" "Charge your computer now." -u normal -r 9991 ;;
+            $((CAPACITY <= 10)) ) notify-send "Battery Critical" "The computer will shutdown soon." -u critical -r 9991 ;;
+        esac                          ;;
+    "Full")                           ;;
     "Charging")     INFO=" ($STATUS)" ;;
     "Not charging") INFO=" ($STATUS)" ;;
     "Unknown")      INFO=" ($STATUS)" ;;

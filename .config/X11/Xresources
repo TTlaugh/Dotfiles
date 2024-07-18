@@ -1,3 +1,6 @@
+! Cursor size
+Xcursor.size: 32
+
 ! Transparency (0-1):
 *.alpha: 0.9
 

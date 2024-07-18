@@ -43,12 +43,17 @@ install_sl() {
         sudo make clean install
     cd "$pwd" || exit
 }
+apply_dotfiles() {
+    cd "$pwd" && stow -v -R -t ~ .
+}
 
 createDir
 install_pacpack
 install_yay
 install_yaypack
 install_sl
+apply_dotfiles
 sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 printf "FONT=ter-132n" | sudo tee -a /etc/vconsole.conf
+sudo cp "misc/etc/X11/xorg.conf.d/30-touchpad.conf" "/etc/X11/xorg.conf.d/30-touchpad.conf"
 chsh -s "$(which zsh)"

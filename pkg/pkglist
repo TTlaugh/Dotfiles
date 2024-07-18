@@ -73,6 +73,7 @@ neovim
 vim
 nano
 zsh
+stow
 fastfetch
 git
 wget

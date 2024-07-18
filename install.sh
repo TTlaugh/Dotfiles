@@ -51,3 +51,4 @@ install_yaypack
 install_sl
 sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 chsh -s "$(which zsh)"
+printf "FONT=ter-132n" | sudo tee -a /etc/vconsole.conf

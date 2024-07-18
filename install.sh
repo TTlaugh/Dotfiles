@@ -44,7 +44,12 @@ install_sl() {
     cd "$pwd" || exit
 }
 apply_dotfiles() {
-    cd "$pwd" && stow -v -R -t ~ .
+    cd "$pwd" && stow --no-folding -v -R -t ~ .
+}
+copy_symblink() {
+    cd "$pwd" || exit
+    cp -a ".xprofile" "$HOME"
+    cp -a ".local/share/bg" "$HOME/.local/share/bg"
 }
 
 createDir
@@ -53,6 +58,7 @@ install_yay
 install_yaypack
 install_sl
 apply_dotfiles
+copy_symblink
 sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 printf "FONT=ter-132n" | sudo tee -a /etc/vconsole.conf
 sudo cp "misc/etc/X11/xorg.conf.d/30-touchpad.conf" "/etc/X11/xorg.conf.d/30-touchpad.conf"

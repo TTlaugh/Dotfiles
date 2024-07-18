@@ -12,7 +12,7 @@ xrandr --auto
 xrandr --dpi 96 # Set DPI. User may want to use a larger number for larger screens
 
 setbg &
-(pidof -sx wireplumber || wpctl status)>/dev/null 2>&1
+(pidof -sx wireplumber || wpctl status &)>/dev/null 2>&1
 
 autostart="xcompmgr dunst unclutter lxsession xidle remapd"
 for program in $autostart; do

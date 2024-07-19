@@ -29,18 +29,18 @@ update_datetime () {
     datetime="$(date "+%b %d %Y (%a) %H:%M")"
 }
 
-update_mics () {
-    pkgupdates="Updates:$(pacman -Qu | grep -Fcv "[ignored]")"
-    mics="$pkgupdates"
+update_pkgs () {
+    pkgs="Updates:$(pacman -Qu | grep -Fcv "[ignored]")"
 }
 
 display () {
-    printf "%s\n" " $datetime $SEP $mics $SEP $internet  $volume  $backlight  $battery "
+    printf "%s\n" " $datetime $SEP $pkgs $SEP $internet  $volume  $backlight  $battery "
 }
 
 # signals for each module to update while updating display. RTMIN is 34
-trap "update_volume;display" "RTMIN"
+trap "update_volume;display"    "RTMIN"
 trap "update_backlight;display" "RTMIN+1"
+trap "update_pkgs;display"      "RTMIN+2"
 
 while true
 do
@@ -48,7 +48,7 @@ do
     [ $(( sec % 10   )) -eq 0 ] && update_internet
     [ $(( sec % 60   )) -eq 0 ] && update_battery
     [ $(( sec % 5    )) -eq 0 ] && update_datetime
-    [ $(( sec % 3605 )) -eq 0 ] && update_mics
+    [ $(( sec % 3605 )) -eq 0 ] && update_pkgs
 
     # how often the display updates
     [ $((sec % 5 )) -eq 0 ] && display

@@ -12,7 +12,8 @@ aurlist="pkg/aurlist"
 yaylink="https://aur.archlinux.org/yay.git"
 sldwm="https://git.suckless.org/dwm"
 sldmenu="https://git.suckless.org/dmenu"
-mydwm="https://github.com/nguyenletientrien/dwm"
+mydwm="https://github.com/TTlaugh/dwm"
+mydmenu="https://github.com/TTlaugh/dmenu"
 
 createDir() {
     [[ ! -d "$GitRepos" ]] && mkdir -p "$GitRepos"
@@ -28,14 +29,17 @@ install_yaypack() {
     yay -S --needed - < "$aurlist"
 }
 install_yay() {
-    cd "$tools" || exit
-    git clone "$yaylink" && cd yay && makepkg -si
+    cd "$tools" && git clone "$yaylink" && cd yay && makepkg -si
     cd "$pwd" || exit
 }
 install_sl() {
-    cd "$Suckless" || exit
-    git clone "$sldmenu" && cd dmenu && sudo make clean install
-    cd "$Suckless" || exit
+    cd "$Suckless" && \
+    git clone "$sldmenu" && cd dmenu && \
+        git branch mydmenu && \
+        git checkout mydmenu && \
+        git pull "$mydmenu" master && \
+        sudo make clean install
+    cd "$Suckless" && \
     git clone "$sldwm" && cd dwm && \
         git branch mydwm && \
         git checkout mydwm && \

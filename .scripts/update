@@ -1,3 +1,0 @@
-#!/bin/sh
-
-sudo pacman -Syyu && kill -s 36 "$(cat "$HOME"/.cache/pidofbar)"

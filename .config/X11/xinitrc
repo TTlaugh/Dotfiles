@@ -17,4 +17,13 @@ fi
 # Activate dbus variables
 dbus-update-activation-environment --all
 dbus-launch ssh-agent
-exec startDWM
+
+while type dwm >/dev/null; do
+    # Log stderror to a file
+    dwm 2> ~/.dwm.log || \
+    # No error logging
+    #dwm >/dev/null 2>&1 || \
+
+    # Continue if exit code 129 (when kill with -HUP signal), otherwise quit dwm
+    [ "$?" -eq 129 ] || break
+done

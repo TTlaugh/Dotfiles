@@ -1,0 +1,11 @@
+#!/bin/sh
+
+while type dwm >/dev/null; do
+    # Log stderror to a file
+    dwm 2> ~/.dwm.log
+    # No error logging
+    #dwm >/dev/null 2>&1
+
+    # Continue if exit code 129 (-HUP), otherwise quit dwm
+    [ "$?" -eq 129 ] || break
+done

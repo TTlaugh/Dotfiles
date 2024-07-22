@@ -1,6 +1,0 @@
-#!/bin/sh
-
-while true; do
-    dwm 2> ~/.dwm.log # Log stderror to a file
-    #dwm >/dev/null 2>&1 # No error logging
-done

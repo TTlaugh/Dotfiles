@@ -34,7 +34,7 @@ update_pkgs () {
 }
 
 display () {
-    printf "%s\n" " $datetime $SEP $pkgs $SEP $internet  $volume  $backlight  $battery "
+    printf "%s\n" " $datetime $SEP $pkgs $SEP $internet  $volume  $backlight  $battery " | dwm_setstatus
 }
 
 # signals for each module to update while updating display. RTMIN is 34

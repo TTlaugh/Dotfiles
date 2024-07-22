@@ -2,10 +2,6 @@
 
 # Description: Arch linux cleanup script.
 
-# shellcheck disable=SC2162,SC2086
-
-set -euo pipefail
-
 set_colors() {
     if [ -t 1 ]; then
         RAINBOW="
@@ -20,8 +16,7 @@ set_colors() {
         RED=$(printf '\033[31m')
         GREEN=$(printf '\033[32m')
         YELLOW=$(printf '\033[33m')
-        BLUE=$(printf '\033[34m')
-        BOLD=$(printf '\033[1m')
+        BLUE=$(printf '\033[34m') BOLD=$(printf '\033[1m')
         RESET=$(printf '\033[m')
     else
         RAINBOW=""
@@ -43,26 +38,26 @@ check_root() {
 
 print_banner() {
     clear
-    printf "%s        _____  %s _     %s _____  %s ______  %s _   _  %s _____  %s ____   %s%s         __    %s\n" $RAINBOW "$BOLD" "$GREEN"  "$RESET"
-    printf "%s       |  ___| %s| |    %s|  ___| %s|  __  | %s| \ | | %s|  ___| %s|  _ \\ %s%s         /_/   %s\n" $RAINBOW "$BOLD" "$GREEN"  "$RESET"
-    printf "%s       | |     %s| |    %s| |_    %s| |__| | %s|  \| | %s| |_    %s| |_| | %s%s       / /     %s\n" $RAINBOW "$BOLD" "$RED"    "$RESET"
-    printf "%s       | |     %s| |    %s|  _|   %s|  __  | %s|     | %s|  _|   %s|   _/  %s%s    __/_/__    %s\n" $RAINBOW "$BOLD" "$RED"    "$RESET"
-    printf "%s       | |___  %s| |__  %s| |___  %s| |  | | %s| |\  | %s| |___  %s| |\ \\ %s%s  . /    . / . %s\n" $RAINBOW "$BOLD" "$YELLOW" "$RESET"
-    printf "%s       |_____| %s|____| %s|_____| %s|_|  |_| %s|_| \_| %s|_____| %s|_| \_\\%s%s ..////////. . %s\n" $RAINBOW "$BOLD" "$YELLOW" "$RESET"
+    printf "%s        _____  %s _     %s _____  %s ______  %s _   _  %s _____  %s ____   %s%s         __    %s\n" "$RAINBOW" "$BOLD" "$GREEN"  "$RESET"
+    printf "%s       |  ___| %s| |    %s|  ___| %s|  __  | %s| \ | | %s|  ___| %s|  _ \\ %s%s         /_/   %s\n" "$RAINBOW" "$BOLD" "$GREEN"  "$RESET"
+    printf "%s       | |     %s| |    %s| |_    %s| |__| | %s|  \| | %s| |_    %s| |_| | %s%s       / /     %s\n" "$RAINBOW" "$BOLD" "$RED"    "$RESET"
+    printf "%s       | |     %s| |    %s|  _|   %s|  __  | %s|     | %s|  _|   %s|   _/  %s%s    __/_/__    %s\n" "$RAINBOW" "$BOLD" "$RED"    "$RESET"
+    printf "%s       | |___  %s| |__  %s| |___  %s| |  | | %s| |\  | %s| |___  %s| |\ \\ %s%s  . /    . / . %s\n" "$RAINBOW" "$BOLD" "$YELLOW" "$RESET"
+    printf "%s       |_____| %s|____| %s|_____| %s|_|  |_| %s|_| \_| %s|_____| %s|_| \_\\%s%s ..////////. . %s\n" "$RAINBOW" "$BOLD" "$YELLOW" "$RESET"
     echo
 }
 
 print_option() {
-    printf "%s  [%s0%s] Check!%s\n"                                                   "$BLUE" "$RESET" "$BLUE" "$RESET"
-    printf "%s  [%s1%s] Remove package cache.%s\n"                                    "$BLUE" "$RESET" "$BLUE" "$RESET"
-    printf "%s  [%s2%s] Remove unused packages.%s\n"                                  "$BLUE" "$RESET" "$BLUE" "$RESET"
-    printf "%s  [%s3%s] Clean the cache in your home directory.%s\n"                  "$BLUE" "$RESET" "$BLUE" "$RESET"
-    printf "%s  [%s4%s] Remove old config files.%s\n"                                 "$BLUE" "$RESET" "$BLUE" "$RESET"
-    printf "%s  [%s5%s] Clean Systemd journal.%s\n"                                   "$BLUE" "$RESET" "$BLUE" "$RESET"
-    printf "%s  [%s6%s] Quick clean.%s\n"                                             "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s0%s] Check!%s\n"                                  "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s1%s] Remove package cache.%s\n"                   "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s2%s] Remove unused packages.%s\n"                 "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s3%s] Clean the cache in your home directory.%s\n" "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s4%s] Remove old config files.%s\n"                "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s5%s] Clean Systemd journal.%s\n"                  "$BLUE" "$RESET" "$BLUE" "$RESET"
+    printf "%s  [%s6%s] Quick clean.%s\n"                            "$BLUE" "$RESET" "$BLUE" "$RESET"
     echo
-    printf "%s  [x] Exit.%s\n"                                                    "$RED"  "$RESET"
-    printf "%s%sEnter your option (Default 0):%s " "$BOLD" "$GREEN" "$RESET"
+    printf "%s  [x] Exit.%s\n"                                       "$RED"  "$RESET"
+    printf "%s%sEnter your option (Default 0):%s "                   "$BOLD" "$GREEN" "$RESET"
 }
 
 option_0() {
@@ -74,17 +69,17 @@ option_0() {
     journalsize1=$(du -sh /var/log/journal/ | awk '{print $1}')
     journalsize2=$(du -sh /run/log/journal/ | awk '{print $1}')
     configfiles="$(find "${HOME}"/.config/* -maxdepth 0 | wc -l) items"
-    unpackage="$(pacman -Qtdq | wc -l || printf "") packages"
+    unpackage="$(pacman -Qtdq | wc -l) packages"
     printf "%sDone!%s\n" "$GREEN" "$RESET"
-    printf "%s==> Package cache    :  %s/var/cache/pacman/pkg/   :%s%s$paccachesize\n%s"                    "$BLUE" "$YELLOW" "$BOLD" "$GREEN" "$RESET"
-    printf "%s==> Home cache       :  %s${HOME}/.cache/       :%s%s$homecachesize ($homecachenum files)\n%s"  "$BLUE" "$YELLOW" "$BOLD" "$GREEN" "$RESET"
-    printf "%s==> Systemd journal  :  %s/var/log/journal/        :%s%s$journalsize1\n%s"                    "$BLUE" "$YELLOW" "$BOLD" "$GREEN" "$RESET"
-    printf "                        %s/run/log/journal/        :%s%s$journalsize2\n%s"                      "$YELLOW" "$BOLD" "$GREEN" "$RESET"
-    printf "%s==> All config files :  %s%s$configfiles\n%s"                                                 "$BLUE" "$BOLD" "$GREEN" "$RESET"
-    printf "%s==> Unused packages  :  %s%s$unpackage\n%s"                                                   "$BLUE" "$BOLD" "$GREEN" "$RESET"
+    printf "%s==> Package cache    :  %s/var/cache/pacman/pkg/   :%s%s$paccachesize\n%s"                    "$BLUE"  "$YELLOW""$BOLD" "$GREEN""$RESET"
+    printf "%s==> Home cache       :  %s${HOME}/.cache/       :%s%s$homecachesize ($homecachenum files)\n%s""$BLUE"  "$YELLOW""$BOLD" "$GREEN""$RESET"
+    printf "%s==> Systemd journal  :  %s/var/log/journal/        :%s%s$journalsize1\n%s"                    "$BLUE"  "$YELLOW""$BOLD" "$GREEN""$RESET"
+    printf "                        %s/run/log/journal/        :%s%s$journalsize2\n%s"                      "$YELLOW""$BOLD"  "$GREEN""$RESET"
+    printf "%s==> All config files :  %s%s$configfiles\n%s"                                                 "$BLUE"  "$BOLD"  "$GREEN""$RESET"
+    printf "%s==> Unused packages  :  %s%s$unpackage\n%s"                                                   "$BLUE"  "$BOLD"  "$GREEN""$RESET"
     echo
     printf "%sEnter to go back.%s" "$BOLD" "$RESET"
-    read
+    read -r
 }
 
 option_1() {
@@ -102,24 +97,24 @@ option_1() {
         *)  return;;
     esac
     printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
-    read
+    read -r
 }
 
 option_2() {
     print_banner
-    unusedpackages="$(pacman -Qtdq || printf "")"
+    unusedpackages="$(pacman -Qtdq)"
     if [[ -z "$unusedpackages" ]]; then
         printf "%sNo unused packages to remove. Enter to continue.%s" "$BOLD" "$RESET"
     else
         echo "$unusedpackages" | sudo pacman -Rns - && printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
     fi
-    read
+    read -r
 }
 
 findcache30() {
     clear
     printf "%s%sFinding ......%s\n" "$BOLD" "$RED" "$RESET"
-    cache30="$(find $HOME/.cache/* -maxdepth 1 -type f -atime +30)"
+    cache30=$(find "$HOME"/.cache/* -maxdepth 1 -type f -atime +30)
     case $cache30 in
         "") echo "No old caches found.";;
         *)  echo "$cache30";;
@@ -130,7 +125,7 @@ findcache() {
     read -r upacname
     clear
     printf "%s%sFinding ......%s\n" "$BOLD" "$RED" "$RESET"
-    upacfind=$(find "${HOME}"/.cache/* -maxdepth 1 | grep -w "$upacname" || printf "")
+    upacfind=$(find "${HOME}"/.cache/* -maxdepth 1 | grep -i -w "$upacname")
     case $upacfind in
         "") printf "%s0 matches found.%s\n" "$GREEN" "$RESET";;
         *)  printf "$upacfind\n%s$(echo "$upacfind" | wc -l) matches found.%s\n" "$GREEN" "$RESET";;
@@ -155,7 +150,7 @@ option_3() {
         *) return;;
     esac
     printf "\n%sEnter to continue.%s" "$BOLD" "$RESET"
-    read
+    read -r
 }
 
 findconfig() {
@@ -163,7 +158,7 @@ findconfig() {
     read -r upacnamecfg
     clear
     printf "%s%sFinding ......%s\n" "$BOLD" "$RED" "$RESET"
-    upacnamecfg=$(find "${HOME}"/.config/* "${HOME}"/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg" || printf "")
+    upacnamecfg=$(find "${HOME}"/.config/* "${HOME}"/.local/share/* -maxdepth 1 | grep -w "$upacnamecfg")
     case $upacnamecfg in
         "") printf "%s0 matches found.%s\n" "$GREEN" "$RESET";;
         *)  printf "$upacnamecfg\n%s$(echo "$upacnamecfg" | wc -l) matches found.%s\n" "$GREEN" "$RESET";;
@@ -185,7 +180,7 @@ option_4() {
         findconfig
     fi
     printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
-    read
+    read -r
 }
 
 option_5() {
@@ -197,7 +192,7 @@ option_5() {
         sudo journalctl --vacuum-size=50M
     fi
     printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
-    read
+    read -r
 }
 
 option_6() {
@@ -205,9 +200,9 @@ option_6() {
     printf "%s%sRemoving packages cache ......%s\n" "$BOLD" "$RED" "$RESET"
     sudo pacman -Sc
     printf "%s%sDone! Enter to continue.%s" "$BOLD" "$GREEN" "$RESET"
-    read
+    read -r
 
-    unusedpackages="$(pacman -Qtdq || printf "")"
+    unusedpackages="$(pacman -Qtdq)"
     if [[ "$unusedpackages" = "" ]]; then
         printf "\n%s%s!!! No unused packages to remove.\n%sEnter to continue.%s" "$BOLD" "$RED" "$GREEN" "$RESET"
     else
@@ -215,7 +210,7 @@ option_6() {
         echo "$unusedpackages" | sudo pacman -Rns -
         printf "%s%sDone! Enter to continue.%s" "$BOLD" "$GREEN" "$RESET"
     fi
-    read
+    read -r
 
     printf "\n%s%sCheck Systemd journal ......%s\n" "$BOLD" "$RED" "$RESET"
     journalctl -p 3 -b
@@ -226,7 +221,7 @@ option_6() {
     fi
 
     printf "\n%sDone! Enter to go back.%s" "$BOLD" "$RESET"
-    read
+    read -r
 }
 
 main() {

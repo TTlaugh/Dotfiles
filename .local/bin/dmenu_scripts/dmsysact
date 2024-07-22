@@ -15,9 +15,10 @@ wmpid(){ # This function is needed if there are multiple instances of the window
     echo "${tree%%)*}"
 }
 
-case "$(printf "Lock\nLeave\nHibernate\nSuspend\nRestart\nShutdown\nDisplay-off\nCancel" | dmenu -i -p "Action:")" in
+case "$(printf "Lock\nLeave\nRenew\nHibernate\nSuspend\nRestart\nShutdown\nDisplay-off\nCancel" | dmenu -i -p "Action:")" in
     Lock)        slock;;
     Leave)       kill -TERM "$(wmpid)";;
+    Renew)       kill -HUP "$(wmpid)";;
     Hibernate)   slock "$ctl" hibernate -i;;
     Suspend)     slock "$ctl" suspend -i;;
     Restart)     reboot;;

@@ -1,2 +1,2 @@
 #!/bin/sh
-cd "$HOME/GitRepos/nltt/Dotfiles" && stow --no-folding -v -R -t ~ .
+cd "$HOME/GitRepos/TTlaugh/Dotfiles" && stow --no-folding -v -R -t ~ .

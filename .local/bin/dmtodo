@@ -10,7 +10,8 @@ cmd=$(dmenu -l "$height" -p "$prompt" "$@" < "$file")
 
 while [ -n "$cmd" ]; do
     if grep -Fxq "$cmd" "$file"; then
-        sed -i "/$cmd/d" "$file"
+        grep -v "^$cmd\$" "$file" > "$file.$$"
+        mv "$file.$$" "$file"
         height=$(( height - 1 ))
     else
         echo "$cmd" >> "$file"

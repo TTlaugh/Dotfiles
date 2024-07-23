@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# shellcheck disable=SC2046
 pwd=$(pwd)
 
 GitRepos="$HOME/GitRepos"
@@ -7,6 +7,7 @@ Suckless="$GitRepos/Suckless"
 tools="$GitRepos/tools"
 
 pkglist="pkg/pkglist"
+gpclist="pkg/nvidia"
 aurlist="pkg/aurlist"
 
 yaylink="https://aur.archlinux.org/yay.git"
@@ -24,6 +25,13 @@ createDir() {
 install_pacpack(){
     # shellcheck disable=SC2046
     sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $pkglist))
+}
+install_graphics() {
+    read -r -p "Do you want to install nvidia driver? [Y/n] " yn
+    case $yn in
+        ""|[Yy]* ) sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $gpclist)) ;;
+        * ) return ;;
+    esac
 }
 install_yaypack() {
     yay -S --needed - < "$aurlist"
@@ -58,6 +66,7 @@ copy_symblink() {
 
 createDir
 install_pacpack
+install_graphics
 install_yay
 install_yaypack
 install_sl

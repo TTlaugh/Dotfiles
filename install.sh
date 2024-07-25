@@ -1,5 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2046
+
+set -e
+
 pwd=$(pwd)
 
 GitRepos="$HOME/GitRepos"

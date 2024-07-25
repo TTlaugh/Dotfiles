@@ -63,6 +63,17 @@ copy_symblink() {
     cp -a ".xprofile" "$HOME"
     cp -a ".local/share/bg" "$HOME/.local/share/bg"
 }
+enable_services() {
+    printf "Please enable these services manually: \`systemctl enable ...\`
+    - Networkmanager: NetworkManager.service
+    - Thermald:       thermald.service (*)
+    - Ufw:            ufw.service (Then run: ufw enable)
+    - TRIM:           fstrim.timer (*)
+    - Bluetooth:      bluetooth.service (Don't run if you not use Bluetooth)
+(*) Check the wiki to ensure your system can do it
+Press any key to continue..."
+    read -r
+}
 
 createDir
 install_pacpack
@@ -76,3 +87,4 @@ sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 printf "FONT=ter-132n" | sudo tee -a /etc/vconsole.conf
 sudo cp "misc/etc/X11/xorg.conf.d/30-touchpad.conf" "/etc/X11/xorg.conf.d/30-touchpad.conf"
 chsh -s "$(which zsh)"
+enable_services

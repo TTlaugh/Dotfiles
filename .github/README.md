@@ -129,7 +129,7 @@ sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
 
 - Copy default config file to ***~/.config/***
     ```
-    cp /usr/share/doc/kitty/kitty.conf /home/nltt/.config/kitty/
+    cp /usr/share/doc/kitty/kitty.conf ~/.config/kitty/
     ```
 - Configure
     ```

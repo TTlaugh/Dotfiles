@@ -1,3 +1,8 @@
 #!/bin/sh
 
-sudo pacman -Syyu; kill -s 36 "$(pidof -x dwmbar)"
+if [ -x "$(command -v yay)" ]; then
+    yay -Syyu
+else
+    sudo pacman -Syyu
+fi
+kill -s 36 "$(pidof -x dwmbar)"

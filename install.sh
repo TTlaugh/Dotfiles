@@ -32,7 +32,13 @@ install_pacpack(){
 install_graphics() {
     read -r -p "Do you want to install nvidia driver? [Y/n] " yn
     case $yn in
-        ""|[Yy]* ) sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $gpclist)) ;;
+        ""|[Yy]* ) sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $gpclist))
+            read -r -p "Do you want to install Envycontrol? [Y/n] " yn
+            case $yn in
+                ""|[Yy]* ) yay -S envycontrol ;;
+                * ) return ;;
+            esac
+            ;;
         * ) return ;;
     esac
 }

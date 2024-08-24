@@ -11,6 +11,10 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 xrandr --dpi 96 # Set DPI. User may want to use a larger number for larger screens
 
+# Don't turn of the display randomly
+xset s off &
+xset -dpms &
+xset s noblank &
 setbg &
 { pidof -sx wireplumber || wpctl status & }>/dev/null 2>&1
 

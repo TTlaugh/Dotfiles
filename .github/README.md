@@ -1,20 +1,23 @@
 # Set up Arch Linux
 
+![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
+![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png)
+
 ## Table of contents
 
-- [Installation](https://github.com/nguyenletientrien/Dotfiles#installation)
-- [Package List](https://github.com/nguyenletientrien/Dotfiles#install-packages-from-a-list)
-- [AUR Packages](https://github.com/nguyenletientrien/Dotfiles#aur-packages)
-- [Suckless](https://github.com/nguyenletientrien/Dotfiles#suckless)
-- [Optional](https://github.com/nguyenletientrien/Dotfiles#optional)
-- [Enable Service](https://github.com/nguyenletientrien/Dotfiles#enable-service)
-- [Configuration](https://github.com/nguyenletientrien/Dotfiles#configuration)
-- [Other](https://github.com/nguyenletientrien/Dotfiles#other)
+- [Installation](https://github.com/TTlaugh/Dotfiles#installation)
+- [Package List](https://github.com/TTlaugh/Dotfiles#install-packages-from-a-list)
+- [AUR Packages](https://github.com/TTlaugh/Dotfiles#aur-packages)
+- [Suckless](https://github.com/TTlaugh/Dotfiles#suckless)
+- [Optional](https://github.com/TTlaugh/Dotfiles#optional)
+- [Enable Service](https://github.com/TTlaugh/Dotfiles#enable-service)
+- [Configuration](https://github.com/TTlaugh/Dotfiles#configuration)
+- [Other](https://github.com/TTlaugh/Dotfiles#other)
 
 ## Installation
 
 #### Install packages from a list
-[pkglist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkg/pkglist.txt)
+[pkglist.txt](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/pkglist.txt)
 ```
 pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 ```
@@ -32,14 +35,14 @@ See Arch Wiki:
 #### AUR Packages
 > To install manually AUR packages: `makepkg -si`
 
-First, install [yay](https://aur.archlinux.org/packages/yay), then install some necessary packages from [aurlist.txt](https://github.com/nguyenletientrien/Dotfiles/blob/master/pkg/aurlist.txt) using yay:
+First, install [yay](https://aur.archlinux.org/packages/yay), then install some necessary packages from [aurlist.txt](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/aurlist.txt) using yay:
 ```
 yay -S - < aurlist.txt
 ```
 
 #### Suckless
 > - To install Suckless softwares: `sudo make clean install`
-- [dwm](https://github.com/nguyenletientrien/dwm)
+- [dwm](https://github.com/TTlaugh/dwm)
 - [dmenu](https://tools.suckless.org/dmenu)
 - [st](https://st.suckless.org)
 
@@ -228,8 +231,8 @@ sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)
 
 ## Tips and Tricks
-- [Linux](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/TIPS.md)
+- [Linux](https://github.com/TTlaugh/Dotfiles/tree/master/.github/TIPS.md)
 
 ## My Scripts
-Please read the [documentation](https://github.com/nguyenletientrien/Dotfiles/tree/master/.github/SCRIPTS.md) for more information before using [my scripts](https://github.com/nguyenletientrien/Dotfiles/tree/master/.scripts).
+Please read the [documentation](https://github.com/TTlaugh/Dotfiles/tree/master/.github/SCRIPTS.md) for more information before using [my scripts](https://github.com/TTlaugh/Dotfiles/tree/master/.scripts).
 

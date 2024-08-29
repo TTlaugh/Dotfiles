@@ -1,7 +1,14 @@
 # Set up Arch Linux
 
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
+<details>
+<summary>More cool screenshots</summary>
+
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png)
+![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot3.png)
+![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png)
+![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot5.png)
+</details>
 
 ## Table of contents
 

@@ -3,7 +3,9 @@
 </h3>
 
 <div align="center">
-    <a href="https://github.com/TTlaugh/Dotfiles">Dotfiles</a>
+    <a href="#Previews">Previews</a>
+    ·
+    <a href="#Installation">Installation</a>
     ·
     <a href="https://github.com/TTlaugh/dwm">DWM</a>
     ·
@@ -39,17 +41,8 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 
 </table>
 
-## Installation
-<img src=".github/screenshot1.png" alt="rice" align="right" width="400px">
-
-On an Arch-based distribution, run the following:
-```
-git clone https://github.com/TTlaugh/Dotfiles.git
-cd Dotfiles
-chmod +x install.sh
-./install.sh
-```
-
+## Previews
+![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
 <details>
 <summary>show previews</summary>
 
@@ -58,6 +51,16 @@ chmod +x install.sh
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png)
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot5.png)
 </details>
+
+## Installation
+
+On an Arch-based distribution, run the following:
+```
+git clone https://github.com/TTlaugh/Dotfiles.git
+cd Dotfiles
+chmod +x install.sh
+./install.sh
+```
 
 ## What does this script do?
 - Install packages from these [lists](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/) and configure for:

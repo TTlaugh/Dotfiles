@@ -1,5 +1,5 @@
 <h3 align="center">
-    The <b>Arch Linux & DWM dotfiles!</b> dotfiles!
+    The <b>Arch Linux & DWM</b> dotfiles!
 </h3>
 
 <div align="center">

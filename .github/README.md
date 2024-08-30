@@ -1,17 +1,28 @@
-<h1 align="center">
-    The <b>Arch Linux & DWM dotfiles!</b> dotfiles!<br>
-</h1>
+<h3 align="center">
+    The <b>Arch Linux & DWM dotfiles!</b> dotfiles!
+</h3>
+
+<div align="center">
+    <a href="https://github.com/TTlaugh/Dotfiles">Dotfiles</a>
+    ·
+    <a href="https://github.com/TTlaugh/dwm">DWM</a>
+    ·
+    <a href="https://github.com/TTlaugh/dmenu">Dmenu</a>
+    ·
+    <a href="https://github.com/TTlaugh/Wallpapers">Wallpapers</a>
+</div>
 
 <br>
 
-### Welcome!
+## Welcome!
 
 <table align="right">
   <tr>
     <td align="center">
       <sup>
         <samp>
-            If you like this setup or even use it, can you drop a star please? <br>
+            If you like this setup or even use it,<br>
+            can you drop a star please? <br>
             I really appreciate it.
             Thanks!
         </samp>
@@ -22,9 +33,23 @@
 
 Hey, thanks for visiting ❤️!
 
+There are my Arch Linux and DWM configuration files.
+
+Minimal, performance-focused. Extremely fast and small without sacrificing convenience.
+
 </table>
 
-![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
+## Installation
+<img src=".github/screenshot1.png" alt="rice" align="right" width="400px">
+
+On an Arch-based distribution, run the following:
+```
+git clone https://github.com/TTlaugh/Dotfiles.git
+cd Dotfiles
+chmod +x install.sh
+./install.sh
+```
+
 <details>
 <summary>show previews</summary>
 
@@ -33,15 +58,6 @@ Hey, thanks for visiting ❤️!
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png)
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot5.png)
 </details>
-
-## Installation
-On an Arch-based distribution, run the following:
-```
-git clone https://github.com/TTlaugh/Dotfiles.git
-cd Dotfiles
-chmod +x install.sh
-./install.sh
-```
 
 ## What does this script do?
 - Install packages from these [lists](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/) and configure for:

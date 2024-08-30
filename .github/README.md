@@ -1,8 +1,32 @@
-# Simple Arch Linux configuration!
+<h1 align="center">
+    The <b>Arch Linux & DWM dotfiles!</b> dotfiles!<br>
+</h1>
+
+<br>
+
+### Welcome!
+
+<table align="right">
+  <tr>
+    <td align="center">
+      <sup>
+        <samp>
+            If you like this setup or even use it, can you drop a star please? <br>
+            I really appreciate it.
+            Thanks!
+        </samp>
+      </sup>
+    </td>
+  </tr>
+<table>
+
+Hey, thanks for visiting ❤️!
+
+</table>
 
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
 <details>
-<summary>More cool screenshots</summary>
+<summary>show previews</summary>
 
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png)
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot3.png)

@@ -63,7 +63,7 @@ chmod +x install.sh
 ```
 
 ## What does this script do?
-- Install packages from these [lists](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/) and configure for:
+- Install packages from [these lists](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/), [dwm](https://github.com/TTlaugh/dwm), [dmenu](https://github.com/TTlaugh/dmenu) and configure for:
     - [x] Fresh install of Arch-based distribution
     - [x] Intel CPU, iGPU
     - [x] Nvidia GPU (appropriate driver)

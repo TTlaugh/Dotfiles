@@ -77,7 +77,7 @@ chmod +x install.sh
     - [dmenu](https://github.com/TTlaugh/dmenu)
 - 🐧 **Apply my dotfiles using `stow`:**
     - Default zsh shell
-    - Neovim, alacritty, vifm, dunst,...
+    - Settings for Neovim, alacritty, vifm, dunst,...
     - Login prompt font size
     - Touchpad configuration
     - Useful [scripts](https://github.com/TTlaugh/Dotfiles/tree/master/.local/bin) are in `~/.local/bin/`

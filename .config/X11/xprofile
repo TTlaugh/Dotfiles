@@ -18,7 +18,7 @@ xset s noblank &
 setbg &
 { pidof -sx wireplumber || wpctl status & }>/dev/null 2>&1
 
-autostart="xcompmgr dunst unclutter lxsession xidle remapd"
+autostart="xcompmgr dunst unclutter lxsession remapd xidle"
 for program in $autostart; do
     pidof -sx "$program" || "$program" &
 done >/dev/null 2>&1

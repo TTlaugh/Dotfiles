@@ -1,4 +1,27 @@
 #!/bin/sh
 
-# Locks after 5 minutes (including screen off), sleeps after 15 minutes.
-xautolock -time 15 -locker 'systemctl suspend' -notify 600 -notifier 'slock & xset dpms force off'
+handle1After=60000   # Handle after 5 mins
+handle2After=120000  # Handle after 30 mins
+
+idle1=false
+idle2=false
+
+while true; do
+    if ! grep -q RUNNING /proc/asound/card*/pcm0p/sub0/status 2>&1; then
+        idleTimeMillis=$(getIdleTime)
+        if [ $idle2 = false ] && [ "$idleTimeMillis" -gt $handle2After ]; then
+            systemctl suspend # Second commands here
+            idle2=true
+        elif [ $idle1 = false ] && [ "$idleTimeMillis" -gt $handle1After ]; then
+            slock & xset dpms force off # First commands here
+            idle1=true
+        fi
+
+        if [ $idle2 = true ] && [ "$idleTimeMillis" -lt $handle2After ] ; then
+            idle2=false
+        elif [ $idle1 = true ] && [ "$idleTimeMillis" -lt $handle1After ] ; then
+            idle1=false
+        fi
+    fi
+    sleep 1
+done

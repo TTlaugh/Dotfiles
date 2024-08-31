@@ -1,3 +1,6 @@
+<div align="center">
+    <img src="banner.png" alt="banner">
+</div>
 <h3 align="center">
     The <b>Arch Linux & DWM</b> dotfiles!
 </h3>
@@ -16,7 +19,7 @@
 
 <br>
 
-## Welcome!
+## 👋 Welcome!
 
 <table align="right">
   <tr>
@@ -41,7 +44,7 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 
 </table>
 
-## Previews
+## 🖼️ Previews
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
 <details>
 <summary>show previews</summary>
@@ -52,7 +55,7 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot5.png)
 </details>
 
-## Installation
+## ⬇️  Installation
 
 On an Arch-based distribution, run the following:
 ```
@@ -62,31 +65,35 @@ chmod +x install.sh
 ./install.sh
 ```
 
-## What does this script do?
-- Install packages from [these lists](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/), [dwm](https://github.com/TTlaugh/dwm), [dmenu](https://github.com/TTlaugh/dmenu) and configure for:
+## ⚡️What does this script do?
+- 💫 **Autoinstalls and autoconfigures for:**
     - [x] Fresh install of Arch-based distribution
     - [x] Intel CPU, iGPU
     - [x] Nvidia GPU (appropriate driver)
     - [x] Nvidia Optimus (envycontrol)
-- Apply my dotfiles using `stow`:
-    - [x] Default zsh shell
-    - [x] Neovim, alacritty, vifm, dunst,...
-    - [x] Login prompt font size
-    - [x] Touchpad configuration
-    - [x] Useful [scripts](https://github.com/TTlaugh/Dotfiles/tree/master/.local/bin) are in `~/.local/bin/`
-- It doesn't come by default but you might need it.
+- 📦 **Install these programs:**
+    - All dependencies, useful tools, font, graphic driver,... [Check here](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/)
+    - [dwm](https://github.com/TTlaugh/dwm)
+    - [dmenu](https://github.com/TTlaugh/dmenu)
+- 🐧 **Apply my dotfiles using `stow`:**
+    - Default zsh shell
+    - Neovim, alacritty, vifm, dunst,...
+    - Login prompt font size
+    - Touchpad configuration
+    - Useful [scripts](https://github.com/TTlaugh/Dotfiles/tree/master/.local/bin) are in `~/.local/bin/`
+- 🔥 **It doesn't come by default but you might need it.**
     - [mutt-wizard](https://github.com/LukeSmithxyz/mutt-wizard)
     - reflector
     - aria2
     - yt-dlp
 
-## Appearance
-- Themes: [Dracula](https://draculatheme.com), [Catppuccin](https://github.com/catppuccin/catppuccin), [arc-gtk](https://github.com/horst3180/Arc-theme), TokyoNight ([1](https://github.com/folke/tokyonight.nvim)) ([2](https://github.com/enkia/tokyo-night-vscode-theme)) ([3](https://www.gnome-look.org/p/1681315/))
-- Icons:
+## ✨ Appearance
+- ☄️ Themes: [Dracula](https://draculatheme.com), [Catppuccin](https://github.com/catppuccin/catppuccin), [arc-gtk](https://github.com/horst3180/Arc-theme), TokyoNight ([1](https://github.com/folke/tokyonight.nvim)) ([2](https://github.com/enkia/tokyo-night-vscode-theme)) ([3](https://www.gnome-look.org/p/1681315/))
+- 🌸 Icons:
     - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)
 
-## Acknowledgements
+## 💡 Acknowledgements
 - Graphics driver
     - [Xorg](https://wiki.archlinux.org/title/Xorg)
     - [Intel graphics](https://wiki.archlinux.org/title/Intel_graphics)

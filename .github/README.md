@@ -72,7 +72,7 @@ chmod +x install.sh
     - [x] Nvidia GPU (appropriate driver)
     - [x] Nvidia Optimus (envycontrol)
 - 📦 **Install these programs:**
-    - All dependencies, useful tools, font, graphic driver,... [Check here](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/)
+    - All dependencies, useful tools, fonts, graphic drivers,... [Check here](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/)
     - [dwm](https://github.com/TTlaugh/dwm)
     - [dmenu](https://github.com/TTlaugh/dmenu)
 - 🐧 **Apply my dotfiles using `stow`:**

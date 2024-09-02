@@ -88,7 +88,7 @@ fileviewer {*.pdf},<application/pdf>
 " Image
 filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
             \ {View in nsxiv}
-            \ nsxiv %f &,
+            \ nsxiv -b %f &,
             \ {View in feh}
             \ feh -d -g 800x600 --scale-down %c &,
 fileviewer {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>

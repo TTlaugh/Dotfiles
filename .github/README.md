@@ -52,7 +52,6 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png)
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot3.png)
 ![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png)
-![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot5.png)
 </details>
 
 ## ⬇️  Installation

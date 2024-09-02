@@ -91,6 +91,7 @@ chmod +x install.sh
 - 🌸 Icons:
     - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)
+- Firefox: [BeautyFox](https://github.com/TTlaugh/BeautyFox)
 
 ## 💡 Acknowledgements
 - Graphics driver

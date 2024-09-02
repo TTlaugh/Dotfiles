@@ -86,7 +86,8 @@ fileviewer {*.pdf},<application/pdf>
             \ %pc
             \ vifmimg clear %N
 " Image
-filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+filextype {*.gif} nsxiv -bA 60 %f &,
+filextype {*.bmp,*.jpg,*.jpeg,*.png,*.xpm},<image/*>
             \ {View in nsxiv}
             \ nsxiv -b %f &,
             \ {View in feh}

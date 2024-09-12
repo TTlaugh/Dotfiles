@@ -42,6 +42,11 @@ export PATH="$JAVA_HOME/bin:$PATH"
 export MANROFFOPT='-c'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+### Input method
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+
 ### Other settings:
 # export LESS="R"
 export QT_QPA_PLATFORMTHEME="gtk2"        # Have QT use gtk2 theme.

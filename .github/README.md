@@ -87,7 +87,7 @@ chmod +x install.sh
     - yt-dlp
 
 ## ✨ Appearance
-- 🌌 Themes: [Dracula](https://draculatheme.com), [Catppuccin](https://github.com/catppuccin/catppuccin), [arc-gtk](https://github.com/horst3180/Arc-theme), TokyoNight ([1](https://github.com/folke/tokyonight.nvim)) ([2](https://github.com/enkia/tokyo-night-vscode-theme)) ([3](https://www.gnome-look.org/p/1681315/))
+- 🌌 Themes: [Dracula](https://draculatheme.com), [Catppuccin](https://github.com/catppuccin/catppuccin), [arc-gtk](https://github.com/horst3180/Arc-theme), [TokyoNight](https://github.com/folke/tokyonight.nvim)
 - 🌸 Icons:
     - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)

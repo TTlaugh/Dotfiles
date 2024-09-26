@@ -101,7 +101,6 @@ pass
 fzf
 bat
 ripgrep
-fd
 jq
 bc
 eza

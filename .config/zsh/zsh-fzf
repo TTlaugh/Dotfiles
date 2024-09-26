@@ -4,14 +4,34 @@ source <(fzf --zsh) || { \
 }
 
 [ -x "$(command -v bat)" ] && previewtool="bat -n --color=always --line-range :500" || previewtool="less"
-FD_OPTS="--hidden --follow --exclude .git"
-export FZF_DEFAULT_OPTS="--height 80% \
-                         --layout=reverse \
-                         --border \
-                         --color 'border:#bb9af7' \
-                         --preview '$previewtool {}' \
-                         --preview-window='hidden:wrap' \
-                         --bind='ctrl-p:toggle-preview'"
-export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTS"
-export FZF_CTRL_T_COMMAND="fd $FD_OPTS"
-export FZF_ALT_C_COMMAND="fd --type d $FD_OPTS"
+
+export FZF_DEFAULT_OPTS="\
+    --height 60% \
+
+    --preview '$previewtool {}' \
+    --preview-window='hidden:wrap' \
+    --bind='ctrl-p:toggle-preview' \
+
+    --highlight-line \
+    --info=inline-right \
+    --layout=reverse \
+    --border=none
+    --ansi \
+
+    --color=bg+:#2d3f76 \
+    --color=bg:#1e2030 \
+    --color=border:#589ed7 \
+    --color=fg:#c8d3f5 \
+    --color=gutter:#1e2030 \
+    --color=header:#ff966c \
+    --color=hl+:#65bcff \
+    --color=hl:#65bcff \
+    --color=info:#545c7e \
+    --color=marker:#ff007c \
+    --color=pointer:#ff007c \
+    --color=prompt:#65bcff \
+    --color=query:#c8d3f5:regular \
+    --color=scrollbar:#589ed7 \
+    --color=separator:#ff966c \
+    --color=spinner:#ff007c \
+"

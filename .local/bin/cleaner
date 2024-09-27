@@ -4,15 +4,6 @@
 
 set_colors() {
     if [ -t 1 ]; then
-        RAINBOW="
-          $(printf '\033[38;5;196m')
-          $(printf '\033[38;5;202m')
-          $(printf '\033[38;5;226m')
-          $(printf '\033[38;5;082m')
-          $(printf '\033[38;5;226m')
-          $(printf '\033[38;5;202m')
-          $(printf '\033[38;5;196m')
-        "
         RED=$(printf '\033[31m')
         GREEN=$(printf '\033[32m')
         YELLOW=$(printf '\033[33m')
@@ -20,7 +11,6 @@ set_colors() {
         BOLD=$(printf '\033[1m')
         RESET=$(printf '\033[m')
     else
-        RAINBOW=""
         RED=""
         GREEN=""
         YELLOW=""
@@ -37,17 +27,6 @@ check_root() {
     fi
 }
 
-print_banner() {
-    clear
-    printf "%s        _____  %s _     %s _____  %s ______  %s _   _  %s _____  %s ____   %s%s         __    %s\n" "$RAINBOW" "$BOLD" "$GREEN"  "$RESET"
-    printf "%s       |  ___| %s| |    %s|  ___| %s|  __  | %s| \ | | %s|  ___| %s|  _ \\ %s%s         /_/   %s\n" "$RAINBOW" "$BOLD" "$GREEN"  "$RESET"
-    printf "%s       | |     %s| |    %s| |_    %s| |__| | %s|  \| | %s| |_    %s| |_| | %s%s       / /     %s\n" "$RAINBOW" "$BOLD" "$RED"    "$RESET"
-    printf "%s       | |     %s| |    %s|  _|   %s|  __  | %s|     | %s|  _|   %s|   _/  %s%s    __/_/__    %s\n" "$RAINBOW" "$BOLD" "$RED"    "$RESET"
-    printf "%s       | |___  %s| |__  %s| |___  %s| |  | | %s| |\  | %s| |___  %s| |\ \\ %s%s  . /    . / . %s\n" "$RAINBOW" "$BOLD" "$YELLOW" "$RESET"
-    printf "%s       |_____| %s|____| %s|_____| %s|_|  |_| %s|_| \_| %s|_____| %s|_| \_\\%s%s ..////////. . %s\n" "$RAINBOW" "$BOLD" "$YELLOW" "$RESET"
-    echo
-}
-
 print_option() {
     printf "%s  [%s0%s] Check!%s\n"                                  "$BLUE" "$RESET" "$BLUE" "$RESET"
     printf "%s  [%s1%s] Remove package cache.%s\n"                   "$BLUE" "$RESET" "$BLUE" "$RESET"
@@ -62,7 +41,6 @@ print_option() {
 }
 
 option_0() {
-    print_banner
     printf "%sChecking ...... %s\n" "$RED" "$RESET"
     paccachesize=$(du -sh /var/cache/pacman/pkg/ | awk '{print $1}')
     homecachesize=$(du -sh "${HOME}"/.cache/ | awk '{print $1}')
@@ -84,7 +62,6 @@ option_0() {
 }
 
 option_1() {
-    print_banner
     printf "%s  [0] Go back <--%s\n"                                 "$BLUE" "$RESET"
     printf "%s  [1] Remove NOT installed packages from cache%s\n"    "$BLUE" "$RESET"
     printf "%s  [2] Remove ALL files from cache%s\n"                 "$BLUE" "$RESET"
@@ -102,7 +79,6 @@ option_1() {
 }
 
 option_2() {
-    print_banner
     unusedpackages="$(pacman -Qtdq)"
     if [[ -z "$unusedpackages" ]]; then
         printf "%sNo unused packages to remove. Enter to continue.%s" "$BOLD" "$RESET"
@@ -133,7 +109,6 @@ findcache() {
     esac
 }
 option_3() {
-    print_banner
     printf "     %s%s!!! So dangerous to remove cache file!!!%s \n" "$BOLD" "$RED" "$RESET"
     echo " ==> You should find manually and only delete files that are really not needed! "
     echo " ==> You can manual delete cache files of uninstalled app in ${HOME}/.cache/*     "
@@ -166,7 +141,6 @@ findconfig() {
     esac
 }
 option_4() {
-    print_banner
     echo "**********************************************************************************************"
     echo "*                                                                                            *"
     echo "* ==> Can't remove old config files automatically! You must find and remove them manually.   *"
@@ -185,7 +159,6 @@ option_4() {
 }
 
 option_5() {
-    print_banner
     journalctl -p 3 -b
     printf "\n%sIf you find some errors, %sgoogle%s %sthem before deleting!%s\n" "$BOLD" "$GREEN" "$RESET" "$BOLD" "$RESET"
     read -r -p "Continue to delete? [Y/n] " djournal
@@ -197,7 +170,6 @@ option_5() {
 }
 
 option_6() {
-    print_banner
     printf "%s%sRemoving packages cache ......%s\n" "$BOLD" "$RED" "$RESET"
     sudo pacman -Sc
     printf "%s%sDone! Enter to continue.%s" "$BOLD" "$GREEN" "$RESET"
@@ -230,7 +202,6 @@ main() {
     check_root
     while :
     do
-        print_banner
         print_option
         read -r chosen
         case "$chosen" in

@@ -2,8 +2,8 @@
     monitor = 0
     follow = keyboard
     width = 370
-    height = 350
-    offset = 0x25
+    height = (0,300)
+    offset = (0,25)
     font = Monospace 12
     markup = full
     format = "<b>%s</b>\n%b"

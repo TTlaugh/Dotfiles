@@ -60,7 +60,7 @@ M.general = {
     { 'n'          ,'<A-t>'           , '<cmd> split|term <CR>'                              , 'Terminal in horiz split'             },
     { 'n'          ,'<leader>bf'      , '<cmd> split|term compiler %<CR>'                    , 'Compile file from terminal'          },
     { 't'          ,'<esc><esc>'      , '<c-\\><c-n>'                                        , 'Enter Normal mode'                   },
-    { 'n'          ,'<C-x>'           , '<cmd> bdelete! <CR>'                                , 'Delete Buffer'                       },
+    { 'n'          ,'<C-q>'           , '<cmd> bdelete! <CR>'                                , 'Delete Buffer'                       },
     { 'n'          ,'<C-h>'           , '<cmd> bprev <CR>'                                   , 'Previous Buffer'                     },
     { 'n'          ,'<C-l>'           , '<cmd> bnext <CR>'                                   , 'Next Buffer'                         },
     { 'n'          ,'<leader><leader>', '<cmd> nohlsearch <CR>'                              , 'Turn off highlighting'               },

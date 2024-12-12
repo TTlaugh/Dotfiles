@@ -112,6 +112,7 @@ unclutter
 dialog
 xclip
 xdotool
+wmctrl
 slop
 arandr
 dmidecode

@@ -6,7 +6,7 @@
 </h3>
 
 <div align="center">
-    <a href="#Previews">Previews</a>
+    <a href="#Screenshots">Screenshots</a>
     ·
     <a href="#Installation">Installation</a>
     ·

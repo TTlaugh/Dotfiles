@@ -44,15 +44,16 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 
 </table>
 
-## 🖼️ Previews
-![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png)
-<details>
-<summary>show previews</summary>
+## Screenshots
 
-![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png)
-![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot3.png)
-![](https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png)
-</details>
+<p align="center">
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot3.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png" />
+</p>
+
+<br>
 
 ## ⬇️  Installation
 

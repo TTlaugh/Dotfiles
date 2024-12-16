@@ -1,7 +1,7 @@
 #!/bin/sh
 
 exec 2>&1
-printf "Loading moduls...\n" | dwmsetbar && sleep 1
+printf "Loading modules...\n" | dwmsetbar && sleep 1
 
 SEP="│"
 sec=0
@@ -29,7 +29,8 @@ update_datetime () {
 }
 
 update_pkgs () {
-    pkgs="Updates:$(pacman -Qu | grep -Fcv "[ignored]")"
+    # pkgs="Updates:$(pacman -Qu | grep -Fcv "[ignored]")"
+    pkgs="Updates:$(pacman -Sup | wc -l)"
 }
 
 display () {

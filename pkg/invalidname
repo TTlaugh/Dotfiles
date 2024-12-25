@@ -1,0 +1,6 @@
+#!/bin/bash
+
+local="$(grep -v "#" pkglist | grep -v "^$" | sort)"
+remote="$(comm -12 <(pacman -Slq | sort) <(sort pkglist))"
+
+diff <(echo "$local") <(echo "$remote") | grep "^<" | sed 's/< //g'

@@ -87,11 +87,11 @@ alias parrot="curl parrot.live"
 alias weather="curl wttr.in"
 
 ### Pacman + fzf
+alias checkup="checkup && pkill -36 dwmbar"
 alias pacQi="pacman -Qq | fzf --preview 'pacman -Qil {}' --preview-window nohidden --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias pacSi="pacman -Slq | fzf --preview 'pacman -Si {}' --preview-window nohidden --layout=reverse"
 alias pacS="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' --preview-window nohidden | xargs -ro sudo pacman -S"
 alias pacR="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' --preview-window nohidden | xargs -ro sudo pacman -Rns"
-alias supac="sudo pacman"
 alias pacRu="pacman -Qtdq | sudo pacman -Rns -"
 paclsdeps() {
     LC_ALL=C pacman -Qi "$1" | awk -F'[:<=>]' '/^Depends/ {print $2}' | xargs -n1 | sort -u

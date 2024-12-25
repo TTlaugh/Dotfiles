@@ -1,21 +1,43 @@
+alskd
+##########
+# Kernel #
+##########
 base
 base-devel
 linux
 linux-headers
 linux-firmware
 
+###############
+# Boot loader #
+###############
 grub
 efibootmgr
 os-prober
+
+#############
+# Microcode #
+#############
+intel-ucode
+
+###############
+# Disks utils #
+###############
 mtools
 dosfstools
 ntfs-3g
-intel-ucode
+fuse2
 
+###########
+# Network #
+###########
 ufw
 networkmanager
 iptables-nft
 
+########
+# Xorg #
+########
 xorg-server
 xorg-setxkbmap
 xorg-xev
@@ -32,26 +54,39 @@ xorg-xdpyinfo
 #xorg-xbacklight
 acpilight
 
+##########
+# X-Libs #
+##########
+xf86-input-libinput
+libxft
+libnotify
+
+##################
+# Intel graphics #
+##################
 xf86-video-intel
 mesa
 mesa-utils
 intel-media-driver
 
+#########
+# Audio #
+#########
 pipewire
 pipewire-pulse
 wireplumber
 pulsemixer
 
-bluez
-bluez-utils
-bluez-obex
+#############
+# Bluetooth #
+#############
+#bluez
+#bluez-utils
+#bluez-obex
 
-fuse2
-
-xf86-input-libinput
-libxft
-libnotify
-
+#######
+# Dev #
+#######
 #jdk-openjdk
 gcc
 gdb
@@ -59,9 +94,9 @@ cmake
 npm
 yarn
 
-#lightdm
-#lightdm-slick-greeter
-
+################
+# Applications #
+################
 alacritty
 chromium
 slock
@@ -79,7 +114,7 @@ git
 wget
 curl
 openssh
-pavucontrol
+#pavucontrol
 pcmanfm-gtk3
 vifm
 ueberzug
@@ -119,21 +154,30 @@ dmidecode
 translate-shell
 socat
 
+#######################################
+# Input method (for Vietnamese input) #
+#######################################
 fcitx5
 fcitx5-configtool
 fcitx5-qt
 fcitx5-gtk
 fcitx5-unikey
 
+##################
+# Compress tools #
+##################
 zip
 unzip
 unrar
-p7zip
+7zip
 gzip
 bzip2
 tar
 xz
 
+#########
+# Fonts #
+#########
 ttf-liberation
 ttf-joypixels
 ttf-font-awesome

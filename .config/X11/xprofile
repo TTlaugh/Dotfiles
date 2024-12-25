@@ -22,7 +22,7 @@ autostart="xcompmgr dunst unclutter lxsession remapd xidle"
 for program in $autostart; do
     pidof -sx "$program" || "$program" &
 done >/dev/null 2>&1
-ibus-daemon -rxRd &
+fcitx5 -d &
 
 # dwm status bar
 dwmbar &

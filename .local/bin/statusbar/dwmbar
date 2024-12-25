@@ -30,7 +30,7 @@ update_datetime () {
 
 update_pkgs () {
     # pkgs="Updates:$(pacman -Qu | grep -Fcv "[ignored]")"
-    pkgs="Updates:$(pacman -Sup | wc -l)"
+    pkgs="Updates:$(checkup | wc -l)"
 }
 
 display () {

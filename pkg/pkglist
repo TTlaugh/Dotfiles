@@ -121,6 +121,8 @@ socat
 
 fcitx5
 fcitx5-configtool
+fcitx5-qt
+fcitx5-gtk
 fcitx5-unikey
 
 zip

@@ -24,28 +24,27 @@ createDir() {
 }
 
 install_pacpack(){
-    cd pkg && invalid_packages_name="$(./invalidname)" && cd ..
-    if [ -n "$invalid_packages_name" ]; then
+    cd pkg && invalid_packages_name="$(./invalidname)" && cd "$pwd" && if [ -n "$invalid_packages_name" ]; then
         echo "There are some packages with invalid names:"
         echo "$invalid_packages_name"
         read -r -p "Do you want to continue (they will be ignored)? [Y/n] " yn
         case $yn in
-            ""|[Yy]* ) sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $pkglist)) ;;
+            ""|[Yy]* );;
             * ) exit 1 ;;
         esac
     fi
+    sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $pkglist))
 }
 install_graphics() {
     read -r -p "Do you want to install nvidia driver? [Y/n] " yn
     case $yn in
-        ""|[Yy]* ) sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $gpclist))
+        ""|[Yy]* )
+            sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort $gpclist))
             read -r -p "Do you want to install Envycontrol? [Y/n] " yn
             case $yn in
                 ""|[Yy]* ) yay -S envycontrol ;;
-                * ) return ;;
             esac
-            ;;
-        * ) return ;;
+        ;;
     esac
 }
 install_yaypack() {
@@ -61,13 +60,13 @@ install_sl() {
         git branch mydmenu && \
         git checkout mydmenu && \
         git pull "$mydmenu" master && \
-        sudo make clean install
+        sudo make install; make clean; git clean -fd
     cd "$Suckless" && \
     git clone "$sldwm" && cd dwm && \
         git branch mydwm && \
         git checkout mydwm && \
         git pull "$mydwm" master && \
-        sudo make clean install
+        sudo make install; make clean; git clean -fd
     cd "$pwd" || exit
 }
 apply_dotfiles() {
@@ -88,7 +87,7 @@ enable_services() {
     - Thermald:       thermald.service (*)
     - Ufw:            ufw.service (Then run: ufw enable)
     - TRIM:           fstrim.timer (*)
-    - Bluetooth:      bluetooth.service (Don't run if you not use Bluetooth)
+    - Bluetooth:      bluetooth.service (Bluetooth is not installed by default)
 (*) Check the wiki to ensure your system can do it
 Press any key to continue..."
     read -r _

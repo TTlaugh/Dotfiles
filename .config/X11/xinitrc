@@ -9,6 +9,7 @@
 # I source them here with the line below.
 
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/X11/xprofile" ]; then
+    # shellcheck source=./xprofile
     . "${XDG_CONFIG_HOME:-$HOME/.config}/X11/xprofile"
 else
     . "$HOME/.xprofile"
@@ -20,10 +21,8 @@ dbus-launch ssh-agent
 
 while type dwm >/dev/null; do
     # Log stderror to a file
-    dwm 2> ~/.dwm.log || \
+    dwm 2> ~/.dwm.log && \
     # No error logging
-    #dwm >/dev/null 2>&1 || \
-
-    # Continue if exit code 129 (when kill with -HUP signal), otherwise quit dwm
-    [ "$?" -eq 129 ] || break
+    #dwm >/dev/null 2>&1 && \
+    continue || break
 done

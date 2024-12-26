@@ -9,7 +9,7 @@ EnumerateBackwardKeys=
 EnumerateSkipFirst=False
 
 [Hotkey/TriggerKeys]
-0=Control+Alt+Shift+space
+0=Control+space
 1=Zenkaku_Hankaku
 2=Hangul
 
@@ -47,7 +47,7 @@ EnumerateSkipFirst=False
 # Active By Default
 ActiveByDefault=False
 # Reset state on Focus In
-resetStateWhenFocusIn=All
+resetStateWhenFocusIn=No
 # Share Input State
 ShareInputState=No
 # Show preedit in application

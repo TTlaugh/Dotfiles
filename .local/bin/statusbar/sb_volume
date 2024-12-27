@@ -18,4 +18,4 @@ VOL="$(printf "%.0f" "$(split "$VOL" ".")")"
 
 [ "$VOL" -eq 0 ] && echo Muted && exit
 
-printf "Vol:%s" "$VOL"
+printf " %s" "$VOL"

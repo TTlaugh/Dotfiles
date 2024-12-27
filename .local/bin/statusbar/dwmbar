@@ -3,37 +3,36 @@
 exec 2>&1
 printf "Loading modules...\n" | dwmsetbar && sleep 1
 
-SEP="│"
 sec=0
 
 update_internet () {
-    internet="$(sb_internet)"
+    internet="^b#1b1d2b^ ^c#86e1fc^$(sb_internet)"
 }
 
 update_volume () {
-    volume="$(sb_volume)"
+    volume="^c#82aaff^$(sb_volume)"
 }
 update_volume
 
 update_backlight () {
-    backlight="$(sb_backlight)"
+    backlight="^c#c099ff^$(sb_backlight)"
 }
 update_backlight
 
 update_battery () {
-    battery="$(sb_battery)"
+    battery="^b#444a73^ ^c#c8d3f5^$(sb_battery)"
 }
 
 update_datetime () {
-    datetime="$(date "+%b %d %Y (%a) %H:%M")"
+    datetime="^b#1b1d2b^ ^c#828bb8^$(date "+%b %d %Y (%a) %H:%M") ^b#c8d3f5^^c#1b1d2b^ 󰃰 "
 }
 
 update_pkgs () {
-    pkgs="Updates:$(checkup | wc -l)"
+    pkgs="^c#c3e88d^ $(checkup | wc -l) updates"
 }
 
 display () {
-    printf "%s\n" " ^c#c3e88d^$pkgs ^d^$SEP ^c#c8d3f5^$internet  ^c#86e1fc^$volume  ^c#ffc777^$backlight ^d^$SEP ^c#ff757f^$battery ^d^$SEP $datetime " | dwmsetbar
+    printf "%s\n" " $pkgs $internet  $volume  $backlight $battery $datetime" | dwmsetbar
 }
 
 # signals for each module to update while updating display. RTMIN is 34

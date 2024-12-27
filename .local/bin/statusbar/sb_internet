@@ -2,22 +2,22 @@
 
 # Ethernet
 if [ "$(cat /sys/class/net/e*/operstate 2>/dev/null)" = 'up' ]; then
-    ethericon="Ethernet"
+    ethericon="󰈀"
 # Wifi
 elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'up' ] ; then
-    wifiicon="$(awk '/^\s*w/ { print "Wifi:" int($3 * 100 / 70) "%" }' /proc/net/wireless)"
+    wifiicon="$(awk '/^\s*w/ { print "󰤨 " int($3 * 100 / 70) "%" }' /proc/net/wireless)"
 elif [ "$(cat /sys/class/net/w*/operstate 2>/dev/null)" = 'down' ] && \
     [ "$(cat /sys/class/net/w*/flags 2>/dev/null)" = '0x1003' ]; then
-    wifiicon="No Wifi"
+    wifiicon="󰤭"
 else
-    wifiicon="No internet"
+    wifiicon="󰞃"
 fi
 
 # TUN
-[ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon="[VPN] "
+[ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon="󰖂"
 
 # ZeroTier
-for zt in /sys/class/net/zt*; do [ -d "$zt" ] && zticon="[ZT] "
+for zt in /sys/class/net/zt*; do [ -d "$zt" ] && zticon="󰬇"
 break; done 2>/dev/null
 
 printf "%s%s%s%s" "$zticon" "$tunicon" "$ethericon" "$wifiicon"

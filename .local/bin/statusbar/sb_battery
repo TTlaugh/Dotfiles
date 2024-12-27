@@ -4,17 +4,20 @@ BAT="/sys/class/power_supply/BAT1" # BAT1 for me but it usually BAT0
 CAPACITY="$(cat $BAT/capacity 2>&1)"
 STATUS="$(cat $BAT/status 2>&1)"
 
+notilowbat() {
+    case 1 in
+        $((CAPACITY <= 30)) ) WARN="^c#ffc777^"; notify-send "Low Battery" "Charge your computer now." -u normal -r 9991 ;;
+        $((CAPACITY <= 10)) ) WARN="^c#ff757f^"; notify-send "Battery Critical" "The computer will shutdown soon." -u critical -r 9991 ;;
+    esac
+}
 case "$STATUS" in
-    "Discharging")
-        case 1 in
-            $((CAPACITY <= 30)) ) notify-send "Low Battery" "Charge your computer now." -u normal -r 9991 ;;
-            $((CAPACITY <= 10)) ) notify-send "Battery Critical" "The computer will shutdown soon." -u critical -r 9991 ;;
-        esac                          ;;
-    "Full")                           ;;
-    "Charging")     INFO=" ($STATUS)" ;;
-    "Not charging") INFO=" ($STATUS)" ;;
-    "Unknown")      INFO=" ($STATUS)" ;;
+    "Discharging")  notilowbat
+                    OUTPUT="󰠠 $CAPACITY%" ;;
+    "Full")         OUTPUT="󰠠 $CAPACITY%" ;;
+    "Charging")     OUTPUT="󰠠 $CAPACITY%󰐕";;
+    "Not charging") OUTPUT=" $CAPACITY%" ;;
+    "Unknown")      OUTPUT=" $CAPACITY%" ;;
     *) exit 1 ;;
 esac
 
-printf "BAT:%s%s" "$CAPACITY%" "$INFO"
+printf "%s%s" "$WARN" "$OUTPUT"

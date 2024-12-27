@@ -5,4 +5,4 @@ read -r max_brightness </sys/class/backlight/intel_backlight/max_brightness
 
 BRI="$((actual_brightness*100/max_brightness))"
 
-printf "Bri:%s" "$BRI"
+printf " %s" "$BRI"

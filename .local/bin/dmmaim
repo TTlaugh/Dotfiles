@@ -12,8 +12,8 @@ saveas() {
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
     "a selected area")        maim -u -s "$(saveas)" ;;
     "current window")         maim -B -q -d 0.2 -i "$(xdotool getactivewindow)" "$(saveas)" ;;
-    "full screen")            maim -q -d 0.2 "$(saveas)" ;;
+    "full screen")            maim -u -q -d 0.2 "$(saveas)" ;;
     "a selected area (copy)") maim -u -s | xclip -selection clipboard -t image/png ;;
     "current window (copy)")  maim -B -q -d 0.2 -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
-    "full screen (copy)")     maim -q -d 0.2 | xclip -selection clipboard -t image/png ;;
+    "full screen (copy)")     maim -u -q -d 0.2 | xclip -selection clipboard -t image/png ;;
 esac

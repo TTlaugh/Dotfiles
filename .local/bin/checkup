@@ -7,7 +7,7 @@ trap 'rm -f $CHECKUPDATES_DB/db.lck' INT TERM EXIT
 DBPath="$(pacman-conf DBPath)"
 mkdir -p "$CHECKUPDATES_DB"
 ln -s "${DBPath}/local" "$CHECKUPDATES_DB" &> /dev/null
-if ! fakeroot -- pacman -Sy --dbpath "$CHECKUPDATES_DB" --logfile /dev/null &> /dev/null; then
+if ! timeout 10 fakeroot -- pacman -Sy --dbpath "$CHECKUPDATES_DB" --logfile /dev/null &> /dev/null; then
     notify-send 'Cannot fetch updates' "Check your internet connection, if pacman is already running, or run update manually to see errors."
     exit 1
 fi

@@ -14,7 +14,7 @@ case "$STATUS" in
     "Discharging")  notilowbat
                     OUTPUT="󰠠 $CAPACITY%" ;;
     "Full")         OUTPUT="󰠠 $CAPACITY%" ;;
-    "Charging")     OUTPUT="󰠠 $CAPACITY%󰐕";;
+    "Charging")     OUTPUT="󰠠 $CAPACITY%+";;
     "Not charging") OUTPUT=" $CAPACITY%" ;;
     "Unknown")      OUTPUT=" $CAPACITY%" ;;
     *) exit 1 ;;

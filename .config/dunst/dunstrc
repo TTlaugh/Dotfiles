@@ -17,13 +17,13 @@
 
 [urgency_low]
     background = "#1b1d2b"
-    foreground = "#c8d3f5"
+    foreground = "#828bb8"
     frame_color = ""
     timeout = 5
 
 [urgency_normal]
     background = "#1b1d2b"
-    foreground = "#7aa2f7"
+    foreground = "#86e1fc"
     frame_color = ""
     timeout = 10
 

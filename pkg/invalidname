@@ -1,6 +1,9 @@
 #!/bin/bash
 
-local="$(grep -v "#" pkglist | grep -v "^$" | sort)"
+local="$(sed -E '/^#/d;/^$/d' pkglist | sort)"
 remote="$(comm -12 <(pacman -Slq | sort) <(sort pkglist))"
 
 diff <(echo "$local") <(echo "$remote") | grep "^<" | sed 's/< //g'
+
+# List all packages you have manually installed later (not in 'pkglist aurlist nvidia nvidia_optimus')
+# comm -23 <(pacman -Qqt | sort) <(sed -E '/^#/d;/^$/d' pkglist aurlist nvidia nvidia_optimus | sort)

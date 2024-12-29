@@ -7,7 +7,7 @@ xrdb "${XDG_CONFIG_HOME:-$HOME/.config}"/X11/Xresources & xrdbpid=$!    # Use Xr
 xrandr --setprovideroutputsource modesetting NVIDIA-0; xrandr --auto    # EnvyControl settings for NVIDIA mode if not use DM
 xrandr --dpi 96                                                         # Set DPI. Maybe use a larger number for larger screens
 xset s off & xset -dpms & xset s noblank &                              # Don't turn of the display randomly
-xset r rate 200 50                                                      # delay 660 -> 200; repeat rate 25 -> 50
+xset r rate 400 40                                                      # delay 660 -> 400; repeat rate 25 -> 40
 
 autostart="pipewire
 dunst xcompmgr lxsession unclutter fcitx5

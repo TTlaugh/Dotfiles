@@ -1,3 +1,8 @@
+### Workflow config
+alias reconfig='pwd=$PWD; cd $HOME/GitRepos/TTlaugh/Dotfiles && stow --no-folding -v -R -t ~ .; cd $pwd'
+alias slmake='sudo make install;make clean;git clean -fd'
+slpush(){ git push https://github.com/TTlaugh/$1 my$1:master; }
+
 ### Nvidia Optimus (Envycontrol)
 alias ncard="sudo envycontrol -s nvidia"
 alias icard="sudo envycontrol -s integrated"

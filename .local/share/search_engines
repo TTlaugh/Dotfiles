@@ -1,0 +1,11 @@
+DuckDuckGo:Search         https://duckduckgo.com/?q=
+Arch:Manpage              https://man.archlinux.org/search?q=
+Arch:Wiki                 https://wiki.archlinux.org/index.php?search=
+Arch:Packages             https://archlinux.org/packages/?q=
+Arch:Packages:AUR         https://aur.archlinux.org/packages/?K=
+GitHub:Search             https://github.com/search?q=
+Youtube:Search            https://www.youtube.com/results?search_query=
+Google:Search             https://duckduckgo.com/?q=!g+
+Google:Search:Image       https://duckduckgo.com/?q=!gi+
+Google:Translate:En       https://translate.google.com/?sl=en&tl=vi&text=
+Google:Translate:Vi       https://translate.google.com/?sl=vi&tl=en&text=

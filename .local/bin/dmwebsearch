@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+FILE="${XDG_DATA_HOME:-$HOME/.local/share}/search_engines"
+if [ ! -f "$FILE" ]; then notify-send "dmwebsearch" "$FILE not found!"; fi
+ENGINES="$(grep -v '^$' "$FILE")"
+search="$(echo "$ENGINES" | awk '{print $1}' | dmenu -i -p "WebSearch:")"
+shortcut="$(echo "$search" | awk '{print $1}')"
+engine="$(echo "$ENGINES" | grep "$shortcut" | awk '{print $2}')"
+keywords="$(echo "$search" | cut -d' ' -f2- | tr " " "+")"
+
+${BROWSER:-"xdg-open"} "${engine}${keywords}"

@@ -2,6 +2,7 @@
 \.github
 \.xprofile
 \.local/share/bg
+\.config/fcitx5
 install.sh
 misc
 pkg

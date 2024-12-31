@@ -1,2 +1,0 @@
-#!/bin/sh
-cd "$HOME/GitRepos/TTlaugh/Dotfiles" && stow --no-folding -v -R -t ~ .

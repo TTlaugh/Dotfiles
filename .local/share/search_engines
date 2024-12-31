@@ -1,11 +1,25 @@
-DuckDuckGo:Search         https://duckduckgo.com/?q=
-Arch:Manpage              https://man.archlinux.org/search?q=
-Arch:Wiki                 https://wiki.archlinux.org/index.php?search=
-Arch:Packages             https://archlinux.org/packages/?q=
-Arch:Packages:AUR         https://aur.archlinux.org/packages/?K=
-GitHub:Search             https://github.com/search?q=
-Youtube:Search            https://www.youtube.com/results?search_query=
-Google:Search             https://duckduckgo.com/?q=!g+
-Google:Search:Image       https://duckduckgo.com/?q=!gi+
-Google:Translate:En       https://translate.google.com/?sl=en&tl=vi&text=
-Google:Translate:Vi       https://translate.google.com/?sl=vi&tl=en&text=
+DuckDuckGo                  https://duckduckgo.com/?q=
+DuckDuckGo:Image            https://duckduckgo.com/?iax=images&ia=images&q=
+Google                      https://duckduckgo.com/?q=!g+
+Google:Image                https://duckduckgo.com/?q=!gi+
+
+Google:Translate:En         https://translate.google.com/?sl=en&tl=vi&text=
+Google:Translate:Vi         https://translate.google.com/?sl=vi&tl=en&text=
+
+Wiki                        https://en.wikipedia.org/w/index.php?search=
+
+Youtube                     https://www.youtube.com/results?search_query=
+Reddit                      https://en.wikipedia.org/w/index.php?search=
+
+Arch:Manpage                https://man.archlinux.org/search?q=
+Arch:Wiki                   https://wiki.archlinux.org/index.php?search=
+Arch:Packages               https://archlinux.org/packages/?q=
+Arch:Packages:AUR           https://aur.archlinux.org/packages/?K=
+Debian:Packages             https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=
+
+StackOverflow               https://stackoverflow.com/search?q=
+GitHub                      https://github.com/search?q=
+GitLab                      https://gitlab.com/search?search=
+SourceForge                 https://sourceforge.net/directory/?q=
+
+Go:Packages                 https://pkg.go.dev/search?q=

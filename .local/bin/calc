@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Calculator (Similar to C syntax):"
+bc -lq

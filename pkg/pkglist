@@ -86,12 +86,13 @@ pulsemixer
 #######
 # Dev #
 #######
-#jdk-openjdk
+go
 gcc
 gdb
-cmake
-npm
-yarn
+#jdk-openjdk
+#cmake
+#npm
+#yarn
 
 ################
 # Applications #

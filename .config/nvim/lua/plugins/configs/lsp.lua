@@ -67,6 +67,7 @@ local mason_list = {
     servers = {
         bashls = {},
         clangd = {},
+        gopls = {},
         pyright = {},
         lua_ls = {
             Lua = {

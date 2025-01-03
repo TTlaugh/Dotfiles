@@ -1,12 +1,14 @@
 #!/bin/sh
-set -e
+browser=${BROWSER:-"xdg-open"}
 
 FILE="${XDG_DATA_HOME:-$HOME/.local/share}/search_engines"
 if [ ! -f "$FILE" ]; then notify-send "dmwebsearch" "$FILE not found!"; fi
 ENGINES="$(grep -v '^$' "$FILE")"
 search="$(echo "$ENGINES" | awk '{print $1}' | dmenu -i -p "WebSearch:")"
 shortcut="$(echo "$search" | awk '{print $1}')"
-engine="$(echo "$ENGINES" | grep "$shortcut" | awk '{print $2}')"
+engine="$(echo "$ENGINES" | grep -w "$shortcut " | awk '{print $2}')"
 keywords="$(echo "$search" | cut -d' ' -f2- | tr " " "+")"
 
-${BROWSER:-"xdg-open"} "${engine}${keywords}"
+if ! "$browser" "${engine:-"https://duckduckgo.com/?q="}${keywords}"; then
+    notify-send "dmwebsearch - Cannot open the browser" "Currently using \`$browser\`"
+fi

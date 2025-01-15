@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+while :; do
+    sleep 1170
+    for ((i=30; i>0; i--)); do
+        notify-send "Re-active Google Cloud Shell" "re-active after ${i}s" -u normal -r 9000
+        sleep 1
+    done && dunstctl close 9000
+    currwid="$(xdotool getwindowfocus)"
+    xdotool search --name "Cloud Shell" windowactivate
+    xdotool type "say re-active cloudshell (message from tool, don't reply)"
+    xdotool key Enter
+    xdotool windowactivate "$currwid"
+    date
+done

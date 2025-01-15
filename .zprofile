@@ -32,6 +32,7 @@ export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 ### Go
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export PATH="$GOPATH/bin:$PATH"
 ### Rust
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 ### Java (java 21 as default)

@@ -5,6 +5,10 @@ printf "Loading modules...\n" | dwmsetbar && sleep 1
 
 sec=0
 
+update_pkgs () {
+    pkgs="^c#c3e88d^ $(checkup | wc -l) updates"
+}
+
 update_internet () {
     internet="^b#1b1d2b^ ^c#86e1fc^$(sb_internet)"
 }
@@ -27,18 +31,19 @@ update_datetime () {
     datetime="^b#1b1d2b^ ^c#828bb8^$(date "+%b %d %Y (%a) %H:%M") ^b#c8d3f5^^c#1b1d2b^ 󰃰 "
 }
 
-update_pkgs () {
-    pkgs="^c#c3e88d^ $(checkup | wc -l) updates"
+update_record() {
+    recordingicon="^c#ff757f^$(cat /tmp/recordingicon 2>/dev/null)^d^"
 }
 
 display () {
-    printf "%s\n" " $pkgs $internet  $volume  $backlight $battery $datetime" | dwmsetbar
+    printf "%s\n" " $pkgs $internet  $volume  $backlight $battery $datetime^d^$recordingicon" | dwmsetbar
 }
 
 # signals for each module to update while updating display. RTMIN is 34
 trap "update_volume;display"    "RTMIN"
 trap "update_backlight;display" "RTMIN+1"
 trap "update_pkgs;display"      "RTMIN+2"
+trap "update_record;display"    "RTMIN+3"
 
 while true
 do

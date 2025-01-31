@@ -17,7 +17,11 @@ fi
 [ -n "$(cat /sys/class/net/tun*/operstate 2>/dev/null)" ] && tunicon="󰖂"
 
 # ZeroTier
-for zt in /sys/class/net/zt*; do [ -d "$zt" ] && zticon="󰰸"
+for zt in /sys/class/net/zt*; do [ -d "$zt" ] && tunicon="$tunicon󰰸"
 break; done 2>/dev/null
 
-printf "%s%s%s%s" "$zticon" "$tunicon" "$ethericon" "$wifiicon"
+# Tailscale
+for ts in /sys/class/net/tailscale*; do [ -d "$ts" ] && tunicon="$tunicon󰰦"
+break; done 2>/dev/null
+
+printf "%s%s%s" "$tunicon" "$ethericon" "$wifiicon"

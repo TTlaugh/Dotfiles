@@ -1,7 +1,7 @@
 DuckDuckGo                  https://duckduckgo.com/?q=
 DuckDuckGo:Image            https://duckduckgo.com/?iax=images&ia=images&q=
-Google                      https://duckduckgo.com/?q=!g+
-Google:Image                https://duckduckgo.com/?q=!gi+
+Google                      https://google.com/?q=!g+
+Google:Image                https://google.com/?q=!gi+
 
 Google:Translate:En         https://translate.google.com/?sl=en&tl=vi&text=
 Google:Translate:Vi         https://translate.google.com/?sl=vi&tl=en&text=
@@ -9,7 +9,7 @@ Google:Translate:Vi         https://translate.google.com/?sl=vi&tl=en&text=
 Wiki                        https://en.wikipedia.org/w/index.php?search=
 
 Youtube                     https://www.youtube.com/results?search_query=
-Reddit                      https://en.wikipedia.org/w/index.php?search=
+Reddit                      https://www.reddit.com/search/?q=
 
 Arch:Manpage                https://man.archlinux.org/search?q=
 Arch:Wiki                   https://wiki.archlinux.org/index.php?search=

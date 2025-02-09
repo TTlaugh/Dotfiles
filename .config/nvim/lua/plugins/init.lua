@@ -182,10 +182,4 @@ return require("lazy").setup({
         ft = { "markdown" },
     },
 
-    -- { "https://github.com/cdelledonne/vim-cmake",
-    --     cmd = { "CMakeGenerate", "CMakeBuild", "CMakeClose", "CMakeClean" },
-    --     init = function() vim.g.cmake_link_compile_commands = 1 end,
-    -- },
-    -- }}}
-
 })

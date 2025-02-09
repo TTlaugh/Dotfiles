@@ -21,7 +21,7 @@ function M.colorscheme(name_or_index)
     elseif (name_or_index == 5 or name_or_index == "tokyonight-day") then
         colorscheme "tokyonight-day"
     else
-        vim.notify("Can't load third party colorscheme! Use nvim's builtin colorscheme: 'habamax'", vim.log.levels.WARN)
+        vim.notify("Can't load third party colorscheme! Use nvim's builtin colorscheme: 'habamax'", vim.log.levels.INFO)
         colorscheme "habamax"
     end
 end

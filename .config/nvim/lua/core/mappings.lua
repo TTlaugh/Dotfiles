@@ -87,7 +87,7 @@ M.plugins = {
     { 'n'          ,'<leader>gb'      , '<cmd> Git blame <CR>'                               , '[G]it [B]lame'                       },
     { 'n'          ,'<leader>gd'      , '<cmd> Git diff <CR>'                                , '[G]it [D]iff'                        },
     { 'n'          ,'<leader>gl'      , '<cmd> Git log <CR>'                                 , '[G]it [L]og'                         },
-    { 'n'          ,'<leader>go'      , require("mini.diff").toggle_overlay                  , '[G]it [O]verlay diff'                },
+    { 'n'          ,'<leader>go'      , '<cmd> lua require("mini.diff").toggle_overlay<CR>'  , '[G]it [O]verlay diff'                },
     -- colorizer
     { 'n'          ,'<leader>h'       , '<cmd> ColorizerToggle <CR>'                         , '[C]olorizer'                         },
     -- oil
@@ -102,10 +102,6 @@ M.plugins = {
     { {    'x','o'}, 'n'              , '<Plug>(leap-forward-till)'                          , '󰷺 Leap: forward till'                },
     { {    'x','o'}, 'N'              , '<Plug>(leap-backward-till)'                         , '󰷺 Leap: backward till'               },
     { {'n','v','o'}, 'g<space>'       , '<Plug>(leap-from-window)'                           , '󰷺 Leap: from window'                 },
-    -- cmake
-    -- { 'n'          ,'<leader>bg'      , '<cmd> CMakeGenerate <CR>'                           , '[G]enerate build system'             },
-    -- { 'n'          ,'<leader>bb'      , '<cmd> CMakeBuild    <CR>'                           , '[B]uild a project'                   },
-    -- { 'n'          ,'<leader>bc'      , '<cmd> CMakeClose    <CR>'                           , '[C]lose Cmake window'                },
     -- Codeium
     -- { 'i'          , '<A-c>'     ,
     --     function() require("cmp").abort() return vim.fn['codeium#Complete']()             end, "Codeium: Get"   , opts={expr = true} },

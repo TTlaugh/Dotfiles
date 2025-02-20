@@ -1,4 +1,10 @@
 #!/bin/sh
+
+# Descriptions:
+#   Open browser and
+#   search for the given keyword by
+#   the search engines listed in `search_engines` file
+
 set -e
 browser=${BROWSER:-"xdg-open"}
 file="${XDG_DATA_HOME:-$HOME/.local/share}/search_engines"

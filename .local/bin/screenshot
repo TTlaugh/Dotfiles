@@ -1,16 +1,17 @@
 #!/bin/sh
 
-# Description: Take screenshot with ffmpeg.
+# Description: Take screenshot with ffmpeg
 # Dependencies: ffmpeg, slop, xclip, dunst
 
 # Usage:
 # `$0`: full screen capture
 # `$0 selected`: capture selected area
 
-set -euo
+[ ! -d "$HOME/Pictures" ] && mkdir -p "$HOME/Pictures"
+output="$HOME/Pictures/screenshot_$(date +'%y%m%d_%H%M-%S').png"
 
 screenshot_full() {
-    ffmpeg -f x11grab -video_size "$(xdpyinfo | awk '/dimensions/{print $2}')" -i "$DISPLAY" -vframes 1 "$locate"
+    ffmpeg -f x11grab -video_size "$(xdpyinfo | awk '/dimensions/{print $2}')" -i "$DISPLAY" -vframes 1 "$output"
 }
 
 screenshot_selected() {
@@ -19,17 +20,15 @@ screenshot_selected() {
     Y=$(echo "$selected" | awk '{print $2}')
     W=$(echo "$selected" | awk '{print $3}')
     H=$(echo "$selected" | awk '{print $4}')
-    ffmpeg -f x11grab -video_size "$W"x"$H" -i :0.0+"$X,$Y" -vframes 1 "$locate"
+    ffmpeg -f x11grab -video_size "$W"x"$H" -i :0.0+"$X,$Y" -vframes 1 "$output"
 }
 
-[ ! -d "${HOME}/Pictures" ] && mkdir -p "${HOME}"/Pictures
-locate="${HOME}/Pictures/screenshot_$(date +'%y%m%d_%H%M-%S').png"
 case "$@" in
     selected) screenshot_selected;;
     "") screenshot_full;;
     *) exit 1;;
 esac
 # Copy image to clipboard
-xclip -selection clipboard -t image/png -i "$locate"
+xclip -selection clipboard -t image/png -i "$output"
 
-notify-send "Screenshot" "Copied to clipboard!\nSaved to:\n$locate"
+notify-send "Screenshot" "Copied to clipboard!\nSaved to:\n$output"

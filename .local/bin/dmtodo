@@ -1,7 +1,12 @@
 #!/bin/sh
-# Write/remove a task to do later.
-# Select an existing entry to remove it from the file,
-# or type a new entry to add it.
+
+# Source:
+#   https://tools.suckless.org/dmenu/scripts/todo
+# Descriptions:
+#   Write/remove a task to do later.
+#   Select an existing entry to remove it from the file,
+#   or type a new entry to add it.
+# Dependencies: dmenu
 
 file="$HOME/TODO"
 height=$(wc -l < "$file")

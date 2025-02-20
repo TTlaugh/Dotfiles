@@ -3,17 +3,15 @@
 # Description: Choose type of screenshot to take with maim.
 # Dependencies: dmenu, maim, xclip, xdotool
 
-saveas() {
-    default="$HOME/screenshot_$(date +'%y%m%d_%H%M-%S').png"
-    other="$(find "$HOME" -maxdepth 2 -type d -not -path '*/\.*')"
-    printf "%s\n%s" "$default" "$other" | dmenu -l 10 -i -p "Save as:"
-}
+[ ! -d "$HOME/Pictures" ] && mkdir -p "$HOME/Pictures"
+output="$HOME/Pictures/screenshot_$(date +'%y%m%d_%H%M-%S').png"
+xclip_cmd="xclip -sel clip -t image/png"
 
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
-    "a selected area")        maim -u -s "$(saveas)" ;;
-    "current window")         maim -B -q -d 0.2 -i "$(xdotool getactivewindow)" "$(saveas)" ;;
-    "full screen")            maim -u -q -d 0.2 "$(saveas)" ;;
-    "a selected area (copy)") maim -u -s | xclip -selection clipboard -t image/png ;;
-    "current window (copy)")  maim -B -q -d 0.2 -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
-    "full screen (copy)")     maim -u -q -d 0.2 | xclip -selection clipboard -t image/png ;;
+    "a selected area")        maim -u -s "$output" ;;
+    "current window")         maim -B -q -d 0.2 -i "$(xdotool getactivewindow)" "$output" ;;
+    "full screen")            maim -u -q -d 0.2 "$output" ;;
+    "a selected area (copy)") maim -u -s | $xclip_cmd ;;
+    "current window (copy)")  maim -B -q -d 0.2 -i "$(xdotool getactivewindow)" | $xclip_cmd ;;
+    "full screen (copy)")     maim -u -q -d 0.2 | $xclip_cmd ;;
 esac

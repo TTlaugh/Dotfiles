@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Full Source: https://github.com/archlinux/pacman-contrib/blob/master/src/checkupdates.sh.in
+# Full Source:
+#   https://github.com/archlinux/pacman-contrib/blob/master/src/checkupdates.sh.in
 
 CHECKUPDATES_DB="${TMPDIR:-/tmp}/checkup-db-${UID}/"
 

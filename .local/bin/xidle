@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Description:
-# When the computer inactive -> Locks after 5 minutes (including screen off),
-# sleeps after 30 minutes.
+#   When the computer inactive -> Locks after 5 minutes (including screen off),
+#   sleeps after 30 minutes.
 
 handle1After=300000   # Handle after 5 mins
 handle2After=1800000  # Handle after 30 mins

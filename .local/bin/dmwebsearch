@@ -6,8 +6,10 @@ if [ ! -f "$file" ]; then notify-send "dmwebsearch" "$file not found!"; exit 1; 
 engines="$(grep -v '^$' "$file")"
 search="$(echo "$engines" | awk '{print $1}' | dmenu -i -p "WebSearch:")"
 shortcut="$(echo "$search" | awk '{print $1}')"
-engine="$(echo "$engines" | grep -w "$shortcut " | awk '{print $2}')"
+engine="$(echo "$engines" | grep -w "$shortcut ")"
+prefix_query="$(echo "$engine" | awk '{print $2}')"
+posfix_query="$(echo "$engine" | awk '{print $3}')"
 keywords="$(echo "$search" | cut -d' ' -f2- | tr " " "+")"
-if ! "$browser" "${engine:-"https://duckduckgo.com/?q="}${keywords}"; then
+if ! "$browser" "${prefix_query:-"https://duckduckgo.com/?q="}${keywords}${posfix_query}"; then
     notify-send "dmwebsearch - Cannot open the browser" "Currently using \`$browser\`"
 fi

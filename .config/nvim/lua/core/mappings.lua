@@ -38,7 +38,7 @@ M.general = {
     { 'n'          ,'<F4>'            , '<cmd> setlocal spell! spelllang=en_us<CR>'          , '󰓆 Built-in spell-checker'            },
     { 'n'          ,'<leader><F4>'    , '<cmd> normal! mz1z=`z <CR>'                         , ' Auto-fix misspelled word'          },
     { 'v'          ,'<C-r>'           , '"hy:%s/<C-r>h//gc<left><left><left>'                , '﯒ Find & replace selected words'     },
-    { 'v'          ,'<C-p>'           , '"_dP'                                               , 'Replace text & do not copy'          },
+    { 'v'          ,'<A-p>'           , '"_dP'                                               , 'Replace text & do not copy'          },
     { 'v'          ,'<'               , '<gv-gv'                                             , 'Manually indent (left)'              },
     { 'v'          ,'>'               , '>gv-gv'                                             , 'Manually indent (right)'             },
     { 'v'          ,'<C-j>'           , ":move '>+1<CR>gv-gv"                                , ' Move current line/block down'      },

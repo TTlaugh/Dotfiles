@@ -49,7 +49,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 ### Other settings:
-# export LESS="R"
+export SUDO_ASKPASS="$HOME/.local/bin/voidrice/dmpass"
 export QT_QPA_PLATFORMTHEME="gtk2"        # Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2=1                  # Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D" # May have to install wmname

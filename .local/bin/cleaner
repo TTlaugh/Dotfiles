@@ -40,7 +40,7 @@ print_option() {
     printf "%s%sEnter your option (Default 0):%s "                   "$BOLD" "$GREEN" "$RESET"
 }
 
-option_0() {
+check() {
     printf "%sChecking ...... %s\n" "$RED" "$RESET"
     paccachesize=$(du -sh /var/cache/pacman/pkg/ | awk '{print $1}')
     homecachesize=$(du -sh "${HOME}"/.cache/ | awk '{print $1}')
@@ -61,7 +61,7 @@ option_0() {
     read -r
 }
 
-option_1() {
+remove_pkgs_cache() {
     printf "%s  [0] Go back <--%s\n"                                 "$BLUE" "$RESET"
     printf "%s  [1] Remove NOT installed packages from cache%s\n"    "$BLUE" "$RESET"
     printf "%s  [2] Remove ALL files from cache%s\n"                 "$BLUE" "$RESET"
@@ -78,7 +78,7 @@ option_1() {
     read -r
 }
 
-option_2() {
+remove_unused_pkgs() {
     unusedpackages="$(pacman -Qtdq)"
     if [[ -z "$unusedpackages" ]]; then
         printf "%sNo unused packages to remove. Enter to continue.%s" "$BOLD" "$RESET"
@@ -108,7 +108,7 @@ findcache() {
         *)  printf "$upacfind\n%s$(echo "$upacfind" | wc -l) matches found.%s\n" "$GREEN" "$RESET";;
     esac
 }
-option_3() {
+remove_cache_files() {
     printf "     %s%s!!! So dangerous to remove cache file!!!%s \n" "$BOLD" "$RED" "$RESET"
     echo " ==> You should find manually and only delete files that are really not needed! "
     echo " ==> You can manual delete cache files of uninstalled app in ${HOME}/.cache/*     "
@@ -140,7 +140,7 @@ findconfig() {
         *)  printf "$upacnamecfg\n%s$(echo "$upacnamecfg" | wc -l) matches found.%s\n" "$GREEN" "$RESET";;
     esac
 }
-option_4() {
+remove_old_configs() {
     echo "**********************************************************************************************"
     echo "*                                                                                            *"
     echo "* ==> Can't remove old config files automatically! You must find and remove them manually.   *"
@@ -158,7 +158,7 @@ option_4() {
     read -r
 }
 
-option_5() {
+remove_journal() {
     journalctl -p 3 -b
     printf "\n%sIf you find some errors, %sgoogle%s %sthem before deleting!%s\n" "$BOLD" "$GREEN" "$RESET" "$BOLD" "$RESET"
     read -r -p "Continue to delete? [Y/n] " djournal
@@ -169,7 +169,7 @@ option_5() {
     read -r
 }
 
-option_6() {
+quick_remove() {
     printf "%s%sRemoving packages cache ......%s\n" "$BOLD" "$RED" "$RESET"
     sudo pacman -Sc
     printf "%s%sDone! Enter to continue.%s" "$BOLD" "$GREEN" "$RESET"
@@ -205,14 +205,14 @@ main() {
         print_option
         read -r chosen
         case "$chosen" in
-            "") option_0 ;;
-            0)  option_0 ;;
-            1)  option_1 ;;
-            2)  option_2 ;;
-            3)  option_3 ;;
-            4)  option_4 ;;
-            5)  option_5 ;;
-            6)  option_6 ;;
+            "") check ;;
+            0)  check ;;
+            1)  remove_pkgs_cache ;;
+            2)  remove_unused_pkgs ;;
+            3)  remove_cache_files ;;
+            4)  remove_old_configs ;;
+            5)  remove_journal ;;
+            6)  quick_remove ;;
             *)  exit 0 ;;
         esac
     done

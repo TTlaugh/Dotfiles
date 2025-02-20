@@ -1,4 +1,9 @@
 #!/bin/sh
+############
+# Modified #
+############
+
+# Dependencies: ffmpeg, slop
 
 # Usage:
 # `$0`: Ask for recording type via dmenu

@@ -17,7 +17,8 @@ setopt interactive_comments
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.zsh_history
-setopt inc_append_history # Save command to history before it is executed
+setopt inc_append_history   # Save command to history before it is executed
+setopt hist_ignore_all_dups # don't put duplicate lines in the history.
 
 ### Basic auto/tab complete:
 autoload -U compinit

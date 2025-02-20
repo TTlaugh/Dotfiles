@@ -1,6 +1,6 @@
 #!/bin/bash
 
-comm -23 <(sed -E '/^#/d;/^$/d' pkglist | sort) <(pacman -Slq | sort)
+comm -23 <(sed -E '/^#/d;/^$/d' "${1:-pkglist}" | sort) <(pacman -Slq | sort)
 
 # List all packages you have manually installed later (not in 'pkglist aurlist nvidia nvidia_optimus')
 # comm -23 <(pacman -Qqt | sort) <(sed -E '/^#/d;/^$/d' pkglist aurlist nvidia nvidia_optimus | sort)

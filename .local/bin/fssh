@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Dependencies: ssh, fzf
+
+set -e
+
+hosts_file="$HOME/.ssh/known_hosts"
+users_file="$HOME/.ssh/known_users"
+pkeys_path="$HOME/.ssh"
+
+if [ ! -f "$users_file" ]; then echo root > "$users_file"; fi
+
+cmdfzf() { fzf --bind enter:accept-or-print-query --prompt "[ssh] $*"; }
+
+host="$(cut -d ' ' -f 1 "$hosts_file" | sed 's/\[//;s/].*//' | sort -u | cmdfzf "known_hosts: ")"
+user="$(cmdfzf "known_users: " < "$users_file")"
+pkeys="$(find "$pkeys_path"/*.pub -exec basename {} .pub \;)"
+pkey="$(printf "[use password]\n%s" "$pkeys" | cmdfzf "choose pubkey: ")"
+
+case "$pkey" in
+    "[use password]") cmd="ssh -l $user $host $*" ;;
+    *)                cmd="ssh -i $pkeys_path/$pkey -l $user $host $*" ;;
+esac
+
+### Run command
+$cmd
+
+if ! grep -Fxq "$cmd" "$HISTFILE"; then
+    echo "$cmd" >> "$HISTFILE"
+fi
+if ! grep -Fxq "$user" "$users_file"; then
+    echo "$user" >> "$users_file"
+fi

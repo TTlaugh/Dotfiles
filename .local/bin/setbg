@@ -1,5 +1,5 @@
 #!/bin/sh
-# Run by itself, set the wallpaper (at X start).
+# Dependencies: feh
 
 # Location of link to wallpaper link.
 bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"

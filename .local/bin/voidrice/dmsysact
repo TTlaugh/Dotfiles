@@ -1,4 +1,7 @@
 #!/bin/sh
+############
+# Modified #
+############
 
 # Description: Suspend, Restart, Shutdown with dmenu.
 # Dependencies: dmenu, any Nerd Font

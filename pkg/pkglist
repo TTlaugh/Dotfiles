@@ -97,25 +97,30 @@ gdb
 ################
 # Applications #
 ################
+### GUI
 alacritty
 chromium
-slock
-thermald
-xdg-user-dirs
-man-db
-xcompmgr
-neovim
-vim
-nano
+#pavucontrol
+lxsession-gtk3
+pcmanfm-gtk3
+zathura
+zathura-pdf-poppler
+#zathura-pdf-mupdf
+lxappearance-gtk3
+capitaine-cursors
+arc-gtk-theme
+### Shell
 zsh
-stow
-fastfetch
+openssh
+### GET-tools
 git
 wget
 curl
-openssh
-#pavucontrol
-pcmanfm-gtk3
+### Editor
+neovim
+vim
+nano
+### Files, Media exploring tools
 vifm
 ueberzug
 ffmpeg
@@ -124,44 +129,40 @@ mediainfo
 atool
 feh
 nsxiv
-mpv
 imagemagick
-maim
-capitaine-cursors
-arc-gtk-theme
-lxappearance-gtk3
-lxsession-gtk3
-polkit
-pass
+mpv
+### Workflow Tools
+stow
 fzf
 bat
-ripgrep
+eza
 jq
 bc
-eza
-zathura
-zathura-pdf-poppler
-#zathura-pdf-mupdf
+maim
+ripgrep
+fastfetch
+translate-shell
+### System tools
+thermald
+dmidecode
+socat
+polkit
+dialog
+man-db
+arandr
+slock
 dunst
 unclutter
-dialog
+xcompmgr
+xdg-user-dirs
 xclip
 xdotool
 wmctrl
 slop
-arandr
-dmidecode
-translate-shell
-socat
-
-#######################################
-# Input method (for Vietnamese input) #
-#######################################
-fcitx5
-fcitx5-configtool
-fcitx5-qt
-fcitx5-gtk
-fcitx5-unikey
+pass
+pass-otp
+zbar
+ntp
 
 ##################
 # Compress tools #
@@ -174,6 +175,15 @@ gzip
 bzip2
 tar
 xz
+
+#######################################
+# Input method (for Vietnamese input) #
+#######################################
+fcitx5
+fcitx5-configtool
+fcitx5-qt
+fcitx5-gtk
+fcitx5-unikey
 
 #########
 # Fonts #

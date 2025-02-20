@@ -1,4 +1,5 @@
 bindkey -s '^o' 'ifm\n'
+bindkey -s '^s' 'fssh\n'
 bindkey -s '^a' 'tat\n'
 bindkey -s '^v' 'vtrans\n'
 bindkey -s '^b' 'calc\n'

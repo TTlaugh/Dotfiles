@@ -116,6 +116,7 @@ openssh
 git
 wget
 curl
+yt-dlp
 ### Editor
 neovim
 vim

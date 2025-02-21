@@ -1,6 +1,6 @@
 DuckDuckGo                  https://duckduckgo.com/?q=
 DuckDuckGo:Image            https://duckduckgo.com/?iax=images&ia=images&q=
-Google                      https://google.com/?q=!g+
+Google                      https://google.com/search?q=
 Google:Image                https://google.com/?q=!gi+
 
 Google:Translate:En         https://translate.google.com/?sl=en&tl=vi&text=

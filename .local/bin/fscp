@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Dependencies: ssh (scp), fzf
+
+set -e
+
+
+hosts_file="$HOME/.ssh/known_hosts"
+users_file="$HOME/.ssh/known_users"
+pkeys_path="$HOME/.ssh"
+
+if [ ! -f "$users_file" ]; then echo root > "$users_file"; fi
+
+cmdfzf() {
+    export FZF_DEFAULT_COMMAND='find . -type f'
+    fzf --bind 'ctrl-d:reload(find . -type d),ctrl-f:reload(eval "$FZF_DEFAULT_COMMAND")' \
+        --bind 'enter:accept-or-print-query' \
+        --prompt "[scp] $*"
+}
+
+src="$(cmdfzf "find file(Ctrl-f)/folder(Ctrl-d): ")"
+des="$(printf '~' | cmdfzf "Specify destination: ")"
+host="$(cut -d ' ' -f 1 "$hosts_file" | sed 's/\[//;s/].*//' | sort -u | cmdfzf "known_hosts: ")"
+user="$(cmdfzf "known_users: " < "$users_file")"
+pkeys="$(find "$pkeys_path"/*.pub -exec basename {} .pub \;)"
+pkey="$(printf "[use password]\n%s" "$pkeys" | cmdfzf "choose pubkey: ")"
+
+case "$pkey" in
+    "[use password]") cmd="scp $* -r $src $user@$host:$des" ;;
+    *)                cmd="scp $* -r -i $pkeys_path/$pkey $src $user@$host:$des" ;;
+esac
+
+### Run command
+$cmd
+
+if ! grep -Fxq "$user" "$users_file"; then
+    echo "$user" >> "$users_file"
+fi

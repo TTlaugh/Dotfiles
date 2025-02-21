@@ -100,6 +100,7 @@ install_graphics
 install_yay
 install_yaypack
 install_sl
+set -x
 apply_dotfiles
 copy_symblink
 sudo usermod -aG wheel,video,audio,input,optical,storage "$USER"

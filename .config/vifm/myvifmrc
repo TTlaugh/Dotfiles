@@ -3,10 +3,10 @@
 """"""""""
 mark h ~/
 mark c ~/.config/
+mark l ~/.local/
 mark D ~/Documents/
 mark w ~/Downloads/
 mark t ~/tmp/
-mark s ~/.scripts/
 
 """""""""""""""""
 "  Colorscheme  "

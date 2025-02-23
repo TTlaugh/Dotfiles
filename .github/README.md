@@ -10,11 +10,11 @@
     ·
     <a href="#Installation">Installation</a>
     ·
-    <a href="https://github.com/TTlaugh/dwm">DWM</a>
+    <a href="https://github.com/ttasc/dwm">DWM</a>
     ·
-    <a href="https://github.com/TTlaugh/dmenu">Dmenu</a>
+    <a href="https://github.com/ttasc/dmenu">Dmenu</a>
     ·
-    <a href="https://github.com/TTlaugh/Wallpapers">Wallpapers</a>
+    <a href="https://github.com/ttasc/Wallpapers">Wallpapers</a>
 </div>
 
 <br>
@@ -47,10 +47,10 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 ## Screenshots
 
 <p align="center">
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot1.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot2.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot3.png" />
-  <img align="center" width="49%" src="https://raw.githubusercontent.com/TTlaugh/Dotfiles/master/.github/screenshot4.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/ttasc/Dotfiles/master/.github/screenshot1.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/ttasc/Dotfiles/master/.github/screenshot2.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/ttasc/Dotfiles/master/.github/screenshot3.png" />
+  <img align="center" width="49%" src="https://raw.githubusercontent.com/ttasc/Dotfiles/master/.github/screenshot4.png" />
 </p>
 
 <br>
@@ -59,7 +59,7 @@ Minimal, performance-focused. Extremely fast and small without sacrificing conve
 
 On an Arch-based distribution, run the following:
 ```
-git clone https://github.com/TTlaugh/Dotfiles.git
+git clone https://github.com/ttasc/Dotfiles.git
 cd Dotfiles
 chmod +x install.sh
 ./install.sh
@@ -72,15 +72,15 @@ chmod +x install.sh
     - [x] Nvidia GPU (appropriate driver)
     - [x] Nvidia Optimus (envycontrol)
 - 📦 **Install these programs:**
-    - All dependencies, useful tools, fonts, graphic drivers,... [Check here](https://github.com/TTlaugh/Dotfiles/blob/master/pkg/)
-    - [dwm](https://github.com/TTlaugh/dwm)
-    - [dmenu](https://github.com/TTlaugh/dmenu)
+    - All dependencies, useful tools, fonts, graphic drivers,... [Check here](https://github.com/ttasc/Dotfiles/blob/master/pkg/)
+    - [dwm](https://github.com/ttasc/dwm)
+    - [dmenu](https://github.com/ttasc/dmenu)
 - 🐧 **Apply my dotfiles using `stow`:**
     - Default zsh shell
     - Settings for Neovim, alacritty, vifm, dunst,...
     - Login prompt font size
     - Touchpad configuration
-    - Useful [scripts](https://github.com/TTlaugh/Dotfiles/tree/master/.local/bin) are in `~/.local/bin/`
+    - Useful [scripts](https://github.com/ttasc/Dotfiles/tree/master/.local/bin) are in `~/.local/bin/`
 - 🔥 **It doesn't come by default but you might need it.**
     - [mutt-wizard](https://github.com/LukeSmithxyz/mutt-wizard)
     - reflector
@@ -92,7 +92,7 @@ chmod +x install.sh
 - 🌸 Icons:
     - [Volantes Cursors](https://www.gnome-look.org/p/1356095)
     - [Tela circle icon](https://www.gnome-look.org/p/1359276)
-- Firefox: [BeautyFox](https://github.com/TTlaugh/BeautyFox)
+- Firefox: [BeautyFox](https://github.com/ttasc/BeautyFox)
 
 ## 📖 References
 - Graphics driver
@@ -107,4 +107,4 @@ chmod +x install.sh
     - [Hardware video acceleration](https://wiki.archlinux.org/title/Hardware_video_acceleration)
     - [TLP](https://linrunner.de/tlp/) ([Arch Wiki](https://wiki.archlinux.org/title/TLP))
     - [auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)
-- [Maybe Useful tips and tricks](https://github.com/TTlaugh/Dotfiles/tree/master/.github/TIPS.md)
+- [Maybe Useful tips and tricks](https://github.com/ttasc/Dotfiles/tree/master/.github/TIPS.md)

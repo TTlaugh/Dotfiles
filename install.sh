@@ -14,8 +14,8 @@ aurlist="pkg/aurlist"
 yaylink="https://aur.archlinux.org/yay.git"
 sldwm="https://git.suckless.org/dwm"
 sldmenu="https://git.suckless.org/dmenu"
-mydwm="https://github.com/TTlaugh/dwm"
-mydmenu="https://github.com/TTlaugh/dmenu"
+mydwm="https://github.com/ttasc/dwm"
+mydmenu="https://github.com/ttasc/dmenu"
 
 createDir() {
     [ ! -d "$GitRepos" ] && mkdir -p "$GitRepos"

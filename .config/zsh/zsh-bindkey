@@ -1,4 +1,4 @@
-bindkey -s '^o' 'ifm\n'
+bindkey -s '^o' 'uvifm\n'
 bindkey -s '^s' 'fssh\n'
 bindkey -s '^a' 'tat\n'
 bindkey -s '^v' 'vtrans\n'

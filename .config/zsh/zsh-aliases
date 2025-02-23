@@ -1,7 +1,7 @@
 ### Workflow config
-alias reconfig='pwd=$PWD; cd $HOME/GitRepos/TTlaugh/Dotfiles && stow --no-folding -v -R -t ~ .; cd $pwd'
+alias reconfig='pwd=$PWD; cd $HOME/GitRepos/ttasc/Dotfiles && stow --no-folding -v -R -t ~ .; cd $pwd'
 alias slmake='sudo make install;make clean;git clean -fd'
-slpush(){ git push https://github.com/TTlaugh/$1 my$1:master; }
+slpush(){ git push https://github.com/ttasc/$1 my$1:master; }
 
 ### Nvidia Optimus (Envycontrol)
 alias ncard="sudo envycontrol -s nvidia"
@@ -70,10 +70,6 @@ alias ip="ip -color=auto"
 ### Nvim
 alias vi="nvim"
 alias suvi="sudoedit"
-
-### Vifm
-# Or create symbolic links to add this script to PATH: ln -sf ~/.config/vifm/scripts/vifmrun ~/.local/bin/ifm
-alias ifm="~/.config/vifm/scripts/vifmrun"
 
 ### Feh
 alias feh="feh --scale-down --auto-zoom"
